@@ -1,0 +1,122 @@
+@global $pi
+$pi := 3.141592653589793
+
+@local $alpha, $rad
+$alpha := 0.
+$rad := 0.
+
+
+
+
+@fun_def @rad2deg($alpha) {
+
+	($alpha*180)/$pi
+}
+
+@fun_def @deg2rad($rad) {
+
+	$rad/180
+}
+
+
+
+
+
+
+
+
+
+
+
+@fun_def X($t, $r, $offsetX) 
+
+{ 
+	$r*@cos($t) + $offsetX
+} 
+
+@fun_def Y($t, $r, $offsetY) 
+{ 
+	
+
+	$r*@sin($t) + $offsetY
+}
+
+
+
+
+@proc_def vari_circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $speed)
+
+{	
+
+	loop Varispeed $speed
+	{
+		
+		curve  Varispeed @grain := 0.02s
+
+		{ $temp
+				{			   {$RT_TEMPO} ;$vari1
+					  $speed/4 {($RT_TEMPO - 30)} ;$vari2
+					  $speed/4 {($RT_TEMPO + 45)} ;$vari3
+					   $speed/4 {($RT_TEMPO - 30)};$vari4
+					  
+					 
+				}
+
+		} 
+			
+			;print_interpolation $t
+			
+			
+	}	during[$count#]
+
+
+
+
+
+	@global $speed, $pi ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	$pi := 3.141592653589793
+
+	
+	group circle @tempo $temp
+	{
+		@local $cpt
+		$cpt := 0
+
+
+		loop circle_curve $speed
+		{
+				;abort circle_curve
+
+			$cpt := $cpt+1
+
+			curve cercleCurve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
+							}
+
+		
+
+		
+		
+			{
+				$t
+						{
+								{ ($iniT*$pi)  } /*@type "exp"*/
+							$speed { ($targeT*$pi) }
+						
+	
+						}
+			}
+				
+			print_antescofo $cpt
+
+
+		} during[$count#]
+	
+	}
+
+    
+    
+
+}

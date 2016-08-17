@@ -1,0 +1,262 @@
+;variation on :
+
+    ;x = r*(2cos(t) + cos(t))
+    ;y = r*(2sin(t) - sin(2t)
+
+
+@global $pi
+	$pi := 3.141592653589793
+
+@local $a, $b
+$a := 1
+$b := 1
+
+
+@fun_def X( $t, $b, $offsetX) 
+{ 
+	
+
+	$b*((2*@sin($t)) - @sin(2*$t)) + $offsetX
+}
+
+
+
+@fun_def Y($t, $a, $offsetY) 
+
+{ 
+
+	($a*(1+@cos($t)))*((2 * @cos($t)) + @cos($t)) + $offsetY
+} 
+
+
+@proc_def ::hypocycloide1($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X($t, $a, $offsetX) @Y($t, $b, $offsetY)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+;variation on :
+
+    ;x = r*(2cos(t) + cos(t))
+    ;y = r*(2sin(t) - sin(2t)
+
+
+
+
+@local $a, $b
+$a := 1
+$b := 1
+
+
+
+
+@fun_def X2( $t, $a, $offsetX) 
+
+{ 
+	$a*(2*@cos($t)) + @cos($t) + $offsetX
+}
+
+@fun_def Y2($t, $b, $offsetY) 
+
+{ 
+	$b*(2*@sin($t)) - @sin(2*$t) + $offsetY
+	
+} 
+
+
+
+@proc_def ::hypocycloide2($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X2($t, $a, $offsetX) @Y2($t, $b, $offsetY)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+@fun_def X3($t, $a, $offsetX) 
+
+{ 
+
+	($a*(1-@cos($t)))*((2 * @cos($t)) + @cos($t)) + $offsetX
+} 
+
+/////////////////
+
+@fun_def Y3( $t, $b, $offsetY) 
+{ 
+	
+
+	($b*(1-@sin($t)))*((2*@sin($t)) - @cos(2*$t)) + $offsetY
+}
+
+
+
+
+@proc_def ::hypocycloide3($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X3($t, $a, $offsetX) @Y3($t, $b, $offsetY)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+@fun_def Y4($t, $a) 
+
+{ 
+
+	($a*(1+@cos($t)))*((2 * @cos($t)) + @cos($t)) 
+} 
+
+
+
+@fun_def X4( $t, $b) 
+{ 
+	
+
+	($b*(1+@cos($t)))*((2*@sin($t)) - @sin(2*$t))
+}
+
+
+
+
+@proc_def ::curvoide($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X4($t, $a) @Y4($t, $b)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}

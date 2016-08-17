@@ -1,0 +1,34 @@
+
+;log de base a (avec a > 0 et a ≠ 1)
+; le réel y positif tel que a^y = x
+;one note y = loga(x)
+
+@proc_def ::spat_log ($SPAT,$x1, $x2, $count, $SPEED)
+
+{	@local $x, $y, $SPEED, $count
+	
+	loop log $SPEED
+	{
+		abort logCurve
+
+		curve logCurve @grain := 0.01s, @Action := { $y:= @log($x)
+														
+													    @command($SPAT) xy $x $y
+														
+														}
+
+		
+		{
+			$x
+					{
+								{ $x1 } /*@type "exp"*/
+						$SPEED { $x2}
+						
+	
+					}
+		}
+
+
+	} during[$count#]
+
+}

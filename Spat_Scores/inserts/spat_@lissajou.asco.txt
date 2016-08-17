@@ -1,0 +1,78 @@
+;x(t) = asin(mt)
+;y(t) = bcos(nt)
+
+;toujours incluse dans le rectangle défini par :
+; -a >= x <= a 
+; -b >= y <= b
+
+; in our examples below (-1, 1)
+
+; si m = n on obtient une ellipse
+; et un cercle si, de plus, a = b
+
+; l'allure d'un cycle change évidemment selon les valeurs des coefs m et n
+
+
+
+
+;@global $pi
+	;$pi := 3.141592653589793
+
+@fun_def X($a, $m, $t) 
+{ 
+
+	$a * @cos($m * $t)
+} 
+
+/////////////////
+
+@fun_def Y($b, $n, $t) 
+{ 
+	
+	$b * @sin($n * $t)
+}
+
+
+
+
+@proc_def ::lissajou($cmd, $initT, $endT, $a, $b, $m, $n, $SPEED)
+
+{	
+	@global $SPEED, $pi ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	
+	$pi := 3.141592653589793
+    
+    ;loop pi $SPEED
+	;{
+		;abort lissajou_curve
+
+		curve lissajou_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X($a, $m, $t) @Y($b, $n, $t)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+
+
+/////////////////

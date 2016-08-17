@@ -1,0 +1,160 @@
+BPM 60
+
+
+@insert "inserts/spat_@ellipse.asco.txt"
+
+
+source_pos_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+gate_draw_coord 1
+spat_data 2
+
+
+
+
+
+
+; ::ellipseAB($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
+
+;t = [0, 2pi]
+
+; si a > b, on a une ellipse de grand axe 2a porté par x'x
+; si b > a, --> 2b --> y'y
+
+
+Event 1 ellipse_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 0, 2,  2, 0.2, 0, 0, 0, 0,  1, 4)
+::ellipse("spat2", 0, 2,  2, 0.4, 0, 0, 0, 0,  1, 4)
+::ellipse("spat3", 0, 2,  2, 0.8, 0, 0, 0, 0,  1, 4)
+::ellipse("spat4", 0, 2,  2, 1,   0, 0, 0, 0,  1, 4)
+
+Event 1 ellipse_02
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 0, 2, 0.2, 2, 0, 0, 0, 0,  1, 4)
+::ellipse("spat2", 0, 2, 0.4, 2, 0, 0, 0, 0,  1, 4)
+::ellipse("spat3", 0, 2, 0.8, 2, 0, 0, 0, 0,  1, 4)
+::ellipse("spat4", 0, 2, 1,   2, 0, 0, 0, 0,  1, 4)
+
+
+Event 1 ellipse_03
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 1, 0,  1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse("spat2", 1, 0,  1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse("spat3", 1, 0,  1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse("spat4", 1, 0,  1,   1, 0, 0, 0, 0, 1, 4)
+
+Event 1 ellipse_04
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 0, -0.5,  1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse("spat2", 0, -0.5,  1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse("spat3", 0, -0.5,  1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse("spat4", 0, -0.5,  1, 1,   0, 0, 0, 0, 1, 4)
+
+
+Event 1 ellipse_05
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", -0.5,  -1, 1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse("spat2", -0.5,  -1, 1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse("spat3", -0.5,  -1, 1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse("spat4", -0.5,  -1, 1, 1,   0, 0, 0, 0, 1, 4)
+
+
+
+Event 1 ellipse_06
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 1, 0,  0.2, 1, 0, 0, 0, 0, 1, 4)
+::ellipse("spat2", 1, 0,  0.6, 1, 0, 0, 0, 0, 1, 4)
+::ellipse("spat3", 1, 0,  0.8, 1, 0, 0, 0, 0, 1, 4)
+::ellipse("spat4", 1, 0,  1.0, 1, 0, 0, 0, 0, 1, 4)
+
+
+Event 1 ellipse_07
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 0, -0.5,  0.2, 1, 0, 0, 0, 0,  1, 4)
+::ellipse("spat2", 0, -0.5,  0.6, 1, 0, 0, 0, 0,  1, 4)
+::ellipse("spat3", 0, -0.5,  0.8, 1, 0, 0, 0, 0,  1, 4)
+::ellipse("spat4", 0, -0.5,  1.0, 1, 0, 0, 0, 0,  1, 4)
+
+Event 1 ellipse_08
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", -0.5, -1,  0.2, 1, 0, 0, 0, 0, 1, 4)
+::ellipse("spat2", -0.5, -1,  0.6, 1, 0, 0, 0, 0, 1, 4)
+::ellipse("spat3", -0.5, -1,  0.8, 1, 0, 0, 0, 0, 1, 4)
+::ellipse("spat4", -0.5, -1,  1.0, 1, 0, 0, 0, 0, 1, 4)
+
+
+Event 1 ellipse_09
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 0, 2,  2, 0.2,   0,   1,  0, 0,  1, 4)
+::ellipse("spat2", 0, 2,  2, 0.4,   1,   0., 0, 0,  1, 4)
+::ellipse("spat3", 0, 2,  2, 0.8,   0., -1,  0, 0,  1, 4)
+::ellipse("spat4", 0, 2,  2, 1,    -1,   0,  0, 0,  1, 4)
+
+
+Event 1 ellipse_10
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::ellipse("spat1", 0, 2,  0.2, 2,   0,   1,  0, 0, 1, 4)
+::ellipse("spat2", 0, 2,  0.4, 2,   1,   0., 0, 0, 1, 4)
+::ellipse("spat3", 0, 2,  0.8, 2,   0., -1,  0, 0, 1, 4)
+::ellipse("spat4", 0, 2,  1,   2,  -1,   0,  0, 0, 1, 4)
+
+
+Event 1 ellipse_11
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+; ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
+
+
+::ellipse("spat1", 	0, 2,  	0.2, 2, 	0, 0, 	0, 0,    1, 4)
+::ellipse("spat2", 	0, 2,  	0.4, 2,		0, 1, 	0, 0,    1, 4)
+::ellipse("spat3", 	0, 2,  	0.8, 2, 	1, 0,   0, 0,    1, 4)
+::ellipse("spat4", 	0, 2,  	1,   2, 	-1, 0,   0, 0,    1, 4)
+
+
+Event 1 ellipse_12
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+; ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
+
+
+::ellipse("spat1", 	0, 2,  	0.4, 2, 	0, 0, 	0, 0,    1, 4)
+::ellipse("spat2", 	2, 0,  	2,   0.4,	0, 0, 	0, 0,    1, 4)
+::ellipse("spat3", 	0, 2,  	0.8, 2, 	1, 0,   0, 0,    1, 4)
+::ellipse("spat4", 	2, 0,  	1,   2, 	-1, 0,   0, 0,    1, 4)

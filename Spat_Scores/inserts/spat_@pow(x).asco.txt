@@ -1,0 +1,29 @@
+@proc_def ::spat_pow($SPAT,$x1, $x2, $pow, $count, $SPEED)
+
+{	@local $x, $y, $SPEED, $count
+	
+	loop contouR $SPEED
+	{
+		abort powCurve
+
+		curve powCurve @grain := 0.01s, @Action := { $val:= @pow($pow, $x)
+														
+													    @command($SPAT) $x $val
+														
+														}
+
+		
+		{
+			$x
+					{
+								{ $x1 } /*@type "exp"*/
+						 $SPEED { $x2}
+						
+	
+					}
+		}
+
+
+	} during[$count#]
+
+}	

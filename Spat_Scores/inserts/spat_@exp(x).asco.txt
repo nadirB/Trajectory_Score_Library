@@ -1,0 +1,35 @@
+@proc_def ::spat_exp ($SPAT,$x1, $x2, $count, $SPEED)
+
+{	@local $x, $y, $SPEED, $count
+	
+	loop contouR $SPEED
+	{
+		abort expCurve
+		lcd_spat clear
+		lcd_spat drawpict pattern
+
+		curve expCurve @grain := 0.01s, @Action := { $y:= @exp($x)
+														
+													    @command($SPAT) xy $x $y
+														
+														}
+
+		
+		{
+			$x
+					{
+								{ $x1 } /*@type "exp"*/
+						$SPEED { $x2}
+						
+	
+					}
+		}
+
+
+	} during[$count#]
+
+}
+
+
+
+

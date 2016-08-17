@@ -1,0 +1,80 @@
+
+;@fun_def @vari() {$Azim/($speed %360)}
+;($speed*(60000/($RT_TEMPO + $vari4))/4)ms
+
+
+
+@proc_def ::spat_varispeed_around($spat, $deg, $dist, $vari1, $vari2, $vari3, $vari4, $count, $speed)
+{
+
+	@local $azim
+	
+	
+	;$slow := map {("slow", [-($RT_TEMPO)])}
+	;$vari1	:= $slow
+	
+
+	loop Varispeed $speed 
+	{
+		
+		curve  VariSpeed @grain := 0.01s
+
+		{ $t
+				{			   {($RT_TEMPO + $vari1)} 
+					  $speed/4 {($RT_TEMPO + $vari2)}
+					  $speed/4 {($RT_TEMPO + $vari3)}
+					   $speed/4 {($RT_TEMPO + $vari4)}
+					  
+					 
+				}
+
+		} 
+			
+			;print_interpolation $t
+			
+			
+	}	during[$count#]
+
+
+
+	
+
+	group variSpeed @tempo := $t
+	
+	{ 	
+		@global $cpt1
+		$cpt1 := 0
+	
+		loop spat $speed
+
+		{  
+					
+					$cpt1 := $cpt1+1
+					print_antescofo $cpt1
+
+					curve  varispeed_around @grain := 0.02s @Action := @command($spat) ad ($azim + $deg) $dist 
+
+
+					{ $azim
+							 
+								{		  		
+											   
+											   {0.}
+					  		  			$speed {360}
+					  
+								}
+
+					 } 
+
+							
+
+		}  during[$count#]
+
+	} 
+
+	
+
+}
+
+
+

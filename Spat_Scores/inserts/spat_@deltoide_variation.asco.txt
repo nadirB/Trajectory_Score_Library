@@ -1,0 +1,86 @@
+
+
+/*
+
+
+
+
+    x = 2 a cos ⁡ ( t ) + a cos ⁡ ( 2 t ) 
+    y = 2 a sin ⁡ ( t ) − a sin ⁡ ( 2 t ) 
+
+
+
+*/
+
+
+
+
+
+
+@global $pi
+	$pi := 3.141592653589793
+
+
+
+
+
+
+@fun_def X($t,  $r, $offsetX) 
+
+{ 
+
+	
+
+	2*$r*@cos($t) + $r*@cos(2*$t) + $offsetX
+} 
+
+/////////////////
+
+@fun_def Y( $t,  $r, $offsetY) 
+{ 
+	
+
+	;$r*(($q-1)*@sin($t)) - @sin(($q-1)*$t) + $offsetY
+
+	2*$r*@sin($t) - $r*@sin(2*$t) + $offsetY
+
+}
+
+
+
+
+@proc_def ::deltoide($cmd, $initT, $endT,  $r, $offsetX, $offsetY, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X($t,  $r, $offsetX) @Y($t,  $r, $offsetY)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}

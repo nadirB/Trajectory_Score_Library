@@ -1,0 +1,32 @@
+@proc_def ::sin_trajectory($cmd, $iniT, $targeT, $amp, $w, $offset, $SPEED) ;$count
+
+{	@global $pi
+	@local $SPEED
+
+	$pi := 3.141592653589793
+	
+	;loop pi $SPEED
+	;{
+		;abort picurve
+
+		curve picurve @grain := 0.02s 
+						@Action := {
+								$val := ((@sin(($x*$w))*$amp) + ($offset*$pi))
+								@command($cmd) xy $x $val
+							}
+
+		
+		{
+			$x
+					{
+								{ ($iniT*$pi)  } /*@type "exp"*/
+						$SPEED { ($targeT*$pi) }
+						
+	
+					}
+		}
+
+
+	;} during[$count#]
+
+}

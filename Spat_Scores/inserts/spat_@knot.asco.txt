@@ -1,0 +1,78 @@
+
+;x(t) = rcost
+;y(t) = rsin3t
+
+; r > 0 
+;t = [-pi, pi]
+
+@global $pi
+	$pi := 3.141592653589793
+
+@global $m, $offsetX, $offsetX
+$m := 1
+
+
+
+
+
+@fun_def X( $t, $m, $offsetX) 
+{ 
+	
+
+	@tan($m*$t) * @cos($t) + $offsetX
+}
+
+
+
+@fun_def Y($t, $m, $offsetY) 
+
+{ 
+
+	@tan($m*$t) * @sin($t) + $offsetY
+} 
+
+
+
+/////////////////
+
+
+
+
+
+
+@proc_def ::knot($cmd, $initT, $endT, $m, $offsetX, $offsetY, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X($t, $m, $offsetX) @Y($t, $m, $offsetY)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$SPEED { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+
+}

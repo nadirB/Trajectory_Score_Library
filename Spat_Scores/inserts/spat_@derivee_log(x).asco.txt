@@ -1,0 +1,44 @@
+@proc_def ::spat_derivee_log($cmd, $init, $a, $offset, $count, $SPEED) ; $x ≠ 0
+
+{	
+	@local $SPEED
+	
+	
+	
+	
+
+	loop deriveelogCurve $SPEED
+	{
+		;abort deriveelogCurve
+		lcd_spat clear
+		lcd_spat drawpict pattern
+
+		curve deriveelogCurve @grain := 0.01s 
+				
+					@Action := { 
+						$y := ((1/$x) + $offset) 
+						@command($cmd) xy $x $y
+					}
+
+		
+
+		
+		
+		{
+			$x
+					{
+								{ $init  } /*@type "exp"*/
+						$SPEED  { $a }
+						
+	
+					}
+		}
+
+		
+
+
+
+
+	} during[$count#]
+
+}

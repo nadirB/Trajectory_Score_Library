@@ -1,0 +1,319 @@
+BPM 60
+
+source_pos_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+gate_draw_coord 1
+spat_data 2
+
+
+@insert "inserts/spat_@rosace_polaire_variation.asco.txt"
+
+Event 1 trifolium
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, 1, 2 , 8)
+
+Event 1 limaçon
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 1, -2, 8)
+
+
+Event 1 trèfle_quatre_feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, 1, 3 , 8)
+
+Event 1 trèfle_quatre_feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, -1, 3 , 8)
+
+Event 1 cinq_feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, 1, 4, 8)
+
+Event 1 cinq_feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, -1, 4, 8)
+
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, 1, 5, 8)
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, -1, 5, 8)
+
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, 1, 6, 16)
+
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 1, 9, 16)
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, 1, 10, 16)
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, 1, 30, 64)
+
+
+//////////////////////////////////////////////////////////
+
+
+
+
+Event 1 limaçon_02
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, -1, -2, 8)
+
+
+Event 1 folium_Dürer
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 1, -3, 8)
+
+
+Event 1 folium_Dürer_trans
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, -1, -3, 8)
+
+
+Event 1 three_fifth
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, 1, -4, 8)
+
+
+Event 1 two_three
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, 1, -5, 8)
+
+
+Event 1 two_three
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 1, -6, 8)
+
+
+Event 1 two_three
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, 1, -7, 8)
+
+
+Event 1 two_many
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, 1, -30, 32)
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+Event 1 ellipseX
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 2, 0, 2, 1, 8)
+
+
+Event 1 ellipseY
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 2, 0, -2, 1, 8)
+
+
+Event 1 ellipseX
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 2, 0, -2, 2, 8)
+
+
+Event 1 feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, 2, 3 , 8)
+
+Event 1 feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, -2, 3 , 8)
+
+Event 1 _feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 2, -3 , 8)
+
+
+Event 1 t
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, -2, -3 , 8)
+
+
+///////////////////////////////////////////////////
+
+Event 1 _feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, -3, -3 , 8)
+
+Event 1 cinq_feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 1, 4, 8)
+
+Event 1 cinq_feuilles
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, -1, 4, 8)
+
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, 1, 5, 8)
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, -1, 5, 8)
+
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 1, 6, 8)
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, 1, 10, 8)
+
+Event 1 plot_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat4", 0, 2, 1, 30, 8)
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////
+
+; back to circle through these params
+
+Event 1 cercle
+
+;::astroide_03($cmd, $initC, $cycle, $p, $q, $SPEED)
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat1", 0, 2, 0, 1 , 8)
+
+Event 1 cercle
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat2", 0, 2, 0, -1 , 8)
+
+Event 1 cercle
+
+lcd_spat clear
+lcd_spat drawpict pattern
+::astroide_03("spat3", 0, 2, 1, 1 , 8)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+
+;
+; y = k*exp(-0.2*x^2¨)
+;avec k variant de -1 à +1 , pas de 0.1
+
+@global $pi
+$pi := 3.141592653589793
+
+@proc_def ::gauss($cmd, $iniT, $targeT, $k, $offset, $SPEED)
+
+{	
+	@local $SPEED
+
+	;loop pi $SPEED
+	;{
+		;abort picurve
+
+		curve picurve @grain := 0.02s 
+						@Action := {
+								$val := ($k * @exp(-0.2*@pow($x, 2)) + $offset)
+								@command($cmd) xy  $x $val
+							}
+
+		
+
+		
+		
+		{
+			$x
+					{
+								{ ($iniT)  } /*@type "exp"*/
+						$SPEED { ($targeT*($pi)) }
+						
+	
+					}
+		}
+
+
+	}
+
+;}
+
+
+
+@proc_def ::gauss_variation_01($cmd, $iniT, $targeT, $k, $offset, $SPEED)
+
+{	
+	@local $SPEED
+
+	;loop pi $SPEED
+	;{
+		;abort picurve
+
+		curve picurve @grain := 0.02s 
+						@Action := {
+								$val := ($k / @exp(-0.2*@pow($x, 2)) + $offset)
+								@command($cmd) xy  $x $val
+							}
+
+		
+
+		
+		
+		{
+			$x
+					{
+								{ ($iniT)  } /*@type "exp"*/
+						$SPEED { ($targeT*($pi)) }
+						
+	
+					}
+		}
+
+
+	}
+
+;}

@@ -1,0 +1,67 @@
+
+;x(t) = 3cost+cos3t
+;y(t) = 3sint-sin3t
+
+@global $pi
+	$pi := 3.141592653589793
+@global $offset
+$offset := 0.
+
+@fun_def X($t, $p, $q) 
+
+{ 
+
+	
+	($p*@cos($t)+@cos($q*$t))
+} 
+
+/////////////////
+
+@fun_def Y($t,$p,$q) 
+{ 
+	
+	($p*@sin($t)-@sin($q*$t))
+	 
+}
+
+/////////////////
+
+
+
+
+
+@proc_def ::astroide_03($cmd, $initC, $cycle, $p, $q, $SPEED)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		abort parametric_curve
+
+		curve parametric_curve @grain := 0.01s 
+						@Action := {
+								
+								@command($cmd) xy @X($t, $p, $q) @Y($t, $p, $q)
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($initC*$pi)  } /*@type "exp"*/
+						$SPEED { ($cycle*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}

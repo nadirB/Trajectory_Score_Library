@@ -1,0 +1,65 @@
+@global $SPEED, $pi ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	$pi := 3.141592653589793
+
+
+
+@fun_def X($t, $r, $offsetX) 
+
+{ 
+	$r*@cos($t) + $offsetX
+} 
+
+@fun_def Y($t, $r, $offsetY) 
+{ 
+	
+
+	$r*@sin($t) + $offsetY
+}
+
+
+
+
+@proc_def circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
+
+{	
+	
+	@local $cpt
+	$cpt := 0
+	
+
+    
+    loop cercle_curve $SPEED
+	{
+		;abort cercle_curve
+
+		$cpt := $cpt + 1
+
+		curve cercleCurve @grain := 0.01s 
+						@Action := {
+								
+								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
+							}
+
+		
+
+		
+		
+		{
+			$t
+					{
+							   { ($iniT*$pi)  } /*@type "exp"*/
+						$SPEED { ($targeT*$pi) }
+						
+	
+					}
+		}
+
+		print_antescofo $cpt
+
+
+	} during[$count#]
+
+}
+
+
+$circle := ::circle

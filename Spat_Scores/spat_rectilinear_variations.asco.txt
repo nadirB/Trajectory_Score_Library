@@ -1,0 +1,131 @@
+BPM 60
+
+
+@insert "inserts/spat_@rectilinear.asco.txt"
+
+source_pos_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+gate_draw_coord 1
+spat_data 2
+
+
+
+;::rectilinear($cmd, $iniT, $targeT, $a, $b, $alpha, $beta, $count, $SPEED)
+
+/*
+square 4m^2
+
+::rectilinear("spat1", 0, 2, 	-1,  1,  	1,  0, 		1, 1)
+1
+::rectilinear("spat1", 0, 2,  	1,  1, 		0, -1, 		1, 1)
+1
+::rectilinear("spat1", 0, 2,  	1, -1,  	-1, 0, 		1, 1)
+1
+::rectilinear("spat1", 0, 2, 	-1, -1,   	0, 	1, 		1, 1)
+*/
+
+@macro_def @line_right($src, $seg, $count, $speed)
+	{
+
+::rectilinear($src, 0, $seg, -1, 1, 1, 0,  $count, $speed)
+
+}
+
+
+@macro_def @line_left($src, $seg, $count, $speed)
+	{
+
+::rectilinear($src, 0, $seg, 1, -1,  -1, 0, $count, $speed)
+
+}
+
+
+@macro_def @line_down($src, $seg, $count, $speed)
+	{
+
+::rectilinear($src, 0, $seg, 1, 1, 0, -1, $count, $speed)
+
+}
+
+
+@macro_def @line_up($src, $seg, $count, $speed)
+	{
+
+::rectilinear($src, 0, $seg, -1, -1,  0, 1, $count, $speed)
+
+}
+
+
+
+Event 1 line_xy_1 ; square 1*4
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+
+
+@line_right("spat1",3, 1, 2)
+4
+@line_down("spat1", 2, 1, 2)
+4
+@line_left("spat1", 2, 1, 2)
+4
+@line_up("spat1", 2, 1, 2)
+
+
+Event 1 line_xy_12 ; square 1*4
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+
+
+@line_right("spat1", 0.2, 1, 2)
+4
+@line_down("spat1", 0.4, 1, 2)
+4
+@line_left("spat1", 0.6, 1, 2)
+4
+@line_up("spat1", 0.8, 1, 2)
+
+
+
+
+;to be continued...
+
+
+/*
+@macro_def @line_horizon_right($src, $h, $seg)
+	{
+
+::rectilinear($src, 0, $seg, -1, $h, 2, 0, 1, 1)
+
+}
+
+
+@macro_def @line_horizon_left($src, $h, $seg)
+	{
+
+::rectilinear($src, $seg, 0, -1, $h, 2, 0, 1, 1)
+
+}
+
+
+@macro_def @line_horizon_west($src, $h)
+	{
+
+::rectilinear($src, 0, $seg, -1, $h, 2,  0, 1, 1)
+
+}
+
+
+@macro_def @line_horizon_east($src, $h)
+	{
+
+::rectilinear($src, $seg, 0, -1, $h, 2, 0, 1, 1)
+
+}*/
+
+

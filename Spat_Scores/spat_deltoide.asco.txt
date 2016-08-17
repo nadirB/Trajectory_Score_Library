@@ -1,0 +1,80 @@
+BPM 60
+
+source_pos_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+gate_draw_coord 1
+spat_data 2
+
+
+@insert "inserts/spat_@deltoide_variation.asco.txt"
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+Event 1 deltoide_01
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat1", 0, 2,  1,  0, 0, 8)
+
+
+Event 1 deltoide_02
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat2", 0, 2,  1/2,  0, 0, 8)
+
+Event 1 deltoide_03
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat3", 0, 2,  1/4,  0, 0, 8)
+
+
+Event 1 deltoide_04
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat4", 0, 2,  1/8,  0, 0, 8)
+
+
+Event 1 deltoide_05
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat1", 0, 2,  1/8,  1, 1, 8)
+
+
+Event 1 deltoide_06
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat1", -1, 1,  0.2, -0.2, 0, 0, 4)
+
+::deltoide("spat2", -1, 1,  0.3, -0.3, 0, 0, 4)
+
+::deltoide("spat3", -1, 1,  0.4, -0.4, 0, 0, 4)
+
+::deltoide("spat4", -1, 1,  0.5, -0.5, 0, 0, 4)
+
+
+
+
