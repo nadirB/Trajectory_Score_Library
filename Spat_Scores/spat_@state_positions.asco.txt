@@ -1,0 +1,538 @@
+BPM 60
+
+
+source_pos_init bang
+spat_windowsize 500
+OPER zoom 0.39
+spat_data 3
+spat_view 1
+
+OPER bang ; print speakerspositions,  sourcespositions... etc 
+
+
+
+Event 1  Sources_State_01
+
+
+$SpatSourceAzim := map { 
+	( "Quad1", [-45, 45, 135, -135]),	
+	( "Quad2", [0, 90, 180, -90]),
+	( "LCRRsLs", [-30, 0, 30, 110, -110]),
+	( "s04", [10, 20, 30, 40]),
+	( "s05", [50, 60, 70, 80]), 
+	( "s06", [90, 100, 110, 120]),
+	( "s07", [130, 140, 150, 160]),
+	( "s08", [170, 180, 190, 200]),	
+	( "s09", [210, 220, 230, 240]),
+	( "s10", [250, 260, 270, 280]),
+	( "Octo", [-45, 0, 45, 90, 135, 180, -135, -90]),	
+	( "s12", [330, 340, 350, 360])
+	
+}
+
+
+$SpatSourceDist := map { 
+	( "Quad1", [1, 1, 1, 1]),	
+	( "Quad2", [0, 90, 180, -90]),
+	( "LCRRsLs", [-30, 0, 30, 110, -110]),
+	( "s04", [10, 20, 30, 40]),
+	( "s05", [50, 60, 70, 80]), 
+	( "s06", [90, 100, 110, 120]),
+	( "s07", [130, 140, 150, 160]),
+	( "s08", [170, 180, 190, 200]),	
+	( "s09", [210, 220, 230, 240]),
+	( "s10", [250, 260, 270, 280]),
+	( "Octo", [2, 0, 4, 3, 1, 18, -1, -6]),	
+	( "s12", [330, 340, 350, 360])
+	
+}
+
+
+$SpatSourceElev := map { 
+	( "Quad1", [0, 0, 0, 0]),	
+	( "Quad2", [0, 90, 180, -90]),
+	( "LCRRsLs", [-30, 0, 30, 110, -110]),
+	( "s04", [10, 20, 30, 40]),
+	( "s05", [50, 60, 70, 80]), 
+	( "s06", [90, 100, 110, 120]),
+	( "s07", [130, 140, 150, 160]),
+	( "s08", [170, 180, 190, 200]),	
+	( "s09", [210, 220, 230, 240]),
+	( "s10", [250, 260, 270, 280]),
+	( "Octo", [0, 0, 0, 0, 0, 0, 0, 0]),	
+	( "s12", [330, 340, 350, 360])
+	
+}
+
+
+$SpatSourceAp := map { 
+	( "Quad1", [10, 45, 90, 180]),	
+	( "Quad2", [0, 90, 180, -90]),
+	( "LCRRsLs", [-30, 0, 30, 110, -110]),
+	( "Octo", [45, 100, 45, 90, 135, 180, 135, 90])	
+	
+}
+
+
+@proc_def ::setSourceState($spat, $initState, $NumberOfSourcesPositions)
+{
+		
+
+    forall $x in $NumberOfSourcesPositions
+    {
+    	@command($spat+($x+1)) az (($SpatSourceAzim($initState))[$x]);
+		@command($spat+($x+1)) elev (($SpatSourceElev($initState))[$x])
+		@command($spat+($x+1)) dist (($SpatSourceDist($initState))[$x])
+		@command($spat+($x+1)) aperture (($SpatSourceAp($initState))[$x])
+		
+    }
+
+}
+
+spat_data 2
+::setSourceState("spat", "Octo", 4)
+
+
+Event 1 Sources_State_02
+
+
+$quad13 := map { 
+	( "spat1", [-10, 0, 0.5]),	
+	( "spat2", [30, 0, 1]),
+	( "spat3", [130, 0, 3]),
+	( "spat4", [-145, 0, 1])	
+	
+}
+
+
+$SpatSourceAp := map { 
+	( "aperture1", [10, 45, 90, 180]),	
+	( "Quad2", [0, 90, 180, -90]),
+	( "LCRRsLs", [-30, 0, 30, 110, -110]),
+	( "Octo", [45, 100, 45, 90, 135, 180, 135, 90])	
+	
+}
+
+
+
+
+
+@proc_def ::setSourcesState($sourcesmap, $Aperture, $NumberOfSourcesPositions)
+{
+	
+			forall $source, $aed in $sourcesmap
+			{
+				@command($source) aed $aed
+				
+			}
+
+
+		forall $x in $NumberOfSourcesPositions
+    {
+    
+		@command("spat"+($x+1)) aperture (($SpatSourceAp($Aperture))[$x])
+		
+    }
+		
+	
+	
+}
+
+
+
+::setSourcesState($quad13, "aperture1", 4)
+
+
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+$NumberOfPositions := 4
+
+let $x := 2
+
+@proc_def ::setSourceState_Individual($spat, $x, $initState)
+{
+
+    	@command($spat+($x+1)) az (($SpatSourceConfig($initState))[$x]);
+		;@command($spat+($x+1)) elev (($spatConfig($initState))[$x])
+		;@command($spat+($x+1)) dist (($spatConfig($initState))[$x])
+		;@command($spat+($x+1)) aperture (($spatConfig($initState))[$x])
+
+}
+
+
+
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+$SpatSpeakersOctoCube := map { 
+	( "speaker1", [-45.000, 35.264, 1.732]), 	
+	( "speaker2", [45.000, 35.264, 1.732 ]), 
+	( "speaker3", [135.000, 35.264, 1.732 ]), 
+	( "speaker4", [-135.000, 35.264, 1.732 ]),
+	( "speaker5", [-45.000, -35.264, 1.732]), 
+	( "speaker6", [45.000, -35.264, 1.732]), 
+	( "speaker7", [135.000, -35.264, 1.732]), 
+	( "speaker8", [-135.000, -35.264, 1.732])
+}
+
+$SpeakersOctoCube := tab ["octocube01", "octocube02", "octocube03", "octocube04", "octocube05", "octocube06", "octocube07", "octocube08"]
+
+$dicOctoSpeakers := map {
+	("OctoSpeakers", ["octocube01", "octocube02", "octocube03", "octocube04", "octocube05", "octocube06", "octocube07", "octocube08"])
+	
+	}
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+$SpatSpeakersConfig1 := map { 
+	( "speaker1", [90.000, -5.003, 1.000]), 	
+	( "speaker2", [50.000, -5.003, 1.000]), 
+	( "speaker3", [10.000, -5.002, 1.000]), 
+	( "speaker4", [-30.000, -5.003, 1.000]), 
+	( "speaker5", [-70.000, -5.003, 1.000]), 
+	( "speaker6", [-110.000, -5.003, 1.000]), 
+	( "speaker7", [-150.000, -5.003, 1.000]), 
+	( "speaker8", [170.000, -5.002, 1.000]), 	
+	( "speaker9", [130.000, -5.003, 1.000]), 
+	( "speaker10", [70.000, 26.001, 1.000]),
+	( "speaker11", [30.000, 26.000, 1.000]), 	
+	( "speaker12", [-10.002, 26.002, 1.000]), 
+	( "speaker13", [-50.000, 26.002, 1.000]),
+	( "speaker14", [-90.000, 26.001, 1.000]),
+	( "speaker14", [-130.000, 26.002, 1.000]), 
+	( "speaker15", [-169.998, 26.002, 1.000]), 
+	( "speaker16", [150.000, 26.000, 1.000]),
+
+
+
+	( "sp17", [110.000, 26.001, 1.000]), 
+	( "sp18", [90.000, 57.003, 1.000]), 
+	( "sp19", [18.000, 57.000, 1.000]),
+	( "sp20", [-54.001, 57.003, 1.000]),
+	( "sp21", [-125.999, 57.003, 1.000]),
+	( "sp22", [162.000, 57.000, 1.000]), 
+	( "sp23", [90.000, 90.000, 1.000])
+}
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+$SpatSpeakersConfig2 := map { 
+	( "speaker1", [-45.000, 35.264, 1.732 ]), 	
+	( "speaker2", [45.000, 35.264, 1.732 ]), 
+	( "speaker3", [135.000, 35.264, 1.732]), 
+	( "speaker4", [-135.000, 35.264, 1.732 ]), 
+	( "speaker5", [-45.000, -35.264, 1.732 ]), 
+	( "speaker6", [45.000, -35.264, 1.732]), 
+	( "speaker7", [135.000, -35.264, 1.732]), 
+	( "speaker8", [-135.000, -35.264, 1.732]), 	
+	( "speaker9", [-45.000, 35.264, 1.732]), 
+	( "speaker10", [45.000, 35.264, 1.732]),
+	( "speaker11", [135.000, 35.264, 1.732 ]), 	
+	( "speaker12", [-135.000, 35.264, 1.732]), 
+	( "speaker13", [-45.000, -35.264, 1.732]),
+	( "speaker14", [45.000, -35.264, 1.732]),
+	( "speaker15", [135.000, -35.264, 1.732 ]), 
+	( "speaker16", [-135.000, -35.264, 1.732]) 
+	
+}
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+$SpatSpeakersConfig3 := map { 
+	( "sp01", [-2, 2]), 	
+	( "sp02", [-1, 2]), 
+	( "sp03", [1, 2]), 
+	( "sp04", [2, 2]),
+	( "sp05", [-1.5, 1]), 
+	( "sp06", [-0.5, 1]), 
+	( "sp07", [0.5, 1]), 
+	( "sp08", [1.5, 1]), 
+	( "sp09", [-1.5, -1]), 	
+	( "sp10", [-0.5, -1]), 
+	( "sp11", [0.5, -1]),
+	( "sp12", [1.5, -1]), 	
+	( "sp13", [-2, -2]), 
+	( "sp14", [-1, -2]),
+	( "sp15", [1, -2]),
+	( "sp16", [ 2, -2])
+	
+}
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+$SpatSpeakersConfig4 := map { 
+	( "speaker1", [-90.000, 0.000, 1.000]), 	
+	( "speaker2", [-50.000, 0.000, 1.000]), 
+	( "speaker3", [-10.000, 0.000, 1.000]), 
+	( "speaker4", [-30.000, 0.000, 1.000]), 
+	( "speaker5", [-70.000, 0.000, 1.000]), 
+	( "speaker6", [-110.000, 0.000, 1.000]), 
+	( "speaker7", [-150.000, 0.000, 1.000]), 
+	( "speaker8", [170.000, 0.000, 1.000]), 	 
+	( "speaker9", [-170.000, 0.000, 1.000]), 
+	( "speaker10", [150.000, 0.000, 1.000]),
+	( "speaker11", [110.000, 0.000, 1.000]), 
+	( "speaker12", [70.000, 0.000, 1.000]),
+	( "speaker13", [30.000, 0.000, 1.000]),
+	( "speaker14", [10.000, 0.000, 1.000]),
+	( "speaker15", [50.001, 0.000, 1.000]), 
+	( "speaker16", [90.000, 0.000, 1.000]) 
+}
+
+$SpeakersConfig4 := tab ["speaker01", "speaker02", "speaker03", "speaker04", "speaker05", "speaker06", "speaker07", "speaker08", "speaker09", "speaker10", "speaker11", "speaker12", "speaker13", "speaker14", "speaker15", "speaker16"]
+
+;$dicoConfig4 := map {
+	;("OctoSpeakers", ["sp01", "sp02", "sp03", "sp04", "sp05", "sp06", "sp07", "sp08"])
+	
+	;}
+
+
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+@proc_def ::setSpeakerState($spat, $initState, $NumberOfSpeakersPositions)
+{
+	
+		
+
+
+  $t := tab [$x | $x in $NumberOfSpeakersPositions]
+    forall $x in $t
+    {
+    	@command($spat+($x+1)) az (($SpatSourceConfig($initState))[$x]);
+		;@command($spat+($x+1)) elev (($spatConfig($initState))[$x])
+		;@command($spat+($x+1)) dist (($spatConfig($initState))[$x])
+		;@command($spat+($x+1)) aperture (($spatConfig($initState))[$x])
+		
+    }
+
+}
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+$NumberOfPositions := 4
+
+@proc_def ::setSpeakerState_XY($spat, $initState)
+{
+
+
+  $t := tab [$x | $x in 4]
+    forall $x in $t
+    {
+    	@command($spat+($x+1)) xy (($SpatSpeakersConfig1($initState))[0])\
+								   (($SpatSpeakersConfig1($initState))[1])\
+									
+		
+		
+		
+		
+    }
+
+}
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+@proc_def ::setSpeakerState_XY_Individual($spat, $initState)
+{
+
+		@command($spat) xy (($SpatSpeakersConfig($initState))[0])\
+							(($SpatSpeakersConfig($initState))[1])
+		
+		
+}
+
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+@proc_def ::setSpeakerState_AED($spat, $initState, $NumberOfSpeakersPositions)
+{
+
+
+  $t := tab [$x | $x in $NumberOfSpeakersPositions]
+    forall $x in $t
+    {
+    	@command("spat"+($x+1)) aed (($SpatSpeakersConfig($initState))[0])\
+								   (($SpatSpeakersConfig($initState))[1])\
+									(($SpatSpeakersConfig($initState))[2])
+		
+		
+		
+		
+    }
+
+}
+
+@proc_def ::setSpeakerState_AED_Individual($id, $initState, $NumberOfSpeakers )
+{
+
+    	@command($id) aed $aed
+		
+		
+}
+
+@proc_def ::setAllSpeakersState($speakersmap)
+{
+	
+			forall $speaker, $aed in $speakersmap
+			{
+				@command($speaker) aed $aed
+				print_antescofo $speaker aed $aed
+			}
+		
+	
+	
+}
+
+/*@macro_def @setSpeakersConfig($x, $NumberOfSpeakers ) 
+{ 
+	
+	::setAllSpeakersState($dicOctoSpeakers($x), $NumberOfSpeakers) 
+	
+	print_antescofo ($dicOctoSpeakers($x))
+}
+
+@setSpeakersConfig("spat", 1)
+
+*/
+
+;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+Event 1 SpeakersQuad
+
+$Speakers_Quad := map { 
+	( "speaker1", [-45.000, 0, 1.]), 	
+	( "speaker2", [45.000, 0, 1.]), 
+	( "speaker3", [135.000, 0, 1. ]), 
+	( "speaker4", [-135.000, 0, 1.])
+}
+
+spat_data 3
+
+
+
+::setAllSpeakersState($Speakers_Quad)
+
+
+Event 1 Five.One
+
+
+spat_data 3
+
+let $SpatSpeakersConfig := $SpatSpeakersConfig4
+
+::setSpeakerState("spat", "LCRRsLs", 5)
+
+
+
+Event 1 OctoCube1
+
+spat_data 3
+
+
+let $SpatSpeakersConfig := $SpatSpeakersOctoCube
+
+::setAllSpeakersState($SpatSpeakersOctoCube)
+print_message Octocube
+print_message @size($SpatSpeakersOctoCube)
+
+
+Event 1 SpeakersConfig1
+
+let $SpatSpeakersConfig := $SpeakersConfig1
+
+::setAllSpeakersState($SpatSpeakersConfig1)
+
+print_message @size($SpatSpeakersConfig1)
+
+
+Event 1 config4
+
+let $SpatSpeakersConfig := $SpeakersConfig4
+
+::setAllSpeakersState($SpatSpeakersConfig4)
+
+print_message @size($SpatSpeakersConfig4)
+
+
+Event 1 SpeakersConfig2
+
+let $SpatSpeakersConfig := $SpeakersConfig2
+
+::setAllSpeakersState($SpatSpeakersConfig2)
+
+print_message @size($SpatSpeakersConfig2)
+
+
+
+
+
+
+Event 1  AED1
+
+let $SpatSpeakersConfig := $SpatSpeakersConfig1
+::setSpeakerState_AED("spat", "sp13", 16)
+
+
+
+Event 1  setSpeakerState_AED_Individual
+
+
+
+::setSpeakerState_AED_Individual(1, "sp01", 1)
+::setSpeakerState_AED_Individual(2, "sp11", 1)
+::setSpeakerState_AED_Individual(3, "sp05", 1)
+::setSpeakerState_AED_Individual(4, "sp07", 1)
+
+
+
+
+Event 1  setSpeakerState_XY
+
+
+let $SpatSpeakersConfig := $SpatSpeakersConfig3
+
+::setSpeakerState_XY("spat", "sp03")
+
+
+Event 1 one_by_one
+;individual speaker's positioning
+
+::setSpeakerState_XY_Individual("spat1", "sp16")
+::setSpeakerState_XY_Individual("spat2", "sp11")
+::setSpeakerState_XY_Individual("spat3", "sp05")
+::setSpeakerState_XY_Individual("spat4", "sp07")
+
+

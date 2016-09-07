@@ -59,7 +59,7 @@ où R est le rayon du cercle de base et r celui du cercle roulant. Avec q = R / 
 	@local $offset
 	$offset := 0.
     
-    ;loop pi $SPEED
+    ;loop pi $SPEED @exclusive
 	;{
 		;abort parametric_curve
 

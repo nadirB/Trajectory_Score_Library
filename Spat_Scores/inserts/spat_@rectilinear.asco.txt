@@ -17,35 +17,38 @@
 @proc_def ::rectilinear($cmd, $iniT, $targeT, $a, $b, $alpha, $beta, $count, $SPEED)
 
 {	
-	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
-	
+	@local $body, $t ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	$body := 0.
     
-    loop line $SPEED
+    loop line $SPEED ;@exclusive
 	{
-		;abort lineCurve
+		abort $body
+		$body := {
 
-		curve lineCurve @grain := 0.02s 
+					curve lineCurve @grain := 0.1s 
 						@Action := {
+
 								
-								@command($cmd) xy @X($t, $a, $alpha) @Y($t, $b, $beta)  
+								@command($cmd) xy @X($t, $a, $alpha) @Y($t, $b, $beta) 
+								print_message $body $NOW $t 
 							}
 
 		
 
 		
 		
-		{
-			$t
-					{
+						{
+						$t
+							{
 							   { ($iniT)  } /*@type "exp"*/
 						$SPEED { ($targeT) }
 						
 	
+						}
 					}
-		}
+				} ;print_antescosf
 
-
-	} during[$count#]
+				} during[$count#]
 
 }
 
