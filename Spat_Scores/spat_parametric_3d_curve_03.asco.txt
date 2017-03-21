@@ -5,7 +5,7 @@ source_pos_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-gate_draw_coord 1
+draw_coordinates 2
 spat_data 2
 
 /*
@@ -114,6 +114,9 @@ Event 1 d_01
 
 
 Event 1 d_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
 
 ; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
 

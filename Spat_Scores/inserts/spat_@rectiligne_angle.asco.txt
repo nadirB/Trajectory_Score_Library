@@ -49,8 +49,8 @@ $alpha := 0.
 //////////////////////////////////////////////////////////////
 
 
-$spat_rectiligne_angle := ::spat_rectiligne_angle
-abort $spat_rectiligne_angle
+$curve := ::spat_rectiligne_angle
+
 
 
 

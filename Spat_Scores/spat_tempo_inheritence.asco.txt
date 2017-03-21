@@ -1,0 +1,38 @@
+BPM 60
+
+
+$gnuplot_path := "/usr/local/bin/gnuplot"
+
+@proc_def ::Trace() 
+{ 
+	@local $x
+	$x := 0 
+	Loop L 0.1 
+	{	
+			$x := $x + 0.1 
+			plot $NOW " " $x "\n"
+	} 
+
+}
+
+$trace1 := ::Trace()
+
+Curve C1 @grain 0.05s 
+{ $t1 { {60} 5 {180} 5 {60} } }
+
+Group G1 @tempo := $t1
+{
+		 $trace2 := ::Trace()
+
+		Curve C2 @grain 0.05s 
+		{ 
+			$t2{ {60} 3 {180} 3 {60} 3 {180}
+			3	{60} 3 {180} 3 {60} }
+		}
+
+		Group G3 @tempo := $t2
+		{ 
+				$trace3 := ::Trace()
+		}
+
+}

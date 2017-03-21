@@ -30,15 +30,21 @@ $offset := 0.
 
 
 
-@proc_def ::astroide_03($cmd, $initC, $cycle, $p, $q, $SPEED)
+@proc_def ::astroid($cmd, $initC, $cycle, $p, $q, $count, $speed)
 
 {	
-	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	@local $offset
 	$offset := 0.
     
-    ;loop pi $SPEED
-	;{
+	@local $cpt
+	$cpt := 0
+	
+    loop pi $speed
+	{
+	
+		$cpt := $cpt + 1
+
 		abort parametric_curve
 
 		curve parametric_curve @grain := 0.01s 
@@ -55,13 +61,15 @@ $offset := 0.
 			$t
 					{
 							   { ($initC*$pi)  } /*@type "exp"*/
-						$SPEED { ($cycle*$pi) }
+						$speed { ($cycle*$pi) }
 						
 	
 					}
 		}
 
+		print_antescofo $cpt
 
-	;}
+
+	} during[$count#]
 
 }

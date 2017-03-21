@@ -20,10 +20,10 @@
 		curve  VariSpeed @grain := 0.01s
 
 		{ $t
-				{			   {($RT_TEMPO + $vari1)} 
-					  $speed/4 {($RT_TEMPO + $vari2)}
-					  $speed/4 {($RT_TEMPO + $vari3)}
-					   $speed/4 {($RT_TEMPO + $vari4)}
+				{			   {($RT_TEMPO * $vari1)} 
+					  $speed/4 {($RT_TEMPO * $vari2)}
+					  $speed/4 {($RT_TEMPO * $vari3)}
+					   $speed/4 {($RT_TEMPO * $vari4)}
 					  
 					 
 				}

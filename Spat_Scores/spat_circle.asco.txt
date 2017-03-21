@@ -4,7 +4,7 @@ source_pos_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-gate_draw_coord 1
+draw_coordinates 1
 spat_data 2
 
 $circle := ::circle
@@ -49,14 +49,14 @@ lcd_spat drawpict pattern
 
 Event 1 circle_02 ; with speed variation
 
-abort $circle
+abort circleCurve
 
 
 lcd_spat clear
 lcd_spat drawpict pattern
 
 ::vari_circle("spat2", 0, -2, 2, 0, 0, 1, 8) ;-2π := 1 turn clockwise with a radius of 2 during 8 beats
-											 ;with speed variation
+											 ;with speed variation  (TODO implement $vari variables for accurate control of this speed variation)
 
 
 
@@ -64,8 +64,10 @@ lcd_spat drawpict pattern
 
 Event 1 multi_circle_01
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
+
 
 ; ::circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
 
@@ -76,6 +78,7 @@ lcd_spat drawpict pattern
 
 Event 1 multi_circle_02
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -96,9 +99,9 @@ print_message @deg2rad(112.5)
 
 
 ::circle("spat3", 0, @deg2rad(-247.5),   1.7,  0,  0,  1, 4) ; idem clockwise
-4
+5
 ::circle("spat3", 0, @deg2rad(112.5),   1.7,  0,  0,  1, 4) ; idem anti-clockwise
-4
+5
 ::circle("spat3", 0, 5/8,   1.7,  0,  0,  1, 4) 
 
 
@@ -111,6 +114,7 @@ print_message @deg2rad(112.5)
 
 Event 1 circles_05
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 source_pos_init bang
@@ -146,7 +150,7 @@ lcd_spat drawpict pattern
 
 Event 1 circles_06
 
-
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -164,6 +168,7 @@ lcd_spat drawpict pattern
 
 Event 1 circles_07
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -190,6 +195,7 @@ OPER source 1 ad -45 2.4, source 2 ad 45 2.4, source 3 ad 135 2.4, source 4 ad -
 
 Event 1 circles_08
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 kill slider
@@ -224,7 +230,7 @@ OPER source 1 ad -45 2.4, source 2 ad 45 2.4, source 3 ad 135 2.4, source 4 ad -
 	4 { 2. -2.}
 	; ...
 	}
-}     ;this coroutine works but freezes spat for a while besides it's for graphical purposes only ! */
+}     ;this coroutine works but freezes spat for a while !!!!! besides it's for graphical purposes only !!!! */
 
 
 
@@ -233,8 +239,10 @@ Event 1 arc_01
 
 ; ($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
 
-; cf. patch_folder/figures_folder/figure IV - trigo_symmetry.pdf
+; cf. patch_folder/figures_folder/spat_circle_figure_II.pdf
 
+
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -264,6 +272,9 @@ lcd_spat clear
 lcd_spat drawpict pattern
 
 ::circle("spat1", 0,  -1/4, 1, 0, 0, 1, 4) ; -x = 7π/4 (radian), azimuth := 90° to 135 clockwise 
+
+4
+
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -281,15 +292,13 @@ lcd_spat drawpict pattern
 
 
 
-Event 1 arcs_01
+Event 1 arcs_02
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
 ; ($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
-
-; cf. patch_folder/figures_folder/figure V - offset_symmetry_01.pdf
-
 ; check cisoïde in rosace library
 
 
@@ -301,7 +310,7 @@ lcd_spat drawpict pattern
 
 ::circle("spat4", 1, 3/4, 1, 1, -1, 1, 4)
 
-6
+4
 
 ::circle("spat3", 5/4, 3/2, 1, 1, 1, 1, 4)
 
@@ -312,8 +321,9 @@ lcd_spat drawpict pattern
 ::circle("spat4", 3/4, 1/2, 1, 1, -1, 1, 4)
 
 
-Event 1 arcs_02
+Event 1 arcs_03
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -346,8 +356,9 @@ lcd_spat drawpict pattern
 
 
 
-Event 1 arcs_03
+Event 1 arcs_04
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -386,6 +397,7 @@ lcd_spat drawpict pattern
 
 Event 1 figure_II
 
+abort circleCurve
 lcd_spat clear
 lcd_spat drawpict pattern
 

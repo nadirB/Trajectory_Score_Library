@@ -5,7 +5,7 @@ source_pos_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-gate_draw_coord 1
+draw_coordinates 2
 spat_data 2
 
 /*

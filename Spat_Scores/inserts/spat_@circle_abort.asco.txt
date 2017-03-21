@@ -28,35 +28,37 @@
 	
 
     
-    loop cercle_curve $SPEED
+    loop circleLoop $SPEED
 	{
 		;abort cercle_curve
 
 		$cpt := $cpt + 1
 
 		curve circleCurve @grain := 0.01s 
-						@Action := {
+						  @Action := {
 								
 								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
 							}
 
-		@abort := 
-		{
-			print_message "Curve C aborted at " $t
-			Curve AH
-				@grain 0.1
-				@action := {print_message "handler curve: " $t }
+							@abort := 
+							{		kill circleLoop
+									print_antescofo "Curve circleCurve aborted at " $t
+									Curve end
+										@grain 0.1
+										@action := {print_message "handler curve: " $t 
+										;@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)
+										 }
 
-				{
+									{
 
-					$t { { $t } 1 { 0.0 } }
+											$t { { ($t*$pi) } $SPEED { 0.0 } }
 
-				}
+									}
 
-	
-		}
+							
+							}
 
-		
+								
 
 		
 		
@@ -79,3 +81,6 @@
 
 
 $circle := ::circle
+
+
+

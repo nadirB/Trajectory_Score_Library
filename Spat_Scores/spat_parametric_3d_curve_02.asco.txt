@@ -1,11 +1,11 @@
-BPM 60
+BPM 10
 
 
 source_pos_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-gate_draw_coord 1
+draw_coordinates 2
 spat_data 2
 
 /*
@@ -78,7 +78,7 @@ z = cos(3t)
 	;{
 		;abort parametric_curve
 
-		curve parametric_curve @grain := 0.02s 
+		curve parametric_curve @grain := 0.01s 
 						@Action := {
 								
 								@command($cmd) xyz @X($t, $offsetX) @Y($t,$offsetY) @Z($t,$offsetZ)
@@ -114,6 +114,9 @@ Event 1 d_01
 
 
 Event 1 d_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
 
 ; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
 

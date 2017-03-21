@@ -29,21 +29,21 @@
 
 								
 										@command($cmd) xy @X($t, $a, $alpha) @Y($t, $b, $beta) 
-										print_message $body $NOW $t 
+										
 									}
 
 						@abort := 
 							{		kill lineLoop
 									print_antescofo "lineCurve aborted at " $t
 									Curve end
-										@grain 0.1
+										@grain 0.01
 										@action := {print_message "handler lineCurve: " $t 
 										;@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)
 										 }
 
 									{
 
-											$t { { ($t) } $SPEED { 0.0 } }
+											$t { { $t } $SPEED { 0.0 } }
 
 									}
 

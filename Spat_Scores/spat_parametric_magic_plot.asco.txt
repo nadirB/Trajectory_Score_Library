@@ -4,14 +4,10 @@ source_pos_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-gate_draw_coord 1
+draw_coordinates 1
 spat_data 2
 
-scaleX_low_input -1
-scaleX_high_input 1
 
-scaleY_low_input 1
-scaleY_high_input -1
 
 
 @global $pi
@@ -87,7 +83,7 @@ lcd_spat drawpict pattern
 ::parametric_trajectory_01("spat2", 0, ($pi), 1, 4)
 
 
-Event 1 parametric_01
+Event 1 parametric_three
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -95,24 +91,3 @@ lcd_spat drawpict pattern
 ::parametric_trajectory_01("spat3", 0, (-2*$pi), 1, 4)
 
 
-Event 1 parametric_02
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::parametric_trajectory_01("spat4", 0, 0.5, 1, 4)
-
-Event 1 parametric_03
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::parametric_trajectory_01("spat1", 0, -0.5, 1, 4)
-
-
-Event 1 parametric_04
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::parametric_trajectory_01("spat2", 6, (2*$pi), 1, 4)

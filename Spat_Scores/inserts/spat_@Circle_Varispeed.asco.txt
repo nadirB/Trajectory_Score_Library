@@ -55,9 +55,9 @@ $rad := 0.
 
 		{ $temp
 				{			   {$RT_TEMPO} ;$vari1
-					  $speed/4 {($RT_TEMPO - 30)} ;$vari2
-					  $speed/4 {($RT_TEMPO + 45)} ;$vari3
-					   $speed/4 {($RT_TEMPO - 30)};$vari4
+					  $speed/4 {($RT_TEMPO * 0.5)} ;$vari2
+					  $speed/4 {($RT_TEMPO * 2)} ;$vari3
+					   $speed/4 {($RT_TEMPO * 0.1)};$vari4
 					  
 					 
 				}
@@ -95,9 +95,23 @@ $rad := 0.
 								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
 							}
 
-		
+			@abort := 
+				{
+					print_message "Curve C aborted at " $t
+					Curve AH
+						@grain 0.1
+						@action := {print_message "handler curve: " $t }
 
-		
+						{
+
+							$t { { $t } 1 { 0.0 } }
+
+						}
+
+			
+				}
+
+				
 		
 			{
 				$t

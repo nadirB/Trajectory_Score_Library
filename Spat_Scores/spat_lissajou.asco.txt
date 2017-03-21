@@ -4,7 +4,7 @@ source_pos_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-gate_draw_coord 1
+draw_coordinates 1
 spat_data 2
 
 @insert "inserts/spat_@lissajou.asco.txt"
@@ -82,7 +82,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 28, 2, -2, 1/9, 1/2, 32)
 
 
-Event 1 lissajou_04
+Event 1 lissajou_06
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -91,7 +91,7 @@ lcd_spat drawpict pattern
 
 ::lissajou("spat1", 0, 18 , -1, 1, 1/9, 1/3, 16) ;
 
-Event 1 lissajou_05
+Event 1 lissajou_07
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -101,7 +101,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 28, -1, 1, 1/9, 1/4, 32)
 
 
-Event 1 lissajou_05
+Event 1 lissajou_08
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -112,7 +112,7 @@ lcd_spat drawpict pattern
 
 
 
-Event 1 lissajou_06
+Event 1 lissajou_09
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -122,7 +122,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 124, 1, -1, 1/9, 1/7, 64)
 
 
-Event 1 lissajou_07
+Event 1 lissajou_10
 
 abort lissajou_curve 
 
@@ -134,7 +134,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 120, 1, -1, 1/9, 1/8, 64)
 
 
-Event 1 lissajou_08
+Event 1 lissajou_11
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -144,7 +144,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 120, 1, -1, 1/9, 2, 64)
 
 
-Event 1 lissajou_09
+Event 1 lissajou_12
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -154,7 +154,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 120, 2, -2, 1/9, 3, 500)
 
 
-Event 1 lissajou_10
+Event 1 lissajou_12
 
 
 lcd_spat clear
@@ -164,7 +164,7 @@ lcd_spat drawpict pattern
 
 
 
-Event 1 lissajou_11
+Event 1 lissajou_13
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -176,7 +176,7 @@ lcd_spat drawpict pattern
 
 
 
-Event 1 lissajou_12
+Event 1 lissajou_14
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -186,7 +186,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 2 , -1, 1, 1, 5, 24)
 
 
-Event 1 lissajou_13
+Event 1 lissajou_15
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -199,7 +199,7 @@ lcd_spat drawpict pattern
 
 
 
-Event 1 lissajou_14
+Event 1 lissajou_16
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -209,7 +209,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 2 , -1, 1, 1, 10, 48)
 
 
-Event 1 lissajou_15
+Event 1 lissajou_17
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -218,7 +218,7 @@ lcd_spat drawpict pattern
 
 ::lissajou("spat1", 0, 2 , -1, 1, 10, 1, 48)
 
-Event 1 lissajou_16
+Event 1 lissajou_18
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -228,7 +228,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 2 , -1, 1, 7, 4, 48)
 
 
-Event 1 lissajou_17
+Event 1 lissajou_19
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -238,7 +238,7 @@ lcd_spat drawpict pattern
 ::lissajou("spat1", 0, 1 , -1, 1, 3, 4, 48)
 
 
-Event 1 lissajou_18
+Event 1 lissajou_20
 
 lcd_spat clear
 lcd_spat drawpict pattern
@@ -248,39 +248,4 @@ lcd_spat drawpict pattern
 ;(m, n) = (2, 3)
 
 ::lissajou("spat1", 0, 6 , 1, 1, 2, 3, 16)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

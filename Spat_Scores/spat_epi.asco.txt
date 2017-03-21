@@ -6,6 +6,9 @@ lcd_spat drawpict pattern
 
 
 
+draw_coordinates 1
+spat_data 2
+
 @insert "inserts/spat_@epi_variation.asco.txt"
 
 
