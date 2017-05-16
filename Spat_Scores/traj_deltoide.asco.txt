@@ -1,0 +1,86 @@
+BPM 60
+
+@insert "inserts/@deltoide_variation.asco.txt"
+
+OPER numspeakers 16, zoom 0.4
+
+position_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+draw_coordinates 1
+
+
+
+ Event 1 deltoide_check
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat1", -2, 2,  0.2, -0.2, 0, 4)
+
+::deltoide("spat2", -1, 2,  0.3, -0.3, 0, 4)
+
+::deltoide("spat3", 0, -1,  0.4, -0.4, 0, 4)
+
+::deltoide("spat4", 1, -1,  0.5, -0.5, 0, 4)
+
+ Event 1 deltoide_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat1", 0, 2,  1,  0, 0, 8)
+
+ Event 1 deltoide_02
+
+lcd_spat clear
+lcd_spat drawpict pattern
+OPER zoom 0.5
+
+
+::deltoide("spat2", 0, 2,  1/2,  0, 0, 8)
+
+ Event 1 deltoide_03
+
+lcd_spat clear
+lcd_spat drawpict pattern
+OPER zoom 0.6
+
+
+::deltoide("spat3", 0, 2,  1/4,  0, 0, 8)
+
+ Event 1 deltoide_04
+
+lcd_spat clear
+lcd_spat drawpict pattern
+OPER zoom 0.9
+
+
+::deltoide("spat4", 0, 2,  1/8,  0, 0, 4)
+
+ Event 1 deltoide_05
+
+lcd_spat clear
+lcd_spat drawpict pattern
+OPER zoom 0.7
+
+
+::deltoide("spat1", 0, 2,  1/8,  1, 1, 4)
+
+ Event 1 deltoide_06
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::deltoide("spat1", -1, 1,  0.2, -0.2, 0, 4)
+
+::deltoide("spat2", -1, 1,  0.3, -0.3, 0, 4)
+
+::deltoide("spat3", -1, 1,  0.4, -0.4, 0, 4)
+
+::deltoide("spat4", -1, 1,  0.5, -0.5, 0, 4)
+
+
+
+

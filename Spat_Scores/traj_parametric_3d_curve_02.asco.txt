@@ -1,0 +1,85 @@
+BPM 10
+
+@insert "inserts/@speakers_position.asco.txt"
+
+ OPER numspeakers 8, speaker 1 name TpFL, speaker 2 name TpFR, speaker 3 name TpBR, speaker 4 name TpBL, speaker 5 name BtFL, speaker 6 name BtFR, speaker 7 name BtBR, speaker 8 name BtBL
+::SpeakersConfig($octo)
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+draw_coordinates 2
+
+/*
+
+x = sin(3t)cos(5t)
+y = sin(3t)sin(5T)
+z = cos(3t)
+
+*/
+
+@global $pi
+	$pi := 3.141592653589793
+
+@fun_def X($t, $offsetX) 
+
+{ 
+	@sin(3*$t)*@cos(5*$t) + $offsetX
+} 
+
+@fun_def Y( $t, $offsetY) 
+{ 
+	@sin(3*$t)*@sin(5*$t) + $offsetY
+}
+
+@fun_def Z( $t, $offsetZ) 
+{ 
+	@cos(3*$t)  + $offsetZ
+}
+
+@proc_def D3($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
+
+{	
+	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+    ;loop pi $SPEED
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.01s 
+						@Action := {
+								
+								@command($cmd) xyz @X($t, $offsetX) @Y($t,$offsetY) @Z($t,$offsetZ)
+							}
+
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$speed { ($endT*$pi) }
+						
+	
+					}
+		}
+
+
+	;}
+
+}
+
+ Event 1 d_01
+
+; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
+
+::D3("spat1", 0, 1, 0, 0, 0, 2)
+
+ Event 1 d_02
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
+
+::D3("spat1", 0, 1, 1, 1, 0, 2)

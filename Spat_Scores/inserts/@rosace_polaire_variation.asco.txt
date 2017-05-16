@@ -1,0 +1,57 @@
+
+;x(t) = 3cost+cos3t
+;y(t) = 3sint-sin3t
+
+@global $pi 
+$pi := 3.141592653589793
+
+@fun_def X($t, $p, $q) 
+{ 
+	($p*@cos($t)+@cos($q*$t))
+} 
+
+@fun_def Y($t,$p,$q) 
+{ 
+	($p*@sin($t)-@sin($q*$t))	 
+}
+
+
+@proc_def ::rosace_trajectory_variation($cmd, $initC, $cycle, $p, $q, $count, $speed)
+
+{	
+	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+    
+	@local $cpt
+	$cpt := 0
+	
+    loop pi $speed
+	{
+	
+		$cpt := $cpt + 1
+
+		abort parametric_curve
+
+		curve parametric_curve @grain := 0.01s 
+						@Action := {
+								
+								@command($cmd) xy @X($t, $p, $q) @Y($t, $p, $q)
+							}
+
+		{
+			$t
+					{
+							   { ($initC*$pi)  } /*@type "exp"*/
+						$speed { ($cycle*$pi) }
+						
+	
+					}
+		}
+
+		print_antescofo $cpt
+
+
+	} during[$count#]
+
+}

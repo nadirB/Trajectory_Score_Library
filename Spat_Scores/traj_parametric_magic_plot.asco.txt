@@ -1,0 +1,79 @@
+BPM 30
+
+OPER numspeakers 16
+
+position_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+draw_coordinates 1
+
+@global $pi
+$pi := 3.141592653589793
+
+@fun_def X($t) 
+
+{ 
+	@cos($t) + @cos(7 * $t)/2 + @sin(17 * $t)/3
+} 
+
+@fun_def Y($t) 
+
+{ 
+	@sin($t) + @sin(7 * $t)/2 + @cos(17 * $t)/3 
+}
+
+@proc_def ::parametric_trajectory_01($cmd, $iniT, $targeT, $count, $speed)
+
+{	
+	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $t, $a, $b ; [a,b] est l'intervalle parcouru par le paramètre
+
+	loop pi $speed
+	{
+		abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd) xy @X($t) @Y($t)
+							}
+
+		{
+			$t
+					{
+							   { ($iniT)  } /*@type "exp"*/
+						$speed { ($targeT) }
+						
+	
+					}
+		}
+
+
+	} during[$count#]
+
+}
+
+
+;::@proc_def ::parametric_trajectory_01($cmd, $a, $b, $count, $speed)
+
+ Event 1 parametric_one
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::parametric_trajectory_01("spat1", 0, (2*$pi), 1, 8)
+
+ Event 1 parametric_two
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::parametric_trajectory_01("spat2", 0, ($pi), 1, 4)
+
+Event 1 parametric_three
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::parametric_trajectory_01("spat3", 0, (-2*$pi), 1, 4)

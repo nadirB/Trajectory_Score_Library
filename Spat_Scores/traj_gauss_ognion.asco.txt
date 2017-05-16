@@ -1,0 +1,43 @@
+BPM 60
+
+@insert "inserts/@gauss_variation.asco.txt"
+
+OPER numspeakers 16
+
+position_init bang
+lcd_spat clear
+lcd_spat drawpict pattern
+
+draw_coordinates 1
+
+ Event 1 gauss_01
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+;@proc_def ::gauss($cmd, $iniT, $targeT, $k, $offset, $SPEED)
+
+::gauss("spat1", -3, 1, -1,   0, 4)
+::gauss("spat2", -3, 1, -0.5, 0, 4)
+::gauss("spat3", -3, 1,  0.5, 0, 4)
+::gauss("spat4", -3, 1,  1,   0, 4)
+
+ Event 1 gauss_02
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::gauss("spat1", -3, 1, -1,   1, 4)
+::gauss("spat2", -3, 1, -0.5, 1, 4)
+::gauss("spat3", -3, 1,  0.5, -1, 4)
+::gauss("spat4", -3, 1,  1,   -1, 4)
+
+ Event 1 gauss_03
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+::gauss_variation_01("spat1", -3, 1, -1,   0, 4)
+::gauss_variation_01("spat2", -3, 1, -0.5, 0, 4)
+::gauss_variation_01("spat3", -3, 1,  0.5, 0, 4)
+::gauss_variation_01("spat4", -3, 1,  1,   0, 4)
