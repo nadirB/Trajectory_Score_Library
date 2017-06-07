@@ -13,5 +13,7 @@ Antescofo : http://repmus.ircam.fr/antescofo
 
 Spat : http://forumnet.ircam.fr/fr/produit/spat/
 
+http://forumnet.ircam.fr/ircam-forum-license/?lang=en
+
 ![A screenshot of your theme](https://github.com/nadirB/Spat_Trajectory_Score_Library/blob/master/screen_caps_01.jpg)
 ![A screenshot of your theme](https://github.com/nadirB/Spat_Trajectory_Score_Library/blob/master/screen_caps_02.jpg)
