@@ -4,10 +4,7 @@
 A fancy Antescofo Library converting mathematical parametric functions into curves controlling Spat sources' trajectories. 
 The outcome of these processes are X, Y and Z or Azimut, Elevation and Distance you can scale and convert to suitable data.
 
-The MaxMsp files are just demo patchs. Use the data your own way. 
-
-
-
+The MaxMsp files are just demo patchs. (An Ircam Licence is needed to make work the Spat Viewer)
 
 Antescofo : http://repmus.ircam.fr/antescofo
 
