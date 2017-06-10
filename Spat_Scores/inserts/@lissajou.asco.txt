@@ -13,49 +13,56 @@
 ; l'allure d'un cycle change évidemment selon les valeurs des coefs m et n
 
 
+; la courbe se ferme si m/n est rationnel : 
+;2pi/m et 2pi/n ont un multiple commun a x(t) et y(t)
 
 
-;@global $pi
-	;$pi := 3.141592653589793
+
+
 
 @fun_def X($a, $m, $t) 
 { 
-
-	$a * @cos($m * $t)
-} 
-
-/////////////////
-
-@fun_def Y($b, $n, $t) 
-{ 
 	
-	$b * @sin($n * $t)
+	$a * @sin($m * $t)
 }
 
 
 
+@fun_def Y($b, $n, $t) 
+{ 
 
-@proc_def ::lissajou($cmd, $initT, $endT, $a, $b, $m, $n, $SPEED)
+	$b * @cos($n * $t )
+} 
+
+
+
+
+
+
+
+
+@proc_def ::lissajou($cmd, $initT, $endT, $a, $b, $m, $n, $count, $SPEED)
 
 {	
 	@global $SPEED, $pi ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	
 	$pi := 3.141592653589793
+
+	@local $cpt
+	$cpt := 0
     
-    ;loop pi $SPEED
-	;{
+    loop pi $SPEED
+	{
 		;abort lissajou_curve
+
+	$cpt := $cpt + 1
 
 		curve lissajou_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X($a, $m, $t) @Y($b, $n, $t)
+								@command($cmd) xy @X($a, $m, $t) @Y($b, $n, $t)    
 							}
 
-		
-
-		
-		
 		{
 			$t
 					{
@@ -64,15 +71,9 @@
 						
 	
 					}
-		}
+		} print_antescofo $cpt
 
 
-	;}
+	} during[$count#]
 
 }
-
-
-
-
-
-/////////////////
