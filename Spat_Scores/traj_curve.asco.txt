@@ -9,7 +9,7 @@ position_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-draw_coordinates 1 ; route xy data
+draw_coordinates 2 ; route ad -> xy data
 
 
 print_message @rad2deg(1/4*$pi)
@@ -253,7 +253,7 @@ OPER source 1 aed -90 0. 2, source 2 aed 0 0. 2, source 3 aed 90 0. 2, source 4 
  
 lcd_spat clear
 lcd_spat drawpict pattern
-draw_coordinates 2
+
 
 ;@proc_def ::spat_curve($spat, $initAz, $az, $initDist, $dist, $count, $speed)
 
