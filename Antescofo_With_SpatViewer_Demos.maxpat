@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 999.0, 45.0, 278.0, 722.0 ],
+		"rect" : [ 997.0, 45.0, 280.0, 724.0 ],
 		"bgcolor" : [ 0.694118, 0.694118, 0.694118, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -154,7 +154,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 41.0, 87.0, 374.0, 37.0 ],
 									"style" : "",
-									"text" : "ad -30.6 1.142"
+									"text" : "xy -0.701531 -0.712638"
 								}
 
 							}
@@ -697,7 +697,7 @@
 					"patching_rect" : [ 866.0, 101.0, 161.0, 238.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 7,
-					"presentation_rect" : [ 6.0, 272.0, 265.0, 122.0 ],
+					"presentation_rect" : [ 6.0, 275.0, 265.0, 122.0 ],
 					"style" : "",
 					"text" : "1/ Choose a score in the Spat_Scores Menu\n2/ Hit Space Bar to play nextevent\n3/ Wait trajectory to end to start another one\nor  hit Enter to stop and choose event label\n4/ Check data retrieval in the receivers' tab\n     N.B. Doppler On may be needed when\n     the spat engine is implemented. ",
 					"underline" : 1
@@ -4863,7 +4863,7 @@
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 121.0, 224.0, 232.0, 21.0 ],
 													"style" : "",
-													"text" : "source 4 xyz -0.707107 -0.707107 0."
+													"text" : "source 1 xyz -0.701531 -0.712639 0."
 												}
 
 											}
@@ -5730,7 +5730,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 836.0, 533.0, 252.0, 25.0 ],
 									"style" : "",
-									"text" : "paintoval 462 301 465 304 0 420 0"
+									"text" : "paintoval 265 455 268 458 0 420 0"
 								}
 
 							}
@@ -7304,7 +7304,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 32.0, 299.0, 174.0, 18.0 ],
 									"style" : "",
-									"text" : "send COORDINATES, open"
+									"text" : "send SPAT_SCREEN, open"
 								}
 
 							}
@@ -7831,7 +7831,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 319.0, 120.0, 100.0, 25.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 164.0, 3.75, 100.0, 25.0 ],
+					"presentation_rect" : [ 164.0, 0.75, 100.0, 25.0 ],
 					"style" : "",
 					"text" : "ascograph open"
 				}
@@ -7864,10 +7864,10 @@
 , 			{
 				"box" : 				{
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_autogradient" : 0,
 					"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-					"bgfillcolor_color1" : [ 0.741176, 0.792157, 0.85098, 1.0 ],
-					"bgfillcolor_color2" : [ 0.317647, 0.709804, 0.321569, 1.0 ],
+					"bgfillcolor_color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+					"bgfillcolor_color2" : [ 0.32549, 0.345098, 0.372549, 0.56 ],
 					"bgfillcolor_proportion" : 0.39,
 					"bgfillcolor_type" : "gradient",
 					"fontname" : "Arial",
@@ -7924,10 +7924,10 @@
 , 			{
 				"box" : 				{
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_autogradient" : 0,
 					"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-					"bgfillcolor_color1" : [ 0.709804, 0.764706, 0.823529, 1.0 ],
-					"bgfillcolor_color2" : [ 0.317647, 0.709804, 0.321569, 1.0 ],
+					"bgfillcolor_color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+					"bgfillcolor_color2" : [ 0.32549, 0.345098, 0.372549, 0.56 ],
 					"bgfillcolor_proportion" : 0.39,
 					"bgfillcolor_type" : "gradient",
 					"fontname" : "Arial",
@@ -7970,10 +7970,10 @@
 , 			{
 				"box" : 				{
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_autogradient" : 0,
 					"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-					"bgfillcolor_color1" : [ 0.768627, 0.803922, 0.843137, 1.0 ],
-					"bgfillcolor_color2" : [ 0.317647, 0.709804, 0.321569, 1.0 ],
+					"bgfillcolor_color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+					"bgfillcolor_color2" : [ 0.32549, 0.345098, 0.372549, 0.56 ],
 					"bgfillcolor_proportion" : 0.39,
 					"bgfillcolor_type" : "gradient",
 					"fontname" : "Arial",
@@ -8556,7 +8556,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 310.0, 35.0, 270.0, 73.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 3.0, 93.0, 269.0, 73.0 ],
+					"presentation_rect" : [ 3.0, 93.0, 269.0, 75.0 ],
 					"proportion" : 0.39,
 					"style" : ""
 				}
@@ -8565,7 +8565,8 @@
 , 			{
 				"box" : 				{
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"bgfillcolor_autogradient" : 0,
+					"bgfillcolor_color" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
 					"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
 					"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_proportion" : 0.39,
@@ -8580,7 +8581,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 574.0, 314.0, 100.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 4.0, 173.0, 224.0, 30.0 ],
+					"presentation_rect" : [ 6.0, 173.0, 224.0, 30.0 ],
 					"style" : "",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -8638,7 +8639,6 @@
 					"fontname" : "Helvetica Neue Condensed Bold",
 					"fontsize" : 24.0,
 					"id" : "obj-236",
-					"linecount" : 2,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -8646,9 +8646,9 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 105.0, 385.183228, 186.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 74.0, 207.0, 198.0, 62.0 ],
+					"presentation_rect" : [ 74.0, 210.0, 198.0, 62.0 ],
 					"style" : "",
-					"text" : "rectiligne_angle_07",
+					"text" : "circle_01",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"varname" : "event"
 				}
@@ -8724,7 +8724,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 218.5, 274.0, 120.0, 18.0 ],
 					"style" : "",
-					"text" : "rectiligne_angle_07"
+					"text" : "circle_01"
 				}
 
 			}
@@ -8778,7 +8778,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 39.0, 357.0, 60.0, 64.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 3.0, 207.0, 69.0, 64.0 ],
+					"presentation_rect" : [ 3.0, 210.0, 69.0, 64.0 ],
 					"style" : "",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"tricolor" : [ 0.360784, 0.360784, 0.360784, 1.0 ],
@@ -10551,8 +10551,8 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-193" : [ "live.tab[1]", "live.tab", 0 ],
-			"obj-165" : [ "AudioSetup", "Setup", 0 ]
+			"obj-165" : [ "AudioSetup", "Setup", 0 ],
+			"obj-193" : [ "live.tab[1]", "live.tab", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{

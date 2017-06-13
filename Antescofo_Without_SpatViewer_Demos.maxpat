@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 990.0, 45.0, 289.0, 722.0 ],
+		"rect" : [ 990.0, 45.0, 290.0, 722.0 ],
 		"bgcolor" : [ 0.694118, 0.694118, 0.694118, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -49,7 +49,7 @@
 					"patching_rect" : [ 113.0, 351.0, 153.0, 189.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 5,
-					"presentation_rect" : [ 4.0, 283.0, 284.0, 89.0 ],
+					"presentation_rect" : [ 6.0, 283.0, 284.0, 89.0 ],
 					"style" : "",
 					"text" : "1/ Choose a score in the Spat_Scores Menu\n2/ Hit Space Bar to play nextevent\n3/ Wait trajectory to end to start another one or\n hit Enter to stop and choose another event label\n4/ Check data retrieval in the receivers' tab \n",
 					"underline" : 1
@@ -1703,7 +1703,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 406.0, 550.0, 252.0, 25.0 ],
 									"style" : "",
-									"text" : "paintoval 362 405 365 408 0 420 0"
+									"text" : "paintoval 382 603 385 606 0 420 0"
 								}
 
 							}
@@ -3106,7 +3106,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 924.0, 196.5, 84.0, 117.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 48.0, 481.5, 213.0, 202.0 ],
+					"presentation_rect" : [ 39.5, 442.5, 213.0, 202.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_linknames" : 1,
@@ -3197,7 +3197,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 42.0, 303.0, 324.0, 37.0 ],
 									"style" : "",
-									"text" : "ad 135 1."
+									"text" : "xy 0.7 -0."
 								}
 
 							}
@@ -3212,7 +3212,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 41.0, 195.0, 324.0, 37.0 ],
 									"style" : "",
-									"text" : "ad 114.075005 0.845"
+									"text" : "xy 0.294587 -1.978186"
 								}
 
 							}
@@ -3227,7 +3227,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 41.0, 87.0, 324.0, 37.0 ],
 									"style" : "",
-									"text" : "ad 112.5 1."
+									"text" : "xy 1. -0."
 								}
 
 							}
@@ -3871,7 +3871,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 210.0, 122.0, 100.0, 25.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 169.0, 4.75, 100.0, 25.0 ],
+					"presentation_rect" : [ 169.0, 1.75, 100.0, 25.0 ],
 					"style" : "",
 					"text" : "ascograph open"
 				}
@@ -4586,7 +4586,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 442.0, 143.0, 270.0, 73.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 8.0, 94.0, 269.0, 73.0 ],
+					"presentation_rect" : [ 8.0, 94.0, 269.0, 75.0 ],
 					"proportion" : 0.39,
 					"style" : ""
 				}
@@ -4595,7 +4595,8 @@
 , 			{
 				"box" : 				{
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"bgfillcolor_autogradient" : 0,
+					"bgfillcolor_color" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
 					"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
 					"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_proportion" : 0.39,
@@ -4663,12 +4664,11 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"bgcolor" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
 					"bordercolor" : [ 0.537255, 0.537255, 0.537255, 1.0 ],
 					"fontname" : "Helvetica Neue Condensed Bold",
 					"fontsize" : 24.0,
 					"id" : "obj-236",
-					"linecount" : 2,
 					"maxclass" : "textedit",
 					"numinlets" : 1,
 					"numoutlets" : 4,
@@ -4676,9 +4676,9 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 342.0, 527.183228, 186.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 78.0, 208.0, 208.0, 62.0 ],
+					"presentation_rect" : [ 78.0, 211.0, 208.0, 62.0 ],
 					"style" : "",
-					"text" : "rectiligne_angle_02",
+					"text" : "circle_02",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"varname" : "event"
 				}
@@ -4800,7 +4800,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 425.5, 348.0, 120.0, 18.0 ],
 					"style" : "",
-					"text" : "rectiligne_angle_02"
+					"text" : "circle_02"
 				}
 
 			}
@@ -4854,7 +4854,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 511.0, 60.0, 64.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 7.0, 208.0, 69.0, 64.0 ],
+					"presentation_rect" : [ 7.0, 211.0, 69.0, 64.0 ],
 					"style" : "",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"tricolor" : [ 0.360784, 0.360784, 0.360784, 1.0 ],
