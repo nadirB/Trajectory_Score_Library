@@ -13,7 +13,7 @@ Antescofo : http://repmus.ircam.fr/antescofo
 
 Spat : http://forumnet.ircam.fr/fr/produit/spat/
 
-Spat Licence : http://forumnet.ircam.fr/ircam-forum-license/?lang=en
+Spat Licence : http://forumnet.ircam.fr/ircam-forum-license/?lang=en<br>
 (An Ircam Licence is needed to make work the Spat Viewer)
 
 
