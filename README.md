@@ -6,6 +6,7 @@ The outcome of these processes are X, Y and Z or Azimut, Elevation and Distance 
 
 The MaxMsp files are just demo patchs. Use the data your own way. (An Ircam Licence is needed to make work the Spat Viewer)
 
+
 Thanks to Jean-Louis Giavitto & Thibaut Carpentier for their kind support.
 
 
