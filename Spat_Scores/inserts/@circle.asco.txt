@@ -28,7 +28,7 @@ $pi := 3.141592653589793
 	
 
     
-    loop cercle_curve $speed
+    loop cercle_curve $speed + 0.01s
 	{
 		;abort cercle_curve
 
