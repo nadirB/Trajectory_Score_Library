@@ -28,7 +28,7 @@
 	
 	
 
-	loop pi $speed
+	loop pi $speed + 0.01s
 	{
 		abort picurve
 
