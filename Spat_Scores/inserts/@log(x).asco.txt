@@ -7,7 +7,7 @@
 
 {	@local $x, $y, $SPEED, $count
 	
-	loop log $SPEED
+	loop log $SPEED + 0.01s
 	{
 		abort logCurve
 
