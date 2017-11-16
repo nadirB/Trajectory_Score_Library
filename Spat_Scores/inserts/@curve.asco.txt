@@ -18,7 +18,7 @@ $alpha := 0.
 
 {
 
-		loop rectiligne_angle $speed
+		loop rectiligne_angle $speed + 0.01s
 
 		{
 
