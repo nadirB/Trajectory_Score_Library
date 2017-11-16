@@ -24,7 +24,7 @@ $pi := 3.141592653589793
 
 {	
 
-	loop Varispeed $speed + 0.02
+	loop Varispeed $speed + 0.02s
 	{
 		
 		curve  Varispeed @grain := 0.02s
