@@ -14,7 +14,7 @@
 	;$vari1	:= $slow
 	
 
-	loop Varispeed $speed 
+	loop Varispeed $speed + 0.01s
 	{
 		
 		curve  VariSpeed @grain := 0.01s
