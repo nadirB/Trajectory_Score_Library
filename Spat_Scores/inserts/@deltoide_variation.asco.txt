@@ -2,35 +2,18 @@
 
 /*
 
-
-
-
     x = 2 a cos ⁡ ( t ) + a cos ⁡ ( 2 t ) 
     y = 2 a sin ⁡ ( t ) − a sin ⁡ ( 2 t ) 
 
-
-
 */
-
-
-
-
-
 
 @global $pi
 	$pi := 3.141592653589793
 
 
-
-
-
-
 @fun_def X($t,  $r, $offsetX) 
 
 { 
-
-	
-
 	2*$r*@cos($t) + $r*@cos(2*$t) + $offsetX
 } 
 
@@ -56,31 +39,24 @@
 	@local $offset
 	$offset := 0.
     
-    ;loop pi $SPEED
-	;{
-		;abort parametric_curve
+   
 
-		curve parametric_curve @grain := 0.02s 
-						@Action := {
-								
-								@command($cmd) xy @X($t,  $r, $offsetX) @Y($t,  $r, $offsetY)
+		curve parametric_curve @grain := 0.02s @Action := {
+							@command($cmd) xy @X($t,  $r, $offsetX) @Y($t,  $r, $offsetY)
 							}
 
-		
-
-		
-		
 		{
 			$t
-					{
-							   { ($initT*$pi)  } /*@type "exp"*/
-						$SPEED { ($endT*$pi) }
+				{
+					 { ($initT*$pi)  } /*@type "exp"*/
+				  $SPEED { ($endT*$pi) }
 						
 	
-					}
+				}
+				
 		}
 
 
-	;}
+	
 
 }
