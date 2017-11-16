@@ -9,15 +9,11 @@
 	
 	loop log $SPEED + 0.01s
 	{
-		abort logCurve
+		;abort logCurve
 
-		curve logCurve @grain := 0.01s, @Action := { $y:= @log($x)
-														
-													    @command($SPAT) xy $x $y
+		curve logCurve @grain := 0.01s, @Action := { $y:= @log($x)@command($SPAT) xy $x $y
 														
 														}
-
-		
 		{
 			$x
 					{
