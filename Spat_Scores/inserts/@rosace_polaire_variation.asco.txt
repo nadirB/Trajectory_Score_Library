@@ -26,7 +26,7 @@ $pi := 3.141592653589793
 	@local $cpt
 	$cpt := 0
 	
-    loop pi $speed
+    loop pi $speed + 0.01s
 	{
 	
 		$cpt := $cpt + 1
