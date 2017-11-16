@@ -12,40 +12,30 @@
 }
 
 
-
-
 @proc_def ::rectilinear($cmd, $iniT, $targeT, $a, $b, $alpha, $beta, $count, $SPEED)
 
 {	
 	@local $body, $t ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	$body := 0.
     
-    loop lineLoop $SPEED ;@exclusive
+    	loop lineLoop $SPEED + 0.01s ;@exclusive
 	{
 		
-
-					curve lineCurve @grain := 0.01s 
-						@Action := {
-
-								
-										@command($cmd) xy @X($t, $a, $alpha) @Y($t, $b, $beta) 
+		curve lineCurve @grain := 0.01s @Action := { @command($cmd) xy @X($t, $a, $alpha) @Y($t, $b, $beta) 
 										print_message $body $NOW $t 
-									}
+							    }
 
-						@abort := 
-							{		kill lineLoop
-									print_antescofo "lineCurve aborted at " $t
-									Curve end
-										@grain 0.1
-										@action := {print_message "handler lineCurve: " $t 
-										;@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)
-										 }
+				@abort := { kill lineLoop
+					  print_antescofo "lineCurve aborted at " $t
+					  Curve end @grain 0.1 @action := { print_message "handler lineCurve: " $t 
+							;@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)
+							}
 
-									{
+					{
 
-											$t { { ($t) } $SPEED { 0.0 } }
+						$t { { ($t) } $SPEED { 0.0 } }
 
-									}
+					}
 
 							
 							}
@@ -55,13 +45,14 @@
 					{
 						$t
 							{
-										{ ($iniT)  } /*@type "exp"*/
+									{ ($iniT)   } /*@type "exp"*/
 								 $SPEED { ($targeT) }
 						
 	
 							}
 					}
-				 ;print_antescosf
+					
+				 
 
 				} during[$count#]
 
@@ -94,7 +85,7 @@
 	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	
     
-    loop line $SPEED
+    loop line $SPEED + 0.01s
 	{
 		;abort lineCurve
 
@@ -102,7 +93,7 @@
 						@Action := {
 								
 								@command($cmd) xy @XW($t, $a, $alpha) @YW($t, $b, $beta)  
-							}
+							   }
 
 		
 
@@ -111,7 +102,7 @@
 		{
 			$t
 					{
-							   { ($iniT)  } /*@type "exp"*/
+						       { ($iniT)  } /*@type "exp"*/
 						$SPEED { ($targeT) }
 						
 	
@@ -152,7 +143,7 @@
 	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	
     
-    loop line $SPEED
+    loop line $SPEED + 0.01s
 	{
 		;abort lineCurve
 
@@ -160,7 +151,7 @@
 						@Action := {
 								
 								@command($cmd) xy @XS($t, $a, $alpha) @YS($t, $b, $beta)  
-							}
+							    }
 
 		
 
@@ -169,7 +160,7 @@
 		{
 			$t
 					{
-							   { ($iniT)  } /*@type "exp"*/
+						       { ($iniT)  } /*@type "exp"*/
 						$SPEED { ($targeT) }
 						
 	
