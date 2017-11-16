@@ -45,7 +45,7 @@
 		@global $cpt1
 		$cpt1 := 0
 	
-		loop spat $speed
+		loop spat $speed + 0.02s
 
 		{  
 					
