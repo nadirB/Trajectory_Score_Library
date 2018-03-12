@@ -2,10 +2,11 @@ BPM 60
 
 @insert "inserts/@sin_cardinal.asco.txt"
  
-OPER numspeakers 16, zoom 0.6
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.393528
 ;OPER source 1 doppler 1
 
-position_init bang
+position_init ok
 lcd_spat clear
 lcd_spat drawpict pattern
 

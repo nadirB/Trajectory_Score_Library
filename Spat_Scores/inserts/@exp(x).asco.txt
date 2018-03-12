@@ -10,7 +10,7 @@
 
 		curve expCurve @grain := 0.01s, @Action := { $y:= @exp($x)
 														
-													    @command($SPAT) xy $x $y
+													    @command($SPAT)  $x $y
 														
 														}
 

@@ -18,7 +18,7 @@ $pi := 3.141592653589793
 		curve picurve @grain := 0.02s 
 						@Action := {
 								$val := ($k * @exp(-0.2*@pow($x, 2)) + $offset)
-								@command($cmd) xy  $x $val
+								@command($cmd)   $x $val
 							}
 
 		
@@ -54,7 +54,7 @@ $pi := 3.141592653589793
 		curve picurve @grain := 0.02s 
 						@Action := {
 								$val := ($k / @exp(-0.2*@pow($x, 2)) + $offset)
-								@command($cmd) xy  $x $val
+								@command($cmd)   $x $val
 							}
 
 		

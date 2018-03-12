@@ -28,14 +28,14 @@
 	
 	
 
-	loop pi $speed + 0.01s
+	loop pi $speed
 	{
 		abort picurve
 
 		curve picurve @grain := 0.01s 
 						@Action := {
 								
-								@command($cmd) xy @X($t, $k) @Y($t, $k)
+								@command($cmd)  @X($t, $k) @Y($t, $k)
 							}
 
 		

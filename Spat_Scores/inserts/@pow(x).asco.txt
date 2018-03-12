@@ -4,15 +4,19 @@
 	
 	loop contouR $SPEED
 	{
-		abort powCurve 0.01s 
+		abort powCurve
 
-		curve powCurve @grain := 0.01s, @Action := { $val:= @pow($pow, $x) @command($SPAT) $x $val }
+		curve powCurve @grain := 0.01s, @Action := { $val:= @pow($pow, $x)
+														
+													    @command($SPAT) $x $val
+														
+														}
 
 		
 		{
 			$x
 					{
-							{ $x1 } /*@type "exp"*/
+								{ $x1 } /*@type "exp"*/
 						 $SPEED { $x2}
 						
 	

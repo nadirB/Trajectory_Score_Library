@@ -2,24 +2,23 @@ BPM 60
 
 @insert "inserts/@rectilinear.asco.txt"
 
-OPER numspeakers 16
 
-position_init bang
+
+position_init ok
 lcd_spat clear
 lcd_spat drawpict pattern
 
 draw_coordinates 1
 
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.393528
+
  Event 1 rectilinear_01 ; instant points ... ($∂, $ß = 0), (cf. spat_score_figures/spat_rectilinear_figure_I)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+
 
 ;::rectilinear($cmd, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $SPEED)
 
-OPER source 1 ad -45 3, source 2 ad 45 3, source 3 ad 135 3, source 4 ad -135 3
-OPER zoom 0.4
-1
 ::rectilinear("spat1", 0, 1,  	-1,  1,   0, 0,   1, 1) 
 1
 ::rectilinear("spat2", 0, 1,  	 1,  1,   0, 0,   1, 1)

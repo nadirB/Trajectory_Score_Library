@@ -1,94 +1,114 @@
 BPM 60
 
 @insert "inserts/@speakers_position.asco.txt"
+@insert "inserts/@circle.asco.txt"
 
-OPER zoom 0.55
+; speaker_syntax : 1 := aed, 2 := xy
+speaker_syntax 1
 
-;Event 1 stereo
+position_init ok
 
-antescofo-labels stereo
-OPER numspeakers 2, speaker 1 name L, speaker 2 name R
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
+
+Event 1 stereo
+
+ ;Speaker_label  stereo
+
+
+ oscsend  Speaker_Num "127.0.0.1" :4072 "/speaker/number"
+ Speaker_Num 2
+
+;oscsend  Speaker_Position "127.0.0.1" :4072 "/speakers/aed"
+;Speaker_Position -45 0 2 45 0 2 
+
+ Speaker_label stereo
+
 ::SpeakersConfig($stereo)
 
  Event 1 stereo_S
 
-OPER numspeakers 3, speaker 1 name L, speaker 2 name R, speaker 3 name S
+Speaker_Num 3
 
+ Speaker_label stereo_surround
 ::SpeakersConfig($stereo_surround)
 
  Event 1 quad
 
-OPER numspeakers 4, speaker 1 name L, speaker 2 name R, speaker 3 name Ls, speaker 4 name Rs
+oscsend speakers_num "127.0.0.1" :4072 "/speaker/number"
+speakers_num  4
 
+;oscsend speakers_label "127.0.0.1" :4072 "/speakers/label"
+;speakers_label  L R Ls Rs
+
+ Speaker_label quad
 ::SpeakersConfig($quad)
 
   Event 1 quad_surround
 
-OPER numspeakers 4, speaker 1 name L, speaker 2 name C, speaker 3 name R, speaker 4 name S
-
+ Speaker_label quad_surround
 ::SpeakersConfig($quad_surround)
 
  Event 1 five_one
 
-OPER numspeakers 5, speaker 1 name L, speaker 2 name C, speaker 3 name R, speaker 4 name Ls, speaker 5 name Rs
-
+ Speaker_Num 5
 ::SpeakersConfig($five_one)
 
  Event 1 six
 
- OPER numspeakers 6, speaker 1 name L, speaker 2 name C, speaker 3 name R, speaker 4 name Ls, speaker 5 name Rs, speaker 6 name Back
-
+ Speaker_label six
 ::SpeakersConfig($six)
 
  Event 1 seven_one
 
-OPER numspeakers 7, speaker 1 name L, speaker 2 name C, speaker 3 name R, speaker 4 name Ls, speaker 5 name Rs, speaker 6 name Lb, speaker 7 name Rb
-
+ Speaker_label seven_one
 ::SpeakersConfig($seven_one)
 
  Event 1 octo
 
- OPER numspeakers 8, speaker 1 name TpFL, speaker 2 name TpFR, speaker 3 name TpBR, speaker 4 name TpBL, speaker 5 name BtFL, speaker 6 name BtFR, speaker 7 name BtBR, speaker 8 name BtBL
-
+ Speaker_label octo
 ::SpeakersConfig($octo)
+
 
  Event 1 nine_one
 
-OPER numspeakers 9, speaker 1 name L, speaker 2 name C, speaker 3 name R, speaker 4 name Ls, speaker 5 name Rs, speaker 6 name Lb, speaker 7 name Rb, speaker 8 name Lh, speaker 9 name Rh
-
+ Speaker_label nine_one
 ::SpeakersConfig($nine_one)
 
  Event 1 espro
 
-OPER numspeakers 13, speaker 1 name 1, speaker 2 name 2, speaker 3 name 3, speaker 4 name 4, speaker 5 name 5, speaker 6 name 6, speaker 7 name 7, speaker 8 name 8, speaker 9 name nine, speaker 10 name ten, speaker 11 name eleven, speaker 12 name twelve, speaker 13 name thirteen
-
+ Speaker_label espro
 ::SpeakersConfig($espro)
 
  Event 1 myConfig1
 
-OPER numspeakers 16, speaker 1 name 1, speaker 2 name 2, speaker 3 name 3, speaker 4 name 4, speaker 5 name 5, speaker 6 name 6, speaker 7 name 7, speaker 8 name 8, speaker 9 name nine, speaker 10 name 10, speaker 11 name 11, speaker 12 name 12, speaker 13 name 13, speaker 14 name 14, speaker 15 name 15, speaker 16 name 16
-
+ Speaker_label myConfig1
 ::SpeakersConfig($myConfig1)
 
  Event 1 myConfig2
 
- ::SpeakersConfig($myConfig2)
+ Speaker_label myConfig2
+::SpeakersConfig($myConfig2)
 
-  Event 1 myConfig3
+Event 1 myConfig3
 
+ Speaker_label myConfig3
  ::SpeakersConfig($myConfig3)
 
   Event 1 twentytwo
 
- OPER numspeakers 22, speaker 1 name FL, speaker 2 name FR, speaker 3 name FC, speaker 4 name BL, speaker 5 name BR, speaker 6 name FLc, speaker 7 name FRc, speaker 8 name BC, speaker 9 name SiL, speaker 10 name SiR, speaker 11 name TpFL, speaker 12 name TpFR, speaker 13 name TpFC, speaker 14 name TpC, speaker 15 name TpBL, speaker 16 name TpBR, speaker 17 name TpSiL, speaker 18 name TpSiR, speaker 19 name TpBC, speaker 20 name BtFC, speaker 21 name BtFL, speaker 22 name BtFR 
-
+ Speaker_label twentytwo
  ::SpeakersConfig($twentytwo)
 
- /////////////////////////////////////////////////////////////////////////
+ 
+
+
+ /////////////////////////////////////////////////////////////
 
 
 Event 1 XY_SpeakersState
 
+spat_viewer_zoom 0.4
 ::XY_SpeakersState($myConfig4)
 
 
@@ -99,11 +119,13 @@ Event 1 XY_SpeakersState
 
  Event 1 OneSpeakerState
 
-@insert "inserts/@circle.asco.txt"
+; speaker_syntax : 1 := aed, 2 := xy
 
-OPER numspeakers 1, speaker 1 name one, speakers aed 0. 0. 0.5
-OPER zoom 1.
-::circle("speaker1", 0.5, 2.5, 0.5, 0, 0, 1, 4)
+ Speaker_label mono
+speaker_syntax 2
+
+::circle("spat1", 0.5, 2.5, 0.5, 0, 0, 1, 4)
+::circle("speaker1", 0.5, 2.5, 1, 0, 0, 1, 4)
 
 
 

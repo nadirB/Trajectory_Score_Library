@@ -2,8 +2,11 @@ BPM 60
 
 @insert "inserts/@hypocycloide.asco.txt"
 
-OPER numspeakers 16, zoom 0.4
-position_init bang
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.3
+
+position_init ok
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -92,7 +95,7 @@ lcd_spat drawpict pattern
 
 ::hypocycloide3("spat4", 0, 2, 0.4, -0.5, -1, 0,  4)
 
-Event 1 hypocycloide4_01
+Event 1 hypocycloide_hearts
 
 lcd_spat clear
 lcd_spat drawpict pattern

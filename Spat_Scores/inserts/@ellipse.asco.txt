@@ -47,15 +47,21 @@ $r := 1
 	$offset := 0.
 	$cpt1 := 0
     
-     loop pi $SPEED + 0.02s
+     loop pi $SPEED
 	 {
 		;abort ellipseAB_curve
 	
 		$cpt1 := $cpt1+1
 
-		curve ellipseAB_curve @grain := 0.02s @Action := { @command($cmd) xy @X($a, $alpha, $t, $offsetX) @Y($b, 									$beta, $t, $offsetY)
-								 }
+		curve ellipseAB_curve @grain := 0.02s 
+						@Action := {
+								
+								@command($cmd)  @X($a, $alpha, $t, $offsetX) @Y($b, $beta, $t, $offsetY)
+							}
 
+		
+
+		
 		
 		{
 			$t
@@ -63,9 +69,10 @@ $r := 1
 							   { ($initT*$pi)  } /*@type "exp"*/
 						$SPEED { ($endT*$pi) }
 						
+	
 					}
 		}
-		 print_antescofo $cpt1
+			;print_antescofo $cpt1
 
 
 	} during[$count1#]

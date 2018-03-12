@@ -7,14 +7,14 @@ $pi := 3.141592653589793
 @fun_def X($t, $r, $offsetX) 
 
 { 
-	$r*@cos($t) + $offsetX
+	$r * @cos($t) + $offsetX
 } 
 
 @fun_def Y($t, $r, $offsetY) 
 { 
 	
 
-	$r*@sin($t) + $offsetY
+	$r * @sin($t) + $offsetY
 }
 
 
@@ -24,23 +24,23 @@ $pi := 3.141592653589793
 
 {	
 
-	loop Varispeed $speed + 0.02s
+	loop Varispeed $speed
 	{
 		
 		curve  Varispeed @grain := 0.02s
 
 		{ $temp
-				{			   {$RT_TEMPO} ;$vari1
-					  $speed/4 {($RT_TEMPO * 0.5)} ;$vari2
-					  $speed/4 {($RT_TEMPO * 2)} ;$vari3
-					   $speed/4 {($RT_TEMPO * 0.1)};$vari4   ; todo ! multiplication variables....
+				{			   {$RT_TEMPO} 
+					  $speed/4 {($RT_TEMPO * 0.5)} 
+					  $speed/4 {($RT_TEMPO * 2)} 
+					  $speed/4 {($RT_TEMPO * 0.1)};$vari4   ; todo ! multiplication variables....
 					  
 					 
 				}
 
 		} 
 			
-			;print_interpolation $t
+			print_interpolation $t
 			
 			
 	}	during[$count#]
@@ -68,7 +68,7 @@ $pi := 3.141592653589793
 			curve cercleCurve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
+								@command($cmd)  @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
 							}
 
 			@abort := 
@@ -92,14 +92,14 @@ $pi := 3.141592653589793
 			{
 				$t
 						{
-								{ ($iniT*$pi)  } /*@type "exp"*/
+								   { ($iniT*$pi)  } /*@type "exp"*/
 							$speed { ($targeT*$pi) }
 						
 	
 						}
 			}
 				
-			print_antescofo $cpt
+				print_antescofo $cpt
 
 
 		} during[$count#]

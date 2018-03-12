@@ -4,8 +4,10 @@
 	@local $SPEED
 	
 	
-	loop deriveelogCurve $SPEED + 0.01s
 	
+	
+
+	loop deriveelogCurve $SPEED
 	{
 		;abort deriveelogCurve
 		lcd_spat clear
@@ -15,14 +17,17 @@
 				
 					@Action := { 
 						$y := ((1/$x) + $offset) 
-						@command($cmd) xy $x $y
+						@command($cmd) $x $y
 					}
 
+		
+
+		
+		
 		{
-			
 			$x
 					{
-							{ $init  } /*@type "exp"*/
+								{ $init  } /*@type "exp"*/
 						$SPEED  { $a }
 						
 	

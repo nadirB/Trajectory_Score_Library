@@ -1,23 +1,31 @@
 BPM 90
 
-;@insert "inserts/@speakers_position.asco.txt"
-
-@insert "inserts/@Circle.asco.txt"  ; insert circle's process
+@insert "inserts/@speakers_position.asco.txt"
+@insert "inserts/@Circle.asco.txt" 
 @insert "inserts/@Circle_Varispeed.asco.txt"  ; insert varispeed process (in progress)
 
-OPER numspeakers 16
-position_init bang ; init spat sources and speakers positions
+position_init ok
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
+
+;position_init bang ; init spat sources and speakers positions
 
 lcd_spat clear            ; init spat_screen
 lcd_spat drawpict pattern
-draw_coordinates 1        ; route xyz data 
+draw_coordinates 1        ; route xyz data
+display 0
+
+print_antescofo "Good to go!" 
 
 
  Event 1 circle_01
 
 lcd_spat clear
 lcd_spat drawpict pattern
-OPER zoom 1  ; zoom spat window
+
+source_syntax 1
+ 
 
 
 ; ::circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $speed)
@@ -48,19 +56,6 @@ lcd_spat drawpict pattern
 
 label "Trajectory Done !"
 print_antescofo "Trajectory Done !"
-
- Event 1 circle_02 ; with speed variation
-
-OPER zoom 0.6
-
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-; ::circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $speed)
-
-::vari_circle("spat2", 0, -2, 2, 0, 0, 1, 8) ;-2π := 1 turn clockwise with a radius of 2 during 8 beats
-											 ;with speed variation  (TODO implement $vari variables for accurate control of this speed variation)
 
 
  Event 1 multi_circle_01
@@ -132,7 +127,9 @@ lcd_spat clear
 lcd_spat drawpict pattern
 position_init bang
 
-OPER source 1 ad -90 2, source 2 ad 0 2, source 3 ad 90 2, source 4 ad -180 2
+oscsend sources "127.0.0.1" :4072 "/sources/aed"
+sources -90 0. 2 0 0. 2 90 0. 2 -180 0. 2
+
 
 ; ::circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
 ; cf. figure III circle with offsets1
@@ -187,24 +184,28 @@ print_antescofo "Trajectory Done !"
 lcd_spat clear
 lcd_spat drawpict pattern
 
-OPER source 1 ad -45 2.4, source 2 ad 45 2.4, source 3 ad 135 2.4, source 4 ad -135 2.4
-OPER zoom 0.43
+oscsend sources "127.0.0.1" :4072 "/sources/aed"
+sources -45 0. 2 45 0. 2 135 0. 2 -135 0. 2
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
+
 ; ($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
 
-::circle("spat1", 3/4, 2+3/4, 1, -1, 1, 1, 4) ; from 3π/4/135°/Az -45 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x offset and a positive y offset
+::circle("spat1", 3/4, 2+3/4, 0.5, -1, 1, 1, 4) ; from 3π/4/ 135°/ Az -45 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x offset and a positive y offset
 
 4
 
-::circle("spat2", 1/4, 2+1/4, 1, 1, 1, 1, 4); from π/4/45°/Az 45 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a positive x and y offset
+::circle("spat2", 1/4, 2+1/4, 1.5, 1, 1, 1, 4); from π/4/45°/Az 45 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a positive x and y offset
 4
 
-::circle("spat3", 7/4, 2+7/4, 1, 1, -1, 1, 4) ; from 7π/4/315°/Az 135 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and
+::circle("spat3", 7/4, 2+7/4, 2, 1, -1, 1, 4) ; from 7π/4/315°/Az 135 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and
 											  ;a positive x offset and a negative y offset
 4
 
-::circle("spat4", 5/4, 2+5/4, 1, -1, -1, 1, 4) ; from 5π/4/225°/Az -135 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x and y offset
+::circle("spat4", 5/4, 2+5/4, 2.5, -1, -1, 2, 4) ; from 5π/4/225°/Az -135 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x and y offset
 
-4
+8
 
 label "Trajectory Done !"
 print_antescofo "Trajectory Done !"
@@ -230,9 +231,25 @@ lcd_spat drawpict pattern
 label "Trajectory Done !"
 print_antescofo "Trajectory Done !"
 
+ Event 1 varispeed_circle ; with speed variation
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
+
+
+lcd_spat clear
+lcd_spat drawpict pattern
+
+; ::circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $speed)
+
+::vari_circle("spat2", 0, -2, 2, 0, 0, 1, 8) ;-2π := 1 turn clockwise with a radius of 2 during 8 beats
+											 ;with speed variation  (TODO implement $vari variables for accurate control of this speed variation)
+
+
  Event 1 arc_01
 
-OPER zoom 0.7
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.5
 
 ; ($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
 
@@ -418,7 +435,8 @@ print_antescofo "Trajectory Done !"
 lcd_spat clear
 lcd_spat drawpict pattern
 
-OPER zoom 0.4
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
 
 
 ::circle("spat1", 1/2, 1,   1,  -1.,  1.,  1, 4)

@@ -18,14 +18,8 @@ où R est le rayon du cercle de base et r celui du cercle roulant. Avec q = R / 
 
 
 
-
-
 @global $pi
 	$pi := 3.141592653589793
-
-
-
-
 
 
 @fun_def Y($t, $R, $r, $offsetX) 
@@ -66,7 +60,7 @@ où R est le rayon du cercle de base et r celui du cercle roulant. Avec q = R / 
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X($t, $R, $r, $offsetX) @Y($t, $R, $r, $offsetX)
+								@command($cmd)  @X($t, $R, $r, $offsetX) @Y($t, $R, $r, $offsetX)
 							}
 
 		

@@ -33,7 +33,7 @@ $five_one := map {
 	( "speaker2", [0., 0, 2.]), 
 	( "speaker3", [30., 0, 2. ]), 
 	( "speaker4", [-110.0, 0, 2.]),
-	( "speaker5", [110., 0., 2.])
+	( "speaker5", [110., 0, 2.])
 }
 
 $six := map { 
@@ -198,8 +198,8 @@ $twentytwo := map {
 {
 			forall $speaker, $aed in $speakersmap
 			{
-				@command($speaker) aed $aed
-				print_antescofo $speaker aed $aed
+				@command($speaker) $aed
+				print_speakers $speaker $aed
 			}
 			
 }
@@ -211,22 +211,22 @@ $twentytwo := map {
 ;setAllSpeakerState_XY
 
 $myConfig4 := map { 
-	( "speaker1", [-2, 2]), 	
-	( "speaker2", [-1, 2]), 
-	( "speaker3", [1, 2]), 
+	( "speaker1", [-2, 0,2]), 	
+	( "speaker2", [-1, 0, 2]), 
+	( "speaker3", [1, 0, 2]), 
 	( "speaker4", [2, 2]),
-	( "speaker5", [-1.5, 1]), 
-	( "speaker6", [-0.5, 1]), 
-	( "speaker7", [0.5, 1]), 
+	( "speaker5", [-1.5, 0, 1]), 
+	( "speaker6", [-0.5, 0, 1]), 
+	( "speaker7", [0.5, 0, 1]), 
 	( "speaker8", [1.5, 1]), 
-	( "speaker9", [-1.5, -1]), 	
-	( "speaker10", [-0.5, -1]), 
-	( "speaker11", [0.5, -1]),
-	( "speaker12", [1.5, -1]), 	
-	( "speaker13", [-2, -2]), 
-	( "speaker14", [-1, -2]),
-	( "speaker15", [1, -2]),
-	( "speaker16", [ 2, -2])
+	( "speaker9", [-1.5, 0, -1]), 	
+	( "speaker10", [-0.5, 0, -1]), 
+	( "speaker11", [0.5, 0, -1]),
+	( "speaker12", [1.5, 0, -1]), 	
+	( "speaker13", [-2, 0, -2]), 
+	( "speaker14", [-1, 0, -2]),
+	( "speaker15", [1, 0, -2]),
+	( "speaker16", [ 2, 0, -2])
 	
 }
 
@@ -235,8 +235,8 @@ $myConfig4 := map {
 	
 			forall $speaker, $xy in $speakersmap
 			{
-				@command($speaker) xy $xy
-				print_antescofo $speaker xy $xy
+				@command($speaker) $xy
+				print_speakers $speaker $xy
 			}
 		
 }

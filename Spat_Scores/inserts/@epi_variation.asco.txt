@@ -54,7 +54,7 @@ $m := 1
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X($t, $m, $offsetX) @Y($t, $m, $offsetY)
+								@command($cmd)  @X($t, $m, $offsetX) @Y($t, $m, $offsetY)
 							}
 
 		

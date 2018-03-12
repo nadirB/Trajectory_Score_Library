@@ -2,17 +2,26 @@ BPM 60
 
 @insert "inserts/@speakers_position.asco.txt"
 
-OPER numspeakers 13, speaker 1 name 1, speaker 2 name 2, speaker 3 name 3, speaker 4 name 4, speaker 5 name 5, speaker 6 name 6, speaker 7 name 7, speaker 8 name 8, speaker 9 name nine, speaker 10 name ten, speaker 11 name eleven, speaker 12 name twelve, speaker 13 name thirteen
 
-::SpeakersConfig($espro)
+ Speaker_label mono
+;speaker_syntax 2
+
+oscsend sources "127.0.0.1" :4072 "/source/*/aed"
+sources 0 0. 0
 
 ;position_init bang
 lcd_spat clear
 lcd_spat drawpict pattern
 
-draw_coordinates 2
+display 1
+format 0
 
-OPER zoom 0.6
+draw_coordinates 2
+source_syntax 1
+speaker_syntax 2
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
 
 /*
 
@@ -62,7 +71,7 @@ $pi := 3.141592653589793
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xyz @X($t, $offsetX) @Y($t,$offsetY) @Z($t,$offsetZ)
+								@command($cmd) @X($t, $offsetX) @Y($t,$offsetY) @Z($t,$offsetZ)
 						}
 
 		{
@@ -83,4 +92,7 @@ $pi := 3.141592653589793
 Event 1 d_01
 
 ; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
-::d_01("spat1", 0, 5/2, 0, 0, 0, 4)
+::d_01("spat5", 0, 14/2, 0, 0, 0, 8)
+::d_01("speaker1", 0, 15/2, 0, 0.5, 0, 8)
+
+

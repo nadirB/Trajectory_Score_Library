@@ -2,13 +2,14 @@ BPM 60
 
 @insert "inserts/@rosace_polaire_variation.asco.txt"
 
-OPER numspeakers 16, zoom 0.6
 
-position_init bang
+
+position_init ok
 lcd_spat clear
 lcd_spat drawpict pattern
 
 draw_coordinates 1
+display 0
 
 ;::rosace_trajectory_variation($cmd, $initC, $cycle, $p, $q, $count, $speed)
 
@@ -157,7 +158,6 @@ lcd_spat drawpict pattern
 lcd_spat clear
 lcd_spat drawpict pattern
 
-OPER zoom 0.4
 
 ::rosace_trajectory_variation("spat1", 2, 0, 2, 1, 1, 8)
 

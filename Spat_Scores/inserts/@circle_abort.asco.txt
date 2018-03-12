@@ -37,7 +37,7 @@
 		curve circleCurve @grain := 0.01s 
 						  @Action := {
 								
-								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
+								@command($cmd)  @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
 							}
 
 							@abort := 

@@ -7,13 +7,17 @@
 
 {	@local $x, $y, $SPEED, $count
 	
-	loop log $SPEED + 0.01s
+	loop log $SPEED
 	{
-		;abort logCurve
+		abort logCurve
 
-		curve logCurve @grain := 0.01s, @Action := { $y:= @log($x)@command($SPAT) xy $x $y
+		curve logCurve @grain := 0.01s, @Action := { $y:= @log($x)
+														
+													    @command($SPAT)  $x $y
 														
 														}
+
+		
 		{
 			$x
 					{

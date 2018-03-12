@@ -16,7 +16,7 @@ $b := 1
 { 
 	
 
-	$b*((2*@sin($t)) - @sin(2*$t)) + $offsetX
+	$b * ((2 * @sin($t)) - @sin(2 * $t)) + $offsetX
 }
 
 
@@ -25,7 +25,7 @@ $b := 1
 
 { 
 
-	($a*(1+@cos($t)))*((2 * @cos($t)) + @cos($t)) + $offsetY
+	($a * (1 + @cos($t))) * ((2 * @cos($t)) + @cos($t)) + $offsetY
 } 
 
 
@@ -43,7 +43,7 @@ $b := 1
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X($t, $a, $offsetX) @Y($t, $b, $offsetY)
+								@command($cmd)  @X($t, $a, $offsetX) @Y($t, $b, $offsetY)
 							}
 
 		
@@ -115,7 +115,7 @@ $b := 1
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X2($t, $a, $offsetX) @Y2($t, $b, $offsetY)
+								@command($cmd) @X2($t, $a, $offsetX) @Y2($t, $b, $offsetY)
 							}
 
 		
@@ -177,7 +177,7 @@ $b := 1
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X3($t, $a, $offsetX) @Y3($t, $b, $offsetY)
+								@command($cmd)  @X3($t, $a, $offsetX) @Y3($t, $b, $offsetY)
 							}
 
 		
@@ -239,7 +239,7 @@ $b := 1
 		curve parametric_curve @grain := 0.02s 
 						@Action := {
 								
-								@command($cmd) xy @X4($t, $a) @Y4($t, $b)
+								@command($cmd)  @X4($t, $a) @Y4($t, $b)
 							}
 
 		

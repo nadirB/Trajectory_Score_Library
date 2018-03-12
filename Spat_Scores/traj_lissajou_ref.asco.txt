@@ -2,9 +2,10 @@ BPM 60
 
 @insert "inserts/@lissajou.asco.txt"
 
-OPER numspeakers 16, zoom 0.4
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.393528
 
-position_init bang
+position_init ok
 lcd_spat clear
 lcd_spat drawpict pattern
 
@@ -40,7 +41,7 @@ lcd_spat drawpict pattern
 ; et a ≠ b
 ; on obtient une ellipse
 
-::lissajou("spat2", -1, 1 , 1, 0.05, 1, 1, 1, 4)
+::lissajou("spat2", -1, 1 , 1, 0.5, 1, 1, 1, 4)
 
 
 //////////////////////////////////////////////////////////
@@ -50,6 +51,7 @@ lcd_spat drawpict pattern
 
 lcd_spat clear
 lcd_spat drawpict pattern
+
 
 ; m:n := 2:1
 
@@ -91,6 +93,27 @@ lcd_spat drawpict pattern
 
 lcd_spat clear
 lcd_spat drawpict pattern
+
+/*
+@fun_def X($a, $m, $t) 
+{ 
+	
+	$a * @sin($m * $t)
+}
+
+
+
+@fun_def Y($b, $n, $t) 
+{ 
+
+	$b * @cos($n * $t )
+} 
+
+@proc_def ::lissajou($cmd, $initT, $endT, $a, $b, $m, $n, $count, $SPEED)
+
+
+
+*/
 
 ; m:n := 5:1
 

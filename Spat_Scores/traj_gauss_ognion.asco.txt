@@ -2,9 +2,9 @@ BPM 60
 
 @insert "inserts/@gauss_variation.asco.txt"
 
-OPER numspeakers 16
 
-position_init bang
+
+position_init ok
 lcd_spat clear
 lcd_spat drawpict pattern
 

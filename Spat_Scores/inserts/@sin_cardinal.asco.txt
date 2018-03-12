@@ -22,7 +22,7 @@ sinc = {1	si x = 0 sinon
 		curve sinicurve @grain := 0.01s 
 						@Action := {
 								$y := ($func(($cycle*$pi)*$x)/($pi*$x))*($amp)+($translate) ; tweaked sinc function
-								@command($cmd) xy $x $y 
+								@command($cmd) $x $y 
 							}
 
 		{
@@ -61,7 +61,7 @@ sinc = {1	si x = 0 sinon
 		curve sinicurve @grain := 0.02s 
 						@Action := {
 								$y := ($func(($cycle*$pi)*$x)/($pi*$x))*($amp)+($translate)
-								@command($cmd) xy $y $x 
+								@command($cmd)  $y $x 
 							}
 
 		{

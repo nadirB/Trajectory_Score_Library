@@ -19,7 +19,7 @@ $pi := 3.141592653589793
 
 
 
-@proc_def circle($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $speed)
+@proc_def circle ($cmd,$iniT, $targeT, $r, $offsetX, $offsetY, $count, $speed)
 
 {	
 	
@@ -28,16 +28,16 @@ $pi := 3.141592653589793
 	
 
     
-    loop cercle_curve $speed + 0.01s
+    loop cercle_curve $speed
 	{
 		;abort cercle_curve
 
 		$cpt := $cpt + 1
 
 		curve circleCurve @grain := 0.01s 
-						@Action := {
+						  @Action := {
 								
-								@command($cmd) xy @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
+								@command($cmd) @X($t, $r, $offsetX) @Y($t, $r, $offsetY)  
 							}
 
 		@abort := 
@@ -70,7 +70,7 @@ $pi := 3.141592653589793
 					}
 		}
 
-		print_antescofo $cpt
+		print_antescofo $cmd ":" count $cpt ":"
 
 
 	} during[$count#]

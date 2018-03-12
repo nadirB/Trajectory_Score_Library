@@ -1,0 +1,22 @@
+BPM 90
+
+@insert "inserts/@Circle_Osc.asco.txt" 
+position_init ok
+lcd_spat clear            
+lcd_spat drawpict pattern
+draw_coordinates 1   
+source_syntax 1     
+print_antescofo "Good to go!" 
+
+oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.4
+
+/*oscsend spat1 "127.0.0.1" :4072 "/source/1/xy 1"
+oscsend spat2 "127.0.0.1" :4072 "/source/2/xy 1"
+oscsend spat3 "127.0.0.1" :4072 "/source/3/xy 1"
+oscsend spat4 "127.0.0.1" :4072 "/source/4/xy 1"*/
+
+::circle1(0, 2, 1, 0, 0, 4, 4) 
+16
+::circle2( 1, 2+1, 0.5, 1.5, 0, 1, 4) 
+

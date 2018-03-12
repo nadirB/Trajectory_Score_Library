@@ -36,6 +36,11 @@
 
 
 
+
+
+
+
+
 @proc_def ::lissajou($cmd, $initT, $endT, $a, $b, $m, $n, $count, $SPEED)
 
 {	
@@ -46,16 +51,16 @@
 	@local $cpt
 	$cpt := 0
     
-    loop pi $SPEED + 0.02s
+    loop pi $SPEED
 	{
 		;abort lissajou_curve
 
 	$cpt := $cpt + 1
 
-		curve lissajou_curve @grain := 0.02s 
+		curve lissajou_curve @grain := 0.01s 
 						@Action := {
 								
-								@command($cmd) xy @X($a, $m, $t) @Y($b, $n, $t)    
+								@command($cmd) @X($a, $m, $t) @Y($b, $n, $t)    
 							}
 
 		{

@@ -1,16 +1,16 @@
 @global $pi
-$pi := 3.141592653589793
+		$pi := 3.141592653589793
 
 @local $alpha
-$alpha := 0.
+	   $alpha := 0.
 
 
 @fun_def @rad2deg($alpha) {
 
 	($alpha*180)/$pi
+
 }
 
-//////////////////////////////////////////////////////////////
 
 
 
@@ -18,28 +18,29 @@ $alpha := 0.
 
 {
 
-		loop rectiligne_angle $speed + 0.01s
+		loop rectiligne_angle $speed
 
 		{
 
 
-				curve  spat_angle_deg @grain := 0.01s @Action := { @command($spat) ad  $azim  $distance }
+				curve  spat_angle_deg @grain := 0.01s @Action := { @command($spat) $azim  $distance }
 
 
-				{	$azim, $distance
+				{	
+					$azim, $distance
 
-													{		  	   		 { $initAz, $initDist}
+													{		  	   { $initAz, $initDist}
 					  		  								$speed { $Az, $Dist}
 
 													}
 
 				}
 
-				print_message $Az
+					print_message $Az
 
 
 
-		 } during[ $count#]
+		} during[ $count#]
 
 
 }

@@ -2,13 +2,19 @@ BPM 10
 
 @insert "inserts/@speakers_position.asco.txt"
 
- OPER numspeakers 8, speaker 1 name TpFL, speaker 2 name TpFR, speaker 3 name TpBR, speaker 4 name TpBL, speaker 5 name BtFL, speaker 6 name BtFR, speaker 7 name BtBR, speaker 8 name BtBL
+
+
+Speaker_label octo
 ::SpeakersConfig($octo)
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.6
 
 lcd_spat clear
 lcd_spat drawpict pattern
 
 draw_coordinates 2
+
 
 /*
 
@@ -51,7 +57,7 @@ z = cos(3t)
 		curve parametric_curve @grain := 0.01s 
 						@Action := {
 								
-								@command($cmd) xyz @X($t, $offsetX) @Y($t,$offsetY) @Z($t,$offsetZ)
+								@command($cmd) @X($t, $offsetX) @Y($t,$offsetY) @Z($t,$offsetZ)
 							}
 
 		{
@@ -73,7 +79,7 @@ z = cos(3t)
 
 ; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
 
-::D3("spat1", 0, 1, 0, 0, 0, 2)
+::D3("spat5", 0, 1, 0, 0, 0, 2)
 
  Event 1 d_02
 
@@ -82,4 +88,4 @@ lcd_spat drawpict pattern
 
 ; ::3d_01($cmd, $initT, $endT, $offsetX, $offsetY, $offsetZ, $speed)
 
-::D3("spat1", 0, 1, 1, 1, 0, 2)
+::D3("spat5", 0, 1, 1, 1, 0, 2)

@@ -1,12 +1,20 @@
 BPM 30
 
-OPER numspeakers 16
+@insert "inserts/@speakers_position.asco.txt"
 
-position_init bang
+
+ Speaker_label seven_one
+::SpeakersConfig($seven_one)
+
+ oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+spat_zoom 0.393528
+
 lcd_spat clear
 lcd_spat drawpict pattern
 
 draw_coordinates 1
+
+display 0
 
 @global $pi
 $pi := 3.141592653589793
@@ -14,14 +22,19 @@ $pi := 3.141592653589793
 @fun_def X($t) 
 
 { 
+
 	@cos($t) + @cos(7 * $t)/2 + @sin(17 * $t)/3
+
 } 
 
 @fun_def Y($t) 
 
 { 
+
 	@sin($t) + @sin(7 * $t)/2 + @cos(17 * $t)/3 
+
 }
+
 
 @proc_def ::parametric_trajectory_01($cmd, $iniT, $targeT, $count, $speed)
 
@@ -33,10 +46,11 @@ $pi := 3.141592653589793
 	{
 		abort parametric_curve
 
-		curve parametric_curve @grain := 0.02s 
-						@Action := {
+		curve parametric_curve @grain := 0.02s @Action := 
+
+							{
 								
-								@command($cmd) xy @X($t) @Y($t)
+								@command($cmd) @X($t) @Y($t)
 							}
 
 		{
