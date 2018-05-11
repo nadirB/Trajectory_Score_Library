@@ -1,4 +1,4 @@
-# Spat_Trajectory_Score_Library
+# Trajectory_Score_Library
 
 
 A fancy Antescofo Library converting mathematical parametric functions into curves controlling Spat sources' trajectories. 
