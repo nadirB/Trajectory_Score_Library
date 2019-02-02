@@ -19,52 +19,40 @@ display 0
 @global $pi
 $pi := 3.141592653589793
 
-@fun_def X($t) 
-
-{ 
+@fun_def X($t){ 
 
 	@cos($t) + @cos(7 * $t)/2 + @sin(17 * $t)/3
-
 } 
 
-@fun_def Y($t) 
-
-{ 
+@fun_def Y($t) { 
 
 	@sin($t) + @sin(7 * $t)/2 + @cos(17 * $t)/3 
-
 }
 
+@proc_def ::parametric_trajectory_01($cmd, $iniT, $targeT, $count, $speed){	
 
-@proc_def ::parametric_trajectory_01($cmd, $iniT, $targeT, $count, $speed)
-
-{	
-	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@global $speed ; to use for setvar outControl with a whenever{(setvar...== setvar...)}
 	@local $t, $a, $b ; [a,b] est l'intervalle parcouru par le paramètre
 
-	loop pi $speed
-	{
+	loop pi $speed{
 		abort parametric_curve
+		curve parametric_curve @grain := 0.02s @Action := {
+		
+			@command($cmd) @X($t) @Y($t)
+		}
 
-		curve parametric_curve @grain := 0.02s @Action := 
-
-							{
-								
-								@command($cmd) @X($t) @Y($t)
-							}
-
-		{
-			$t
+			{
+				$t
 					{
-							   { ($iniT)  } /*@type "exp"*/
-						$speed { ($targeT) }
+						    { ($iniT)  } /*@type "exp"*/
+				 	     $speed { ($targeT) }
 						
 	
 					}
-		}
+			}
 
 
-	} during[$count#]
+		} during[$count#]
 
 }
 
