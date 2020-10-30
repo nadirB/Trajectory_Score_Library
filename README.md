@@ -1,4 +1,4 @@
-# Spat_Trajectory_Score_Library
+# Trajectory_Score_Library
 
 
 Trajectory Score Library is an Antescofo library of scripts, converting mathematical parametric functions into curves in order to control the Spat5 sources trajectories. These scripts are written in the Antescofo language, a timed synchronous language which allows the use of relative time to synchronize the trajectories with musical events. This language can also provide a convenient way of creating and transmitting automation parameters to the Spat5 through the Open Sound Control protocol implemented in Antescofo. Trajectory Score Library aims to use Max as a unified real-time environment to unite different computer music processes.
