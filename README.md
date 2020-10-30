@@ -16,5 +16,4 @@ Spat Licence : http://forumnet.ircam.fr/ircam-forum-license/?lang=en<br>
 (An Ircam Licence is needed to make work the Spat Viewer)
 
 
-![A screenshot of your theme](https://github.com/nadirB/Spat_Trajectory_Score_Library/blob/master/screen_caps_01.jpg)
-![A screenshot of your theme](https://github.com/nadirB/Spat_Trajectory_Score_Library/blob/master/screen_caps_02.jpg)
+
