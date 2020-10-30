@@ -1,65 +1,59 @@
 BPM 60
 
+
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@curve.asco.txt"
-@insert "inserts/@speakers_position.asco.txt"
-
-position_init ok
-
-oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.6
-
-lcd_spat clear
-lcd_spat drawpict pattern
-source_syntax 2
-
-draw_coordinates 2 ; route ad -> xy data
 
 
-print_message @rad2deg(1/4*$pi)
+@history_clear
+@sources_position(0, 0)
+@viewer_zoom(62)
+@viewer_layout(single)
+@viewer_div(1)
+@viewer_numdiv(16)
+play 0
 
- Event 1 rectiligne_angle_01
 
- oscsend allsource "127.0.0.1" :4072 "/source/*/xy"
-;oscsend source "127.0.0.1" :4072 "/source/[1-4]/aed" 
-allsource 0 0
-
+event 1 rectiligne_angle_01
+@history_clear
 ;::spat_curve($spat, $initAz, $Az,  $initDist, $Dist, $count, $speed)
+
 
 group spat1 {
 
-::spat_curve("spat1", 0, 0,  0, 1., 1, 1)
+::spat_curve(1, 0, 0,  0, 1., 1, 1)
 1
-::spat_curve("spat2", 22.5, 22.5, 0, 1., 1, 1)
+::spat_curve(2, 22.5, 22.5, 0, 1., 1, 1)
 1
-::spat_curve("spat3", 45, 45, 0, 1., 1, 1)
+::spat_curve(3, 45, 45, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 67.5, 67.5, 0, 1., 1, 1)
+::spat_curve(4, 67.5, 67.5, 0, 1., 1, 1)
 1
-::spat_curve("spat1", 90, 90, 0, 1., 1, 1)
+::spat_curve(1, 90, 90, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 112.5, 112.5, 0, 1., 1, 1)
+::spat_curve(2, 112.5, 112.5, 0, 1., 1, 1)
 1
-::spat_curve("spat3", 135, 135, 0, 1., 1, 1)
+::spat_curve(3, 135, 135, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 157.5, 157.5, 0, 1., 1, 1)
+::spat_curve(4, 157.5, 157.5, 0, 1., 1, 1)
 1
-::spat_curve("spat1", 180, 180, 0, 1., 1, 1)
+::spat_curve(1, 180, 180, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 202.5, 202.5, 0, 1., 1, 1)
+::spat_curve(2, 202.5, 202.5, 0, 1., 1, 1)
 1
-::spat_curve("spat3", 225, 225, 0, 1., 1, 1)
+::spat_curve(3, 225, 225, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 247.5, 247.5, 0, 1., 1, 1)
+::spat_curve(4, 247.5, 247.5, 0, 1., 1, 1)
 1
-::spat_curve("spat1", 270, 270, 0, 1., 1, 1)
+::spat_curve(1, 270, 270, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 292.5, 292.5, 0, 1., 1, 1)
+::spat_curve(2, 292.5, 292.5, 0, 1., 1, 1)
 1
-::spat_curve("spat3", 315,315, 0, 1., 1, 1)
+::spat_curve(3, 315,315, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 337.5,337.5, 0, 1., 1, 1)
+::spat_curve(4, 337.5,337.5, 0, 1., 1, 1)
 1
-::spat_curve("spat1", 0, 0,  0, 1., 1, 1)
+::spat_curve(1, 0, 0,  0, 1., 1, 1)
 
 	;...
 }
@@ -71,50 +65,47 @@ print_message "Trajectory Done !"
 
 
 
- Event 1 rectiligne_angle_02
+event 1 rectiligne_angle_02
+@history_clear
 
-lcd_spat clear
-lcd_spat drawpict pattern
-oscsend allsource "127.0.0.1" :4072 "/source/*/xy"
+oscsend allsource "127.0.0.1" :4072 "/source/*/ad"
 allsource 0 0
-
-
 
 ;::spat_curve($spat, $initA, $a, $initD, $d, $count, $speed)
 
 group spat2 {
 
-::spat_curve("spat1", 0, 22.5, 0, 1., 1, 1)
+::spat_curve(1, 0, 22.5, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 0, 45, 0, 1., 1, 1)
+::spat_curve(2, 0, 45, 0, 1., 1, 1)
 1
-::spat_curve("spat3", 0, 67.5, 0, 1., 1, 1)
+::spat_curve(3, 0, 67.5, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 0, 90, 0, 1., 1, 1)
+::spat_curve(4, 0, 90, 0, 1., 1, 1)
 1
-::spat_curve("spat1", 0 , 112.5, 0, 1., 1, 1)
+::spat_curve(1, 0 , 112.5, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 0, 135, 0, 1., 1, 1)
+::spat_curve(2, 0, 135, 0, 1., 1, 1)
 1
-::spat_curve("spat3", 0 , 157.5, 0, 1., 1, 1)
+::spat_curve(3, 0 , 157.5, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 0, 180, 0, 1., 1, 1)
+::spat_curve(4, 0, 180, 0, 1., 1, 1)
 1
-::spat_curve("spat1", 0 , 202.5, 0, 1., 1, 1)
+::spat_curve(1, 0 , 202.5, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 0, 225, 0, 1., 1, 2)
+::spat_curve(2, 0, 225, 0, 1., 1, 2)
 1
-::spat_curve("spat3", 0 , 247.5, 0, 1., 1, 1)
+::spat_curve(3, 0 , 247.5, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 0, 270, 0, 1., 1, 2)
+::spat_curve(4, 0, 270, 0, 1., 1, 2)
 1
-::spat_curve("spat1", 0 , 292.5, 0, 1., 1, 1)
+::spat_curve(1, 0 , 292.5, 0, 1., 1, 1)
 1
-::spat_curve("spat2", 0,315, 0, 1., 1, 2)
+::spat_curve(2, 0,315, 0, 1., 1, 2)
 1
-::spat_curve("spat3", 0 ,337.5, 0, 1., 1, 1)
+::spat_curve(3, 0 ,337.5, 0, 1., 1, 1)
 1
-::spat_curve("spat4", 0, 360, 0, 1., 1, 1)
+::spat_curve(4, 0, 360, 0, 1., 1, 1)
 
 	;...
 }
@@ -124,109 +115,91 @@ group spat2 {
 label "Trajectory Done !"
 print_antescofo "Trajectory Done !"
 
- 
 
- Event  1  rectiligne_angle_03
-
-oscsend source "127.0.0.1" :4072 "/source/1/xy"
-source 0 0
-
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 rectiligne_angle_04
+@history_clear
 
 
-::spat_curve("spat1", 0, @rad2deg(4*$pi), 0, 1., 1, 4)
-
-
- Event 1 rectiligne_angle_04
-
-oscsend allsource "127.0.0.1" :4072 "/source/*/xy"
-;oscsend source "127.0.0.1" :4072 "/source/[1-4]/aed" 
+oscsend allsource "127.0.0.1" :4072 "/source/*/ad"
+;oscsend source "127.0.0.1" :4072 "/source/[1-4]/ad"
 allsource 0 0
-
-lcd_spat clear
-lcd_spat drawpict pattern
 
 ;::spat_curve($spat, $initA, $a, $initD, $d, $count, $speed)
 
 group src4 {
 
-
-::spat_curve("spat1", 0, 0, 0, 1., 1, 2)
+::spat_curve(1, 0, 0, 0, 1., 1, 2)
 2
-::spat_curve("spat2", 0, 45, 0, 1., 1, 2)
+::spat_curve(2, 0, 45, 0, 1., 1, 2)
 2
-::spat_curve("spat3", 0, 90, 0, 1., 1, 2)
+::spat_curve(3, 0, 90, 0, 1., 1, 2)
 2
-::spat_curve("spat4", 0, 135, 0, 1., 1, 2)
+::spat_curve(4, 0, 135, 0, 1., 1, 2)
 2
-::spat_curve("spat1", 0, 180, 0, 1., 1, 2)
+::spat_curve(1, 0, 180, 0, 1., 1, 2)
 2
-::spat_curve("spat2", 0, 225, 0, 1., 1, 2)
+::spat_curve(2, 0, 225, 0, 1., 1, 2)
 2
-::spat_curve("spat3", 0, 270, 0, 1., 1, 2)
+::spat_curve(3, 0, 270, 0, 1., 1, 2)
 2
-::spat_curve("spat4", 0, 315, 0, 1., 1, 2)
+::spat_curve(4, 0, 315, 0, 1., 1, 2)
 2
-::spat_curve("spat1", 0, 360, 0, 1., 1, 2)
+::spat_curve(1, 0, 360, 0, 1., 1, 2)
 
 	;...
 }
 
- Event 1 rectiligne_angle_05
+event 1 rectiligne_angle_05
+@history_clear
 
-speakers_label quad
-::SpeakersConfig($quad)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+oscsend allsource "127.0.0.1" :4072 "/source/*/ad"
+;oscsend source "127.0.0.1" :4072 "/source/[1-4]/ad"
+allsource 0 0
 
 group src4 {
 
-::spat_curve("spat1", 0, 0, 0, 1., 1, 2)
+::spat_curve(1, 0, 0, 0, 1., 1, 2)
 2
-::spat_curve("spat2", 0, -45, 0, 1., 1, 2)
+::spat_curve(2, 0, -45, 0, 1., 1, 2)
 2
-::spat_curve("spat3", 0, -90, 0, 1., 1, 2)
+::spat_curve(3, 0, -90, 0, 1., 1, 2)
 2
-::spat_curve("spat4", 0, -135, 0, 1., 1, 2)
+::spat_curve(4, 0, -135, 0, 1., 1, 2)
 2
-::spat_curve("spat1", 0, -180, 0, 1., 1, 2)
+::spat_curve(1, 0, -180, 0, 1., 1, 2)
 2
-::spat_curve("spat2", 0, -225, 0, 1., 1, 2)
+::spat_curve(2, 0, -225, 0, 1., 1, 2)
 2
-::spat_curve("spat3", 0, -270, 0, 1., 1, 2)
+::spat_curve(3, 0, -270, 0, 1., 1, 2)
 2
-::spat_curve("spat4", 0, -315, 0, 1., 1, 2)
+::spat_curve(4, 0, -315, 0, 1., 1, 2)
 2
-::spat_curve("spat1", 0, -360, 0, 1., 1, 2)
+::spat_curve(1, 0, -360, 0, 1., 1, 2)
 
 	;...
 }
 
-Event 1 rectiligne_angle_06
+event 1 rectiligne_angle_06
+@history_clear
 
-lcd_spat clear
-lcd_spat drawpict pattern
+
 
 ;::spat_curve($spat, $initA, $a, $initD, $d, $speed, $tempo)
 
-::spat_curve("spat1", 90, -90, 1, 2, 1, 4)
+::spat_curve(1, 90, -90, 1, 2, 1, 4)
 4
-::spat_curve("spat2", -90, 135, 2, 0.5, 1, 2)
+::spat_curve(2, -90, 135, 2, 0.5, 1, 2)
 2
-::spat_curve("spat3", 135, -90, 0.5, 1, 1, 8)
+::spat_curve(3, 135, -90, 0.5, 1, 1, 8)
 8
-::spat_curve("spat4", -90, -200, 1, 0.5, 1, 1) ;
+::spat_curve(4, -90, -200, 1, 0.5, 1, 1) ;
 
 
- Event 1 rectiligne_angle_07
+event 1 rectiligne_angle_07
 
-lcd_spat clear
-lcd_spat drawpict pattern
-
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.4
+@history_clear
+@viewer_zoom(62)
 
 oscsend sources "127.0.0.1" :4072 "/sources/aed"
 sources -90 0. 2 0 0. 2 90 0. 2 180 0. 2
@@ -234,56 +207,58 @@ sources -90 0. 2 0 0. 2 90 0. 2 180 0. 2
 
 ;::spat_curve($spat, $initA, $a, $initD, $d, $speed, $tempo)
 
-0. group src1 {
+group src1 {
+  @history_clear
 
-::spat_curve("spat1", -90, 0, 2, 0.7, 1, 4)
+::spat_curve(1, -90, 0, 2, 0.7, 1, 4)
 
-::spat_curve("spat2", -90, 45, 2, 0.7, 1, 4)
+::spat_curve(2, -90, 45, 2, 0.7, 1, 4)
 
-::spat_curve("spat3", -90, 90, 2, 0.7, 1, 4)
+::spat_curve(3, -90, 90, 2, 0.7, 1, 4)
 
-::spat_curve("spat4", -90, 135, 2, 0.7, 1, 4)
+::spat_curve(4, -90, 135, 2, 0.7, 1, 4)
 
 }
 
 4. group src3 {
 
-::spat_curve("spat1", 0, -180, 0.7, 2, 1, 4)
+::spat_curve(1, 0, -180, 0.7, 2, 1, 4)
 
-::spat_curve("spat2", 45, -135, 0.7, 2, 1, 4)
+::spat_curve(2, 45, -135, 0.7, 2, 1, 4)
 
-::spat_curve("spat3", 90, -90, 0.7, 2, 1, 4)
+::spat_curve(3, 90, -90, 0.7, 2, 1, 4)
 
-::spat_curve("spat4", 135, -45, 0.7, 2, 1, 4)
+::spat_curve(4, 135, -45, 0.7, 2, 1, 4)
 
-	;...
+
 }
 
 4. group src4 {
 
-::spat_curve("spat1", 0, 45, -2, 0.7, 1, 4)
+::spat_curve(1, 0, 45, -2, 0.7, 1, 4)
 
-::spat_curve("spat2", 45, 45, -2, 0.7, 1, 4)
+::spat_curve(2, 45, 45, -2, 0.7, 1, 4)
 
-::spat_curve("spat3", 90, 45, -2, 0.7, 1, 4)
+::spat_curve(3, 90, 45, -2, 0.7, 1, 4)
 
-::spat_curve("spat4", 135, 45, -2, 0.7, 1, 4)
+::spat_curve(4, 135, 45, -2, 0.7, 1, 4)
 
 	;...
 }
 
- Event 1 rectiligne_angle_08
- 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 rectiligne_angle_08
+@history_clear
 
+
+play 2
+play_channel 2
 
 ;@proc_def ::spat_curve($spat, $initAz, $az, $initDist, $dist, $count, $speed)
 
-::spat_curve("spat2", 90, -90, 1, 2, 1, 4)
+::spat_curve(2, 90, -90, 1, 2, 1, 4)
 4
-::spat_curve("spat2", -90, -180, 2, 0.5, 1, 4)
+::spat_curve(2, -90, -180, 2, 0.5, 1, 4)
 4
-::spat_curve("spat2", -180, -90, 0.5, 1, 1, 4)
+::spat_curve(2, -180, -90, 0.5, 1, 1, 4)
 4
-::spat_curve("spat2", -90, -265, 1, 0.5, 1, 1)
+::spat_curve(2, -90, -265, 1, 0.5, 1, 1)

@@ -1,9 +1,8 @@
 @global $pi
-		$pi := 3.141592653589793
+$pi := 3.141592653589793
 
 @local $alpha
-	   $alpha := 0.
-
+$alpha := 0.
 
 @fun_def @rad2deg($alpha) {
 
@@ -12,35 +11,31 @@
 }
 
 
+@proc_def ::spat_curve($src, $initAz, $Az, $initDist, $Dist, $count, $speed){
 
+	@local $cpt, $prefix
+	$cpt := 0
 
-@proc_def ::spat_curve($spat, $initAz, $Az,  $initDist, $Dist, $count, $speed)
+	$prefix := "/source/" + $src + "/ad"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
 
-{
+	;abort spat_angle_deg
+	;loop rectiligne_angle ;$speed {
 
-		loop rectiligne_angle $speed
+		curve  spat_angle_deg @grain := 0.01s @Action := { spat5 $azim  $distance }
 
 		{
+			$azim, $distance {
 
+				{ $initAz, $initDist}
+				$speed { $Az, $Dist}
 
-				curve  spat_angle_deg @grain := 0.01s @Action := { @command($spat) $azim  $distance }
+			}
 
+		}
 
-				{	
-					$azim, $distance
+		;print_message $Az
 
-													{		  	   { $initAz, $initDist}
-					  		  								$speed { $Az, $Dist}
+		;} ;during[ $count#]
 
-													}
-
-				}
-
-					print_message $Az
-
-
-
-		} during[ $count#]
-
-
-}
+	}

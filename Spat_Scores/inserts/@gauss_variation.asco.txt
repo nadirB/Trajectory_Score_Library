@@ -6,72 +6,71 @@
 @global $pi
 $pi := 3.141592653589793
 
-@proc_def ::gauss($cmd, $iniT, $targeT, $k, $offset, $SPEED)
+@proc_def ::gauss($src, $iniT, $targeT, $k, $offset, $speed)
+{
 
-{	
-	@local $SPEED
-
-	;loop pi $SPEED
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+	;loop pi $speed
 	;{
-		;abort picurve
+	;abort picurve
 
-		curve picurve @grain := 0.02s 
-						@Action := {
-								$val := ($k * @exp(-0.2*@pow($x, 2)) + $offset)
-								@command($cmd)   $x $val
-							}
-
-		
-
-		
-		
-		{
-			$x
-					{
-								{ ($iniT)  } /*@type "exp"*/
-						$SPEED { ($targeT*($pi)) }
-						
-	
-					}
-		}
-
-
+	curve picurve @grain := 0.02s
+	@Action :=
+	{
+		$val := ($k * @exp(-0.2*@pow($x, 2)) + $offset)
+		spat5   $x $val
 	}
+
+	{
+		$x
+		{
+			{ ($iniT)  } /*@type "exp"*/
+			$speed { ($targeT*($pi)) }
+
+
+		}
+	}
+
+
+	;}
+
+}
+
+
+
+@proc_def ::gauss_variation_01($src, $iniT, $targeT, $k, $offset, $speed)
+
+{
+
+$prefix := "/source/" + $src + "/xy"
+oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+;loop pi $speed
+;{
+;abort picurve
+
+curve picurve @grain := 0.02s
+@Action := {
+$val := ($k / @exp(-0.2*@pow($x, 2)) + $offset)
+spat5   $x $val
+}
+
+
+
+
+
+{
+$x
+{
+{ ($iniT)  }
+$speed { ($targeT*($pi)) }
+
+
+}
+}
+
 
 ;}
 
-
-
-@proc_def ::gauss_variation_01($cmd, $iniT, $targeT, $k, $offset, $SPEED)
-
-{	
-	@local $SPEED
-
-	;loop pi $SPEED
-	;{
-		;abort picurve
-
-		curve picurve @grain := 0.02s 
-						@Action := {
-								$val := ($k / @exp(-0.2*@pow($x, 2)) + $offset)
-								@command($cmd)   $x $val
-							}
-
-		
-
-		
-		
-		{
-			$x
-					{
-								{ ($iniT)  } /*@type "exp"*/
-						$SPEED { ($targeT*($pi)) }
-						
-	
-					}
-		}
-
-
-	}
-
-;}
+}

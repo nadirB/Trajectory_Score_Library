@@ -1,109 +1,101 @@
 BPM 60
 
+
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@hypocycloide.asco.txt"
 
 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.3
-
-position_init ok
-lcd_spat clear
-lcd_spat drawpict pattern
-
-draw_coordinates 1
+@history_clear
+@sources_position(0, 3)
+@viewer_zoom(45)
+@viewer_div(0)
+@viewer_numdiv(16)
 
 
- Event 1 hypocycloide1_01
+ event 1 hypocycloide1_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
 ;::hypocycloide1($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
 
-::hypocycloide1("spat1", 0, 2, 0.3, 0.3, 0, 0,  4)
+::hypocycloide1(1, 0, 2, 0.3, 0.3, 0, 0,  4)
 
-::hypocycloide1("spat2", 0, 2, 0.4, 0.4, 0, -0.2,  4)
+::hypocycloide1(2, 0, 2, 0.4, 0.4, 0, -0.2,  4)
 
-::hypocycloide1("spat3", 0, 2, 0.5, 0.5, 0, -0.4,  4)
+::hypocycloide1(3, 0, 2, 0.5, 0.5, 0, -0.4,  4)
 
-::hypocycloide1("spat4", 0, 2, 0.6, 0.6, 0, -0.6,  4)
+::hypocycloide1(4, 0, 2, 0.6, 0.6, 0, -0.6,  4)
 
- Event 1 hypocycloide1_02
+ event 1 hypocycloide1_02
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
 ; ::hypocycloide2($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
 
-::hypocycloide1("spat1", 0, 2, -0.1, 0.2, 1, 0, 4)
+::hypocycloide1(1, 0, 2, -0.1, 0.2, 1, 0, 4)
 
-::hypocycloide1("spat2", 0, 2, -0.2, 0.3, 0, 1,  4)
+::hypocycloide1(2, 0, 2, -0.2, 0.3, 0, 1,  4)
 
-::hypocycloide1("spat3", 0, 2, 0.3, -0.4, 0, -1,  4)
+::hypocycloide1(3, 0, 2, 0.3, -0.4, 0, -1,  4)
 
-::hypocycloide1("spat4", 0, 2, 0.4, -0.5, -1, 0,  4)
+::hypocycloide1(4, 0, 2, 0.4, -0.5, -1, 0,  4)
 
- Event 1 hypocycloide2_01
+ event 1 hypocycloide2_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::hypocycloide2("spat1", 0, 2, 0.3, 0.3, 0, 0,  4)
+::hypocycloide2(1, 0, 2, 0.3, 0.3, 0, 0,  4)
 
-::hypocycloide2("spat2", 0, 2, 0.4, 0.4, 0, -0.2,  4)
+::hypocycloide2(2, 0, 2, 0.4, 0.4, 0, -0.2,  4)
 
-::hypocycloide2("spat3", 0, 2, 0.5, 0.5, 0, -0.4,  4)
+::hypocycloide2(3, 0, 2, 0.5, 0.5, 0, -0.4,  4)
 
-::hypocycloide2("spat4", 0, 2, 0.6, 0.6, 0, -0.6,  4)
+::hypocycloide2(4, 0, 2, 0.6, 0.6, 0, -0.6,  4)
 
- Event 1 hypocycloide2_02
+ event 1 hypocycloide2_02
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::hypocycloide2("spat1", 0, 2, -0.1, 0.2, 1, 0, 4)
+::hypocycloide2(1, 0, 2, -0.1, 0.2, 1, 0, 4)
 
-::hypocycloide2("spat2", 0, 2, -0.2, 0.3, 0, 1,  4)
+::hypocycloide2(2, 0, 2, -0.2, 0.3, 0, 1,  4)
 
-::hypocycloide2("spat3", 0, 2, 0.3, -0.4, 0, -1,  4)
+::hypocycloide2(3, 0, 2, 0.3, -0.4, 0, -1,  4)
 
-::hypocycloide2("spat4", 0, 2, 0.4, -0.5, -1, 0,  4)
+::hypocycloide2(4, 0, 2, 0.4, -0.5, -1, 0,  4)
 
- Event 1 hypocycloide3_01
+ event 1 hypocycloide3_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::hypocycloide3("spat1", 0, 2, 0.3, 0.3, 0, 0,  4)
+::hypocycloide3(1, 0, 2, 0.3, 0.3, 0, 0,  4)
 
-::hypocycloide3("spat2", 0, 2, 0.4, 0.4, 0, -0.2,  4)
+::hypocycloide3(2, 0, 2, 0.4, 0.4, 0, -0.2,  4)
 
-::hypocycloide3("spat3", 0, 2, 0.5, 0.5, 0, -0.4,  4)
+::hypocycloide3(3, 0, 2, 0.5, 0.5, 0, -0.4,  4)
 
-::hypocycloide3("spat4", 0, 2, 0.6, 0.6, 0, -0.6,  4)
+::hypocycloide3(4, 0, 2, 0.6, 0.6, 0, -0.6,  4)
 
-Event 1 hypocycloide3_02
+event 1 hypocycloide3_02
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::hypocycloide3("spat1", 0, 2, -0.1, 0.2, 1, 0, 4)
+::hypocycloide3(1, 0, 2, -0.1, 0.2, 1, 0, 4)
 
-::hypocycloide3("spat2", 0, 2, -0.2, 0.3, 0, 1,  4)
+::hypocycloide3(2, 0, 2, -0.2, 0.3, 0, 1,  4)
 
-::hypocycloide3("spat3", 0, 2, 0.3, -0.4, 0, -1,  4)
+::hypocycloide3(3, 0, 2, 0.3, -0.4, 0, -1,  4)
 
-::hypocycloide3("spat4", 0, 2, 0.4, -0.5, -1, 0,  4)
+::hypocycloide3(4, 0, 2, 0.4, -0.5, -1, 0,  4)
 
-Event 1 hypocycloide_hearts
+event 1 hypocycloide_hearts
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::curvoide("spat1", -1, 1,  0.2, -0.2, 0, 0, 4)
+::curvoide(1, -1, 1,  0.2, -0.2, 0, 0, 4)
 
-::curvoide("spat2", -1, 1,  0.3, -0.3, 0, -0.2, 4)
+::curvoide(2, -1, 1,  0.3, -0.3, 0, -0.2, 4)
 
-::curvoide("spat3", -1, 1,  0.4, -0.4, 0, -0.4, 4)
+::curvoide(3, -1, 1,  0.4, -0.4, 0, -0.4, 4)
 
-::curvoide("spat4", -1, 1,  0.5, -0.5, 0, -0.6, 4)
+::curvoide(4, -1, 1,  0.5, -0.5, 0, -0.6, 4)

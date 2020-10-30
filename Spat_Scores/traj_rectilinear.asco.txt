@@ -1,391 +1,316 @@
 BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@rectilinear.asco.txt"
 
+@init_TSL(65)
+/* @viewer_zoom(65)
+@viewer_div(0)
+@viewer_numdiv(16)
+@viewer_anchors_visible(0)
+@viewer_layout(single)
 
+@history_clear
+@sources_position(0, 0)
+play 0 */
 
-position_init ok
-lcd_spat clear
-lcd_spat drawpict pattern
+;::rectilinear($cmd, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $speed)
 
-draw_coordinates 1
+event 1 rectilinear_01
+; instant points ... ($∂, $ß = 0)
+;(cf. spat_score_figures/spat_rectilinear_figure_I)
 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.393528
-
- Event 1 rectilinear_01 ; instant points ... ($∂, $ß = 0), (cf. spat_score_figures/spat_rectilinear_figure_I)
-
-
-
-;::rectilinear($cmd, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $SPEED)
-
-::rectilinear("spat1", 0, 1,  	-1,  1,   0, 0,   1, 1) 
+::rectilinear(1, 0, 1,-1,  1,   0, 0,   1, 1)
 1
-::rectilinear("spat2", 0, 1,  	 1,  1,   0, 0,   1, 1)
+::rectilinear(2, 0, 1,  	 1,  1,   0, 0,   1, 1)
 1
-::rectilinear("spat3", 0, 1,  	 1, -1,   0, 0,   1, 1)
+::rectilinear(3, 0, 1,  	 1, -1,   0, 0,   1, 1)
 1
-::rectilinear("spat4", 0, 1,    -1, -1,   0, 0,   1, 1)
+::rectilinear(4, 0, 1,    -1, -1,   0, 0,   1, 1)
 
- Event 1 rectilinear_02 ; vectors... (direct to desired point) ($a, $b = 0) & ($∂, $ß ≠ 0) (cf. spat_score_figures/spat_rectilinear_figure_II)
+event 1 rectilinear_02 ; vectors... (direct to desired point) ($a, $b = 0) & ($∂, $ß ≠ 0) (cf. spat_score_figures/spat_rectilinear_figure_II)
 
-OPER source 1 xy -1 1, source 2 xy 1 1, source 3 xy 1 -1 , source 4 xy -1 -1
-OPER zoom 0.6
-::rectilinear("spat1", 1, 0,  0, 0,  -1,  1,  1, 2) 
-::rectilinear("spat2", 1, 0,  0, 0,   1,  1,  1, 2)
-::rectilinear("spat3", 1, 0,  0, 0,   1, -1,  1, 2)
-::rectilinear("spat4", 1, 0,  0, 0,  -1, -1,  1, 2)
+/* OPER /source/1xy -1 1, /source/2/xy 1 1, /source/3/xy 1 -1 , /source/4/xy -1 -1 */
+
+::rectilinear(1, 1, 0,  0, 0,  -1,  1,  1, 2)
+::rectilinear(2, 1, 0,  0, 0,   1,  1,  1, 2)
+::rectilinear(3, 1, 0,  0, 0,   1, -1,  1, 2)
+::rectilinear(4, 1, 0,  0, 0,  -1, -1,  1, 2)
 
 2
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(1, 0, 1,  0, 0,  -1,  1,  1, 2) ; just reverse ($iniT, $targeT) or cf. next event
+::rectilinear(2, 0, 1,  0, 0,   1,  1,  1, 2)
+::rectilinear(3, 0, 1,  0, 0,   1, -1,  1, 2)
+::rectilinear(4, 0, 1,  0, 0,  -1, -1,  1, 2)
 
-::rectilinear("spat1", 0, 1,  0, 0,  -1,  1,  1, 2) ; just reverse ($iniT, $targeT) or cf. next event
-::rectilinear("spat2", 0, 1,  0, 0,   1,  1,  1, 2)
-::rectilinear("spat3", 0, 1,  0, 0,   1, -1,  1, 2)
-::rectilinear("spat4", 0, 1,  0, 0,  -1, -1,  1, 2)
+event 1 rectilinear_03 ; idem vectors... (direct to a desired point) ($a, $b ≠ 0) & ($∂, $ß ≠ 0)
 
- Event 1 rectilinear_03 ; idem vectors... (direct to a desired point) ($a, $b ≠ 0) & ($∂, $ß ≠ 0) 
+::rectilinear(1, 0, 1,  -1,  1,   1, -1,  1, 1) ; when actual position is declared ($∂, $ß) = (-$a, -$b) CHECK !
 
-::rectilinear("spat1", 0, 1,  -1,  1,   1, -1,  1, 1) ; when actual position is declared ($∂, $ß) = (-$a, -$b) CHECK !
-::rectilinear("spat2", 0, 1,   1,  1,  -1, -1,  1, 1)
-::rectilinear("spat3", 0, 1,   1, -1,  -1,  1,  1, 1)
-::rectilinear("spat4", 0, 1,  -1, -1,   1,  1,  1, 1)
+::rectilinear(2, 0, 1,   1,  1,  -1, -1,  1, 1)
+::rectilinear(3, 0, 1,   1, -1,  -1,  1,  1, 1)
+::rectilinear(4, 0, 1,  -1, -1,   1,  1,  1, 1)
 
- Event 1 rectilinear_04 ; instant points ... ($∂, $ß = 0) config I translated
+event 1 rectilinear_04 ; instant points ... ($∂, $ß = 0) config I translated
 
 ;::rectilinear($cmd, $iniT, $targeT, $a, $alpha, $b, $beta, $count, $SPEED)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(1, 0, 1,   0.2,  1,    0,  0,  1, 1) ; A
+::rectilinear(2, 0, 1,   1,   -0.2,  0,  0,  1, 1) ; B
+::rectilinear(3, 0, 1,  -0.2, -1,    0,  0,  1, 1) ; C
+::rectilinear(4, 0, 1,  -1,    0.2,  0,  0,  1, 1) ; D
 
-::rectilinear("spat1", 0, 1,   0.2,  1,    0,  0,  1, 1) ; A
-::rectilinear("spat2", 0, 1,   1,   -0.2,  0,  0,  1, 1) ; B
-::rectilinear("spat3", 0, 1,  -0.2, -1,    0,  0,  1, 1) ; C
-::rectilinear("spat4", 0, 1,  -1,    0.2,  0,  0,  1, 1) ; D
+event 1 rectilinear_05 ; instant points ... ($∂, $ß = 0) config II translated (cf. spat_score_figures/spat_rectilinear_figure_III)
 
- Event 1 rectilinear_05 ; instant points ... ($∂, $ß = 0) config II translated (cf. spat_score_figures/spat_rectilinear_figure_III)
+::rectilinear(1, 0, 1,   0.2,  1,    0, -2,    1, 4)
+::rectilinear(2, 0, 1,   1,   -0.2, -2,  0,    1, 4)
+::rectilinear(3, 0, 1,  -0.2, -1,    0,  2,    1, 4)
+::rectilinear(4, 0, 1,  -1,    0.2,  2,  0,    1, 4)
 
-::rectilinear("spat1", 0, 1,   0.2,  1,    0, -2,    1, 4) 
-::rectilinear("spat2", 0, 1,   1,   -0.2, -2,  0,    1, 4)
-::rectilinear("spat3", 0, 1,  -0.2, -1,    0,  2,    1, 4)
-::rectilinear("spat4", 0, 1,  -1,    0.2,  2,  0,    1, 4)
+event 1 rectilinear_06 ; instant points ... ($∂, $ß = 0) config III
 
- Event 1 rectilinear_06 ; instant points ... ($∂, $ß = 0) config III
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1,  1,  1,  0, 0,  1, 1) 
+::rectilinear(1, 0, 1,  1,  1,  0, 0,  1, 1)
 1
-::rectilinear("spat2", 0, 1,  1, -1,  0, 0,  1, 1)
+::rectilinear(2, 0, 1,  1, -1,  0, 0,  1, 1)
 1
-::rectilinear("spat3", 0, 1, -1, -1,  0, 0,  1, 1)
+::rectilinear(3, 0, 1, -1, -1,  0, 0,  1, 1)
 1
-::rectilinear("spat4", 0, 1, -1,  1,  0, 0,  1, 1)
+::rectilinear(4, 0, 1, -1,  1,  0, 0,  1, 1)
 
-Event 1 rectilinear_xy_06  ; vectors... (direct to a desired point : diagonal) config IV
+event 1 rectilinear_xy_06  ; vectors... (direct to a desired point : diagonal) config IV
 
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 1, 0,  0, 0,  1,  1,  1, 1) ; diagonal, ($∂, $ß = vecteurs)
+::rectilinear(1, 1, 0,  0, 0,  1,  1,  1, 1) ; diagonal, ($∂, $ß = vecteurs)
 1
-::rectilinear("spat2", 1, 0,  0, 0,  1, -1,  1, 1)
+::rectilinear(2, 1, 0,  0, 0,  1, -1,  1, 1)
 1
-::rectilinear("spat3", 1, 0,  0, 0, -1, -1,  1, 1)
+::rectilinear(3, 1, 0,  0, 0, -1, -1,  1, 1)
 1
-::rectilinear("spat4", 1, 0,  0, 0, -1,  1,  1, 1)
+::rectilinear(4, 1, 0,  0, 0, -1,  1,  1, 1)
 
-Event 1 rectilinear_xy_07  ; vectors... (direct to a desired point : diagonal) config IV return ticket
+event 1 rectilinear_xy_07  ; vectors... (direct to a desired point : diagonal) config IV return ticket
 
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 1, 0,  0, 0,  1, 1,  1, 1) 
+::rectilinear(1, 1, 0,  0, 0,  1, 1,  1, 1)
 
 1
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(1, 0, 1,  0, 0,   1,  1,   1, 1) ; return ticket
 
-::rectilinear("spat1", 0, 1,  0, 0,   1,  1,   1, 1) ; return ticket
-
-::rectilinear("spat2", 1, 0,  0, 0,   1, -1,   1, 1)
+::rectilinear(2, 1, 0,  0, 0,   1, -1,   1, 1)
 
 1
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(2, 0, 1,  0, 0,   1, -1,   1, 1) ;return ticket
 
-::rectilinear("spat2", 0, 1,  0, 0,   1, -1,   1, 1) ;return ticket
-
-::rectilinear("spat3", 1, 0,  0, 0,  -1, -1,   1, 1)
+::rectilinear(3, 1, 0,  0, 0,  -1, -1,   1, 1)
 
 1
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(3, 0, 1,  0, 0,  -1, -1,  1, 1) ;return ticket
 
-::rectilinear("spat3", 0, 1,  0, 0,  -1, -1,  1, 1) ;return ticket
-
-::rectilinear("spat4", 1, 0,  0, 0,  -1,  1,  1, 1)
+::rectilinear(4, 1, 0,  0, 0,  -1,  1,  1, 1)
 
 1
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(4, 0, 1,  0, 0,  -1,  1,   1, 1) ;return ticket
 
-::rectilinear("spat4", 0, 1,  0, 0,  -1,  1,   1, 1) ;return ticket
 
-1
+event 1 rectilinear_xy_08
 
-lcd_spat clear
-lcd_spat drawpict pattern
+; diagonal + offset  config V
+;($∂, $ß = vecteurs)
 
- Event 1 rectilinear_xy_08 ; diagonal + offset  config V
+::rectilinear(1,  0.1, 1,  0, 0,    1,  1,   1, 1) ;
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(2, -0.2, 1,  0, 0,    1, -1,   1, 1)
 
-::rectilinear("spat1",  0.1, 1,  0, 0,    1,  1,   1, 1) ;  ($∂, $ß = vecteurs)
+::rectilinear(3,  0.3, 1,  0, 0,   -1, -1,   1, 1)
 
-::rectilinear("spat2", -0.2, 1,  0, 0,    1, -1,   1, 1)
+::rectilinear(4,  0.8, 1,  0, 0,   -1,  1,   1, 1)
 
-::rectilinear("spat3",  0.3, 1,  0, 0,   -1, -1,   1, 1)
+event 1 rectilinear_xy_09 ; diagonal + ≠ offset + ≠ target config VI
 
-::rectilinear("spat4",  0.8, 1,  0, 0,   -1,  1,   1, 1)
+::rectilinear(1,  0.1, 0.6,  0, 0,   1,  1,   1, 1) ;  ($∂, $ß = vecteurs)
 
- Event 1 rectilinear_xy_09 ; diagonal + ≠ offset + ≠ target config VI
+::rectilinear(2, -0.2, 1.2,  0, 0,   1, -1,   1, 1)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(3,  0.3, 2,    0, 0,  -1, -1,   1, 1)
 
-::rectilinear("spat1",  0.1, 0.6,  0, 0,   1,  1,   1, 1) ;  ($∂, $ß = vecteurs)
+::rectilinear(4,  0.8, 0.5,  0, 0,  -1,  1,   1, 1) ; backwards
 
-::rectilinear("spat2", -0.2, 1.2,  0, 0,   1, -1,   1, 1)
+event 1 rectilinear_xy_10 ; diagonal + ≠ offset + ≠ target config VII
 
-::rectilinear("spat3",  0.3, 2,    0, 0,  -1, -1,   1, 1)
+::rectilinear(1,  0.,  0.6,  -0.5, 0,   1,  1,   1, 1)
 
-::rectilinear("spat4",  0.8, 0.5,  0, 0,  -1,  1,   1, 1) ; backwards
+::rectilinear(2, -0.2, 1.2,  -0.2, 0,   1, -1,   1, 1)
 
- Event 1 rectilinear_xy_10 ; diagonal + ≠ offset + ≠ target config VII
+::rectilinear(3,  0.3, 2,     0.3, 0,  -1, -1,   1, 1)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(4,  0.8, 0.5,   0.4, 0,  -1,  1,   1, 1)
 
-::rectilinear("spat1",  0.,  0.6,  -0.5, 0,   1,  1,   1, 1) 
-
-::rectilinear("spat2", -0.2, 1.2,  -0.2, 0,   1, -1,   1, 1)
-
-::rectilinear("spat3",  0.3, 2,     0.3, 0,  -1, -1,   1, 1)
-
-::rectilinear("spat4",  0.8, 0.5,   0.4, 0,  -1,  1,   1, 1) 
-
-Event 1 rectilinear_xy_11 ;escalier
+event 1 rectilinear_xy_11 ;escalier
 
 ;::rectilinear($cmd, $iniT, $targeT, $a, $alpha, $b, $beta, $count, $SPEED)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(1, 0, 1, 	0,   0, 	0.2,  0, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.2, 0.,  	0,    0.2, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.2, 0.2, 	0.2,  0, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.4, 0.2, 	0,    0.2, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.4, 0.4, 	0.2,  0., 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.6, 0.4, 	0.,   0.2, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.6, 0.6, 	0.2,  0., 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.8, 0.6, 	0.,   0.2, 	1, 1)
 
-::rectilinear("spat1", 0, 1, 	0,   0, 	0.2,  0, 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.2, 0.,  	0,    0.2, 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.2, 0.2, 	0.2,  0, 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.4, 0.2, 	0,    0.2, 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.4, 0.4, 	0.2,  0., 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.6, 0.4, 	0.,   0.2, 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.6, 0.6, 	0.2,  0., 	1, 1)
-1
-::rectilinear("spat1", 0, 1, 	0.8, 0.6, 	0.,   0.2, 	1, 1)
+event 1 rectilinear_xy_11 ; square 1*4
 
-Event 1 rectilinear_xy_11 ; square 1*4
+::rectilinear(1, 0, 1, -1,  1,  	2,  0, 	1, 1)
+1
+::rectilinear(1, 0, 1,  1,  1, 	0, -2, 	1, 1)
+1
+::rectilinear(1, 0, 1,  1, -1,  -2, 	0, 	1, 1)
+1
+::rectilinear(1, 0, 1, -1, -1,   0, 	2, 	1, 1)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 rectilinear_xy_12 ; horizontal butterfly
 
-::rectilinear("spat1", 0, 1, -1,  1,  	2,  0, 	1, 1)
+::rectilinear(1, 0, 1,   1,  1,   0, -2,   1, 1)
 1
-::rectilinear("spat1", 0, 1,  1,  1, 	0, -2, 	1, 1)
+::rectilinear(1, 0, 1,   1, -1,  -2,  2,   1, 1)
 1
-::rectilinear("spat1", 0, 1,  1, -1,  -2, 	0, 	1, 1)
+::rectilinear(1, 0, 1,  -1,  1,   0, -2,   1, 1)
 1
-::rectilinear("spat1", 0, 1, -1, -1,   0, 	2, 	1, 1)
-
-Event 1 rectilinear_xy_12 ; horizontal butterfly
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1,   1,  1,   0, -2,   1, 1)
-1
-::rectilinear("spat1", 0, 1,   1, -1,  -2,  2,   1, 1)
-1
-::rectilinear("spat1", 0, 1,  -1,  1,   0, -2,   1, 1)
-1
-::rectilinear("spat1", 0, 1,  -1, -1,   2,  2,   1, 1)
+::rectilinear(1, 0, 1,  -1, -1,   2,  2,   1, 1)
 
 
-Event 1 rectilinear_xy_13 ; vertical butterfly
+event 1 rectilinear_xy_13 ; vertical butterfly
 
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1,  -1,  1,    2,  0,   1, 1)
+::rectilinear(1, 0, 1,  -1,  1,    2,  0,   1, 1)
 1
-::rectilinear("spat1", 0, 1,   1,  1,   -2, -2,   1, 1)
+::rectilinear(1, 0, 1,   1,  1,   -2, -2,   1, 1)
 1
-::rectilinear("spat1", 0, 1,  -1, -1,    2,  0,   1, 1)
+::rectilinear(1, 0, 1,  -1, -1,    2,  0,   1, 1)
 1
-::rectilinear("spat1", 0, 1,   1, -1,   -2,  2,   1, 1)
+::rectilinear(1, 0, 1,   1, -1,   -2,  2,   1, 1)
 
 
-Event 1 rectilinear_xy_14 ; clockwise butterfly
+event 1 rectilinear_xy_14 ; clockwise butterfly
 
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat2", 0, 1,   0,  1.,   1, -1,   1, 1)
-1 
-::rectilinear("spat2", 0, 1,   1,  0,   -2,  0,   1, 1)
+::rectilinear(2, 0, 1,   0,  1.,   1, -1,   1, 1)
 1
-::rectilinear("spat2", 0, 1,  -1,  0,    1, -1,   1, 1)
+::rectilinear(2, 0, 1,   1,  0,   -2,  0,   1, 1)
 1
-::rectilinear("spat2", 0, 1,   0, -1,    0,  2,   1, 1)
-
-Event 1 rectilinear_xy_butterflys 
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-0. group   {
-	
-::rectilinear("spat1", 0, 1,  -1,  0,   1,  1,   1, 1)
-1 
-::rectilinear("spat1", 0, 1,   0,  1,   0, -2,   1, 1)
+::rectilinear(2, 0, 1,  -1,  0,    1, -1,   1, 1)
 1
-::rectilinear("spat1", 0, 1,   0, -1.,  1,  1,   1, 1)
+::rectilinear(2, 0, 1,   0, -1,    0,  2,   1, 1)
+
+event 1 rectilinear_xy_butterflys
+
+0. group one  {
+
+::rectilinear(1, 0, 1,  -1,  0,   1,  1,   1, 1)
 1
-::rectilinear("spat1", 0, 1,   1,  0,  -2,  0,   1, 1)
+::rectilinear(1, 0, 1,   0,  1,   0, -2,   1, 1)
+1
+::rectilinear(1, 0, 1,   0, -1.,  1,  1,   1, 1)
+1
+::rectilinear(1, 0, 1,   1,  0,  -2,  0,   1, 1)
 
 }
 
-0. group   {
-	
-::rectilinear("spat2", 0, 1,   0,  1.,   1, -1,   1, 1)
-1 
-::rectilinear("spat2", 0, 1,   1,  0,   -2,  0,   1, 1)
+0. group two {
+
+::rectilinear(2, 0, 1,   0,  1.,   1, -1,   1, 1)
 1
-::rectilinear("spat2", 0, 1,  -1,  0,    1, -1,   1, 1)
+::rectilinear(2, 0, 1,   1,  0,   -2,  0,   1, 1)
 1
-::rectilinear("spat2", 0, 1,   0, -1,    0,  2,   1, 1)
+::rectilinear(2, 0, 1,  -1,  0,    1, -1,   1, 1)
+1
+::rectilinear(2, 0, 1,   0, -1,    0,  2,   1, 1)
 
 
 }
 
-0. group   {
+0. group three {
 
-::rectilinear("spat3", 0, 1,   1,  0,  -1, -1,   1, 1)
-1 
-::rectilinear("spat3", 0, 1,   0, -1,   0,  2,   1, 1)
+::rectilinear(3, 0, 1,   1,  0,  -1, -1,   1, 1)
 1
-::rectilinear("spat3", 0, 1,   0,  1., -1, -1,   1, 1)
+::rectilinear(3, 0, 1,   0, -1,   0,  2,   1, 1)
 1
-::rectilinear("spat3", 0, 1,  -1,  0,   2,  0,   1, 1)
-	
-}
-
-0. group   {
-
-::rectilinear("spat4", 0, 1,   0, -1.,  -1,  1,   1, 1)
-1 
-::rectilinear("spat4", 0, 1,  -1,  0,    2,  0,   1, 1)
+::rectilinear(3, 0, 1,   0,  1., -1, -1,   1, 1)
 1
-::rectilinear("spat4", 0, 1,   1,  0,   -1,  1,   1, 1)
-1
-::rectilinear("spat4", 0, 1,   0,  1,    0, -2,   1, 1)
-	
-}
-
-Event 1 rectilinear_xy_butterflys_exchange
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-0. group   {
-	
-::rectilinear("spat1", 0, 1,  -1,  0,    1,  1,   1, 1)
- 
-::rectilinear("spat2", 0, 1,   0,  1.,   1, -1,   1, 1)
-
-::rectilinear("spat3", 0, 1,   1,  0,   -1, -1,   1, 1)
-
-::rectilinear("spat4", 0, 1,   0, -1.,  -1,  1,   1, 1)
+::rectilinear(3, 0, 1,  -1,  0,   2,  0,   1, 1)
 
 }
 
-Event 1 rectilinear_xx_02
+0. group  four {
 
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1+1/2,  0, 1,    	 -1, 0,       1, 1)
-
-::rectilinear("spat2", 0, 1+1/4,  1, 0,   		 -2, 0,       1, 1)
-
-::rectilinear("spat3", 0, 1+1/6,  0, -1.,  	 -1, 0,       1, 1)
-
-::rectilinear("spat4", 0, 1/5,    0, (-1)-1/2,  -1, 0,   	  1, 1)
-
-Event 1 rectilinear_yy_02
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1+1/2,  	 1, 0, 		0, -1,  	1, 1)
-
-::rectilinear("spat2", 0, 1+1/4,  	 0, 1, 		0, -2,  	1, 1)
-
-::rectilinear("spat3", 0, 1+1/6,   -1, 0, 		0, -1.,   	1, 1)
-
-::rectilinear("spat4", 0, 1/5,  	-1-1/2, 0, 	0, -1.,   	1, 1)
-
-Event 1 rectilinear_xx_01 ; horizontal rectilinears and sections
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1,  1, 0,  0, 0,  1, 1) ; instant point 1
+::rectilinear(4, 0, 1,   0, -1.,  -1,  1,   1, 1)
 1
-::rectilinear("spat1", 0, 1, -1, 0,  0, 0,  1, 1) ; instant point 2
+::rectilinear(4, 0, 1,  -1,  0,    2,  0,   1, 1)
 1
-::rectilinear("spat1", 0, 1, -1, 0,  1, 0,  1, 4) ; direction 1
+::rectilinear(4, 0, 1,   1,  0,   -1,  1,   1, 1)
+1
+::rectilinear(4, 0, 1,   0,  1,    0, -2,   1, 1)
+
+}
+
+event 1 rectilinear_xy_butterflys_exchange
+
+0. group   {
+
+::rectilinear(1, 0, 1,  -1,  0,    1,  1,   1, 1)
+
+::rectilinear(2, 0, 1,   0,  1.,   1, -1,   1, 1)
+
+::rectilinear(3, 0, 1,   1,  0,   -1, -1,   1, 1)
+
+::rectilinear(4, 0, 1,   0, -1.,  -1,  1,   1, 1)
+
+}
+
+event 1 rectilinear_xx_02
+
+::rectilinear(1, 0, 1+1/2,  0, 1,    	 -1, 0,       1, 1)
+
+::rectilinear(2, 0, 1+1/4,  1, 0,   		 -2, 0,       1, 1)
+
+::rectilinear(3, 0, 1+1/6,  0, -1.,  	 -1, 0,       1, 1)
+
+::rectilinear(4, 0, 1/5,    0, (-1)-1/2,  -1, 0,   	  1, 1)
+
+event 1 rectilinear_yy_02
+
+::rectilinear(1, 0, 1+1/2,  	 1, 0, 		0, -1,  	1, 1)
+
+::rectilinear(2, 0, 1+1/4,  	 0, 1, 		0, -2,  	1, 1)
+
+::rectilinear(3, 0, 1+1/6,   -1, 0, 		0, -1.,   	1, 1)
+
+::rectilinear(4, 0, 1/5,  	-1-1/2, 0, 	0, -1.,   	1, 1)
+
+event 1 rectilinear_xx_01 ; horizontal rectilinears and sections
+
+::rectilinear(1, 0, 1,  1, 0,  0, 0,  1, 1) ; instant point 1
+1
+::rectilinear(1, 0, 1, -1, 0,  0, 0,  1, 1) ; instant point 2
+1
+::rectilinear(1, 0, 1, -1, 0,  1, 0,  1, 4) ; direction 1
 4
-lcd_spat clear
-lcd_spat drawpict pattern
+::rectilinear(1, 0, 1,  0, 0, -1/2, 0, 1, 4) ; direction 2
 
-::rectilinear("spat1", 0, 1,  0, 0, -1/2, 0, 1, 4) ; direction 2
+event 1 rectilinear_yy_01  ; vertical rectilinears and sections
 
- Event 1 rectilinear_yy_01  ; vertical rectilinears and sections
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1,  0,  1,   0, 0,   1, 1)
+::rectilinear(1, 0, 1,  0,  1,   0, 0,   1, 1)
 1
-::rectilinear("spat1", 0, 1,  0, -1,   0, 0,   1, 1)
+::rectilinear(1, 0, 1,  0, -1,   0, 0,   1, 1)
 1
-::rectilinear("spat1", 0, 1,  0, -1,   0, 1,   1, 4)
+::rectilinear(1, 0, 1,  0, -1,   0, 1,   1, 4)
 4
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::rectilinear("spat1", 0, 1,  0, 0,  0, -1/2,  1, 4)
+::rectilinear(1, 0, 1,  0, 0,  0, -1/2,  1, 4)

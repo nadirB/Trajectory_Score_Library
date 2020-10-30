@@ -1,131 +1,88 @@
-BPM 60
+ BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@speakers_position.asco.txt"
-@insert "inserts/@circle.asco.txt"
+@insert "inserts/@circle_osc.asco.txt"
 
-; speaker_syntax : 1 := aed, 2 := xy
-speaker_syntax 1
+@history_clear
+@viewer_div(1)
+@viewer_anchors_visible(0)
+@viewer_zoom(60)
+@speakers(2)
 
-position_init ok
-
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.4
-
-Event 1 stereo
-
- ;Speaker_label  stereo
-
-
- oscsend  Speaker_Num "127.0.0.1" :4072 "/speaker/number"
- Speaker_Num 2
-
-;oscsend  Speaker_Position "127.0.0.1" :4072 "/speakers/aed"
-;Speaker_Position -45 0 2 45 0 2 
-
- Speaker_label stereo
-
+event 1 cue1
 ::SpeakersConfig($stereo)
 
- Event 1 stereo_S
+event 1 stereo_S
 
-Speaker_Num 3
-
- Speaker_label stereo_surround
+@speakers(3)
 ::SpeakersConfig($stereo_surround)
 
- Event 1 quad
+event 1 quad
 
-oscsend speakers_num "127.0.0.1" :4072 "/speaker/number"
-speakers_num  4
-
-;oscsend speakers_label "127.0.0.1" :4072 "/speakers/label"
-;speakers_label  L R Ls Rs
-
- Speaker_label quad
+@speakers(4)
 ::SpeakersConfig($quad)
 
-  Event 1 quad_surround
+event 1 quad_surround
 
- Speaker_label quad_surround
 ::SpeakersConfig($quad_surround)
 
- Event 1 five_one
+event 1 five_one
 
- Speaker_Num 5
+@speakers(5)
 ::SpeakersConfig($five_one)
 
- Event 1 six
+event 1 six
 
- Speaker_label six
+@speakers(6)
 ::SpeakersConfig($six)
 
- Event 1 seven_one
+event 1 seven_one
 
- Speaker_label seven_one
+@speakers(7)
 ::SpeakersConfig($seven_one)
 
- Event 1 octo
+event 1 octo
 
- Speaker_label octo
+@viewer_layout(leftright)
+@speakers(8)
 ::SpeakersConfig($octo)
 
+event 1 nine_one
 
- Event 1 nine_one
-
- Speaker_label nine_one
+@speakers(9)
 ::SpeakersConfig($nine_one)
 
- Event 1 espro
+event 1 espro
 
- Speaker_label espro
+@viewer_zoom(100)
+@speakers(13)
 ::SpeakersConfig($espro)
 
- Event 1 myConfig1
+event 1 myConfig1
 
- Speaker_label myConfig1
+@speakers(16)
 ::SpeakersConfig($myConfig1)
 
- Event 1 myConfig2
+event 1 myConfig2
 
- Speaker_label myConfig2
+@speakers(16)
 ::SpeakersConfig($myConfig2)
 
-Event 1 myConfig3
+event 1 myConfig3
 
- Speaker_label myConfig3
- ::SpeakersConfig($myConfig3)
+@speakers(16)
+::SpeakersConfig($myConfig3)
 
-  Event 1 twentytwo
+event 1 twentytwo
 
- Speaker_label twentytwo
- ::SpeakersConfig($twentytwo)
-
- 
+@speakers(22)
+::SpeakersConfig($twentytwo)
 
 
- /////////////////////////////////////////////////////////////
 
+event 1 XY_SpeakersState
 
-Event 1 XY_SpeakersState
-
-spat_viewer_zoom 0.4
+@viewer_zoom(60)
+@speakers(16)
 ::XY_SpeakersState($myConfig4)
-
-
-
-
-
-//////////////////////////////////////////////////////////////
-
- Event 1 OneSpeakerState
-
-; speaker_syntax : 1 := aed, 2 := xy
-
- Speaker_label mono
-speaker_syntax 2
-
-::circle("spat1", 0.5, 2.5, 0.5, 0, 0, 1, 4)
-::circle("speaker1", 0.5, 2.5, 1, 0, 0, 1, 4)
-
-
-

@@ -1,46 +1,47 @@
  BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@epi_variation.asco.txt"
 
 ;@proc_def ::epi($cmd, $initT, $endT, $m,, $offsetX, $offsetY, $SPEED)
 
-position_init ok
+@history_clear
+@sources_position(90, 2)
+@viewer_zoom(50)
+@viewer_div(1)
+@viewer_numdiv(16)
 
-position_init bang
-lcd_spat clear
-lcd_spat drawpict pattern
+play 0
 
- Event 1 epi_01
+event 1 epi_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::epi("spat1", 0.01, 2, 2*$pi, 0, 0,  32)
+play 2
+play_channel 1
 
- Event 1 epi_02
+::epi(1, 0.01, 2, 2*$pi, 0, 0,  32)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 epi_02
 
-::epi("spat2", 0.01, 2, $pi, 0, 0,  32)
+@history_clear
 
- Event 1 epi_03
+::epi(2, 0.01, 2, $pi, 0, 0,  32)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 epi_03
 
-::epi("spat3", 0.01, 2, 4*$pi, 0, 0,  32)
+@history_clear
 
- Event 1 epi_04
+::epi(3, 0.01, 2, 4*$pi, 0, 0,  32)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 epi_04
 
-::epi("spat4", 0.01, 2, @pow(0.5, 2), 0, 0,  16)
+@history_clear
 
- Event 1 epi_06
+::epi(4, 0.01, 2, @pow(0.5, 2), 0, 0,  16)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 epi_06
 
-::epi("spat1", 0.01, 8, @pow(2, 0.5), 0, 0,  32)
+@history_clear
+
+::epi(1, 0.01, 8, @pow(2, 0.5), 0, 0,  32)

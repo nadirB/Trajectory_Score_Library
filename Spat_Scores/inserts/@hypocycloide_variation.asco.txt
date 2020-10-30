@@ -1,81 +1,51 @@
 /*
-
-
 Une hypocycloïde peut être définie par l'équation paramétrique suivante :
 
-    x ( θ ) = ( R − r ) * cos ⁡ θ + r * cos ⁡ ( R − r / r * θ ) ( 1 ) 
-    y ( θ ) = ( R − r ) * sin ⁡ θ − r * sin ⁡ ( R − r / r * θ ) ( 2 ) 
+x ( θ ) = ( R − r ) * cos ⁡ θ + r * cos ⁡ ( R − r / r * θ ) ( 1 )
+y ( θ ) = ( R − r ) * sin ⁡ θ − r * sin ⁡ ( R − r / r * θ ) ( 2 )
 
 où R est le rayon du cercle de base et r celui du cercle roulant. Avec q = R / r  cette équation peut donc également s'écrire :
 
-    x ( θ ) = r [ ( q − 1 ) cos ⁡ θ + cos ⁡ ( q − 1 ) θ ] 
-    y ( θ ) = r [ ( q − 1 ) sin ⁡ θ − sin ⁡ ( q − 1 ) θ ] 
-
-
-
+x ( θ ) = r [ ( q − 1 ) cos ⁡ θ + cos ⁡ ( q − 1 ) θ ]
+y ( θ ) = r [ ( q − 1 ) sin ⁡ θ − sin ⁡ ( q − 1 ) θ ]
 */
 
 
-
-
 @global $pi
-	$pi := 3.141592653589793
+$pi := 3.141592653589793
 
 
-@fun_def Y($t, $R, $r, $offsetX) 
-
-{ 
-
+@fun_def Y($t, $R, $r, $offsetX){
 	;$r*(($q-1)*@cos($t)) + @cos(($q-1)*$t) + $offsetX
-
 	($R-$r)*@cos($t) + $r*@cos((($R-$r)/$r)*$t) + $offsetX
-} 
-
-/////////////////
-
-@fun_def X( $t, $R, $r, $offsetY) 
-{ 
-	
-
-	;$r*(($q-1)*@sin($t)) - @sin(($q-1)*$t) + $offsetY
-
-	($R-$r)*@sin($t) - $r*@sin((($R-$r)/$r)*$t) + $offsetY
-
 }
 
+@fun_def X( $t, $R, $r, $offsetY){
+	;$r*(($q-1)*@sin($t)) - @sin(($q-1)*$t) + $offsetY
+	($R-$r)*@sin($t) - $r*@sin((($R-$r)/$r)*$t) + $offsetY
+}
 
+@proc_def ::curvoide($src, $initT, $endT, $R, $r, $offsetX, $offsetY, $speed){
 
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
 
-@proc_def ::curvoide($cmd, $initT, $endT, $R, $r, $offsetX, $offsetY, $SPEED)
+	;loop pi $speed @exclusive{
+	;abort parametric_curve
 
-{	
-	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
-	@local $offset
-	$offset := 0.
-    
-    ;loop pi $SPEED @exclusive
-	;{
-		;abort parametric_curve
+	curve parametric_curve @grain := 0.02s @Action := {
 
-		curve parametric_curve @grain := 0.02s 
-						@Action := {
-								
-								@command($cmd)  @X($t, $R, $r, $offsetX) @Y($t, $R, $r, $offsetX)
-							}
+		spat5  @X($t, $R, $r, $offsetX) @Y($t, $R, $r, $offsetX)
+	}
 
-		
-
-		
-		
+	{
+		$t
 		{
-			$t
-					{
-							   { ($initT*$pi)  } /*@type "exp"*/
-						$SPEED { ($endT*$pi) }
-						
-	
-					}
+						 { ($initT*$pi) }
+			$speed { ($endT*$pi) }
+
 		}
+	}
 
 
 	;}

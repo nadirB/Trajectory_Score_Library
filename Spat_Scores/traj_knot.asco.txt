@@ -1,32 +1,29 @@
 BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@knot.asco.txt"
 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.393528
-
-position_init ok
-lcd_spat clear
-lcd_spat drawpict pattern
-
-draw_coordinates 1
+@history_clear
+@sources_position(-90, 1)
+@viewer_zoom(40)
+@viewer_div(0)
+@viewer_numdiv(16)
+play 0
 
 ;@proc_def ::epi($cmd, $initT, $endT, $m,, $offsetX, $offsetY, $SPEED)
 
- Event 1 epi_01
+event 1 epi_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
 ; m = 1/k*2^0.5 et k = 1.75
 
-::knot("spat1", -4, 4, (1/1.75*@pow(2, 0.5)), 0, 0,  16)
+::knot(1, -4, 4, (1/1.75*@pow(2, 0.5)), 0, 0,  16)
 
- Event 1 epi_02
+event 1 epi_02
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
 ; m = 3^0.5/3
 
-::knot("spat2", -2, 2, @pow(3, 0.5/3), 0, 0,  16)
+::knot(2, -2, 2, @pow(3, 0.5/3), 0, 0,  16)

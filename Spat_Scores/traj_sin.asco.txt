@@ -1,53 +1,63 @@
 BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@sin.asco.txt"
 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.393528
-
-position_init ok
-lcd_spat clear
-lcd_spat drawpict pattern
-
-draw_coordinates 1
+@init_TSL(50)
 
 ; ::sin_trajectory($cmd, $iniT, $targeT, $amp, $w, $offset, $SPEED) ;$count
 
- Event 1 sin_01
+event 1 sin_01
 
-$sin_trajectory1 := ::sin_trajectory("spat1", -1, 1, 1, 3, 0.5, 8)
+/* ::sin_trajectory()
+::sin_trajectory(src=4)
+::sin_trajectory(src=4, w=20, speed=5)
+::sin_trajectory(src=4, amp=1.5,  w=20, speed=5) */
 
-$sin_trajectory2 := ::sin_trajectory("spat2", -1, 1, 1, 2, 0, 8)
+$sin_trajectory1 := ::sin_trajectory(1, -2, 2, 1, 3, 0.5, 4)
 
-$sin_trajectory3 := ::sin_trajectory("spat3", -1, 1, 1, 1, -0.5, 8)
+$sin_trajectory2 := ::sin_trajectory(2, -2, 2, 1, 2, 0, 4)
 
-8
+$sin_trajectory3 := ::sin_trajectory(3, -2, 2, 1, 1, -0.5, 4)
 
-$sin_trajectory1 := ::sin_trajectory("spat1", 1, -1, 0.5, 3, 0.5, 8)
+4
+@history_clear
 
-$sin_trajectory2 := ::sin_trajectory("spat2", 1, -1, 0.5, 2, 0, 8)
+$sin_trajectory1 := ::sin_trajectory(1, 2, -2, 0.5, 3, 0.5, 4)
 
-$sin_trajectory3 := ::sin_trajectory("spat3", 1, -1, 0.5, 1, -0.5, 8)
+$sin_trajectory2 := ::sin_trajectory(2, 2, -2, 0.5, 2, 0, 4)
 
- Event 1 sin_02
+$sin_trajectory3 := ::sin_trajectory(3, 2, -2, 0.5, 1, -0.5, 4)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 sin_02
 
-::sin_trajectory("spat2", 0, 1, 0.5, 16, 0, 8)
+@history_clear
+@viewer_zoom(65)
 
- Event 1 sin_03
+::sin_trajectory(1, 0, 1, 0.5, 16, 0, 4)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+event 1 sin_03
 
-::sin_trajectory("spat2", 0, -1, 0.5, 8, 0, 8)
 
- Event 1 sin_04
+@history_clear
+@viewer_zoom(65)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::sin_trajectory(2, 0, -1, 0.5, 8, 0, 4)
 
-::sin_trajectory("spat1", -1, 1, -0.7, 18, 0.5, 16)
+event 1 sin_04
 
-::sin_trajectory("spat3", -1, 1, 0.2, 3, -0.5, 16)
+@history_clear
+@viewer_zoom(50)
+
+::sin_trajectory(1, -1, 1, -0.7, 18, 0.5, 16)
+
+::sin_trajectory(3, -1, 1, 0.2, 3, -0.5, 16)
+
+event 1 sin_05
+
+@history_clear
+@viewer_zoom(100)
+
+::sin_trajectory(1, -1, 1, -0.7, 18, 0., 16)
+
+::sin_trajectory(3, -1, 1, 0.2, 3, 0., 16)

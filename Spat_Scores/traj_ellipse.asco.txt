@@ -1,20 +1,10 @@
 BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@deltoide_variation.asco.txt"
-@insert "inserts/@speakers_position.asco.txt"
 @insert "inserts/@ellipse.asco.txt"
 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.4
-
-position_init ok
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-draw_coordinates 1
-source_syntax 1
-
+@init_TSL(60)
 
 ; ::ellipseAB($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
 
@@ -24,133 +14,74 @@ source_syntax 1
 ; si b > a, --> 2b --> y'y
 
 
- Event 1 ellipse_01
+event 1 ellipse_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@multiplayer(5, 1)
 
-::ellipse("spat1", 0, 2,  2, 0.2, 0, 0, 0, 0,  1, 4)
-::ellipse("spat2", 0, 2,  2, 0.4, 0, 0, 0, 0,  1, 4)
-::ellipse("spat3", 0, 2,  2, 0.8, 0, 0, 0, 0,  1, 4)
-::ellipse("spat4", 0, 2,  2, 1,   0, 0, 0, 0,  1, 4)
+::ellipse(src=1, initT=0, endT=2,  a=2, b=0.2, alpha=0, beta=0, offsetX=0, offsetY=0,  count1=1, speed=4)
 
- Event 1 ellipse_02
+::ellipse(2, 0, 2,  2, 0.4, 0, 0, 0, 0,  1, 4)
 
-lcd_spat clear
-lcd_spat drawpict pattern
+::ellipse(3, 0, 2,  2, 0.8, 0, 0, 0, 0,  1, 4)
 
-::ellipse("spat1", 0, 2, 0.2, 2, 0, 0, 0, 0,  1, 4)
-::ellipse("spat2", 0, 2, 0.4, 2, 0, 0, 0, 0,  1, 4)
-::ellipse("spat3", 0, 2, 0.8, 2, 0, 0, 0, 0,  1, 4)
-::ellipse("spat4", 0, 2, 1,   2, 0, 0, 0, 0,  1, 4)
+::ellipse(4, 0, 2,  2, 1,   0, 0, 0, 0,  1, 4)
 
- Event 1 ellipse_03
+event 1 ellipse_02
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.9
+::ellipse(1, 0, 2, 0.2, 2, 0, 0, 0, 0,  1, 4)
+::ellipse(2, 0, 2, 0.4, 2, 0, 0, 0, 0,  1, 4)
+::ellipse(3, 0, 2, 0.8, 2, 0, 0, 0, 0,  1, 4)
+::ellipse(4, 0, 2, 1,   2, 0, 0, 0, 0,  1, 4)
 
-::ellipse("spat1", 1, 0,  1, 0.2, 0, 0, 0, 0, 1, 4)
-::ellipse("spat2", 1, 0,  1, 0.6, 0, 0, 0, 0, 1, 4)
-::ellipse("spat3", 1, 0,  1, 0.8, 0, 0, 0, 0, 1, 4)
-::ellipse("spat4", 1, 0,  1,   1, 0, 0, 0, 0, 1, 4)
+event 1 ellipse_03
 
- Event 1 ellipse_04
+@history_clear
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@viewer_zoom(90)
 
-::ellipse("spat1", 0, -0.5,  1, 0.2, 0, 0, 0, 0, 1, 4)
-::ellipse("spat2", 0, -0.5,  1, 0.6, 0, 0, 0, 0, 1, 4)
-::ellipse("spat3", 0, -0.5,  1, 0.8, 0, 0, 0, 0, 1, 4)
-::ellipse("spat4", 0, -0.5,  1, 1,   0, 0, 0, 0, 1, 4)
+::ellipse(1, 1, 0,  1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse(2, 1, 0,  1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse(3, 1, 0,  1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse(4, 1, 0,  1,   1, 0, 0, 0, 0, 1, 4)
+
+event 1 ellipse_04
+
+@history_clear
+
+::ellipse(1, 0, -0.5,  1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse(2, 0, -0.5,  1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse(3, 0, -0.5,  1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse(4, 0, -0.5,  1, 1,   0, 0, 0, 0, 1, 4)
+
+event 1 ellipse_05
+
+@history_clear
+
+::ellipse(1, -0.5,  -1, 1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse(2, -0.5,  -1, 1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse(3, -0.5,  -1, 1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse(4, -0.5,  -1, 1, 1,   0, 0, 0, 0, 1, 4)
+
+event 1 ellipse_06
+
+@history_clear
+
+::ellipse(1, 1, 0,  0.2, 1, 0, 0, 0, 0, 1, 4)
+::ellipse(2, 1, 0,  0.6, 1, 0, 0, 0, 0, 1, 4)
+::ellipse(3, 1, 0,  0.8, 1, 0, 0, 0, 0, 1, 4)
+::ellipse(4, 1, 0,  1.0, 1, 0, 0, 0, 0, 1, 4)
 
 
- Event 1 ellipse_05
 
-lcd_spat clear
-lcd_spat drawpict pattern
+Event 1 ellipse_07
 
-::ellipse("spat1", -0.5,  -1, 1, 0.2, 0, 0, 0, 0, 1, 4)
-::ellipse("spat2", -0.5,  -1, 1, 0.6, 0, 0, 0, 0, 1, 4)
-::ellipse("spat3", -0.5,  -1, 1, 0.8, 0, 0, 0, 0, 1, 4)
-::ellipse("spat4", -0.5,  -1, 1, 1,   0, 0, 0, 0, 1, 4)
-
- Event 1 ellipse_06
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::ellipse("spat1", 1, 0,  0.2, 1, 0, 0, 0, 0, 1, 4)
-::ellipse("spat2", 1, 0,  0.6, 1, 0, 0, 0, 0, 1, 4)
-::ellipse("spat3", 1, 0,  0.8, 1, 0, 0, 0, 0, 1, 4)
-::ellipse("spat4", 1, 0,  1.0, 1, 0, 0, 0, 0, 1, 4)
-
- Event 1 ellipse_07
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::ellipse("spat1", 0, -0.5,  0.2, 1, 0, 0, 0, 0,  1, 4)
-::ellipse("spat2", 0, -0.5,  0.6, 1, 0, 0, 0, 0,  1, 4)
-::ellipse("spat3", 0, -0.5,  0.8, 1, 0, 0, 0, 0,  1, 4)
-::ellipse("spat4", 0, -0.5,  1.0, 1, 0, 0, 0, 0,  1, 4)
-
- Event 1 ellipse_08
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::ellipse("spat1", -0.5, -1,  0.2, 1, 0, 0, 0, 0, 1, 4)
-::ellipse("spat2", -0.5, -1,  0.6, 1, 0, 0, 0, 0, 1, 4)
-::ellipse("spat3", -0.5, -1,  0.8, 1, 0, 0, 0, 0, 1, 4)
-::ellipse("spat4", -0.5, -1,  1.0, 1, 0, 0, 0, 0, 1, 4)
-
- Event 1 ellipse_09
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.4
-
-::ellipse("spat1", 0, 2,  2, 0.2,   0,   1,  0, 0,  1, 4)
-::ellipse("spat2", 0, 2,  2, 0.4,   1,   0., 0, 0,  1, 4)
-::ellipse("spat3", 0, 2,  2, 0.8,   0., -1,  0, 0,  1, 4)
-::ellipse("spat4", 0, 2,  2, 1,    -1,   0,  0, 0,  1, 4)
-
- Event 1 ellipse_10
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::ellipse("spat1", 0, 2,  0.2, 2,   0,   1,  0, 0, 1, 4)
-::ellipse("spat2", 0, 2,  0.4, 2,   1,   0., 0, 0, 1, 4)
-::ellipse("spat3", 0, 2,  0.8, 2,   0., -1,  0, 0, 1, 4)
-::ellipse("spat4", 0, 2,  1,   2,  -1,   0,  0, 0, 1, 4)
-
- Event 1 ellipse_11
-
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
 ; ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
 
-::ellipse("spat1", 	0, 2,  	0.2, 2, 	0, 0, 	0, 0,    1, 4)
-::ellipse("spat2", 	0, 2,  	0.4, 2,		0, 1, 	0, 0,    1, 4)
-::ellipse("spat3", 	0, 2,  	0.8, 2, 	1, 0,   0, 0,    1, 4)
-::ellipse("spat4", 	0, 2,  	1,   2, 	-1, 0,   0, 0,    1, 4)
-
-Event 1 ellipse_12
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-; ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
-
-::ellipse("spat1", 	0, 2,  	0.4, 2, 	0, 0, 	0, 0,    1, 4)
-::ellipse("spat2", 	2, 0,  	2,   0.4,	0, 0, 	0, 0,    1, 4)
-::ellipse("spat3", 	0, 2,  	0.8, 2, 	1, 0,   0, 0,    1, 4)
-::ellipse("spat4", 	2, 0,  	1,   2, 	-1, 0,   0, 0,    1, 4)
+::ellipse(1, 	0, 2,  	0.4, 2, 	0, 0, 	0, 0,    1, 4)
+::ellipse(2, 	2, 0,  	2,   0.4,	0, 0, 	0, 0,    1, 4)
+::ellipse(3, 	0, 2,  	0.8, 2, 	1, 0,   0, 0,    1, 4)
+::ellipse(4, 	2, 0,  	1,   2, 	-1, 0,   0, 0,    1, 4)

@@ -11,70 +11,59 @@
 ; $init [0, 2]
 ; $end [0, 2]
 
-@global $pi
-	$pi := 3.141592653589793
-
-@global $r
+@global $pi, $r
+$pi := 3.141592653589793
 $r := 1
 
-
-
-
-@fun_def X($a, $alpha, $t, $offsetX) 
-
-{ 
+@fun_def X($a, $alpha, $t, $offsetX){
 
 	$a*@cos($t) - $alpha*@sin($t) + $offsetX
-} 
 
-/////////////////
+}
 
-@fun_def Y($b, $beta, $t,  $offsetY) 
-{ 
-	
+@fun_def Y($b, $beta, $t,  $offsetY){
 
 	$b*@sin($t) - $beta*@cos($t) + $offsetY
+
 }
 
+@proc_def ::ellipse($src = 0, $initT = 0, $endT=0, $a=0, $b=0, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $count1=0, $speed=0)
 
-
-
-@proc_def ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
-
-{	
-	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
-	@local $offset, $cpt1
+{
+	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset, $cpt1,  $prefix
 	$offset := 0.
 	$cpt1 := 0
-    
-     loop pi $SPEED
-	 {
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+
+
+	loop pi $speed
+	{
 		;abort ellipseAB_curve
-	
+
 		$cpt1 := $cpt1+1
 
-		curve ellipseAB_curve @grain := 0.02s 
-						@Action := {
-								
-								@command($cmd)  @X($a, $alpha, $t, $offsetX) @Y($b, $beta, $t, $offsetY)
-							}
+		curve ellipseAB_curve @grain := 0.02s
+		@Action := {
 
-		
+			spat5 @X($a, $alpha, $t, $offsetX) @Y($b, $beta, $t, $offsetY)
+		}
 
-		
-		
 		{
 			$t
-					{
-							   { ($initT*$pi)  } /*@type "exp"*/
-						$SPEED { ($endT*$pi) }
-						
-	
-					}
+			{
+							 { ($initT*$pi)  } /*@type "exp"*/
+				$speed { ($endT*$pi) }
+
+
+			}
 		}
-			;print_antescofo $cpt1
 
+		;print_antescofo $cpt1
 
-	} during[$count1#]
+		} during[$count1#]
 
-}
+	}

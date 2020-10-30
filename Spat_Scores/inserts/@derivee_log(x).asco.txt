@@ -1,44 +1,29 @@
-@proc_def ::spat_derivee_log($cmd, $init, $a, $offset, $count, $SPEED) ; $x ≠ 0
+@proc_def ::spat_derivee_log($src=1, $init=0, $a=1, $offset=0, $count=1, $speed=4) ; $x ≠ 0
 
-{	
-	@local $SPEED
-	
-	
-	
-	
+{
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
 
-	loop deriveelogCurve $SPEED
+	loop deriveelogCurve $speed
 	{
-		;abort deriveelogCurve
-		lcd_spat clear
-		lcd_spat drawpict pattern
+		$hist:=1
 
-		curve deriveelogCurve @grain := 0.01s 
-				
-					@Action := { 
-						$y := ((1/$x) + $offset) 
-						@command($cmd) $x $y
-					}
+		curve deriveelogCurve @grain := 0.01s
 
-		
-
-		
-		
+		@Action := {
+			$y := ((1/$x) + $offset)
+			spat5 $x $y
+		}
 		{
 			$x
-					{
+			{
 								{ $init  } /*@type "exp"*/
-						$SPEED  { $a }
-						
-	
-					}
+				$speed  { $a }
+
+			}
+
 		}
 
-		
+		} during[$count#]
 
-
-
-
-	} during[$count#]
-
-}
+	}

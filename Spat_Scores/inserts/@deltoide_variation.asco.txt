@@ -1,58 +1,55 @@
 
 
 /*
-    x = 2 a cos ⁡ ( t ) + a cos ⁡ ( 2 t ) 
-    y = 2 a sin ⁡ ( t ) − a sin ⁡ ( 2 t ) 
+x = 2 a cos ⁡ ( t ) + a cos ⁡ ( 2 t )
+y = 2 a sin ⁡ ( t ) − a sin ⁡ ( 2 t )
 */
 
 @global $pi
-	    $pi := 3.141592653589793
-
+$pi := 3.141592653589793
 
 @fun_def X($t,  $r, $offsetX) {
 
 	2 * $r * @cos($t) + $r * @cos(2 * $t) + $offsetX
-} 
+}
 
 /////////////////
 
-@fun_def Y( $t,  $r, $offsetY) { 
-	
+@fun_def Y( $t,  $r, $offsetY) {
+
 	2*$r*@sin($t) - $r*@sin(2*$t) + $offsetY
 
 }
 
 
-@proc_def ::deltoide($cmd, $initT, $endT,  $r, $offsetX, $offsetY, $SPEED)
+@proc_def ::deltoide($src, $initT, $endT,  $r, $offsetX, $offsetY, $SPEED)
 
-{	
-	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
-	@local $offset
-	$offset := 0.
-    
-    ;loop pi $SPEED
+{
+	@local $cpt, $prefix
+	$cpt := 0
+
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+	;loop pi $SPEED
 	;{
-		;abort parametric_curve
+	;abort parametric_curve
 
-		curve parametric_curve @grain := 0.02s @Action := {
-								
-								@command($cmd) @X($t,  $r, $offsetX) @Y($t,  $r, $offsetY)
-							
-							}
+	curve parametric_curve @grain := 0.02s @Action := {
 
-		
+		spat5 @X($t,  $r, $offsetX) @Y($t,  $r, $offsetY)
 
+	}
+
+	{
+		$t
 		{
-			$t
-					{
-							   { ($initT * $pi)  } /*@type "exp"*/
-						$SPEED { ($endT * $pi) }
-						
-	
-					}
+			{ ($initT*$pi)}
+			$SPEED { ($endT*$pi) }
+
+
 		}
-
-
-	;}
+	}
 
 }

@@ -2,7 +2,7 @@
 ;x(t) = rcost
 ;y(t) = rsin3t
 
-; r > 0 
+; r > 0
 ;t = [-pi, pi]
 
 @global $pi
@@ -15,21 +15,21 @@ $m := 1
 
 
 
-@fun_def X( $t, $m, $offsetX) 
-{ 
-	
+@fun_def X( $t, $m, $offsetX)
+{
+
 
 	1/@sin($m*$t) * @cos($t) + $offsetX
 }
 
 
 
-@fun_def Y($t, $m, $offsetY) 
+@fun_def Y($t, $m, $offsetY)
 
-{ 
+{
 
 	1/@sin($m*$t) * @sin($t) + $offsetY
-} 
+}
 
 
 
@@ -40,34 +40,37 @@ $m := 1
 
 
 
-@proc_def ::epi($cmd, $initT, $endT, $m, $offsetX, $offsetY, $SPEED)
+@proc_def ::epi($src, $initT, $endT, $m, $offsetX, $offsetY, $SPEED)
 
-{	
+{
 	@global $SPEED ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	@local $offset
 	$offset := 0.
-    
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
     ;loop pi $SPEED
 	;{
 		abort parametric_curve
 
-		curve parametric_curve @grain := 0.02s 
+		curve parametric_curve @grain := 0.02s
 						@Action := {
-								
-								@command($cmd)  @X($t, $m, $offsetX) @Y($t, $m, $offsetY)
+
+								spat5 @X($t, $m, $offsetX) @Y($t, $m, $offsetY)
 							}
 
-		
 
-		
-		
+
+
+
 		{
 			$t
 					{
 							   { ($initT*$pi)  } /*@type "exp"*/
 						$SPEED { ($endT*$pi) }
-						
-	
+
+
 					}
 		}
 

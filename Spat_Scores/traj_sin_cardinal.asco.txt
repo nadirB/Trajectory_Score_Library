@@ -1,154 +1,135 @@
 BPM 60
 
+@insert "inserts/@iniT.asco.txt"
 @insert "inserts/@sin_cardinal.asco.txt"
- 
- oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
-spat_zoom 0.393528
-;OPER source 1 doppler 1
 
-position_init ok
-lcd_spat clear
-lcd_spat drawpict pattern
 
-draw_coordinates 1
+@history_clear
+@sources_position(-90, 2)
+@viewer_zoom(50)
+@viewer_div(0)
+@viewer_numdiv(16)
+@viewer_anchors_visible(0)
+@player(0,0,0,0)
 
-;@proc_def ::cardinal_trajectory($cmd, $initX, $X, $func, $cycle, $amp, $translate, $SPEED)
+;@proc_def ::cardinal($cmd, $initX, $X, $func, $cycle, $amp, $translate, $SPEED)
 ;	sinc = {1	si x = 0 sinon
 ;          { sin(πx)/πx
 
- Event 1 cardinalX_01
+event 1 cardinalX_01
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
+@player(3, 1, 0.7, 4)
 
-::cardinalX_trajectory("spat1", -2.0, -0.01, @sin, 2, 1, 0, 4)
+;::cardinalX()
+;::cardinalY()
+
+::cardinalX(src=4, initX=-2.0, X=-0.01, func=@sin, cycle=2, amp=1, translate=0, speed=4)
 4
-::cardinalX_trajectory("spat1", 0.01, 2.01, @sin, 2, 1, 0, 4)
-
- Event 1 cardinalX_02
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::cardinalX_trajectory("spat2", -2.0, -0.01, @sin, 2, 1, 0, 4)
+::cardinalX(4, 0.01, 2.01, @sin, 2, 1, 0, 4)
 4
-::cardinalX_trajectory("spat2", 0.01, 2.01, @sin, 2, 1, 0, 4)
+::cardinalX(4, 2.0, -0.01, @sin, -2, 1, 0, 4)
 4
-::cardinalX_trajectory("spat2", 2.0, -0.01, @sin, -2, 1, 0, 4)
+::cardinalX(4, 0.01, -2.01, @sin, -2, 1, 0, 4)
 4
-::cardinalX_trajectory("spat2", 0.01, -2.01, @sin, -2, 1, 0, 4)
+@player(0, 1, 0.7, 4)
 
- Event 1 cardinalX_03
+event 1 cardinalY_07
 
-lcd_spat clear
-lcd_spat drawpict pattern
+;@proc_def ::cardinalY($cmd, $initX, $X, $func, $cycle, $amp, $translate, $SPEED)
 
-::cardinalX_trajectory("spat3", -1.0, -0.01, @sin, 1, 0.3, 0, 4)
+@history_clear
+
+::cardinalY(1, -2.0, -0.01, @sin, 2, 1, 0, 4)
 4
-::cardinalX_trajectory("spat3", 0.01, 1.0, @sin, 1, 0.3, 0, 4)
-
- Event 1 cardinalX_04
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::cardinalX_trajectory("spat4", -1.0, -0.01, @sin, 1, 0.6, 0, 4)
-4
-::cardinalX_trajectory("spat4", 0.01, 1.0, @sin, 1, 0.6, 0, 4)
-
- Event 1 cardinalX_05
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::cardinalX_trajectory("spat1", -1.0, -0.01, @sin, 1, 1, 0, 4)
-4
-::cardinalX_trajectory("spat1", 0.01, 1.0, @sin, 1, 1, 0, 4)
-
- Event 1 cardinalXY_06
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::cardinalX_trajectory("spat1", -1.0, -0.01, @sin, 1, 1, 0, 2)
-2
-::cardinalX_trajectory("spat1", 0.01, 1.01, @sin, 1, 1, 0, 2)
-2
-::cardinalX_trajectory("spat1", 1.0, -0.01, @sin, -1, 1, 0, 2)
-2
-::cardinalX_trajectory("spat1", 0.01, -1.01, @sin, -1, 1, 0, 2)
-2
-::cardinalX_trajectory("spat2", -1.0, -0.01, @sin, -1, 1, 1, 2)
-2
-::cardinalX_trajectory("spat2", 0.01, 1.01, @sin, -1, 1, 1, 2)
-2
-::cardinalX_trajectory("spat2", 1.0, 0.01, @sin, 1, 1, 1, 2)
-2
-::cardinalX_trajectory("spat2", 0.01, -1.01, @sin, 1, 1, 1, 2)
-2
-::cardinalX_trajectory("spat3", 1.0, 0.01, @sin, 1, 1, -1, 2)
-2
-::cardinalX_trajectory("spat3", 0.01, -1.01, @sin, 1, 1, -1, 2)
-2
-::cardinalX_trajectory("spat3", -1.0, -0.01, @sin, -1, 1, -1, 2)
-2
-::cardinalX_trajectory("spat3", 0.01, 1.01, @sin, -1, 1, -1, 2)
-2
-::cardinalY_trajectory("spat2", -1.0, -0.01, @sin, -1, 1, 1, 2)
-2
-::cardinalY_trajectory("spat2", 0.01, 1.01, @sin, -1, 1, 1, 2)
-2
-::cardinalY_trajectory("spat2", 1.0, 0.01, @sin, 1, 1, 1, 2)
-2
-::cardinalY_trajectory("spat2", 0.01, -1.01, @sin, 1, 1, 1, 2)
-2
-::cardinalY_trajectory("spat3", -1.0, -0.01, @sin, -1, 1, -1, 2)
-2
-::cardinalY_trajectory("spat3", 0.01, 1.01, @sin, -1, 1, -1, 2)
-2
-::cardinalY_trajectory("spat3", 1.0, 0.01, @sin, 1, 1, -1, 2)
-2
-::cardinalY_trajectory("spat3", 0.01, -1.01, @sin, 1, 1, -1, 2)
-
-
- Event 1 cardinalY_07
-
-;@proc_def ::cardinalY_trajectory($cmd, $initX, $X, $func, $cycle, $amp, $translate, $SPEED)
-
-lcd_spat clear
-lcd_spat drawpict pattern
-
-::cardinalY_trajectory("spat1", -2.0, -0.01, @sin, 2, 1, 0, 4)
-4
-::cardinalY_trajectory("spat1", 0.01, 2.01, @sin, 2, 1, 0, 4)
+::cardinalY(1, 0.01, 2.01, @sin, 2, 1, 0, 4)
 
 4
-::cardinalY_trajectory("spat1", 2.0, -0.01, @sin, -2, 1, 0, 4)
+::cardinalY(1, 2.0, -0.01, @sin, -2, 1, 0, 4)
 4
-::cardinalY_trajectory("spat1", 0.01, -2.01, @sin, -2, 1, 0, 4)
+::cardinalY(1, 0.01, -2.01, @sin, -2, 1, 0, 4)
 
- Event 1 cardinalY_08
+event 1 cardinalX_02
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::cardinalY_trajectory("spat2", 2.0, 0.01, @sin, 1, 0.5, 0, 4)
+::cardinalX(4, -1.0, -0.01, @sin, 1, 0.6, 0, 4)
 4
-::cardinalY_trajectory("spat2", -0.01, -2.01, @sin, 1, 0.5, 0, 4)
-4
-::cardinalY_trajectory("spat2", -2.0, -0.01, @sin, -1, 0.5, 0, 4)
-4
-::cardinalY_trajectory("spat2", 0.01, 2.01, @sin, -1, 0.5, 0, 4)
+::cardinalX(4, 0.01, 1.0, @sin, 1, 0.6, 0, 4)
 
- Event 1 cardinalY_09
+event 1 cardinalX_05
 
-lcd_spat clear
-lcd_spat drawpict pattern
+@history_clear
 
-::cardinalY_trajectory("spat3", -0.01, -1.0, @sin, -1, 0.5, -0.5, 4)
+::cardinalX(1, -1.0, -0.01, @sin, 1, 1, 0, 4)
 4
-::cardinalY_trajectory("spat3", -1.01, 0.01, @sin, 1, 0.5, -0.5, 4)
+::cardinalX(1, 0.01, 1.0, @sin, 1, 1, 0, 4)
+
+event 1 cardinalXY_06
+
+@history_clear
+
+::cardinalX(1, -1.0, -0.01, @sin, 1, 1, 0, 2)
+2
+::cardinalX(1, 0.01, 1.01, @sin, 1, 1, 0, 2)
+2
+::cardinalX(1, 1.0, -0.01, @sin, -1, 1, 0, 2)
+2
+::cardinalX(1, 0.01, -1.01, @sin, -1, 1, 0, 2)
+2
+::cardinalX(2, -1.0, -0.01, @sin, -1, 1, 1, 2)
+2
+::cardinalX(2, 0.01, 1.01, @sin, -1, 1, 1, 2)
+2
+::cardinalX(2, 1.0, 0.01, @sin, 1, 1, 1, 2)
+2
+::cardinalX(2, 0.01, -1.01, @sin, 1, 1, 1, 2)
+2
+::cardinalX(3, 1.0, 0.01, @sin, 1, 1, -1, 2)
+2
+::cardinalX(3, 0.01, -1.01, @sin, 1, 1, -1, 2)
+2
+::cardinalX(3, -1.0, -0.01, @sin, -1, 1, -1, 2)
+2
+::cardinalX(3, 0.01, 1.01, @sin, -1, 1, -1, 2)
+2
+::cardinalY(2, -1.0, -0.01, @sin, -1, 1, 1, 2)
+2
+::cardinalY(2, 0.01, 1.01, @sin, -1, 1, 1, 2)
+2
+::cardinalY(2, 1.0, 0.01, @sin, 1, 1, 1, 2)
+2
+::cardinalY(2, 0.01, -1.01, @sin, 1, 1, 1, 2)
+2
+::cardinalY(3, -1.0, -0.01, @sin, -1, 1, -1, 2)
+2
+::cardinalY(3, 0.01, 1.01, @sin, -1, 1, -1, 2)
+2
+::cardinalY(3, 1.0, 0.01, @sin, 1, 1, -1, 2)
+2
+::cardinalY(3, 0.01, -1.01, @sin, 1, 1, -1, 2)
+
+
+event 1 cardinalY_08
+
+@history_clear
+
+::cardinalY(2, 2.0, 0.01, @sin, 1, 0.5, 0, 4)
 4
-::cardinalY_trajectory("spat3", 0.01, 1.01, @sin, -1, 0.5, 0.5, 4)
+::cardinalY(2, -0.01, -2.01, @sin, 1, 0.5, 0, 4)
 4
-::cardinalY_trajectory("spat3", 1.0, 0.01, @sin, 1, 0.5, 0.5, 4)
+::cardinalY(2, -2.0, -0.01, @sin, -1, 0.5, 0, 4)
+4
+::cardinalY(2, 0.01, 2.01, @sin, -1, 0.5, 0, 4)
+
+event 1 cardinalY_09
+
+@history_clear
+
+::cardinalY(3, -0.01, -1.0, @sin, -1, 0.5, -0.5, 4)
+4
+::cardinalY(3, -1.01, 0.01, @sin, 1, 0.5, -0.5, 4)
+4
+::cardinalY(3, 0.01, 1.01, @sin, -1, 0.5, 0.5, 4)
+4
+::cardinalY(3, 1.0, 0.01, @sin, 1, 0.5, 0.5, 4)

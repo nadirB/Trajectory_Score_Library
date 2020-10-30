@@ -1,0 +1,145 @@
+BPM 120
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@circle_osc.asco.txt"
+@insert "inserts/@rectilinear.asco.txt"
+@insert "inserts/@lissajou.asco.txt"
+@init_TSL(50)
+
+;::circle(count=1)
+::lissajou(1, 1/3, 3 , 1, -1, 1, 3, 1, 4)
+
+/* group
+{
+  loop square 8
+  {
+    ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, 2)
+    2
+    ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 2)
+    2
+    ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, 2)
+    2
+    ::rectilinear(1, 0, 2, -1, -1,   0, 	1, 	1, 2)
+
+  } during[1]
+} */
+
+/*
+loop square_loop 2 @exclusive {
+
+  group square_01
+  {
+    @macro_def @square_01($dur) {
+
+
+    ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur)
+    $dur
+    ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur)
+    $dur
+    ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1,$dur)
+    $dur
+    ::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur)
+    }
+
+    @square_01(1)
+  }
+
+} //until(expr) */
+
+;kill square_loop
+
+
+
+/* group square_02
+{
+  @macro_def @square_02($dur1,$dur2,$dur3,$dur4) {
+
+  ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur1)
+  $dur1
+  ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+  $dur2
+  ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, $dur3)
+  $dur3
+  ::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+  }
+
+  @square_02(1,1,1,1)
+  ;@square_02(1/3,1/3,1/3,3)
+} */
+
+
+
+/* group square_03
+{
+  @macro_def @square_03() {
+
+  ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, 1/3)
+  1/3
+  ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 1/3)
+  1/3
+  ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, 1/3)
+  1/3
+  ::rectilinear(1, 0, 1, -1, -1,   0, 1, 	1, 3)
+  3
+  ::rectilinear(1, 1, 2, -1, -1,   0, 1, 	1, 1)
+  1
+  ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, 1)
+  1
+  ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 1)
+  1
+  ::rectilinear(1, 0, 1, 1, -1,  -1,  0, 1, 1)
+
+  }
+
+  @square_03
+} */
+
+; ----------- measure 1 --- beat 4
+
+NOTE A#4 1 measure1
+NOTE G5 1
+NOTE D#5 1
+NOTE E5 1
+
+; ----------- measure 2 --- beat 4
+
+
+/* NOTE D5 1 measure2
+NOTE B4 1
+NOTE E5 1
+NOTE G#5 1
+
+
+
+/* NOTE G#5  1/5 measure7
+whenever ($envfol)
+ {
+   ::rectilinear(1, 0, 2, -1, 1, 1, 0, 1, 1/5)
+   1/5
+   ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 1/5)
+   1/5
+   ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, 2/5)
+   2/5
+   ::rectilinear(1, 0, 1,  -1, -1,  0, 	1, 	1, 2)
+   2
+   ::rectilinear(1, 1, 2,  -1, -1,  0, 	1, 	1, 5/6)
+ }
+/* ::rectilinear(1, 0, 2, -1, 1, 1, 0, 1, 1/5)
+1/5
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 1/5)
+1/5
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, 2/5) */
+/*
+NOTE F#5 1/5
+NOTE G#5  1/5
+NOTE F#5 1/5
+
+; ----------- measure 8 --- beat 35/2 ------
+NOTE G5 2 measure8
+;::rectilinear(1, 0, 1,  -1, -1,  0, 	1, 	1, 2)
+
+NOTE D5 1/3
+;::rectilinear(1, 1, 2,  -1, -1,  0, 	1, 	1, 5/6)
+
+NOTE G#5 1/3
+NOTE F5 1/2 */

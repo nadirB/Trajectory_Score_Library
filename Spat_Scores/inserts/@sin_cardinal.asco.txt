@@ -1,37 +1,39 @@
 
-/*la fonction sinus cardinal et ses détournement 
+/*la fonction sinus cardinal et ses détournement
 sinc = {1	si x = 0 sinon
        { sin(πx)/πx */
 
-@proc_def ::cardinalX_trajectory($cmd, $initX, $X, $func, $cycle, $amp, $translate, $SPEED)
+@proc_def ::cardinalX($src=4, $initX=-2.0, $X=-0.01, $func=@sin, $cycle=2, $amp=1, $translate=0, $speed=4)
 
-{	
-	@global $SPEED ; for setvar...
+{
+
 
 	@local $pi
 	$pi := 3.141592653589793
 
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
 	;$x ≠ 0 !
-	
-	
 
-	;loop pi $SPEED
+
+
+	;loop pi $speed
 	;{
 		abort sinicurve
 
-		curve sinicurve @grain := 0.01s 
+		curve sinicurve @grain := 0.01s
 						@Action := {
 								$y := ($func(($cycle*$pi)*$x)/($pi*$x))*($amp)+($translate) ; tweaked sinc function
-								@command($cmd) $x $y 
+								spat5 $x $y
 							}
 
 		{
 			$x
 					{
-								{ $initX  } @type "sine_in_out" 
-						 $SPEED { $X }
-						
-	
+								{ $initX  } @type "sine_in_out"
+						 $speed { $X }
+
+
 					}
 		}
 
@@ -42,35 +44,36 @@ sinc = {1	si x = 0 sinon
 
 
 
-@proc_def ::cardinalY_trajectory($cmd, $initX, $X, $func, $cycle, $amp, $translate, $SPEED)
+@proc_def ::cardinalY($src=1, $initX=-2.0, $X=-0.01, $func=@sin, $cycle=2, $amp=1, $translate=0, $speed=4)
 
-{	
-	@global $SPEED ; for setvar...
+{
+	@global $speed ; for setvar...
 
 	@local $pi
 	$pi := 3.141592653589793
 
 	;$x ≠ 0 !
-	
-	
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
 
-	;loop pi $SPEED
+
+	;loop pi $speed
 	;{
 		abort sinicurve
 
-		curve sinicurve @grain := 0.02s 
+		curve sinicurve @grain := 0.02s
 						@Action := {
 								$y := ($func(($cycle*$pi)*$x)/($pi*$x))*($amp)+($translate)
-								@command($cmd)  $y $x 
+								spat5  $y $x
 							}
 
 		{
 			$x
 					{
 								{ $initX  }  @type "sine_in_out"
-						 $SPEED { $X }
-						
-	
+						 $speed { $X }
+
+
 					}
 		}
 

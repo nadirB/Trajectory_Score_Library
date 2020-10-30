@@ -1,0 +1,55 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@circle_osc.asco.txt"
+
+@init_TSL(50)
+
+
+/* X($t)=$radius*@cos($t) + $offsetX
+Y($t)=$radius*@sin($t) + $offsetY
+
+where:
+$src : The sound source.
+$iniT: Source initial position.
+$targeT: Source target position.
+$r : The circle's radius.
+$offsetX : Circle position according to xx' axe.
+$offsetY: Circle position according to yy' axe.
+$count : N circle loop.
+$speed : The duration of the trajectory.
+*/
+
+event 1 CUE_01
+::circle(src=1, iniT=3/4, targeT=2+3/4, radius=1, offsetX=0, offsetY=0,count=1, speed=4)
+4
+::circle(radius=2)
+/* ::circle(radius=1)
+::circle(radius=0.5)
+::circle(radius=0.3) */
+
+event 1 CUE_02
+$c1 := ::circle(count=2)
+4
+$c1.$radius:=2
+
+event 1 CUE_03
+::circle(offsetX=1)
+/* ::circle(offsetX=-1)
+::circle(offsetY=1)
+::circle(offsetY=-1)
+::circle(offsetX=1,offsetY=-1)
+::circle(offsetX=-1,offsetY=1) */
+
+event 1 CUE_04
+::circle(count=4, speed=1)
+/* ::circle(count=-4)
+::circle(speed=16)
+::circle(speed=0.1) */
+
+event 1 CUE_05
+$c1 := ::circle(count=3)
+4
+$c1.$speed:=2
+2
+$c1.$speed:=16
