@@ -1,0 +1,316 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@rectilinear.asco.txt"
+
+@init_TSL(65)
+/* @viewer_zoom(65)
+@viewer_div(0)
+@viewer_numdiv(16)
+@viewer_anchors_visible(0)
+@viewer_layout(single)
+
+@history_clear
+@sources_position(0, 0)
+play 0 */
+
+;::rectilinear($cmd, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $speed)
+
+event 1 rectilinear_01
+; instant points ... ($∂, $ß = 0)
+;(cf. spat_score_figures/spat_rectilinear_figure_I)
+
+::rectilinear(1, 0, 1,-1,  1,   0, 0,   1, 1)
+1
+::rectilinear(2, 0, 1,  	 1,  1,   0, 0,   1, 1)
+1
+::rectilinear(3, 0, 1,  	 1, -1,   0, 0,   1, 1)
+1
+::rectilinear(4, 0, 1,    -1, -1,   0, 0,   1, 1)
+
+event 1 rectilinear_02 ; vectors... (direct to desired point) ($a, $b = 0) & ($∂, $ß ≠ 0) (cf. spat_score_figures/spat_rectilinear_figure_II)
+
+/* OPER /source/1xy -1 1, /source/2/xy 1 1, /source/3/xy 1 -1 , /source/4/xy -1 -1 */
+
+::rectilinear(1, 1, 0,  0, 0,  -1,  1,  1, 2)
+::rectilinear(2, 1, 0,  0, 0,   1,  1,  1, 2)
+::rectilinear(3, 1, 0,  0, 0,   1, -1,  1, 2)
+::rectilinear(4, 1, 0,  0, 0,  -1, -1,  1, 2)
+
+2
+
+::rectilinear(1, 0, 1,  0, 0,  -1,  1,  1, 2) ; just reverse ($iniT, $targeT) or cf. next event
+::rectilinear(2, 0, 1,  0, 0,   1,  1,  1, 2)
+::rectilinear(3, 0, 1,  0, 0,   1, -1,  1, 2)
+::rectilinear(4, 0, 1,  0, 0,  -1, -1,  1, 2)
+
+event 1 rectilinear_03 ; idem vectors... (direct to a desired point) ($a, $b ≠ 0) & ($∂, $ß ≠ 0)
+
+::rectilinear(1, 0, 1,  -1,  1,   1, -1,  1, 1) ; when actual position is declared ($∂, $ß) = (-$a, -$b) CHECK !
+
+::rectilinear(2, 0, 1,   1,  1,  -1, -1,  1, 1)
+::rectilinear(3, 0, 1,   1, -1,  -1,  1,  1, 1)
+::rectilinear(4, 0, 1,  -1, -1,   1,  1,  1, 1)
+
+event 1 rectilinear_04 ; instant points ... ($∂, $ß = 0) config I translated
+
+;::rectilinear($cmd, $iniT, $targeT, $a, $alpha, $b, $beta, $count, $SPEED)
+
+::rectilinear(1, 0, 1,   0.2,  1,    0,  0,  1, 1) ; A
+::rectilinear(2, 0, 1,   1,   -0.2,  0,  0,  1, 1) ; B
+::rectilinear(3, 0, 1,  -0.2, -1,    0,  0,  1, 1) ; C
+::rectilinear(4, 0, 1,  -1,    0.2,  0,  0,  1, 1) ; D
+
+event 1 rectilinear_05 ; instant points ... ($∂, $ß = 0) config II translated (cf. spat_score_figures/spat_rectilinear_figure_III)
+
+::rectilinear(1, 0, 1,   0.2,  1,    0, -2,    1, 4)
+::rectilinear(2, 0, 1,   1,   -0.2, -2,  0,    1, 4)
+::rectilinear(3, 0, 1,  -0.2, -1,    0,  2,    1, 4)
+::rectilinear(4, 0, 1,  -1,    0.2,  2,  0,    1, 4)
+
+event 1 rectilinear_06 ; instant points ... ($∂, $ß = 0) config III
+
+::rectilinear(1, 0, 1,  1,  1,  0, 0,  1, 1)
+1
+::rectilinear(2, 0, 1,  1, -1,  0, 0,  1, 1)
+1
+::rectilinear(3, 0, 1, -1, -1,  0, 0,  1, 1)
+1
+::rectilinear(4, 0, 1, -1,  1,  0, 0,  1, 1)
+
+event 1 rectilinear_xy_06  ; vectors... (direct to a desired point : diagonal) config IV
+
+::rectilinear(1, 1, 0,  0, 0,  1,  1,  1, 1) ; diagonal, ($∂, $ß = vecteurs)
+1
+::rectilinear(2, 1, 0,  0, 0,  1, -1,  1, 1)
+1
+::rectilinear(3, 1, 0,  0, 0, -1, -1,  1, 1)
+1
+::rectilinear(4, 1, 0,  0, 0, -1,  1,  1, 1)
+
+event 1 rectilinear_xy_07  ; vectors... (direct to a desired point : diagonal) config IV return ticket
+
+::rectilinear(1, 1, 0,  0, 0,  1, 1,  1, 1)
+
+1
+
+::rectilinear(1, 0, 1,  0, 0,   1,  1,   1, 1) ; return ticket
+
+::rectilinear(2, 1, 0,  0, 0,   1, -1,   1, 1)
+
+1
+
+::rectilinear(2, 0, 1,  0, 0,   1, -1,   1, 1) ;return ticket
+
+::rectilinear(3, 1, 0,  0, 0,  -1, -1,   1, 1)
+
+1
+
+::rectilinear(3, 0, 1,  0, 0,  -1, -1,  1, 1) ;return ticket
+
+::rectilinear(4, 1, 0,  0, 0,  -1,  1,  1, 1)
+
+1
+
+::rectilinear(4, 0, 1,  0, 0,  -1,  1,   1, 1) ;return ticket
+
+
+event 1 rectilinear_xy_08
+
+; diagonal + offset  config V
+;($∂, $ß = vecteurs)
+
+::rectilinear(1,  0.1, 1,  0, 0,    1,  1,   1, 1) ;
+
+::rectilinear(2, -0.2, 1,  0, 0,    1, -1,   1, 1)
+
+::rectilinear(3,  0.3, 1,  0, 0,   -1, -1,   1, 1)
+
+::rectilinear(4,  0.8, 1,  0, 0,   -1,  1,   1, 1)
+
+event 1 rectilinear_xy_09 ; diagonal + ≠ offset + ≠ target config VI
+
+::rectilinear(1,  0.1, 0.6,  0, 0,   1,  1,   1, 1) ;  ($∂, $ß = vecteurs)
+
+::rectilinear(2, -0.2, 1.2,  0, 0,   1, -1,   1, 1)
+
+::rectilinear(3,  0.3, 2,    0, 0,  -1, -1,   1, 1)
+
+::rectilinear(4,  0.8, 0.5,  0, 0,  -1,  1,   1, 1) ; backwards
+
+event 1 rectilinear_xy_10 ; diagonal + ≠ offset + ≠ target config VII
+
+::rectilinear(1,  0.,  0.6,  -0.5, 0,   1,  1,   1, 1)
+
+::rectilinear(2, -0.2, 1.2,  -0.2, 0,   1, -1,   1, 1)
+
+::rectilinear(3,  0.3, 2,     0.3, 0,  -1, -1,   1, 1)
+
+::rectilinear(4,  0.8, 0.5,   0.4, 0,  -1,  1,   1, 1)
+
+event 1 rectilinear_xy_11 ;escalier
+
+;::rectilinear($cmd, $iniT, $targeT, $a, $alpha, $b, $beta, $count, $SPEED)
+
+::rectilinear(1, 0, 1, 	0,   0, 	0.2,  0, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.2, 0.,  	0,    0.2, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.2, 0.2, 	0.2,  0, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.4, 0.2, 	0,    0.2, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.4, 0.4, 	0.2,  0., 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.6, 0.4, 	0.,   0.2, 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.6, 0.6, 	0.2,  0., 	1, 1)
+1
+::rectilinear(1, 0, 1, 	0.8, 0.6, 	0.,   0.2, 	1, 1)
+
+event 1 rectilinear_xy_11 ; square 1*4
+
+::rectilinear(1, 0, 1, -1,  1,  	2,  0, 	1, 1)
+1
+::rectilinear(1, 0, 1,  1,  1, 	0, -2, 	1, 1)
+1
+::rectilinear(1, 0, 1,  1, -1,  -2, 	0, 	1, 1)
+1
+::rectilinear(1, 0, 1, -1, -1,   0, 	2, 	1, 1)
+
+event 1 rectilinear_xy_12 ; horizontal butterfly
+
+::rectilinear(1, 0, 1,   1,  1,   0, -2,   1, 1)
+1
+::rectilinear(1, 0, 1,   1, -1,  -2,  2,   1, 1)
+1
+::rectilinear(1, 0, 1,  -1,  1,   0, -2,   1, 1)
+1
+::rectilinear(1, 0, 1,  -1, -1,   2,  2,   1, 1)
+
+
+event 1 rectilinear_xy_13 ; vertical butterfly
+
+::rectilinear(1, 0, 1,  -1,  1,    2,  0,   1, 1)
+1
+::rectilinear(1, 0, 1,   1,  1,   -2, -2,   1, 1)
+1
+::rectilinear(1, 0, 1,  -1, -1,    2,  0,   1, 1)
+1
+::rectilinear(1, 0, 1,   1, -1,   -2,  2,   1, 1)
+
+
+event 1 rectilinear_xy_14 ; clockwise butterfly
+
+::rectilinear(2, 0, 1,   0,  1.,   1, -1,   1, 1)
+1
+::rectilinear(2, 0, 1,   1,  0,   -2,  0,   1, 1)
+1
+::rectilinear(2, 0, 1,  -1,  0,    1, -1,   1, 1)
+1
+::rectilinear(2, 0, 1,   0, -1,    0,  2,   1, 1)
+
+event 1 rectilinear_xy_butterflys
+
+0. group one  {
+
+::rectilinear(1, 0, 1,  -1,  0,   1,  1,   1, 1)
+1
+::rectilinear(1, 0, 1,   0,  1,   0, -2,   1, 1)
+1
+::rectilinear(1, 0, 1,   0, -1.,  1,  1,   1, 1)
+1
+::rectilinear(1, 0, 1,   1,  0,  -2,  0,   1, 1)
+
+}
+
+0. group two {
+
+::rectilinear(2, 0, 1,   0,  1.,   1, -1,   1, 1)
+1
+::rectilinear(2, 0, 1,   1,  0,   -2,  0,   1, 1)
+1
+::rectilinear(2, 0, 1,  -1,  0,    1, -1,   1, 1)
+1
+::rectilinear(2, 0, 1,   0, -1,    0,  2,   1, 1)
+
+
+}
+
+0. group three {
+
+::rectilinear(3, 0, 1,   1,  0,  -1, -1,   1, 1)
+1
+::rectilinear(3, 0, 1,   0, -1,   0,  2,   1, 1)
+1
+::rectilinear(3, 0, 1,   0,  1., -1, -1,   1, 1)
+1
+::rectilinear(3, 0, 1,  -1,  0,   2,  0,   1, 1)
+
+}
+
+0. group  four {
+
+::rectilinear(4, 0, 1,   0, -1.,  -1,  1,   1, 1)
+1
+::rectilinear(4, 0, 1,  -1,  0,    2,  0,   1, 1)
+1
+::rectilinear(4, 0, 1,   1,  0,   -1,  1,   1, 1)
+1
+::rectilinear(4, 0, 1,   0,  1,    0, -2,   1, 1)
+
+}
+
+event 1 rectilinear_xy_butterflys_exchange
+
+0. group   {
+
+::rectilinear(1, 0, 1,  -1,  0,    1,  1,   1, 1)
+
+::rectilinear(2, 0, 1,   0,  1.,   1, -1,   1, 1)
+
+::rectilinear(3, 0, 1,   1,  0,   -1, -1,   1, 1)
+
+::rectilinear(4, 0, 1,   0, -1.,  -1,  1,   1, 1)
+
+}
+
+event 1 rectilinear_xx_02
+
+::rectilinear(1, 0, 1+1/2,  0, 1,    	 -1, 0,       1, 1)
+
+::rectilinear(2, 0, 1+1/4,  1, 0,   		 -2, 0,       1, 1)
+
+::rectilinear(3, 0, 1+1/6,  0, -1.,  	 -1, 0,       1, 1)
+
+::rectilinear(4, 0, 1/5,    0, (-1)-1/2,  -1, 0,   	  1, 1)
+
+event 1 rectilinear_yy_02
+
+::rectilinear(1, 0, 1+1/2,  	 1, 0, 		0, -1,  	1, 1)
+
+::rectilinear(2, 0, 1+1/4,  	 0, 1, 		0, -2,  	1, 1)
+
+::rectilinear(3, 0, 1+1/6,   -1, 0, 		0, -1.,   	1, 1)
+
+::rectilinear(4, 0, 1/5,  	-1-1/2, 0, 	0, -1.,   	1, 1)
+
+event 1 rectilinear_xx_01 ; horizontal rectilinears and sections
+
+::rectilinear(1, 0, 1,  1, 0,  0, 0,  1, 1) ; instant point 1
+1
+::rectilinear(1, 0, 1, -1, 0,  0, 0,  1, 1) ; instant point 2
+1
+::rectilinear(1, 0, 1, -1, 0,  1, 0,  1, 4) ; direction 1
+4
+::rectilinear(1, 0, 1,  0, 0, -1/2, 0, 1, 4) ; direction 2
+
+event 1 rectilinear_yy_01  ; vertical rectilinears and sections
+
+::rectilinear(1, 0, 1,  0,  1,   0, 0,   1, 1)
+1
+::rectilinear(1, 0, 1,  0, -1,   0, 0,   1, 1)
+1
+::rectilinear(1, 0, 1,  0, -1,   0, 1,   1, 4)
+4
+::rectilinear(1, 0, 1,  0, 0,  0, -1/2,  1, 4)

@@ -1,0 +1,83 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@deltoide_variation.asco.txt"
+@insert "inserts/@ellipse.asco.txt"
+
+@sources_position_init
+
+event 1 ellipse_default
+
+::ellipse()
+
+event 1 ellipse_01
+
+; ::ellipseAB($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
+
+;t = [0, 2pi]
+
+; si a > b, on a une ellipse de grand axe 2a porté par x'x
+; si b > a, --> 2b --> y'y
+
+::ellipse(src=1, iniT=0, targeT=2,  a=2, b=0.2, alpha=0, beta=0, offsetX=0, offsetY=0,  count=1, speed=4)
+
+::ellipse(2, 0, 2,  2, 0.4, 0, 0, 0, 0,  1, 4)
+
+::ellipse(3, 0, 2,  2, 0.8, 0, 0, 0, 0,  1, 4)
+
+::ellipse(4, 0, 2,  2, 1,   0, 0, 0, 0,  1, 4)
+
+event 1 ellipse_02
+
+
+
+::ellipse(1, 0, 2, 0.2, 2, 0, 0, 0, 0,  1, 4)
+::ellipse(2, 0, 2, 0.4, 2, 0, 0, 0, 0,  1, 4)
+::ellipse(3, 0, 2, 0.8, 2, 0, 0, 0, 0,  1, 4)
+::ellipse(4, 0, 2, 1,   2, 0, 0, 0, 0,  1, 4)
+
+event 1 ellipse_03
+
+::ellipse(1, 1, 0,  1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse(2, 1, 0,  1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse(3, 1, 0,  1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse(4, 1, 0,  1,   1, 0, 0, 0, 0, 1, 4)
+
+event 1 ellipse_04
+
+
+
+::ellipse(1, 0, -0.5,  1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse(2, 0, -0.5,  1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse(3, 0, -0.5,  1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse(4, 0, -0.5,  1, 1,   0, 0, 0, 0, 1, 4)
+
+event 1 ellipse_05
+
+
+
+::ellipse(1, -0.5,  -1, 1, 0.2, 0, 0, 0, 0, 1, 4)
+::ellipse(2, -0.5,  -1, 1, 0.6, 0, 0, 0, 0, 1, 4)
+::ellipse(3, -0.5,  -1, 1, 0.8, 0, 0, 0, 0, 1, 4)
+::ellipse(4, -0.5,  -1, 1, 1,   0, 0, 0, 0, 1, 4)
+
+event 1 ellipse_06
+
+
+
+::ellipse(1, 1, 0,  0.2, 1, 0, 0, 0, 0, 1, 4)
+::ellipse(2, 1, 0,  0.6, 1, 0, 0, 0, 0, 1, 4)
+::ellipse(3, 1, 0,  0.8, 1, 0, 0, 0, 0, 1, 4)
+::ellipse(4, 1, 0,  1.0, 1, 0, 0, 0, 0, 1, 4)
+
+
+
+Event 1 ellipse_07
+
+
+; ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
+
+::ellipse(1, 	0, 2,  	0.4, 2, 	0, 0, 	0, 0,    1, 4)
+::ellipse(2, 	2, 0,  	2,   0.4,	0, 0, 	0, 0,    1, 4)
+::ellipse(3, 	0, 2,  	0.8, 2, 	1, 0,   0, 0,    1, 4)
+::ellipse(4, 	2, 0,  	1,   2, 	-1, 0,   0, 0,    1, 4)

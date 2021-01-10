@@ -1,0 +1,251 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@rosace_polaire_variation.asco.txt"
+
+
+
+@history_clear
+@sources_position(0, 0)
+@viewer_zoom(67)
+@viewer_div(1)
+@viewer_numdiv(16)
+@viewer_anchors_visible(0)
+play 0
+
+;::rosace_trajectory_variation($cmd, $initC, $cycle, $p, $q, $count, $speed)
+
+event 1 trifolium
+
+@history_clear
+
+;::rosace_trajectory_variation()
+
+;idem
+::rosace_trajectory_variation(1, 0, 2, 1, 2 , 1, 4)
+
+event 1 limacon
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, -2, 1, 4)
+
+event 1 trefle_quatre_feuilles
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, 1, 3 , 1, 8)
+
+event 1 trefle_quatre_feuilles
+
+@history_clear
+
+::rosace_trajectory_variation(4, 0, 2, -1, 3 , 1, 8)
+
+event 1 cinq_feuilles
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, 4, 1, 8)
+
+event 1 cinq_feuilles
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, -1, 4, 1, 8)
+
+event 1 plot_01
+
+@history_clear
+
+ ::rosace_trajectory_variation(3, 0, 2, 1, 5, 1, 8)
+
+event 1 plot_02
+
+@history_clear
+
+::rosace_trajectory_variation(4, 0, 2, -1, 5, 1, 8)
+
+event 1 plot_03
+
+@history_clear
+
+ ::rosace_trajectory_variation(1, 0, 2, 1, 6, 1, 16)
+
+event 1 plot_04
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, 9, 1, 16)
+
+event 1 plot_05
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, 1, 10, 1, 16)
+
+event 1 plot_06
+
+;::rosace_trajectory_variation($src, $initC, $cycle, $p, $q, $count, $speed)
+@history_clear
+::rosace_trajectory_variation(4, 0, 2, 1, 2, 1, 4)
+
+event 1 limacon_02
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, -1, -2, 1, 8)
+
+event 1 folium_Durer
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, -3, 1, 8)
+
+event 1 folium_Durer_trans
+
+@history_clear
+
+ ::rosace_trajectory_variation(3, 0, 2, -1, -3, 1, 8)
+
+event 1 three_fifth
+
+@history_clear
+
+::rosace_trajectory_variation(4, 0, 2, 1, -4, 1, 8)
+
+event 1 two_three
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, -5, 1, 8)
+
+event 1 two_three
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, -6, 1, 8)
+
+event 1 two_three_02
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, 1, -7, 1, 8)
+
+
+event 1 ellipseX
+
+@history_clear
+@viewer_zoom(50)
+
+
+::rosace_trajectory_variation(1, 2, 0, 2, 1, 1, 8)
+
+event 1 ellipseY
+
+@history_clear
+
+::rosace_trajectory_variation(1, 2, 0, -2, 1, 1, 8)
+
+event 1 ellipseX
+
+@history_clear
+
+::rosace_trajectory_variation(3, 2, 0, -2, 2, 1, 8)
+
+event 1 feuilles
+
+@history_clear
+
+::rosace_trajectory_variation(4, 0, 2, 2, 3 , 1, 8)
+
+event 1 feuilles_02
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, -2, 3 , 1, 8)
+
+event 1 _feuilles_03
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 2, -3 , 1, 8)
+
+
+event 1 _t
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, -2, -3 , 1, 8)
+
+event 1 _feuilles
+
+@history_clear
+
+
+::rosace_trajectory_variation(1, 0, 2, -3, -3 , 1, 8)
+
+event 1 cinq_feuilles
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, 4, 1, 8)
+
+event 1 cinq_feuilles_02
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, -1, 4, 1, 8)
+
+event 1 plot_07
+
+@history_clear
+
+::rosace_trajectory_variation(4, 0, 2, 1, 5, 1, 8)
+
+event 1 plot_08
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, -1, 5, 1, 8)
+
+
+event 1 plot_09
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 1, 6, 1, 8)
+
+event 1 plot_10
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, 1, 10, 1, 4)
+
+event 1 plot_11
+
+@history_clear
+
+::rosace_trajectory_variation(4, 0, 2, 1, 30, 1, 8)
+
+; back to circle through these params
+
+event 1 cercle
+
+;::rosace_trajectory_variation($cmd, $initC, $cycle, $p, $q, $SPEED)
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 0, 1 , 1, 8)
+
+event 1 cercle_02
+
+@history_clear
+
+::rosace_trajectory_variation(1, 0, 2, 0, -1 , 1, 8)
+
+event 1 cercle_03
+
+@history_clear
+
+::rosace_trajectory_variation(3, 0, 2, 1, 1 , 1, 8)

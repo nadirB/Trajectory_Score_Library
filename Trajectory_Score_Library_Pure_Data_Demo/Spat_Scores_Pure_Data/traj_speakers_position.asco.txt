@@ -1,0 +1,88 @@
+ BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@speakers_position.asco.txt"
+@insert "inserts/@circle_osc.asco.txt"
+
+@history_clear
+@viewer_div(1)
+@viewer_anchors_visible(0)
+@viewer_zoom(60)
+@speakers(2)
+
+event 1 cue1
+::SpeakersConfig($stereo)
+
+event 1 stereo_S
+
+@speakers(3)
+::SpeakersConfig($stereo_surround)
+
+event 1 quad
+
+@speakers(4)
+::SpeakersConfig($quad)
+
+event 1 quad_surround
+
+::SpeakersConfig($quad_surround)
+
+event 1 five_one
+
+@speakers(5)
+::SpeakersConfig($five_one)
+
+event 1 six
+
+@speakers(6)
+::SpeakersConfig($six)
+
+event 1 seven_one
+
+@speakers(7)
+::SpeakersConfig($seven_one)
+
+event 1 octo
+
+@viewer_layout(leftright)
+@speakers(8)
+::SpeakersConfig($octo)
+
+event 1 nine_one
+
+@speakers(9)
+::SpeakersConfig($nine_one)
+
+event 1 espro
+
+@viewer_zoom(100)
+@speakers(13)
+::SpeakersConfig($espro)
+
+event 1 myConfig1
+
+@speakers(16)
+::SpeakersConfig($myConfig1)
+
+event 1 myConfig2
+
+@speakers(16)
+::SpeakersConfig($myConfig2)
+
+event 1 myConfig3
+
+@speakers(16)
+::SpeakersConfig($myConfig3)
+
+event 1 twentytwo
+
+@speakers(22)
+::SpeakersConfig($twentytwo)
+
+
+
+event 1 XY_SpeakersState
+
+@viewer_zoom(60)
+@speakers(16)
+::XY_SpeakersState($myConfig4)

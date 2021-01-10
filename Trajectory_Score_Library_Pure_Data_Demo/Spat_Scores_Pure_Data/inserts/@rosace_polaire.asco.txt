@@ -1,0 +1,59 @@
+
+;La rosace d'équation polaire r(θ) = a cos(kθ + const.
+; x=cos(kt)sin(t)
+;y = cos(kt)cos(t)
+
+;k réel
+; k rationnel courbe fermée et finie
+;k irrationnel courbe non fermée et infinie
+
+@fun_def X($t, $k)
+
+{
+	@cos($k*$t)*@sin($t)
+}
+
+@fun_def Y($t, $k)
+
+{
+	@cos(-$k*$t)*@cos($t)
+}
+
+@proc_def ::rosace_trajectory($src=4, $initT=0, $targeT=2, $k=2, $count=1, $speed=4) ;$count
+
+{	@global $pi
+
+
+	$pi := 3.141592653589793
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+	loop pi $speed
+	{
+		abort picurve
+
+		curve picurve @grain := 0.01s
+						@Action := {
+
+								spat5  @X($t, $k) @Y($t, $k)
+							}
+
+
+
+
+
+		{
+			$t
+					{
+							   { ($initT*$pi) } /*@type "exp"*/
+						$speed { ($targeT*$pi) }
+
+
+					}
+		}
+
+
+	} during[$count#]
+
+}

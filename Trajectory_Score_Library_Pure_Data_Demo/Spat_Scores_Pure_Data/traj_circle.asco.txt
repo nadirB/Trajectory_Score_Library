@@ -1,0 +1,295 @@
+BPM 60
+
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@circle_osc.asco.txt"
+print_antescofo "Good to go!"
+
+
+;play 0
+
+event 1 CUE_01
+
+::circle(
+  src=1,
+  iniT=0,
+  targeT=-2,
+  radius=0.5,
+  offsetX=0,
+  offsetY=0,
+  count=1,
+  speed=16
+  ) ; 2π := 1 turn anti-clockwise with a radius of 1 during 4 beats
+
+/* 4
+
+
+;::circle(1, 0, -2, 0.5, 0, 0, 1, 16) ; -2π := 1 turn clockwise with a radius of 1 during 4 beats
+
+4 */
+print_antescofo "Trajectory1 Done !"
+
+event 1 multi_circle_01
+
+
+
+::circle(1, 0,  2,  0.3,  0, 0, 1, 4) ; 2π := 1 turn anti-clockwise with a radius of 0.3 during 4 beats
+::circle(2, 0, -1,  0.5,  0, 0, 1, 4) ; -2π * $count(2) := 2 turn clockwise with a radius of 0.5 during 4 beats
+::circle(3, 0,  2,  0.7,  0, 0, 1, 4) ; 2π := 1 turn anti-clockwise with a radius of 0.7 during 4 beats
+
+4
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 multi_circle_02
+
+
+
+::circle(1, 0,   2  ,   1.3,  0,  0,  1, 4) ;2π := 1 turn anti-clockwise with a radius of 1.3 during 4 beats
+::circle(2, 0,   3/4,   1.5,  0,  0,  1, 4) ;3π/4 := go to 135° anti-clockwise (azimuth -45) with a radius of 1.5 during 4 beats
+::circle(3, 0, -11/8,   1.7,  0,  0,  1, 4) ;-11/8π := -247.5° clockwise => by yy' symmetry  => 5π/8 := 112.5° anti-clockwise
+
+event 1 multi_circle_03
+
+::circle(3, 0, @deg2rad(-180), 0.7,  0,  0,  1, 4) ; idem clockwise
+
+;::circle(src=3, iniT=0, targeT=-1, radius=0.7,  offsetX=0,  offsetY=0,  count=1, speed=4) ; idem
+
+::circle(2, 0, @deg2rad(180), 0.7,  0,  0,  1, 4) ; idem anti-clockwise
+
+4
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 circles_05
+
+oscsend sources "127.0.0.1" :4072 "/sources/aed"
+sources -90 0. 2 0 0. 2 90 0. 2 -180 0. 2
+
+::circle(1, -1, 1, 1,   -1, 0,  1, 4);  from π/180°/Az90 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a positive x offset - cf. figure III circle with offsets1
+4
+::circle(2, 1/2, -1-1/2, 1,  0, 1,  1, 4); from (π/2)/90°/Az0 : 1 turn clockwise during 4 beats, with a radius of 1 and a positive y offset
+4
+::circle(3, 0, 2, 1, 1, 0,  1, 4);  from 0/2π/Az90 1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x offset
+4
+::circle(4, 3/2, -2+3/2, 1,  0, -1,  1, 4) ; from (3π/2)/270°/Az-180 1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative y offset
+4
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 circles_06
+
+
+
+::circle(1, -1, 1,      1, -1,   0, 1, 4)
+
+::circle(2, 1/2, -2+1/2,  1,  0,   1, 1, 4)
+
+::circle(3, 0,   2,      1,  1,   0, 1, 4)
+
+::circle(4, 3/2, -2+3/2, 1,  0,  -1, 1, 4)
+
+4
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 circles_07
+
+
+
+oscsend sources "127.0.0.1" :4072 "/sources/aed"
+sources -45 0. 2 45 0. 2 135 0. 2 -135 0. 2
+
+::circle(1, 3/4, 2+3/4, 0.5, -1, 1, 1, 4) ; from 3π/4/ 135°/ Az -45 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x offset and a positive y offset
+
+4
+
+::circle(2, 1/4, 2+1/4, 1.5, 1, 1, 1, 4); from π/4/45°/Az 45 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a positive x and y offset
+4
+
+
+::circle(3, 7/4, 2+7/4, 2, 1, -1, 1, 4) ; from 7π/4/315°/Az 135 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a positive x offset and a negative y offset
+
+4
+
+::circle(4, 5/4, 2+5/4, 2.5, -1, -1, 2, 4) ; from 5π/4/225°/Az -135 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x and y offset
+
+8
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 circles_08
+
+
+::circle(1, 3/4, 2+3/4, 1, -1, 1 , 1, 4)
+
+::circle(2, 1/4, 2+1/4, 1, 1, 1, 1, 4)
+
+::circle(3, 7/4, 2+7/4, 1, 1, -1, 1, 4)
+
+::circle(4, 5/4, 2+5/4, 1, -1, -1, 1, 4)
+
+4
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+
+event 1 arc_01
+
+
+
+::circle(1, 0,  1/4, 1, 0, 0, 1, 4) ;  go to x = π/4 (radian)/from 0° to 45° , azimuth from 90° to 45°  - anti-clockwise - cf. patch_folder/figures_folder/spat_circle_figure_II.pdf
+
+4
+::circle(2, 0,  3/4, 1, 0, 0, 1, 4) ; go to  π - x = 3π/4, az = -45 - anti-clockwise
+
+4
+::circle(3, 0, 5/4, 1, 0, 0, 1, 4) ;  go to π + x = 5π/4, az = -135 - anti-clockwise
+
+4
+::circle(4, 0, 7/4, 1, 0, 0, 1, 4) ; go to -x = 7π/4, az = 135 - anti-clockwise
+
+4
+::circle(1, 0,  -1/4, 1, 0, 0, 1, 4) ; -x = 7π/4 (radian), azimuth := 90° to 135 clockwise
+
+4
+::circle(2, 0,  -3/4, 1, 0, 0, 1, 4) ;  π + x = 5π/4,  az := 90° to -135° clockwise
+
+4
+::circle(3, 0, -5/4, 1, 0, 0, 1, 4) ;  π - x = 3π/4, az := 90° to -45° clockwise
+
+4
+::circle(4, 0, -7/4, 1, 0, 0, 1, 4) ; x = π/4  , az := 90° to 45° clockwise
+
+4
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 arcs_02
+
+
+
+; ($cmd, $iniT, $targeT, $r, $offsetX, $offsetY, $count, $SPEED)
+; check cisoïde in rosace library
+
+::circle(3, 1, 5/4, 1, 1, 1, 1, 4)
+
+::circle(2, 0, -1/4, 1, -1, 1, 1, 4)
+
+::circle(1, 0, 1/4, 1, -1, -1, 1, 4)
+
+::circle(4, 1, 3/4, 1, 1, -1, 1, 4)
+
+4
+
+::circle(3, 5/4, 3/2, 1, 1, 1, 1, 4)
+
+::circle(2, 7/4, 3/2, 1, -1, 1, 1, 4)
+
+::circle(1, 1/4, 1/2, 1, -1, -1, 1, 4)
+
+::circle(4, 3/4, 1/2, 1, 1, -1, 1, 4)
+
+4
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+ event 1 arcs_03
+
+; cf. patch_folder/figures_folder/figure III - offset_symmetry_02.pdf / explain position according to figure III
+
+
+
+::circle(1, 1/4, 3/4, 1, 0, -1, 1, 4)
+
+::circle(2, 1/4, 3/4, 1, 0, -0.8, 1, 4)
+
+::circle(3, 1/4, 3/4, 1, 0, -0.6, 1, 4)
+
+::circle(4, 1/4, 3/4, 1, 0, -0.4, 1, 4)
+
+4
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 arcs_04
+
+
+
+::circle(1, 3/4, 1/4, 1, 0, -1, 1, 4)
+
+::circle(2, 3/4, 1/4, 1, 0, -0.8, 1, 4)
+
+::circle(3, 3/4, 2+1/4, 1, 0, -0.6, 1, 4)
+
+::circle(4, 3/4, 2+1/4, 1, 0, -0.4, 1, 4)
+
+4
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 arcs_05
+
+;cf figure II for positions according to offset and arc shapes according to X value in radian
+
+
+@sources_position(0,0)
+
+group source3 @tempo := $RT_TEMPO {
+
+::circle(3, 0, 1/2, 0.2, 0.1, 0.1, 1, 4) ; positive x and y offset
+4
+::circle(3, 1/2, 0, 0.4, 0.1, 0.1, 1, 4) ; return ticket
+4
+::circle(3, 0, 1/2, 0.6, 0.1, 0.1, 1, 4) ; expanding radius
+4
+::circle(3, 1/2, 0, 0.8, 0.1, 0.1, 1, 4) ; ; arc shape cf. figure II 0 < x < π/2
+4
+::circle(3, 0, 1/2, 1, 0.1, 0.1, 1, 4)
+}
+
+0. group source1 @tempo := $RT_TEMPO {
+
+::circle(1, 1,   3/2,  0.2,  -0.1, -0.1,  1, 4) ; negative x and y offset
+4
+::circle(1, 3/2, 1,    0.4,  -0.1, -0.1,  1, 4) ; return ticket
+4
+::circle(1, 1,   3/2,  0.6,  -0.1, -0.1,  1, 4) ; expanding radius
+4
+::circle(1, 3/2, 1,    0.8,  -0.1, -0.1,  1, 4) ; arc shape cf. figure II π < x < 3π/2
+4
+::circle(1, 1,   3/2,  1,    -0.1, -0.1,  1, 4)
+
+}
+
+20
+
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+event 1 figure_II
+
+
+
+::circle(1, 1/2, 1,   1,  -1.,  1.,  1, 4)
+
+::circle(2, 0,   1/2, 1,   1.,  1.,  1, 4)
+
+::circle(3, 1,   3/2, 1,  -1., -1.,  1, 4)
+
+::circle(4, 3/2, 2,   1,   1., -1.,  1, 4)
+
+4
+label "Trajectory Done !"
+print_antescofo "Trajectory Done !"
+
+2
+label "End of the score !"
+print_antescofo "End of the score, why don't you check other scripts !"

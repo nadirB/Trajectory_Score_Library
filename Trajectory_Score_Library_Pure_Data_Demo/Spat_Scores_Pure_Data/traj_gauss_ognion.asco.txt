@@ -1,0 +1,44 @@
+BPM 60
+
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@gauss_variation.asco.txt"
+
+@history_clear
+@sources_position(-90, 3)
+@viewer_zoom(55)
+@viewer_div(0)
+@viewer_numdiv(16)
+play 0
+
+event 1 gauss_01
+
+@history_clear
+
+;@proc_def ::gauss($cmd, $iniT, $targeT, $k, $offset, $SPEED)
+
+@player(3, 0, 0.5,4)
+::gauss(1, -3, 1, -1,   0, 4)
+::gauss(2, -3, 1, -0.5, 0, 4)
+::gauss(3, -3, 1,  0.5, 0, 4)
+::gauss(4, -3, 1,  1,   0, 4)
+4
+@player(0, 0, 0.5,4)
+
+event 1 gauss_02
+
+@history_clear
+
+::gauss(1, -3, 1, -1,   1, 4)
+::gauss(2, -3, 1, -0.5, 1, 4)
+::gauss(3, -3, 1,  0.5, -1, 4)
+::gauss(4, -3, 1,  1,   -1, 4)
+
+event 1 gauss_03
+
+@history_clear
+@viewer_zoom(35)
+::gauss_variation_01(1, -3, 1, -1,   0, 4)
+::gauss_variation_01(2, -3, 1, -0.5, 0, 4)
+::gauss_variation_01(3, -3, 1,  0.5, 0, 4)
+::gauss_variation_01(4, -3, 1,  1,   0, 4)

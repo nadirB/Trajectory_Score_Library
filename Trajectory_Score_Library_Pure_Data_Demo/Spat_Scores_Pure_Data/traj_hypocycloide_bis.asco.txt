@@ -1,0 +1,139 @@
+BPM 60
+
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@hypocycloide_variation.asco.txt"
+
+@init_TSL(80)
+
+;::curvoide($cmd, $initT, $endT, $R, $r, $offsetX, $offsetY, $SPEED)
+
+event 1 deltoide_01
+
+@history_clear
+@player(2,1,0.7,1)
+
+
+::curvoide(1, 0, 2,  1, 1/3, 0, 0, 8)
+
+event 1 astroide_01
+
+@history_clear
+@player(2,0,0.7,2)
+
+::curvoide(2, 0, 2,  1, 1/4, 0, 0, 8)
+
+event 1 hypocycloide_01
+
+@history_clear
+@player(3,1,0.7,3)
+
+::curvoide(3, 9/8, 2+9/8,  1, 1/5, 0, 0, 8)
+
+Event 1 hypocycloide_02
+
+@history_clear
+@player(3,1,0.7,4)
+::curvoide(4, 0, 4,  1, 2/5, 0, 0, 8)
+
+event 1 hypocycloide_03
+
+@history_clear
+@player(0,0,0,0)
+
+::curvoide(1, 0, 6,  1, 3/5, 0, 0, 8)
+
+event 1 spirale_01
+
+@history_clear
+@player(3,1,0.7,2)
+
+::curvoide(2, 0, 6,  1/9, 1, 0, 0, 8)
+
+
+event 1 hypocycloide_04
+
+@history_clear
+@player(3,1,0.7,3)
+
+::curvoide(3, -2, 2,  1/2, 1/3, 0, 0, 4)
+
+event 1 hypocycloide_05
+
+@history_clear
+@player(3,1,0.7,4)
+
+::curvoide(4, -2, 2,  1/5, 1/3, 0, 0, 4)
+
+event 1 epicycloide_01
+
+@history_clear
+@player(1,1,0.7,1)
+
+::curvoide(1, 0, 12,  1, 6/5, 0, 0, 8)
+
+event 1 hypocycloide_06
+
+@history_clear
+@player(3,1,0.7,2)
+
+::curvoide(2, -2, 2, 0.1, 1/2, 0, 0, 8)
+
+event 1 hypocycloide_07
+
+@history_clear
+@player(3,1,0.7,3)
+
+::curvoide(3, -3, 3,  0.2, 1/3, 0, 0, 8)
+
+event 1 hypocycloide_08
+
+@history_clear
+@player(3,1,0.7,4)
+
+::curvoide(4, -3, 18,  0.3, 1/3, 0, 0, 8)
+
+Event 1 hypocycloide_09
+
+@history_clear
+@player(3,1,0.7,1)
+
+::curvoide(1, -3, 6.5,  0.4, 1/3, 0, 0, 4)
+
+event 1 hypocycloide_10
+
+@history_clear
+@player(3,1,0.7,2)
+
+::curvoide(2, -3, 3,  0.5, 1/3, 0, 0, 8)
+
+event 1 hypocycloide_13
+
+@history_clear
+@player(3,1,0.7,3)\
+
+::curvoide(3, -6, 6,  1, 4/6, 0, 0, 8)
+
+event 1 hypocycloide_15
+
+@history_clear
+
+::curvoide(4, -6, 6,  1, 3/2, 0, 0, 8)
+
+event 1 hypocycloide_16
+
+@history_clear
+
+::curvoide(1, -1, 1,  0.2, -0.2, 0, 0, 4)
+
+::curvoide(2, -1, 1,  0.3, -0.3, 0, 0, 4)
+
+::curvoide(3, -1, 1,  0.4, -0.4, 0, 0, 4)
+
+::curvoide(4, -1, 1,  0.5, -0.5, 0, 0, 4)
+
+event 1 hypocycloide_17
+
+@history_clear
+
+::curvoide(1, -2, 2,  0.5, 3*$pi/2, 0, 0, 8)

@@ -1,0 +1,258 @@
+;variation on :
+
+    ;x = r*(2cos(t) + cos(t))
+    ;y = r*(2sin(t) - sin(2t)
+
+
+@global $pi
+	$pi := 3.141592653589793
+
+@local $a, $b
+$a := 1
+$b := 1
+
+
+@fun_def X( $t, $b, $offsetX)
+{
+
+
+	$b * ((2 * @sin($t)) - @sin(2 * $t)) + $offsetX
+}
+
+
+
+@fun_def Y($t, $a, $offsetY)
+
+{
+
+	($a * (1 + @cos($t))) * ((2 * @cos($t)) + @cos($t)) + $offsetY
+}
+
+
+@proc_def ::hypocycloide1($src, $initT, $endT, $a, $b, $offsetX, $offsetY, $speed)
+
+{
+
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+    ;loop pi $speed
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s
+						@Action := {
+
+								spat5  @X($t, $a, $offsetX) @Y($t, $b, $offsetY)
+							}
+
+
+
+
+
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$speed { ($endT*$pi) }
+
+
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+;variation on :
+
+    ;x = r*(2cos(t) + cos(t))
+    ;y = r*(2sin(t) - sin(2t)
+
+
+
+
+@fun_def X2( $t, $a, $offsetX)
+
+{
+	$a*(2*@cos($t)) + @cos($t) + $offsetX
+}
+
+@fun_def Y2($t, $b, $offsetY)
+
+{
+	$b*(2*@sin($t)) - @sin(2*$t) + $offsetY
+
+}
+
+
+
+@proc_def ::hypocycloide2($src, $initT, $endT, $a, $b, $offsetX, $offsetY, $speed)
+
+{
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+    ;loop pi $speed
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s
+						@Action := {
+
+								spat5 @X2($t, $a, $offsetX) @Y2($t, $b, $offsetY)
+							}
+
+
+
+
+
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$speed { ($endT*$pi) }
+
+
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+@fun_def X3($t, $a, $offsetX)
+
+{
+
+	($a*(1-@cos($t)))*((2 * @cos($t)) + @cos($t)) + $offsetX
+}
+
+/////////////////
+
+@fun_def Y3( $t, $b, $offsetY)
+{
+
+
+	($b*(1-@sin($t)))*((2*@sin($t)) - @cos(2*$t)) + $offsetY
+}
+
+
+
+
+@proc_def ::hypocycloide3($src, $initT, $endT, $a, $b, $offsetX, $offsetY, $speed)
+
+{
+	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+    ;loop pi $speed
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s
+						@Action := {
+
+								spat5  @X3($t, $a, $offsetX) @Y3($t, $b, $offsetY)
+							}
+
+
+
+
+
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$speed { ($endT*$pi) }
+
+
+					}
+		}
+
+
+	;}
+
+}
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+@fun_def Y4($t, $a)
+
+{
+
+	($a*(1+@cos($t)))*((2 * @cos($t)) + @cos($t))
+}
+
+
+
+@fun_def X4( $t, $b)
+{
+
+
+	($b*(1+@cos($t)))*((2*@sin($t)) - @sin(2*$t))
+}
+
+
+
+
+@proc_def ::curvoide($src, $initT, $endT, $a, $b, $offsetX, $offsetY, $speed)
+
+{
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+    ;loop pi $speed
+	;{
+		;abort parametric_curve
+
+		curve parametric_curve @grain := 0.02s
+						@Action := {
+
+								spat5  @X4($t, $a) @Y4($t, $b)
+							}
+
+
+
+
+
+		{
+			$t
+					{
+							   { ($initT*$pi)  } /*@type "exp"*/
+						$speed { ($endT*$pi) }
+
+
+					}
+		}
+
+
+	;}
+
+}

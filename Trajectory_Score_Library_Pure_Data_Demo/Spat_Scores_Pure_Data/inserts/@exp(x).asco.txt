@@ -1,0 +1,23 @@
+@proc_def ::spat_exp ($src=1,$x1=0, $x2=-1, $count=1, $speed=4){
+
+	$prefix := "/source/" + $src + "/xy"
+	oscsend spat5 "127.0.0.1" : 4072 $prefix
+
+	loop contouR $speed
+	{
+		abort expCurve
+		curve expCurve @grain := 0.01s, @Action := {
+			$y:= @exp($x)
+			spat5 $x $y
+		}
+		{
+			$x
+			{
+				{ $x1 } /*@type "exp"*/
+				$speed { $x2}
+			}
+		}
+
+		} during[$count#]
+
+	}

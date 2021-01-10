@@ -1,0 +1,43 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@exp(x).asco.txt"
+@insert "inserts/@pow(x).asco.txt"
+@insert "inserts/@log(x).asco.txt"
+@insert "inserts/@derivee_log(x).asco.txt"
+
+
+::src_pos($AllQuad)
+@init_TSL(50)
+
+event 1 CUE_Pow
+
+@history_clear
+::spat_pow(src=1,x1=-3, x2=0, pow=3, count=1, speed=4)
+
+event 1 CUE_log
+@history_clear
+::spat_log(2, 0.1, 2, 1, 4)
+
+event 1 CUE_exp
+;::spat_exp ($SPAT,$x1, $x2, $count, $SPEED)
+@history_clear
+::spat_exp(3, -2, 0.7, 1, 4)
+
+event 1 CUE_derivee_log
+@history_clear
+
+
+;::spat_derivee_log($cmd, $init, $a, $count, $SPEED) ; $x ≠ 0 !
+
+::spat_derivee_log(4, 0.01 , 2, 0, 1, 4 )
+
+event 1 CUE_mix
+@history_clear
+::spat_log(1, 0.1, 2, 1, 4)
+
+::spat_exp(2, -2, 0.7, 1, 4)
+
+::spat_derivee_log(3 , 0.01 , 2, -0.5, 1, 4 )
+
+::spat_derivee_log(4 ,-0.01 , -2, 1.5, 1, 4 )

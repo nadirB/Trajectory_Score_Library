@@ -1,0 +1,71 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@deltoide_variation.asco.txt"
+
+@history_clear
+@sources_position(90, 2)
+@viewer_zoom(65)
+@viewer_div(1)
+@viewer_numdiv(16)
+
+event 1 deltoide_check
+
+@history_clear
+@viewer_zoom(70)
+
+::deltoide(1, -1, 1,  0.2, -0.2, 0, 4)
+
+::deltoide(2, -1, 1,  0.3, -0.3, 0, 4)
+
+::deltoide(3, -1, 1,  0.4, -0.4, 0, 4)
+
+::deltoide(4, -1, 1,  0.5, -0.5, 0, 4)
+
+event 1 deltoide_01
+
+@history_clear
+@viewer_zoom(45)
+
+::deltoide(1, 0, 2,  1,  0, 0, 8)
+
+event 1 deltoide_02
+
+@history_clear
+@viewer_zoom(45)
+
+::deltoide(2, 0, 2,  1/2,  0, 0, 8)
+
+event 1 deltoide_03
+
+@history_clear
+@viewer_zoom(45)
+
+::deltoide(3, 0, 2,  1/4,  0, 0, 8)
+
+event 1 deltoide_04
+
+@history_clear
+@viewer_zoom(45)
+
+::deltoide(4, 0, 2,  1/8,  0, 0, 4)
+
+event 1 deltoide_05
+
+@history_clear
+@viewer_zoom(45)
+
+::deltoide(1, 0, 2,  1/8,  1, 1, 4)
+
+event 1 deltoide_06
+
+@history_clear
+@viewer_zoom(70)
+
+::deltoide(1, -2, 2,  0.2, -0.2, 0, 4)
+
+::deltoide(2, -1, 2,  0.3, -0.3, 0, 4)
+
+::deltoide(3, 0, -1,  0.4, -0.4, 0, 4)
+
+::deltoide(4, 1, -1,  0.5, -0.5, 0, 4)

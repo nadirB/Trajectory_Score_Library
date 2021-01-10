@@ -1,0 +1,47 @@
+ BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@epi_variation.asco.txt"
+
+;@proc_def ::epi($cmd, $initT, $endT, $m,, $offsetX, $offsetY, $SPEED)
+
+@history_clear
+@sources_position(90, 2)
+@viewer_zoom(50)
+@viewer_div(1)
+@viewer_numdiv(16)
+
+play 0
+
+event 1 epi_01
+
+@history_clear
+
+play 2
+play_channel 1
+
+::epi(1, 0.01, 2, 2*$pi, 0, 0,  32)
+
+event 1 epi_02
+
+@history_clear
+
+::epi(2, 0.01, 2, $pi, 0, 0,  32)
+
+event 1 epi_03
+
+@history_clear
+
+::epi(3, 0.01, 2, 4*$pi, 0, 0,  32)
+
+event 1 epi_04
+
+@history_clear
+
+::epi(4, 0.01, 2, @pow(0.5, 2), 0, 0,  16)
+
+event 1 epi_06
+
+@history_clear
+
+::epi(1, 0.01, 8, @pow(2, 0.5), 0, 0,  32)
