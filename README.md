@@ -5,7 +5,7 @@ Trajectory Score Library is an Antescofo library of scripts, converting mathemat
 
 The MaxMsp and Pure Data files are just demo patchs. Use the data your own way.
 
-Antescofo : http://repmus.ircam.fr/antescofo
+Antescofo : http://repmus.ircam.fr/antescofo -
 Spat : http://forumnet.ircam.fr/fr/produit/spat/
 (free with the Ircam Forum subsription)
 
