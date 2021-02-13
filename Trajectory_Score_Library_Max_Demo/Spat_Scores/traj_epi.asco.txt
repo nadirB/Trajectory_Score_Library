@@ -1,9 +1,7 @@
  BPM 60
 
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@epi_variation.asco.txt"
-
-;@proc_def ::epi($cmd, $initT, $endT, $m,, $offsetX, $offsetY, $SPEED)
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
 @history_clear
 @sources_position(90, 2)
@@ -20,6 +18,7 @@ event 1 epi_01
 play 2
 play_channel 1
 
+;@proc_def ::epi($cmd, $initT, $endT, $m,, $offsetX, $offsetY, $SPEED)
 ::epi(1, 0.01, 2, 2*$pi, 0, 0,  32)
 
 event 1 epi_02

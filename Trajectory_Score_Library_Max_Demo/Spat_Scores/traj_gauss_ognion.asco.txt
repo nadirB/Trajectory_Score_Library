@@ -1,8 +1,7 @@
 BPM 60
 
-
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@gauss_variation.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
 @history_clear
 @sources_position(-90, 3)

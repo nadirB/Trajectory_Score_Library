@@ -1,8 +1,10 @@
 BPM 60
 
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@deltoide_variation.asco.txt"
-@insert "inserts/@ellipse.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+/* @insert "inserts/@deltoide_variation.asco.txt"
+@insert "inserts/@ellipse.asco.txt" */
 
 @init_TSL(60)
 
@@ -38,7 +40,6 @@ event 1 ellipse_02
 event 1 ellipse_03
 
 @history_clear
-
 @viewer_zoom(90)
 
 ::ellipse(1, 1, 0,  1, 0.2, 0, 0, 0, 0, 1, 4)
@@ -78,7 +79,7 @@ event 1 ellipse_06
 Event 1 ellipse_07
 
 @history_clear
-
+@viewer_zoom(50)
 ; ::ellipse($cmd, $initT, $endT, $a, $b, $alpha, $beta, $offsetX, $offsetY, $count1, $SPEED)
 
 ::ellipse(1, 	0, 2,  	0.4, 2, 	0, 0, 	0, 0,    1, 4)

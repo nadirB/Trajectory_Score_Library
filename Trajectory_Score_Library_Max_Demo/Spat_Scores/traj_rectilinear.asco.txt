@@ -1,32 +1,25 @@
 BPM 60
 
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@rectilinear.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
 
 @init_TSL(65)
-/* @viewer_zoom(65)
-@viewer_div(0)
-@viewer_numdiv(16)
-@viewer_anchors_visible(0)
-@viewer_layout(single)
-
-@history_clear
-@sources_position(0, 0)
-play 0 */
-
-;::rectilinear($cmd, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $speed)
 
 event 1 rectilinear_01
 ; instant points ... ($∂, $ß = 0)
 ;(cf. spat_score_figures/spat_rectilinear_figure_I)
 
+;::rectilinear($cmd, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $speed)
+
+
 ::rectilinear(1, 0, 1,-1,  1,   0, 0,   1, 1)
 1
-::rectilinear(2, 0, 1,  	 1,  1,   0, 0,   1, 1)
+::rectilinear(2, 0, 1, 1,  1,   0, 0,   1, 1)
 1
-::rectilinear(3, 0, 1,  	 1, -1,   0, 0,   1, 1)
+::rectilinear(3, 0, 1, 1, -1,   0, 0,   1, 1)
 1
-::rectilinear(4, 0, 1,    -1, -1,   0, 0,   1, 1)
+::rectilinear(4, 0, 1, -1, -1,   0, 0,   1, 1)
 
 event 1 rectilinear_02 ; vectors... (direct to desired point) ($a, $b = 0) & ($∂, $ß ≠ 0) (cf. spat_score_figures/spat_rectilinear_figure_II)
 

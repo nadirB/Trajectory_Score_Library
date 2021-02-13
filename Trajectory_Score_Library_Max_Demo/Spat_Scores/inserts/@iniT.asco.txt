@@ -248,3 +248,18 @@ print_message @rad2deg(0.25*$pi) */
 }
 
 ;trajectory scenes
+
+
+@macro_def @trajTranslation($what, $dur) {
+    curve offset @grain := 0.01s , @Action := {$what := $x}
+     {
+         $x
+         {
+                {0.0}
+         $dur/4 {1.0}
+         $dur/4 {-1}
+         $dur/4 {0.0}
+
+         }
+     }
+}

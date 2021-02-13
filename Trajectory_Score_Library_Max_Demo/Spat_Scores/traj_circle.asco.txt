@@ -2,7 +2,8 @@ BPM 90
 
 temporal $RT_TEMPO
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@circle_osc.asco.txt"
+/* @insert "inserts/@circle_osc.asco.txt" */
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 print_antescofo "Good to go!"
 
 @history_clear
@@ -77,19 +78,20 @@ sources -90 0. 2 0 0. 2 90 0. 2 -180 0. 2
 
 ::circle(1, -1, 1, 1,   -1, 0,  1, 4);  from π/180°/Az90 :  1 turn anti-clockwise during 4 beats, with a radius of 1 and a positive x offset - cf. figure III circle with offsets1
 4
-::circle(2, 1/2, -1-1/2, 1,  0, 1,  1, 4); from (π/2)/90°/Az0 : 1 turn clockwise during 4 beats, with a radius of 1 and a positive y offset
+::circle(2, 1/2, -1-1/2, 1,  0, 1,  1, 4)
+/*from (π/2)/90°/Az0 : 1 turn clockwise during 4 beats, with a radius of 1 and a positive y offset */
 4
-::circle(3, 0, 2, 1, 1, 0,  1, 4);  from 0/2π/Az90 1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x offset
+::circle(3, 0, 2, 1, 1, 0,  1, 4)
+/* from 0/2π/Az90 1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative x offset */
 4
-::circle(4, 3/2, -2+3/2, 1,  0, -1,  1, 4) ; from (3π/2)/270°/Az-180 1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative y offset
+::circle(4, 3/2, -2+3/2, 1,  0, -1,  1, 4)
+/* from (3π/2)/270°/Az-180 1 turn anti-clockwise during 4 beats, with a radius of 1 and a negative y offset */
 4
 
 label "Trajectory Done !"
 print_antescofo "Trajectory Done !"
 
 event 1 circles_06
-
-
 
 ::circle(1, -1, 1,      1, -1,   0, 1, 4)
 
@@ -105,7 +107,6 @@ label "Trajectory Done !"
 print_antescofo "Trajectory Done !"
 
 event 1 circles_07
-
 
 @viewer_zoom(45)
 oscsend sources "127.0.0.1" :4072 "/sources/aed"

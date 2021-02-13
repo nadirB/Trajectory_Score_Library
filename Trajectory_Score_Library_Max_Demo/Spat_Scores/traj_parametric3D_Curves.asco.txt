@@ -1,0 +1,145 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+@history_clear
+speakers_config 19
+@viewer_zoom(50)
+@viewer_layout("single")
+@viewer_anchors_visible(0)
+@sources_position(0, 2)
+@viewer_div(0)
+@viewer_numdiv(16)
+play 0
+
+
+
+EVENT 1 generic3D_01
+
+::generic3D(src=1, initT=1/2, targeT=1+1/2, a=1,b=1,c=2, offsetX=0, offsetY=0, offsetZ=1, count=1, speed=4)
+
+EVENT 1 generic3D_02
+
+@history_clear
+::generic3D(src=2, initT=1, targeT=3, a=1,b=1,c=1, offsetX=0, offsetY=0, offsetZ=1, count=1, speed=4)
+
+EVENT 1 generic3D_03
+
+@history_clear
+::generic3D(src=3, initT=-1, targeT=1, a=1,b=0,c=0, offsetX=0, offsetY=0, offsetZ=1, count=1, speed=8)
+::generic3D(src=2, initT=-1, targeT=1, a=3,b=0,c=0, offsetX=0, offsetY=0, offsetZ=0, count=1, speed=8)
+::generic3D(src=3, initT=-1, targeT=1, a=-5,b=0,c=0, offsetX=0, offsetY=0, offsetZ=-1, count=1, speed=8)
+
+EVENT 1 generic3D_04
+@history_clear
+::generic3D(src=4, initT=0, targeT=1, a=1,b=2,c=3, offsetX=0, offsetY=0, offsetZ=1, count=1, speed=8)
+
+EVENT 1 generic3D_05
+@history_clear
+::generic3D(src=1, initT=0, targeT=2, a=3,b=20,c=1, offsetX=0, offsetY=0, offsetZ=1, count=1, speed=8)
+
+EVENT 1 generic3D_06
+@history_clear
+
+group generic3DTranslation //name @tempo=expr (default $RT_TEMPO), @tight (default: @loose), @local (default @global)//
+{
+  $generic3D := ::generic3D(src=2, initT=0, targeT=4, a=1/4,b=24,c=10, offsetX=0, offsetY=0, offsetZ=1, count=1, speed=32)
+  @trajTranslation($generic3D.$offsetX, 32)
+}
+
+;check trajTranslation's macro definition
+
+
+EVENT 1 helicoide_01
+
+@history_clear
+
+;::helicoide()
+::helicoide(src=3, initT=1/2, endT=4+1/2, a=0.7, b=0.2, offsetX=0, offsetY=0, offsetZ=0, speed=4)
+
+EVENT 1 helicoide_02
+
+@history_clear
+
+::helicoide(1, initT=-1/2)
+4
+::helicoide(2, initT= 4+1/2, endT=-1/2, a=-2)
+4
+::helicoide(3,initT= -1/2, endT= 4+1/2, a=3)
+4
+::helicoide(4, initT= 4+1/2, endT=-1/2, a=0.1, speed=1)
+
+EVENT 1 clelie_01
+
+@history_clear
+::clelie(src=1, initT=0, endT=4, R=1, n=1/2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+EVENT 1 clelie_02
+
+@history_clear
+@viewer_zoom(45)
+::clelie(src=1, initT=0, endT=10, R=2.5, n=6/5, offsetX=0, offsetY=0, offsetZ=1, speed=8)
+
+EVENT 1 clelie_03
+
+@history_clear
+::clelie(src=1, initT=0, endT=16, R=1, n=2/7, offsetX=0, offsetY=0, offsetZ=1, speed=8)
+
+EVENT 1 clelie_04
+
+@history_clear
+::clelie(src=1, initT=1/2, endT=24, R=2, n=0.1, offsetX=0, offsetY=0, offsetZ=1, speed=8)
+
+EVENT 1 clelie_05
+
+@history_clear
+::clelie(src=1, initT=0, endT=24, R=2, n=@rand(0.1), offsetX=0, offsetY=0, offsetZ=1, speed=24)
+
+EVENT 1 couronne_01
+
+@history_clear
+::couronne(src=1, initT=0, endT=2, a=2, b=1.6, n=8, offsetX=0, offsetY=0, offsetZ=1, speed=8)
+
+EVENT 1 couronne_02
+
+@history_clear
+::couronne(src=1, initT=0, endT=2, a=2, b=1/6, n=8, offsetX=0, offsetY=0, offsetZ=1, speed=8)
+
+EVENT 1 couronne_03
+
+@history_clear
+::couronne(src=1, initT=3, endT=8, a=3, b=2, n=1/8, offsetX=0, offsetY=0, offsetZ=2, speed=4)
+
+event 1 lissajou_first_overtone
+
+@history_clear
+::lissajou3D(src=2, initT=0, endT=2, a=1, b=1, c=1, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+EVENT 1 lissajou_01
+
+@history_clear
+::lissajou3D(src=1, initT=0, endT=4, a=1, b=1, c=1, n=1/2, m=1/2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+EVENT 1 lissajou_02
+
+@history_clear
+::lissajou3D(src=1, initT=0, endT=2, a=1, b=1, c=1, n=1, m=2, offsetZ=1, speed=8)
+8
+::lissajou3D(src=2, initT=0, endT=4, a=1, b=1, c=1, n=1, m=1/2, offsetZ=1, speed=8)
+
+8
+;@history_clear
+::lissajou3D(src=1, initT=0, endT=2, a=1, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
+8
+;@history_clear
+::lissajou3D(src=2, initT=0, endT=2, a=2, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
+8
+;@history_clear
+::lissajou3D(src=3, initT=0, endT=2, a=3, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
+8
+;@history_clear
+::lissajou3D(src=4, initT=0, endT=2, a=3, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
+8
+;@history_clear
+::lissajou3D(src=1, initT=0, endT=2, a=3, b=1, c=2, n=1, m=10, offsetZ=1, speed=8)

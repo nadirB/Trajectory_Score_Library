@@ -1,6 +1,6 @@
 BPM 60
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@rectilinear.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 @init_TSL(65)
 
 

@@ -15,9 +15,8 @@ BPM 120
 ;antescofo_TSL play
 
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@circle_osc.asco.txt"
-@insert "inserts/@rectilinear.asco.txt"
-@insert "inserts/@lissajou.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
 @init_TSL(65)
 
 NOTE A#5 4 measure1
