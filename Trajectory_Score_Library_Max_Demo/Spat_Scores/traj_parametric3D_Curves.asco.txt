@@ -111,10 +111,38 @@ EVENT 1 couronne_03
 @history_clear
 ::couronne(src=1, initT=3, endT=8, a=3, b=2, n=1/8, offsetX=0, offsetY=0, offsetZ=2, speed=4)
 
-event 1 lissajou_first_overtone
+
+
+EVENT 1 lissajou_first_overtone
 
 @history_clear
-::lissajou3D(src=2, initT=0, endT=2, a=1, b=1, c=1, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+::lissajou3D(src=1, initT=1, endT=3, a=1, b=1, c=1, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+EVENT 1 lissajou_first_overtone_bis
+
+@history_clear
+::lissajou3D(src=2, initT=0, endT=2, a=2, b=1, c=1, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+EVENT 1 lissajou_first_overtone_ter
+
+@history_clear
+::lissajou3D(src=3, initT=0, endT=2, a=2, b=1, c=2, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+EVENT 1 lissajou_first_overtone_ter
+
+@history_clear
+::lissajou3D(src=3, initT=0, endT=2, a=2, b=1, c=2, n=4, m=1, offsetX=0, offsetY=0, offsetZ=1, speed=4)
+
+
+
+
+
+
+
+
+
+
+
 
 EVENT 1 lissajou_01
 
@@ -127,19 +155,7 @@ EVENT 1 lissajou_02
 ::lissajou3D(src=1, initT=0, endT=2, a=1, b=1, c=1, n=1, m=2, offsetZ=1, speed=8)
 8
 ::lissajou3D(src=2, initT=0, endT=4, a=1, b=1, c=1, n=1, m=1/2, offsetZ=1, speed=8)
-
 8
-;@history_clear
-::lissajou3D(src=1, initT=0, endT=2, a=1, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
-8
-;@history_clear
-::lissajou3D(src=2, initT=0, endT=2, a=2, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
-8
-;@history_clear
 ::lissajou3D(src=3, initT=0, endT=2, a=3, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
 8
-;@history_clear
-::lissajou3D(src=4, initT=0, endT=2, a=3, b=1, c=1, n=1, m=10, offsetZ=1, speed=8)
-8
-;@history_clear
-::lissajou3D(src=1, initT=0, endT=2, a=3, b=1, c=2, n=1, m=10, offsetZ=1, speed=8)
+::lissajou3D(src=4, initT=0, endT=2, a=3, b=1, c=2, n=1, m=10, offsetZ=1, speed=8)
