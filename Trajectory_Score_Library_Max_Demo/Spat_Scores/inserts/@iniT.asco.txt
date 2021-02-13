@@ -13,6 +13,21 @@ OSC_BUNDLE clear
 @player(0,0,0,0)
 @multiplayer(0,0) }
 
+@macro_def @init_TSL3D($zoom=50) {
+antescofo::suivi 0
+@history_clear
+speakers_config 19
+@viewer_zoom($zoom)
+@viewer_layout("single")
+@viewer_anchors_visible(0)
+@sources_position(0, 2)
+@viewer_div(0)
+@viewer_numdiv(16)
+play 0
+OSC_BUNDLE clear
+@player(0,0,0,0)
+@multiplayer(0,0) }
+
 @macro_def @history_clear() {
     oscsend history "127.0.0.1" :4072
     history "/source/[1-4]/history/clear"

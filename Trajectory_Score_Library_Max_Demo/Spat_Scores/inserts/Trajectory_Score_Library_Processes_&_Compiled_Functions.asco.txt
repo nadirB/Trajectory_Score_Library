@@ -12,6 +12,8 @@ $pi := 3.141592653589793
 @fun_def @rectilinearX($t, $a, $alpha){$a+($t*$alpha)}
 @fun_def @rectilinearY($t, $b, $beta){$b+($t*$beta)}
 
+
+
 @fun_def circleX($t, $radius, $offsetX){$radius*@cos($t) + $offsetX}
 @fun_def circleY($t, $radius, $offsetY){$radius*@sin($t) + $offsetY}
 
@@ -181,6 +183,63 @@ $pi := 3.141592653589793
 						@grain 0.1
 						@action := {print_message "handler lineCurve: " $t
 						TRAJECTORY @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta)
+						}
+
+						{
+
+							$t {
+										{ ($t)  } /*@type "exp"*/
+									$speed { ($targeT) }
+							}
+						}
+					}
+
+
+
+			{
+				$t
+				{
+								 { ($iniT)  } /*@type "exp"*/
+					$speed { ($targeT) }
+
+
+				}
+		}
+
+	} during[$count#]
+
+}
+
+/*#######################Process::rectilinear3D#################*/
+
+@proc_def ::rectilinear3D($src=1, $iniT=-1, $targeT=1, $a=0, $b=0, $alpha=1, $beta=0, $z=0, $count=1, $speed=4)
+
+{
+	@local $body, $t ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
+	$body := 0.
+
+	@local $cpt, $prefix
+	$cpt := 0
+
+	@history_clear
+
+	$prefix := "/source/" + $src + "/xyz"
+	oscsend TRAJECTORY "127.0.0.1" : 4072 $prefix
+
+	loop rectilinearLoop $speed
+
+	{
+		curve lineCurve @grain := 0.01s @Action := {
+			TRAJECTORY  @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $z
+		}
+
+				@abort :=
+				{		kill lineLoop
+						print_antescofo "lineCurve aborted at " $t
+						Curve rectilinearAbort
+						@grain 0.1
+						@action := {print_message "handler lineCurve: " $t
+						TRAJECTORY @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $z
 						}
 
 						{
