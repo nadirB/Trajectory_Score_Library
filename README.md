@@ -14,6 +14,6 @@ Spat : http://forumnet.ircam.fr/fr/produit/spat/
 <img width="1440" alt="screen_caps_01" src="https://github.com/nadirB/Trajectory_Score_Library/blob/master/Trajectory_Score_Library_Max_Demo.png">
 
 
-Thanks to Jean-Louis Giavitto & Thibaut Carpentier for their kind support.
+Thanks to Jean-Louis Giavitto, Thibaut Carpentier & José Miguel Fernandez for their kind support.
 
 ©nadir B. 2018-2021
