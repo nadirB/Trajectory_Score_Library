@@ -11,7 +11,7 @@ Spat : http://forumnet.ircam.fr/fr/produit/spat/
 (free with the Ircam Forum subsription)
 
 
-<img width="1440" alt="screen_caps_01" src="https://user-images.githubusercontent.com/4725896/97734578-a4cc2600-1ad9-11eb-9395-be05e27638c9.png">
+<img width="1440" alt="screen_caps_01" src="https://github.com/nadirB/Trajectory_Score_Library/blob/master/Trajectory_Score_Library_Max_Demo.png">
 
 
 Thanks to Jean-Louis Giavitto & Thibaut Carpentier for their kind support.
