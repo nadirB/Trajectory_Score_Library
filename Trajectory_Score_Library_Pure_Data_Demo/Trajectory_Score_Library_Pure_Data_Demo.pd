@@ -1,4 +1,4 @@
-#N canvas 408 3 1011 467 12;
+#N canvas 499 16 937 461 12;
 #X declare -path ../;
 #X declare -path Sf;
 #N canvas 156 259 450 300 dispatch 0;
@@ -22,12 +22,12 @@
 #X connect 6 0 7 0;
 #X restore 22 308 pd dispatch;
 #X obj 100 261 nbx 5 14 -1e+37 1e+37 0 0 empty empty Real-time_Tempo_BPM
-0 25 0 10 -259565 -1 -1 60 256;
+0 25 0 10 -259565 -1 -1 120 256;
 #X symbolatom 177 195 20 0 0 3 Event_Label - -;
 #X obj 255 158 nbx 5 14 -1e+37 1e+37 0 0 empty empty Position_in_beats
 0 25 0 10 -228856 -1 -1 0 256;
 #X obj 22 331 nbx 5 14 -1e+37 1e+37 0 0 empty empty Event_Number 0
-25 0 10 -228856 -1 -1 0 256;
+25 0 10 -228856 -1 -1 1 256;
 #X msg 121 96 incomingosc \$1;
 #X obj 121 65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -63,8 +63,8 @@
 #X connect 9 1 8 0;
 #X connect 10 0 6 0;
 #X connect 11 0 10 1;
-#X restore 400 372 pd sfplayer;
-#X msg 400 396 \; pd dsp 1, f 13;
+#X restore 380 372 pd sfplayer;
+#X msg 380 396 \; pd dsp 1, f 13;
 #N canvas 567 579 558 231 antescofo_cmds 0;
 #X msg 164 18 actions on;
 #X msg 164 40 actions off;
@@ -111,15 +111,15 @@
 #X connect 20 1 19 0;
 #X restore 20 153 pd antescofo_cmds;
 #X msg 21 63 info;
-#X obj 901 97 bng 15 250 50 0 empty empty empty 17 7 0 10 -191407 -1
--1;
-#X obj 901 114 openpanel;
-#X msg 901 137 score \$1;
-#X msg 450 291 nextlabel;
-#X obj 401 145 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X obj 401 98 loadbang;
-#X msg 401 120 0;
+#X obj 822 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -191407
+-1 -1;
+#X obj 822 142 openpanel;
+#X msg 822 165 score \$1;
+#X msg 430 291 nextlabel;
+#X obj 381 145 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 4;
+#X obj 381 98 loadbang;
+#X msg 381 120 0;
 #X obj 21 96 r antescofo_;
 #X text 147 63 > Turn incoming OSC ON to receive commands from Atom
 or Sublime, f 64;
@@ -133,7 +133,7 @@ or Sublime, f 64;
 #X msg 109 209 score Spat_Scores_Pure_Data/traj_sin.asco.txt;
 #X msg 154 149 score Spat_Scores_Pure_Data/traj_parametric_magic_plot.asco.txt
 ;
-#X msg 200 93 score Spat_Scores_Pure_Data/04_personne_en_vue?.asco.txt
+#X msg 200 93 score Spat_Scores_Pure_Data/03_personne_en_vue?.asco.txt
 ;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
@@ -146,7 +146,7 @@ or Sublime, f 64;
 #X connect 5 0 3 0;
 #X connect 6 0 3 0;
 #X connect 7 0 3 0;
-#X restore 401 166 pd Trajectory_Scores;
+#X restore 381 166 pd Trajectory_Scores;
 #N canvas 531 70 710 252 Trajectory_OSC_Routing 0;
 #X msg 233 39 paths;
 #X obj 17 80 mrpeach/routeOSC /source/1/xy /source/2/xy /source/3/xy
@@ -176,26 +176,26 @@ or Sublime, f 64;
 #X obj 40 200 pack;
 #X obj 116 169 t b a;
 #X obj 40 140 nbx 3 14 -1e+37 1e+37 0 0 \$0-dummy \$0-xlabel empty
-0 -8 0 12 -262144 -1 -1 330 256;
+0 -8 0 12 -262144 -1 -1 130 256;
 #X obj 120 140 nbx 3 14 -1e+37 1e+37 0 0 \$0-dummy \$0-ylabel empty
-0 -8 0 12 -262144 -1 -1 230 256;
+0 -8 0 12 -262144 -1 -1 130 256;
 #X obj 40 80 * 100;
 #X obj 40 270 s $r-src1;
 #X msg 271 230 pos \$1 \$2;
 #X obj 271 195 pack;
 #X obj 347 169 t b a;
 #X obj 271 140 nbx 3 14 -1e+37 1e+37 0 0 \$0-dummy \$0-xlabel empty
-0 -8 0 12 -262144 -1 -1 230 256;
+0 -8 0 12 -262144 -1 -1 130 256;
 #X obj 347 140 nbx 3 14 -1e+37 1e+37 0 0 \$0-dummy \$0-ylabel empty
-0 -8 0 12 -262144 -1 -1 330 256;
+0 -8 0 12 -262144 -1 -1 279.468 256;
 #X obj 271 80 * 100;
 #X msg 499 230 pos \$1 \$2;
 #X obj 499 195 pack;
 #X obj 577 169 t b a;
 #X obj 499 140 nbx 3 14 -1e+37 1e+37 0 0 \$0-dummy \$0-xlabel empty
-0 -8 0 12 -262144 -1 -1 130 256;
+0 -8 0 12 -262144 -1 -1 330 256;
 #X obj 577 140 nbx 3 14 -1e+37 1e+37 0 0 \$0-dummy \$0-ylabel empty
-0 -8 0 12 -262144 -1 -1 230 256;
+0 -8 0 12 -262144 -1 -1 227.178 256;
 #X obj 499 80 * 100;
 #X msg 719 230 pos \$1 \$2;
 #X obj 719 195 pack;
@@ -389,15 +389,15 @@ match the gain env.:, f 72;
 #X connect 6 1 14 0;
 #X connect 19 0 2 0;
 #X connect 21 0 22 0;
-#X restore 400 239 pd Trajectory_OSC_Routing;
+#X restore 380 239 pd Trajectory_OSC_Routing;
 #N canvas 7 345 517 506 Trajectory_interface 1;
 #X obj -1 -11 cnv 50 500 500 empty empty empty 20 12 0 14 -13330 -66577
 0;
-#X obj 330 230 cnv 25 25 25 from_src1 $r-src1 s1 5 10 1 14 -92330 -1
+#X obj 130 130 cnv 25 25 25 from_src1 $r-src1 s1 5 10 1 14 -92330 -1
 0;
-#X obj 230 330 cnv 25 25 25 from_src2 $r-src2 s2 5 10 1 14 -181144
+#X obj 130 279 cnv 25 25 25 from_src2 $r-src2 s2 5 10 1 14 -181144
 -1 0;
-#X obj 130 230 cnv 25 25 25 from_src3 $r-src3 s3 5 10 1 14 -3265 -1
+#X obj 330 227 cnv 25 25 25 from_src3 $r-src3 s3 5 10 1 14 -3265 -1
 0;
 #X obj 230 130 cnv 25 25 25 from_src4 $r-src4 s4 5 10 1 14 -261313
 -1 0;
@@ -409,17 +409,18 @@ match the gain env.:, f 72;
 #X obj 4 361 vu 15 120 rear-left-vu empty -1 -8 0 10 -33289 -1 1 0
 ;
 #X coords 0 506 1 505 85 60 0;
-#X restore 400 215 pd Trajectory_interface;
-#X obj 901 162 s antescofo_, f 13;
-#X text 532 141 > choose a score or load one from the score folder
-;
-#X obj 401 320 s antescofo_, f 13;
-#X msg 401 290 start;
-#X text 518 398 > implement the spat engine that suits you retrieve
+#X restore 380 215 pd Trajectory_interface;
+#X obj 822 190 s antescofo_, f 13;
+#X obj 381 320 s antescofo_, f 13;
+#X msg 381 290 start;
+#X text 498 398 > implement the spat engine that suits you retrieve
 and scale the sources' coordinates;
-#X text 544 287 > hit enter to init and spacebar to play next label
-or start then next label messages :;
-#X text 578 214 > open graphical interface to visualize trajectories
+#X text 558 214 > open graphical interface to visualize trajectories
+;
+#X text 524 287 > hit enter to initialize and compile some functions
+\, > spacebar to play next label or start > next label to go through
+some spatial processes :;
+#X text 535 143 > choose a score > or load one from the score folder
 ;
 #X connect 0 0 4 0;
 #X connect 5 0 10 0;
@@ -436,9 +437,9 @@ or start then next label messages :;
 #X connect 18 0 19 0;
 #X connect 19 0 20 0;
 #X connect 20 0 30 0;
-#X connect 21 0 32 0;
+#X connect 21 0 31 0;
 #X connect 22 0 27 0;
 #X connect 23 0 24 0;
 #X connect 24 0 22 0;
 #X connect 25 0 10 0;
-#X connect 33 0 32 0;
+#X connect 32 0 31 0;

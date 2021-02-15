@@ -1,13 +1,11 @@
 BPM 60
 
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@sin.asco.txt"
-
-@sources_position_init
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
 ; ::sin_trajectory($cmd, $iniT, $targeT, $amp, $w, $offset, $SPEED) ;$count
 
-event 1 sin_01
+EVENT 1 sin_01
 
 /* ::sin_trajectory()
 ::sin_trajectory(src=4)

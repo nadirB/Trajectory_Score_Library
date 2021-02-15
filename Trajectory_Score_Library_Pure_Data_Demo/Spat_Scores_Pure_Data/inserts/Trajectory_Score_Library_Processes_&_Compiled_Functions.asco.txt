@@ -172,12 +172,12 @@ $pi := 3.141592653589793
 	loop rectilinearLoop $speed
 
 	{
-		curve rectilinearCurve @grain := 0.01s @Action := {
+		curve lineCurve @grain := 0.01s @Action := {
 			TRAJECTORY  @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta)
 		}
 
 				@abort :=
-				{		kill rectilinearLoop
+				{		kill lineLoop
 						print_antescofo "lineCurve aborted at " $t
 						Curve rectilinearAbort
 						@grain 0.1
@@ -315,7 +315,7 @@ $pi := 3.141592653589793
 /*#######################Process::ellipse#################*/
 
 
-@proc_def ::ellipse($src = 0, $initT = 0, $endT=0, $a=0, $b=0, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $count1=0, $speed=0){
+@proc_def ::ellipse($src = 1, $initT = 0, $endT=2, $a=2, $b=1, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $count=1, $speed=4){
 
 	@global $speed ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
 	@local $offset, $cpt1,  $prefix
@@ -342,7 +342,7 @@ $pi := 3.141592653589793
 
 		print_antescofo "tour:" $cpt1
 
-	} during[$count1#]
+	} during[$count#]
 
 }
 

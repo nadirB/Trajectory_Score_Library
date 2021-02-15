@@ -3,13 +3,9 @@ BPM 60
 @insert "inserts/@iniT.asco.txt"
 @insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
-@history_clear
-::src_pos($AllQuad)
-@viewer_zoom(100)
-@viewer_div(0)
-@viewer_numdiv(16)
-@viewer_anchors_visible(0)
-play 0
+
+@init_TSL(80)
+
 
 ;::rosace_trajectory($cmd, $initT, $targeT, $k, $speed)
 
@@ -79,4 +75,6 @@ event 1 rosace_even_04
 event 1 rosace_even_05
 
 @history_clear
-::rosace_trajectory(3, 0, 1, 20, 1, 8)
+::rosace_trajectory(1, 0, 1, 20, 1, 4)
+::rosace_trajectory(2, 0, 1, 10, 1, 8)
+::rosace_trajectory(3, 0, 1, 5, 1, 16)

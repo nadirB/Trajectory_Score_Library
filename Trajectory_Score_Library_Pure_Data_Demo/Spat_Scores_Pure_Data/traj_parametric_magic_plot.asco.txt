@@ -3,8 +3,6 @@ BPM 60
 @insert "inserts/@iniT.asco.txt"
 @insert "inserts/@magic_plot.asco.txt"
 
-@sources_position_init
-
 ;::@proc_def ::parametric_trajectory_01($cmd, $a, $b, $count, $speed)
 
 EVENT 1 magic_plot_one

@@ -3,50 +3,6 @@ BPM 120
 @insert "inserts/@iniT.asco.txt"
 @insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
-@init_TSL(50)
-
-;::circle(count=1)
-;::lissajou(1, 1/3, 3 , 1, -1, 1, 3, 1, 4)
-
-/* group
-{
-  loop square 8
-  {
-    ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, 2)
-    2
-    ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 2)
-    2
-    ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, 2)
-    2
-    ::rectilinear(1, 0, 2, -1, -1,   0, 	1, 	1, 2)
-
-  } during[1]
-} */
-
-/*
-loop square_loop 2 @exclusive {
-
-  group square_01
-  {
-    @macro_def @square_01($dur) {
-
-
-    ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur)
-    $dur
-    ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur)
-    $dur
-    ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1,$dur)
-    $dur
-    ::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur)
-    }
-
-    @square_01(1)
-  }
-
-} //until(expr) */
-
-;kill square_loop
-
 
 
 group square_02
@@ -62,40 +18,15 @@ group square_02
   ::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
   }
 
-  @square_02(1/3,1/3,1/3,3)
-  ;@square_02(1/3,1/3,1/3,3)
+
+  ;ex: @square_02(1,1,1,1)
 }
 
-
-
-/* group square_03
-{
-  @macro_def @square_03() {
-
-  ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, 1/3)
-  1/3
-  ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 1/3)
-  1/3
-  ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, 1/3)
-  1/3
-  ::rectilinear(1, 0, 1, -1, -1,   0, 1, 	1, 3)
-  3
-  ::rectilinear(1, 1, 2, -1, -1,   0, 1, 	1, 1)
-  1
-  ::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, 1)
-  1
-  ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, 1)
-  1
-  ::rectilinear(1, 0, 1, 1, -1,  -1,  0, 1, 1)
-
-  }
-
-  @square_03
-} */
 
 ; ----------- measure 1 --- beat 4
 
 NOTE A#4 1/3 measure1
+@square_02(1/3,1/3,1/3,3)
 NOTE G5 1/3
 NOTE D#5 1/3
 NOTE E5 3

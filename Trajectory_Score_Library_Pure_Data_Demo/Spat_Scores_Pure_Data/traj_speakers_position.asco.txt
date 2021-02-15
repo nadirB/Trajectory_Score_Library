@@ -2,7 +2,7 @@
 
 @insert "inserts/@iniT.asco.txt"
 @insert "inserts/@speakers_position.asco.txt"
-@insert "inserts/@circle_osc.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
 @history_clear
 @viewer_div(1)

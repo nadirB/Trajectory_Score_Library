@@ -1,10 +1,7 @@
 BPM 60
 
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@deltoide_variation.asco.txt"
-@insert "inserts/@ellipse.asco.txt"
-
-@sources_position_init
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
 event 1 ellipse_default
 
@@ -19,7 +16,8 @@ event 1 ellipse_01
 ; si a > b, on a une ellipse de grand axe 2a porté par x'x
 ; si b > a, --> 2b --> y'y
 
-::ellipse(src=1, iniT=0, targeT=2,  a=2, b=0.2, alpha=0, beta=0, offsetX=0, offsetY=0,  count=1, speed=4)
+::ellipse($src = 0, $initT = 0, $endT=0, $a=0, $b=0, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $count1=0, $speed=0)
+::ellipse(src=1, initT=0,endT=2,  a=2, b=0.2, alpha=0, beta=0, offsetX=0, offsetY=0,  count=1, speed=4)
 
 ::ellipse(2, 0, 2,  2, 0.4, 0, 0, 0, 0,  1, 4)
 

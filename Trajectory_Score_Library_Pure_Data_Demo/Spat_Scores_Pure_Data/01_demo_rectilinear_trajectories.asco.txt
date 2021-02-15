@@ -1,8 +1,7 @@
 BPM 60
 @insert "inserts/@iniT.asco.txt"
-@insert "inserts/@rectilinear.asco.txt"
-@insert "inserts/@circle_osc.asco.txt"
-@insert "inserts/@lissajou.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
 
 player 0
 group
