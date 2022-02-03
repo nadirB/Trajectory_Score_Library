@@ -15,7 +15,6 @@ BPM 60
 ; si a > b, on a une ellipse de grand axe 2a porté par x'x
 ; si b > a, --> 2b --> y'y
 
-
 event 1 ellipse_01
 
 @multiplayer(5, 1)

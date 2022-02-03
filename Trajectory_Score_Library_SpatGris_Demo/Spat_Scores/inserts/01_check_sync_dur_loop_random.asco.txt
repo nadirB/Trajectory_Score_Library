@@ -1,0 +1,79 @@
+BPM 60
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+@init_TSL(65)
+
+EVENT 1 CUE_01
+@proc_def ::random_points_relative($src, $sync, $dur) {
+  loop random_points_rel $sync
+  {
+      ::rectilinear($src, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=$sync)
+
+  } during[$dur#]
+}
+
+::random_points_relative(1, 6, 1)
+/* ::random_points_relative(2, 1, 8)
+::random_points_relative(3, 1, 8)
+::random_points_relative(4, 1, 8) */
+
+EVENT 1 CUE_02
+
+group cloud_of_points @tempo=$tempo
+{
+  ::random_points_relative(1, 1, 16)
+  ::random_points_relative(2, 1, 16)
+  ::random_points_relative(3, 1, 16)
+  ::random_points_relative(4, 1, 16)
+}
+
+curve slider @grain := 0.01s
+ {
+     $tempo
+     {
+          {60}  //@type "exp"
+      8  {300}
+     2 {60}
+     ; ...
+     }
+ }
+
+ EVENT 1 CUE_03
+
+ @macro_def @square_01($dur1,$dur2,$dur3,$dur4) {
+
+ ::rectilinear(src=1, iniT=0, targeT=2, a=-1, b=1, alpha=1, beta=0, count=1, speed=$dur1)
+ $dur1; delay between actions
+ ::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+ $dur2
+ ::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, $dur3)
+ $dur3
+ ::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+ }
+
+ ::rectilinear()
+ @square_01(1/4,1/4,1/4,1/4)
+
+ /* EVENT 1 CUE_04
+
+ $linear_var := ::rectilinear(src=1,count=2,speed=4)
+ 4
+ $linear_var.$speed := 16 */
+
+ EVENT 1 CUE_03
+
+ @macro_def @square_01($dur1,$dur2,$dur3,$dur4) {
+
+  {if($dur1>1) {$a := 2} else {$a:=1}}
+
+ ::rectilinear(src=1, iniT=0, targeT=2, a=-$a, b=1, alpha=1, beta=0, count=1, speed=$dur1)
+ +=>; delay between actions
+ ::rectilinear(1, 0, 2,  $a,  1, 	0, -1, 	1, $dur2)
+ +=>
+ ::rectilinear(1, 0, 2,  $a, -1,  -1, 	0, 	1, $dur3)
+ +=>
+ ::rectilinear(1, 0, 2, -$a, -1,   0, 1, 	1, $dur4)
+ }
+
+1
+ @square_01(1,1,1,1)

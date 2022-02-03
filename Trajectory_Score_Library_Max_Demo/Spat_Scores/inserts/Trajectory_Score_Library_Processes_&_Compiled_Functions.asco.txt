@@ -145,17 +145,15 @@ $pi := 3.141592653589793
 	@couronneY -> [["double", "double", "double", "double", "double"], "double"],
 	@couronneZ -> [["double", "double", "double", "double", "double"], "double"],
 
-
-
-@lissajou3DX -> [["double", "double", "double"], "double"],
-@lissajou3DY -> [["double", "double", "double", "double"], "double"],
-@lissajou3DZ -> [["double", "double", "double", "double"], "double"],
+	@lissajou3DX -> [["double", "double", "double"], "double"],
+	@lissajou3DY -> [["double", "double", "double", "double"], "double"],
+	@lissajou3DZ -> [["double", "double", "double", "double"], "double"],
 
 })
 
 /*#######################Process::rectilinear#################*/
 
-@proc_def ::rectilinear($src=1, $iniT=-1, $targeT=1, $a=0, $b=0, $alpha=1, $beta=0, $count=1, $speed=4)
+@proc_def ::rectilinear($src=1, $iniT=-1, $targeT=1, $a=0, $b=1, $alpha=1, $beta=0, $count=1, $speed=4)
 
 {
 	@local $body, $t ; to use for setvar outControl with a whenever{(setvar...==setvar...)}
@@ -188,7 +186,7 @@ $pi := 3.141592653589793
 						{
 
 							$t {
-										{ ($t)  } /*@type "exp"*/
+												{ ($t)  } /*@type "exp"*/
 									$speed { ($targeT) }
 							}
 						}
@@ -838,35 +836,6 @@ $pi := 3.141592653589793
 
 	curve couronneCurve @grain := 0.02s @Action := {
 		TRAJECTORY  @couronneX($a, $b, $n, $t, $offsetX) @couronneY($a, $b, $n, $t, $offsetY) @couronneZ($a, $b, $n, $t, $offsetZ)
-	}
-
-			{
-				$t
-				{
-								 { ($initT*$pi) }
-					$speed { ($endT*$pi) }
-
-				}
-			}
-
-	;}
-
-}
-
-
-/*#######################Process::clelie#################*/
-
-
-@proc_def ::clelie($src=1, $initT=-1, $endT=1, $R=1, $n=1, $offsetX=0, $offsetY=0, $offsetZ=0, $speed=4){
-
-	$prefix := "/source/" + $src + "/xyz"
-	oscsend TRAJECTORY "127.0.0.1" : 4072 $prefix
-
-	;loop clelieLoop $speed @exclusive{
-	/* abort clelieCurve */
-
-	curve clelieCurve @grain := 0.02s @Action := {
-		TRAJECTORY  @clelieX($R, $n, $t, $offsetX) @clelieY($R, $n, $t, $offsetY) @clelieZ($R, $n, $t, $offsetZ)
 	}
 
 			{

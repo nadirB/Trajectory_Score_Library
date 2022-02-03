@@ -1,0 +1,401 @@
+BPM 60
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+@init_TSL(65)
+
+
+
+event 1 CUE_rectilinear_01
+::rectilinear() //default
+;::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=0, count=1, speed=4) //idem
+;X($t) = $a+($t*$alpha)
+;Y($t) = $b+($t*$beta)
+
+/*
+- iniT, targeT : the distance covered by $t
+- $a, $b : the coordinates of the line
+- $alpha, $beta : the coordinates of the vector of that line  */
+
+event 1 CUE_points
+@init_TSL(65)
+
+//::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=0, count=1, speed=4)
+
+//change alpha to 0
+
+::rectilinear(1, a=0, b=1, alpha=0, beta=0)
+1
+::rectilinear(2, a=1, b=0, alpha=0, beta=0)
+1
+::rectilinear(3, a=0, b=-1, alpha=0, beta=0)
+1
+::rectilinear(4, a=-1, b=0, alpha=0, beta=0)
+
+event 1 CUE_random_points
+@init_TSL(65)
+
+;what if we wanted a random jump/walk
+
+loop random_points 1
+  {
+    @player(4,0,0.1,4)
+      ::rectilinear(4, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=1)
+
+
+  } during[3#]
+
+;abort random_points
+
+event 1 CUE_random_points_process_absolute_time
+@init_TSL(65)
+
+;what if we wanted a process to handle many sources at  once
+
+@proc_def ::random_points_absolute($src1, $s, $dur) {
+  loop random_points_abs $s
+  {
+      ::rectilinear($src1, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=$s)
+
+  } during[$dur ms]
+}
+
+;abort ::random_points
+;@player($sf1, $loop, $gain1, $ch)
+
+;brassage_01.aiff
+::random_points_absolute(4, 1/4, 56320.068027)
+@player(1, 0, 1., 4)
+
+;brassage_02.aiff
+::random_points_absolute(1, 1/10, 65337.210884)
+@player(2, 0, 1., 1)
+
+65337.210884 ms
+
+;brassage_03.aiff
+::random_points_absolute(2, 1, 31813.945578)
+@player(3, 0, 1., 2)
+
+/* print_message @msec2beat(7491.333333)*/
+
+event 1 CUE_random_points_macro
+@init_TSL(65)
+
+;what if we wanted a ready-made scene
+
+@macro_def @random_points_absolute_scene($dur) {
+
+::random_points_absolute(1, 1, $dur)
+::random_points_absolute(2, 1, $dur)
+::random_points_absolute(3, 1, $dur)
+::random_points_absolute(4, 1, $dur)
+
+}
+
+@random_points_absolute_scene(15000);the duration parameter in the encapsulated process is in milliseconds !
+
+event 1 CUE_random_points_relative_time
+@init_TSL(65)
+
+@proc_def ::random_points_relative($src2, $s2, $dur2) {
+  loop random_points_rel $s2
+  {
+      ::rectilinear($src2, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=$s2)
+
+  } during[$dur2#]
+}
+
+
+::random_points_relative(1, 1, 1)
+::random_points_relative(2, 1, 2)
+::random_points_relative(3, 1, 3)
+::random_points_relative(4, 1, 4)
+
+
+;antescofo::visitlabel CUE_horizontal
+
+event 1 CUE_horizontal
+@init_TSL(65)
+
+::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=0, count=4, speed=1)
+// We  need to tweak the xx' vector director which is alpha in order to have a horizontal vector or mv
+4
+::rectilinear(a=0, b=1) //constant b => yy'
+4
+::rectilinear(a=0, b=-1)
+4
+; multi trajectories //introducing the src params
+::rectilinear(src=1, a=0, b=0)
+::rectilinear(src=2, a=0, b=1)
+::rectilinear(src=3, a=0, b=-1)
+4
+; translation to the right
+::rectilinear(src=1, a=1, b=0)
+::rectilinear(src=2, a=1, b=1)
+::rectilinear(src=3, a=1, b=-1)
+4
+; a trajectory sequence
+::rectilinear(src=1, a=0, b=0)
+1
+::rectilinear(src=2, a=0, b=1)
+2
+::rectilinear(src=3, a=0, b=-1)
+
+event 1 CUE_Count_Speed
+@init_TSL(65)
+
+;another trajectory sequence
+;introducing the count and speed params
+::rectilinear(src=4, a=0, b=0, count=4, speed=1)
+
+event 1 CUE_params_order
+@init_TSL(65)
+
+;IDEM //once the default parameters declared, the declaration order is irrelevant
+::rectilinear(a=0, b=0, iniT=-1, targeT=1)
+
+event 1 CUE_distance
+@init_TSL(65)
+
+//introducing the interval (distance) params
+::rectilinear(a=-1, b=0, iniT=-1, targeT=3)
+
+event 1 CUE_Uturn_01
+@init_TSL(65)
+
+::rectilinear()
+4
+::rectilinear(alpha=-1)
+::rectilinear(src=2,a=0, b=1)
+4
+::rectilinear(src=2,a=0, b=1, alpha=-1)
+::rectilinear(src=3,a=0, b=-1)
+4
+::rectilinear(src=3, a=0, b=-1, alpha=-1)
+
+event 1 CUE_Uturn_02
+@init_TSL(65)
+
+//set groups for clarity, evaluation, tempo change and synchronization strategies
+
+group scene_01 @tempo=$RT_TEMPO ;(default $RT_TEMPO)
+{
+  ::rectilinear()
+  4
+  ::rectilinear(alpha=-1)
+}
+
+group scene_02 @tempo=120
+{
+  ::rectilinear(src=2,a=0, b=1)
+  4
+  ::rectilinear(src=2,a=0, b=1, alpha=-1)
+}
+
+event 1 CUE_Uturn_03
+@init_TSL(65)
+
+group scene_03 @tempo=200
+{
+  ::rectilinear()
+  ::rectilinear(src=2,a=0, b=1)
+  ::rectilinear(src=3,a=0, b=-1)
+  4
+  ::rectilinear(alpha=-1)
+  ::rectilinear(src=2,a=0, b=1, alpha=-1)
+  ::rectilinear(src=3, a=0, b=-1, alpha=-1)
+}
+
+event 1 CUE_Uturn_Loop
+@init_TSL(65)
+
+loop scene_04 8 @tempo=120
+{
+  ::rectilinear()
+  ::rectilinear(src=2,a=0, b=1)
+  ::rectilinear(src=3,a=0, b=-1)
+  4
+  ::rectilinear(alpha=-1)
+  ::rectilinear(src=2,a=0, b=1, alpha=-1)
+  ::rectilinear(src=3, a=0, b=-1, alpha=-1)
+
+} ;during[$p[1]#] //condition to stop the loop
+
+//stop the infinite loop
+;abort scene_04
+
+event 1 CUE_Uturn_Macro
+@init_TSL(65)
+
+@macro_def parallelHorizontalSources($dur,$s) {
+
+  loop $s*2
+{
+  ::rectilinear(src=1,a=0, b=0, speed=$s)
+  ::rectilinear(src=2,a=0, b=1, speed=$s)
+  ::rectilinear(src=3,a=0, b=-1, speed=$s)
+  $s
+  ::rectilinear(src=1,a=0, b=0, alpha=-1, speed=$s)
+  ::rectilinear(src=2,a=0, b=1, alpha=-1, speed=$s)
+  ::rectilinear(src=3, a=0, b=-1, alpha=-1, speed=$s)
+
+} during[$dur#] }
+
+;parallelSources($dur,$s)
+@parallelHorizontalSources(1, 4)
+
+
+
+event 1 CUE_vertical
+@init_TSL(65)
+
+//alpha=0, beta=0 => point
+//alpha=1, beta=0 => horizontal trajectory
+//alpha=0, beta=1 => verticale trajectory
+//a & b => translation
+// the covered interval iniT-targeT is kept.
+
+::rectilinear(1, a=0, b=0, alpha=0, beta=1)
+::rectilinear(2, a=1, b=0, alpha=0, beta=1)
+::rectilinear(3, a=-1, b=0, alpha=0, beta=1)
+4
+::rectilinear(1, a=0, b=0, alpha=0, beta=-1)
+::rectilinear(2, a=1, b=0, alpha=0, beta=-1)
+::rectilinear(3, a=-1, b=0, alpha=0, beta=-1)
+
+
+event 1 CUE_diagonal
+@init_TSL(65)
+
+//alpha=1, beta=1 => trajectoire diagonale
+
+::rectilinear(1, a=0, b=0, alpha=1, beta=1)
+::rectilinear(2, a=1, b=0, alpha=1, beta=1)
+::rectilinear(3, a=-1, b=0, alpha=1, beta=1)
+
+event 1 CUE_diagonal_translation_01
+@init_TSL(65)
+
+//::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=0, count=1, speed=4)
+
+::rectilinear(1, a=0, b=0, alpha=-1, beta=1)
+::rectilinear(2, a=1, b=0, alpha=-1, beta=1)
+::rectilinear(3, a=-1,b=0, alpha=-1, beta=1)
+
+event 1 CUE_diagonal_translation_02
+@init_TSL(65)
+
+//::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=0, count=1, speed=4)
+
+::rectilinear(1, a=0, b=0, alpha=1, beta=-1)
+::rectilinear(2, a=1, b=0, alpha=1, beta=-1)
+::rectilinear(3, a=-1,b=0, alpha=1, beta=-1)
+
+event 1 CUE_diagonal_translation_03
+@init_TSL(65)
+
+//::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=0, count=1, speed=4)
+
+group {
+
+  ::rectilinear(1, a=0, b=0, alpha=-1, beta=-1)
+  ::rectilinear(2, a=1, b=0, alpha=-1, beta=-1)
+  ::rectilinear(3, a=-1,b=0, alpha=-1, beta=-1)
+
+}
+
+
+event 1 CUE_scene_towards_outwards_centre
+@init_TSL(65)
+
+; vectors... (direct to a desired point : diagonal) cf. figures config IV
+
+
+
+group towards_outwards_centre
+{
+  ::rectilinear(src=1, iniT=1, targeT=0, alpha=1,  beta= 1, speed=1)
+  1
+  ::rectilinear(src=1, iniT=0, targeT=1, alpha= 1, beta= 1, speed=1)
+
+  ::rectilinear(src=2, iniT=1, targeT=0, alpha= 1, beta=-1, speed=1)
+  1
+  ::rectilinear(src=2, iniT=0, targeT=1, alpha= 1, beta=-1, speed=1)
+
+  ::rectilinear(src=3, iniT=1, targeT=0, alpha=-1, beta=-1, speed=1)
+  1
+  ::rectilinear(src=3, iniT=0, targeT=1, alpha=-1, beta=-1, speed=1)
+
+  ::rectilinear(src=4, iniT=1, targeT=0, alpha=-1, beta= 1, speed=1)
+  1
+  ::rectilinear(src=4, iniT=0, targeT=1, alpha=-1, beta= 1, speed=1)
+}
+
+
+event 1 CUE_scene_from_center
+@init_TSL(65)
+
+::rectilinear(src=1, iniT=0, targeT=1, alpha= 1, beta= 1, speed=1)
+1
+::rectilinear(src=1, iniT=0, targeT=1, alpha= -1, beta= 1, speed=1)
+1
+::rectilinear(src=1, iniT=0, targeT=1, alpha= 1, beta= -1, speed=1)
+1
+::rectilinear(src=1, iniT=0, targeT=1, alpha= -1, beta= -1, speed=1)
+
+event 1 CUE_random_lines_centerSpread
+@init_TSL(65)
+
+@proc_def ::random_lines_centerSpread($src1) {
+  loop random_points 1
+  {
+
+      ::rectilinear($src1, iniT=0, targeT=1, alpha= @rand_range(-1, 1), beta= @rand_range(-1, 1), speed=1)
+
+  } ;during[$dur#]
+}
+
+::random_lines_centerSpread(3)
+@player(3, 1, 0.5, 3)
+5
+abort ::random_lines_centerSpread
+@player(0, 1, 0.5, 3)
+
+
+event 1 CUE_squares
+@init_TSL(65)
+
+@macro_def @square_01($dur1,$dur2,$dur3,$dur4) {
+
+::rectilinear(src=1, iniT=0, targeT=2, a=-1, b=1, alpha=1, beta=0, count=1, speed=$dur1)
+$dur1; delay between actions
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+$dur2
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, $dur3)
+$dur3
+::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+}
+
+@square_01(4,1,1,1/4)
+
+event 1 CUE_squares_random_speed
+@init_TSL(65)
+
+@macro_def @square_01() {
+@local $dur1,$dur2,$dur3
+
+$dur1:=@rand_range(1/16, 4)
+$dur2:=@rand_range(1/16, 4)
+$dur3:=@rand_range(1/16, 4)
+$dur4:=@rand_range(1/16, 4)
+
+::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur1)
+$dur1
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+$dur2
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1,$dur3)
+$dur3
+::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+}
+
+@square_01

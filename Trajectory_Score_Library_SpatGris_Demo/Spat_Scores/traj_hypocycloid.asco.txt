@@ -1,0 +1,65 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+/* @init_TSL(60)
+@src_clear(2)
+;@alg(2, dome)
+::src_clearAll(4) */
+
+@src_clear(2)
+
+event 1 hypocycloide1_01
+
+;::hypocycloide1($src=1, $initT=0, $endT=1, $a=0.3, $b=0.3, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $speed=4)
+
+/* playAll4 5
+playAll4_gain 0.7 */
+
+::hypocycloide1()
+
+::hypocycloide1(1, 0, 2, 0.1, 0.1, 0, 0.5, 0.0, 0.0, 0.0, 4)
+::hypocycloide1(1, 0, 2, 0.1, 1.0, 0, 0., 0.0, 0.0, 0.0, 4)
+::hypocycloide1(1, 0, 2, 0.1, 0.3, 0, 0.2, 0.0, 0.0, 0.0, 4)
+
+
+ event 1 hypocycloide1_02
+
+; ::hypocycloide2($cmd, $initT, $endT, $a, $b, $offsetX, $offsetY, $SPEED)
+
+::hypocycloide1(1, 0, 2, -0.1, 0.2, 1, 0, 0.0, 0.0, 0.0, 4)
+::hypocycloide1(1, 0, 2, 0.3, -0.4, 0, -1, 0.0, 0.0, 0.0, 4)
+
+ event 1 hypocycloide2_01
+
+::hypocycloide2()
+
+::hypocycloide2(1, 0, 2, 0.1, 0.1, 0, 0, 0.5, 0.2, 0.7, 4)
+
+::hypocycloide2(2, 0, 2, 0.4, 0.4, 0, -0.2, 0.0, 0.0, 0.0, 4)
+
+::hypocycloide2(3, 0, 2, 0.5, 0.5, 0, -0.4, 0.0, 0.0, 0.0, 4)
+
+::hypocycloide2(1, 0, 2, 0.6, 0.6, 0, -0.6, 0.0, 0.0, 0.0, 4)
+
+ event 1 hypocycloide2_02
+
+
+::hypocycloide2(1, 0, 2, -0.1, 0.2, 1, 0, 0.0, 0.0, 0.0, 4)
+
+::hypocycloide2(1, 0, 2, -0.2, 0.3, 0, 1, 0.0, 0.0, 0.0, 4)
+
+::hypocycloide2(1, 0, 2, 0.3, -0.4, 0, -1, 0.0, 0.0, 0.0, 4)
+
+::hypocycloide2(1, 0, 2, 0.4, -0.5, -1, 0, 0.0, 0.0, 0.0, 4)
+
+event 1 hypocycloide_hearts
+
+::curvoide()
+
+::curvoide(1, -1, 1,  0.3, -0.3, 0, -0.2, 0.5, 0., 0., 4)
+
+::curvoide(1, -1, 1,  0.4, -0.4, 0, -0.4, 0.0, 0.0, 0.0, 4)
+
+::curvoide(1, -1, 1,  0.5, -0.5, 0, -0.6, 0.0, 0.0, 0.0, 4)

@@ -1,0 +1,36 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/@insects_plot.asco.txt"
+
+@init_TSL(60)
+;@src_clear(2)
+;@alg(2, dome)
+::src_clearAll(4)
+
+;::insects_plot($src, $iniT, $targeT, $elev, $azispan, $elespan, $count, $speed){
+
+;$source = player's 1st arg
+
+EVENT 1 magic_plot_one
+
+::insects_plot(1, 0, (2*$pi), 0.5 ,0., 0., 4, 4)
+@player(2, 0, 0.7, 2)
+
+
+
+EVENT 1 magic_plot_two
+
+@player(3, 0, 0.7, 3)
+::insects_plot(3, 0, (2*$pi), 0.0, 0.0, 0.0, 1, 14)
+
+EVENT 1 magic_plot_three
+
+@player(1, 0, 0.7, 2)
+
+::insects_plot(2, 0, ($pi), 0.0, 0.0, 0.0, 1, 14)
+
+EVENT 1 magic_plot_four
+
+@player(4, 0, 0.7, 4)
+::insects_plot(4, 0,(-2*$pi), 0.0, 0.0, 0.0 ,1, 11+1/3)

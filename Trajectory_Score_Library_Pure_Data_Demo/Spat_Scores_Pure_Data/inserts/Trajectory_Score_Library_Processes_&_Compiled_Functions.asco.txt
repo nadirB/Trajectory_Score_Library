@@ -854,35 +854,6 @@ $pi := 3.141592653589793
 }
 
 
-/*#######################Process::clelie#################*/
-
-
-@proc_def ::clelie($src=1, $initT=-1, $endT=1, $R=1, $n=1, $offsetX=0, $offsetY=0, $offsetZ=0, $speed=4){
-
-	$prefix := "/source/" + $src + "/xyz"
-	oscsend TRAJECTORY "127.0.0.1" : 4072 $prefix
-
-	;loop clelieLoop $speed @exclusive{
-	/* abort clelieCurve */
-
-	curve clelieCurve @grain := 0.02s @Action := {
-		TRAJECTORY  @clelieX($R, $n, $t, $offsetX) @clelieY($R, $n, $t, $offsetY) @clelieZ($R, $n, $t, $offsetZ)
-	}
-
-			{
-				$t
-				{
-								 { ($initT*$pi) }
-					$speed { ($endT*$pi) }
-
-				}
-			}
-
-	;}
-
-}
-
-
 /*#######################Process::lssajou3D#################*/
 
 

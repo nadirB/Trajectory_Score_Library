@@ -1,0 +1,171 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+@init_TSL(60)
+::src_clearAll(4)
+@src_clear(2)
+;@alg(2, dome)
+
+event 1 lissajou_tonic_open_phase
+
+playAll 5
+playAll_gain 0.7
+
+; ::lissajou($cmd, $initT, $endT, $a, $b, $m, $n, $count, $SPEED)
+
+; si m : n := 1:1
+; a = b
+; on obtient un cercle
+
+::lissajou(1, -1, 1 , 1, 1, 1, 1, 0.0, 0.0, 0.0, 1, 4)
+
+event 1 lissajou_tonic_closed_phase
+
+; si m = n
+; et a ≠ b
+; on obtient une ellipse
+
+::lissajou(1, -1, 1 , 1, 0.5, 1, 1, 0.0, 0.0, 0.0, 1, 4)
+
+event 1 lissajou_first_overtone ;open phase
+
+; m:n := 2:1
+
+::lissajou(1, -1, 1 , 1, 1, 2, 1, 0.0, 0.0, 0.0, 1, 4)
+
+event 1 lissajou_second_overtone ;open phase
+
+; m:n := 3:1
+
+::lissajou(1, -1, 1 , 1, 1, 3, 1, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 lissajou_third_overtone ;open phase
+
+; m:n := 4:1
+
+::lissajou(1, -1, 1 , 1, 1, 4, 1, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 lissajou_fourth_overtone ;open phase
+
+; m:n := 5:1
+
+::lissajou(1, -1, 1 , 1, 1, 5, 1, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 lissajou_unisson
+
+; m:n := 1:1
+
+::lissajou(1, -1, 1 , 2, 2, 1, 1, 0.0, 0.0, 0.0, 1, 4) ; $a, $b tweaks the trajectory amplitude
+
+event 1 lissajou_octave
+
+@player(2,0,0.7,2)
+; m:n := 2:1
+
+::lissajou(2, -1, 1 , 2, 2, 2, 1, 0.0, 0.0, 0.0, 1, 16)
+
+ event 1 lissajou_fifth
+
+; m:n := 3:2
+
+::lissajou(3, -1, 1 , 2, 2, 2, 3, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 lissajou_fourth
+
+; m:n := 4:3
+
+::lissajou(4, -1, 1 , 2, 2, 4, 3, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 lissajou_major_sixth ;fourth overtone
+
+; m:n := 5:3
+
+::lissajou(1, -1, 1 , 2, 2, 5, 3, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 lissajou_major_third
+
+; m:n := 5:4
+
+::lissajou(2, -1, 1 , 2, 2, 4, 5, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 lissajou_minor_third
+
+; m:n := 6:5
+
+::lissajou(3, -1, 1 , 2, 2, 6, 5, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 lissajou_minor_sixth
+
+; m:n := 8:5
+
+::lissajou(4, -1, 1 , 2, 2, 8, 5, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 lissajou_whole_tone
+
+; m:n := 8:5
+
+::lissajou(4, -1, 1 , 2, 2, 8, 9, 0.0, 0.0, 0.0, 1, 32)
+
+event 1 lissajou_05
+
+;(m, n) = (1/9, 1/2)
+
+::lissajou(2, -18, 18, 2, -2, 1/9, 1/2, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 lissajou_06
+
+;(m, n) = (1/9, 1/3)
+
+::lissajou(3, 0, 18 , -1, 1, 1/9, 1/3, 0.0, 0.0, 0.0, 1, 8) ;
+
+event 1 lissajou_07
+
+;(m, n) = (1/9, 1/4)
+
+::lissajou(4, -18, 18, -1, 1, 1/9, 1/4, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 lissajou_08
+
+;(m, n) = (1/9, 1/5)
+
+::lissajou(1, 0, 118, 1, -1, 1/9, 1/5, 0.0, 0.0, 0.0, 1, 16 )
+
+event 1 lissajou_10
+
+;(m, n) = (1/9, 1/8)
+
+::lissajou(3, 0, 120, 1, -1, 1/9, 1/8, 0.0, 0.0, 0.0, 1, 32)
+
+event 1 lissajou_11
+
+;(m, n) = (1/9, 2)
+
+::lissajou(4, 0, 120, 1, -1, 1/9, 0.0, 0.0, 0.0, 2, 1, 64)
+
+Event 1 lissajou_12
+
+;(m, n) = (1/9, 3)
+
+::lissajou(1, 0, 120, 2, -2, 1/9, 0.0, 0.0, 0.0, 3, 1, 500)
+
+event 1 lissajou_13
+
+::lissajou(2, 0, 2 , -1, 1, 1, 2, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 lissajou_16
+
+::lissajou(1, 0, 2 , -1, 1, 1, 6, 0.0, 0.0, 0.0, 1, 12)
+
+event 1 lissajou_17
+
+::lissajou(2, 0, 2 , -1, 1, 1, 10, 0.0, 0.0, 0.0, 1, 24)
+
+event 1 lissajou_18
+
+::lissajou(3, 0, 2 , -1, 1, 10, 1, 0.0, 0.0, 0.0, 1, 12)
+
+event 1 lissajou_19
+
+::lissajou(4, 0, 2 , -1, 1, 7, 4, 0.0, 0.0, 0.0, 1, 24)

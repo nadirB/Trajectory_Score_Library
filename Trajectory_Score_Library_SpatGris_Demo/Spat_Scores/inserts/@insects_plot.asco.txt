@@ -1,0 +1,39 @@
+@global $pi
+$pi := 3.141592653589793
+
+@fun_def X($t){
+	@cos($t) + @cos(7 * $t)/2 + @sin(17 * $t)/3
+}
+
+@fun_def Y($t){
+	@sin($t) + @sin(7 * $t)/2 + @cos(17 * $t)/3
+}
+
+
+@proc_def ::insects_plot($src, $iniT, $targeT, $elev, $azispan, $elespan, $count, $speed){
+
+	@local $t
+
+	$prefix := "/spat/serv"
+	oscsend spatGris @global "127.0.0.1" : 4072 $prefix @persistent
+
+	loop pi $speed
+	{
+
+					abort parametric_curve
+					curve parametric_curve @grain := 0.01s @Action := {
+					spatGris "car" $src @X($t) @Y($t) $elev $azispan $elespan
+				}
+
+			  {
+					$t
+						{
+										 { ($iniT)  } @type "sine"
+							$speed { ($targeT)}	@type "sine"
+
+						}
+			  }
+
+	} during[$count#]
+
+}

@@ -1,0 +1,238 @@
+;inits
+@macro_def @init_TSL($RT_TEMPO) {
+antescofo::suivi 0
+temporal $RT_TEMPO
+@player(0,0,0,0)
+@multiplayer(0,0)
+}
+
+@macro_def @init_TSL3D() {
+antescofo::suivi 0
+play 0
+@player(0,0,0,0)
+@multiplayer(0,0)
+}
+
+@macro_def @src_clear($src) {
+  $prefix := "/spat/serv"
+  oscsend source "127.0.0.1" : 4072 $prefix
+  source "clr" $src
+}
+
+@proc_def ::src_clearAll($sources){
+
+  forall $src in $sources
+  {
+
+    $prefix := "/spat/serv"
+    oscsend source "127.0.0.1" : 4072 $prefix
+    source "clr" ($src+1)
+
+  }
+}
+
+
+@macro_def @alg($src, $alg) {
+
+  $prefix := "/spat/serv"
+  oscsend engine "127.0.0.1" : 4072 $prefix
+  engine "alg" $src $alg ;sets a source hybrid spatialisation mode : dome or cube in hybrid mode
+}
+
+
+
+
+/* @macro_def @history_clear() {
+    oscsend history "127.0.0.1" :4072
+    history "/source/[1-4]/history/clear"
+} */
+
+;audio players presets
+
+@macro_def @player($sf1=1, $loop=0, $gain1=0.7, $ch=1) {
+    play $sf1
+    play_loop $loop
+    play_gain $gain1
+    play_channel $ch
+}
+
+
+;@player(4, 1, 0.5, 4)
+
+@macro_def @multiplayer($sf2, $gain2) {
+    playAll $sf2
+    playAll_gain $gain2
+}
+
+;@multiplayer(5, 0.1)
+
+;viewer presets
+/* @macro_def @viewer_zoom($zoom) {
+    oscsend spat_zoom "127.0.0.1" :4072 "/display/zoom"
+    spat_zoom $zoom }
+
+@macro_def @viewer_bounds($bounds) {
+    oscsend viewer_bounds "127.0.0.1" :4072 "/window/bounds"
+    viewer_bounds $bounds }
+@viewer_bounds(690 10 750 600)
+
+@macro_def @viewer_anchors_visible($anchors_visible) {
+    oscsend viewer_anchors_visible "127.0.0.1" :4072 "/anchor/[1-16]/visible"
+    viewer_anchors_visible $anchors_visible }
+
+@macro_def @viewer_layout($viewer_layout) {
+    oscsend viewer_layout "127.0.0.1" :4072 "/layout"
+    viewer_layout $viewer_layout }
+
+@macro_def @display_view_point($view_point) {
+    oscsend view_point "127.0.0.1" :4072 "/display/viewpoint"
+    view_point $view_point }
+
+@macro_def @viewer_div($div) {
+        oscsend viewer_div "127.0.0.1" :4072 "/grid/angulardivisions/visible"
+        viewer_div $div }
+
+@macro_def @viewer_numdiv($numdiv) {
+        oscsend viewer_numdiv "127.0.0.1" :4072 "/grid/angulardivisions/number"
+        viewer_numdiv $numdiv }
+
+;spatial init process
+
+@macro_def @speakers($speakers) {
+      oscsend speakers_num "127.0.0.1" :4072 "/speaker/number"
+      speakers_num $speakers }
+
+@macro_def @OneSrcPos($src=1, $a=0,$d=1){
+$prefix := "/source/" + $src + "/ad"
+oscsend initOne "127.0.0.1" : 4072 $prefix
+initOne $a $d}
+;@OneSrcPos(2, 0, 0)
+
+;@OneSrcPos()
+
+@macro_def @sources_position($a,$d) {
+    oscsend src_position "127.0.0.1" :4072 "/source/[1-4]/ad"
+    src_position $a $d }
+
+@global  $AllQuad, $AllRight, $AllLeft, $AllFront, $AllBack
+
+$AllQuad := map { (1, [-45, 1]), (2, [45, 1]), (3, [135, 1]), (4, [-135, 1]) }
+
+$AllRight := map { (1, [90, 1]), (2, [90,1 ]), (3, [90, 1]), (4, [90, 1]) }
+
+$AllLeft := map { (1, [-90, 1]), (2, [-90, 1]), (3, [-90, 1]), (4, [-90, 1]) }
+
+$AllFront := map { (1, [0, 1]), (2, [0, 1]), (3, [0, 1]), (4, [0, 1]) }
+
+$AllBack := map { (1, [180, 1]), (2, [180, 1]), (3, [180, 1]), (4, [180, 1]) }
+
+@proc_def ::src_pos($coord){
+
+  forall $src, $pos in $coord
+  {
+    $prefix := "/source/" + $src + "/ad"
+    oscsend initAll "127.0.0.1" : 4072 $prefix
+    initAll $pos
+    ;print_message $pos
+  }
+} */
+;::src_pos($AllQuad)
+
+
+
+//randomness
+
+@fun_def @rand_range($min, $max) {@rand($max-$min)+$min}
+;print_antescofo @rand_range(-1, 1)
+
+@fun_def @rand_range_dur($min, $max) {@rand($max-$min)+$min}
+;print_antescofo @rand_range(-1, 1)
+
+
+;Conversions
+
+@global $deg, $rad, $pi
+$pi := 3.141592653589793
+
+@fun_def @rad2deg($rad) {
+return $rad*(180/$pi)
+}
+
+@fun_def @deg2rad($deg) {
+return $deg/180 ;Should be $deg*$pi/180 but $iniT & $targeT are already multiplied by $pi in the inserted traj process !!
+}
+
+/* print_message @deg2rad(90)
+print_message @rad2deg(0.5) */
+
+
+@fun_def @poltocar($r, $angle)
+{
+	@local $x, $y
+	$x := $r * @cos(@deg2rad($angle))
+	$y := $r * @sin(@deg2rad($angle))
+	return [$x, $y]
+}
+
+;print_antescofo @poltocar(1, 135)
+
+
+@fun_def beat2msec($X) {
+	1000*$X*60.0/$RT_TEMPO
+}
+
+@fun_def msec2beat($X) {
+	$X*$RT_TEMPO/(1000*60.0)
+}
+
+@fun_def beat2sec($X) {
+	$X*60.0/$RT_TEMPO
+}
+
+@fun_def beat2ticks($X) {
+	$X*4*480
+}
+
+@MACRO_DEF hz2ms($hz)
+{
+	expr{ (1/$hz)*1000.0 }
+}
+
+@MACRO_DEF hz2beat($hz)
+{
+	expr{ (1/$hz)*($RT_TEMPO/60.0) }
+}
+
+@fun_def hz_bms($hz)
+{
+	 (1/$hz)*1000.0*($RT_TEMPO/60.0)
+}
+
+;trajectory scenes
+
+
+@macro_def @trajTranslation($what, $dur) {
+    curve offset @grain := 0.01s , @Action := {$what := $x}
+     {
+         $x
+         {
+                {0.0}
+         $dur/4 {1.0}
+         $dur/4 {-1}
+         $dur/4 {0.0}
+
+         }
+     }
+}
+
+
+@macro_def @square($dur1,$dur2,$dur3,$dur4) {
+
+::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur1)
+$dur1
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+$dur2
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, $dur3)
+$dur3
+::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+}

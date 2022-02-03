@@ -1,0 +1,241 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+
+@init_TSL(60)
+;@src_clear(1)
+;@alg(2, dome)
+;::src_clearAll(4)
+
+EVENT 1 rosace_00
+
+playAll4 5
+playAll4_gain 0.7
+
+;::rosace_trajectory_variation($src=1, $initC=0, $cycle=2, $p=1, $q=2, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=4)
+
+::rosace_trajectory_variation()
+
+event 1 trifolium
+
+;idem
+::rosace_trajectory_variation(1, 0, 2, 1, 20 , 0.0, 0.0, 0.0, 1, 4)
+
+event 1 limacon
+
+::rosace_trajectory_variation(1, 0, 2, 1, -2, 0.0, 0.0, 0.0, 1, 4)
+
+event 1 trefle_quatre_feuilles
+
+::rosace_trajectory_variation(3, 0, 2, 1, 3 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 trefle_quatre_feuilles
+
+::rosace_trajectory_variation(4, 0, 2, -1, 3 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 cinq_feuilles
+
+::rosace_trajectory_variation(1, 0, 2, 1, 4, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 cinq_feuilles
+
+
+::rosace_trajectory_variation(1, 0, 2, -1, 4, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 plot_01
+
+
+
+ ::rosace_trajectory_variation(3, 0, 2, 1, 5, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 plot_02
+
+
+
+::rosace_trajectory_variation(4, 0, 2, -1, 5, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 plot_03
+
+
+
+ ::rosace_trajectory_variation(1, 0, 2, 1, 6, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 plot_04
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 1, 9, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 plot_05
+
+
+
+::rosace_trajectory_variation(3, 0, 2, 1, 10, 0.0, 0.0, 0.0, 1, 16)
+
+event 1 plot_06
+
+;::rosace_trajectory_variation($src, $initC, $cycle, $p, $q, $count, $speed)
+
+::rosace_trajectory_variation(4, 0, 2, 1, 2, 0.0, 0.0, 0.0, 1, 4)
+
+event 1 limacon_02
+
+
+
+::rosace_trajectory_variation(1, 0, 2, -1, -2, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 folium_Durer
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 1, -3, 0.0, 0.0, 0.0, 2, 16)
+
+event 1 folium_Durer_trans
+
+
+
+ ::rosace_trajectory_variation(1, 0, 2, -1, -3, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 three_fifth
+
+
+
+::rosace_trajectory_variation(4, 0, 2, 1, -4, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 two_three
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 1, -5, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 two_three
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 1, -6, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 two_three_02
+
+
+
+::rosace_trajectory_variation(3, 0, 2, 1, -7, 0.0, 0.0, 0.0, 1, 8)
+
+
+event 1 ellipseX
+
+
+
+
+
+::rosace_trajectory_variation(1, 2, 0, 2, 1, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 ellipseY
+
+
+
+::rosace_trajectory_variation(1, 2, 0, -2, 1, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 ellipseX
+
+
+
+::rosace_trajectory_variation(3, 2, 0, -2, 2, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 feuilles
+
+
+
+::rosace_trajectory_variation(4, 0, 2, 2, 3 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 feuilles_02
+
+
+
+::rosace_trajectory_variation(1, 0, 2, -2, 3 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 _feuilles_03
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 2, -3 , 0.0, 0.0, 0.0, 1, 8)
+
+
+event 1 _t
+
+
+
+::rosace_trajectory_variation(3, 0, 2, -2, -3 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 _feuilles
+
+
+
+
+::rosace_trajectory_variation(1, 0, 2, -3, -3 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 cinq_feuilles
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 1, 4, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 cinq_feuilles_02
+
+
+
+::rosace_trajectory_variation(3, 0, 2, -1, 4, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 plot_07
+
+
+
+::rosace_trajectory_variation(4, 0, 2, 1, 5, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 plot_08
+
+
+
+::rosace_trajectory_variation(1, 0, 2, -1, 5, 0.0, 0.0, 0.0, 1, 8)
+
+
+event 1 plot_09
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 1, 6, 0.0, 0.0, 0.0, 1, 8)
+
+event 1 plot_10
+
+
+
+::rosace_trajectory_variation(3, 0, 2, 1, 10, 0.0, 0.0, 0.0, 1, 4)
+
+event 1 plot_11
+
+
+
+::rosace_trajectory_variation(4, 0, 2, 1, 30, 0.0, 0.0, 0.0, 1, 8)
+
+; back to circle through these params
+
+event 1 cercle
+
+;::rosace_trajectory_variation($cmd, $initC, $cycle, $p, $q, $SPEED)
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 0, 1 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 cercle_02
+
+
+
+::rosace_trajectory_variation(1, 0, 2, 0, -1 , 0.0, 0.0, 0.0, 1, 8)
+
+event 1 cercle_03
+
+
+
+::rosace_trajectory_variation(3, 0, 2, 1, 1 , 0.0, 0.0, 0.0, 1, 8)

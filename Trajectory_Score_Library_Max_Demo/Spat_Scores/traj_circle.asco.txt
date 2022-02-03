@@ -38,8 +38,6 @@ print_antescofo "Trajectory1 Done !"
 
 event 1 multi_circle_01
 
-
-
 ::circle(1, 0,  2,  0.3,  0, 0, 1, 4) ; 2π := 1 turn anti-clockwise with a radius of 0.3 during 4 beats
 ::circle(2, 0, -1,  0.5,  0, 0, 1, 4) ; -2π * $count(2) := 2 turn clockwise with a radius of 0.5 during 4 beats
 ::circle(3, 0,  2,  0.7,  0, 0, 1, 4) ; 2π := 1 turn anti-clockwise with a radius of 0.7 during 4 beats

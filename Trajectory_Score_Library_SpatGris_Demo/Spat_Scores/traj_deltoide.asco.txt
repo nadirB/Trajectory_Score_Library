@@ -1,0 +1,52 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+@init_TSL(60)
+::src_clearAll(4)
+
+event 1 deltoide_00
+
+playAll 5
+playAll_gain 0.7
+
+; ::deltoide($src, $initT, $endT,  $r, $offsetX, $offsetY, $elev, .$azispan, $elespan, $SPEED)
+
+::deltoide(src=1, initT=0, endT=2, r=0.2, offsetX=-0.2, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+::deltoide(src=2, initT=0, endT=2, r=0.3, offsetX=-0.3, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+::deltoide(src=3, initT=0, endT=2, r=0.4, offsetX=-0.4, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+::deltoide(src=4, initT=0, endT=2, r=0.5, offsetX=-0.5, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+event 1 deltoide_01
+
+::deltoide(src=1, initT=0, endT=2, r=1, offsetX=0, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+event 1 deltoide_02
+
+::deltoide(src=2, initT=0, endT=2, r=1/4, offsetX=0, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+event 1 deltoide_03
+
+::deltoide(src=3, initT=0, endT=2, r=1/4, offsetX=0, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+event 1 deltoide_04
+
+::deltoide(src=4, initT=0, endT=2, r=1/8, offsetX=0, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+event 1 deltoide_05
+
+::deltoide(src=1, initT=0, endT=2, r=1/8, offsetX=1, offsetY=1, elev=0., azispan=0., elespan=0., speed=4)
+
+event 1 deltoide_06
+
+::deltoide(src=1, initT=-2, endT=2, r=0.2, offsetX=-0.2, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+::deltoide(src=2, initT=-1, endT=2, r=0.3, offsetX=-0.3, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+::deltoide(src=3, initT=0, endT=-1, r=0.4, offsetX=-0.4, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)
+
+::deltoide(src=4, initT=1, endT=-1, r=0.5, offsetX=-0.5, offsetY=0, elev=0., azispan=0., elespan=0., speed=4)

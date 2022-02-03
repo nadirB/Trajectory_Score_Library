@@ -74,16 +74,25 @@ event 1 CUE_random_points_process_absolute_time
 ;@player($sf1, $loop, $gain1, $ch)
 
 ::random_points_absolute(4, 1/4, 11737.324263)
-player bang
+@player(1, 0, 1., 4)
 
-/* 11737.324263  ms
-::random_points_absolute(1, 1/10, 14731.814059)
+;brassage_01.aiff
+::random_points_absolute(4, 1/4, 56320.068027)
+@player(1, 0, 1., 4)
+
+;brassage_02.aiff
+::random_points_absolute(1, 1/10, 65337.210884)
 @player(2, 0, 1., 1)
-14731.814059 ms
-::random_points_absolute(2, 1, 7491.333333)
-@player(3, 0, 1., 2) */
 
-/* print_message @msec2beat(7491.333333)*/
+65337.210884 ms
+
+;brassage_03.aiff
+::random_points_absolute(2, 1, 31813.945578)
+@player(3, 0, 1., 2)
+
+;print_message @msec2beat(31813.945578)
+
+
 
 event 1 CUE_random_points_macro
 

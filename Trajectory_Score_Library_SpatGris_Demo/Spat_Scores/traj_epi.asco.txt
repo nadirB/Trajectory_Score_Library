@@ -1,0 +1,34 @@
+ BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+@init_TSL(60)
+@src_clear(4)
+;@alg(2, dome)
+::src_clearAll(4)
+
+event 1 epi_01
+
+;@proc_def ::epi($src, $initT, $endT, $m, $offsetX, $offsetY, $elev, $azispan, $elespan, $speed)
+
+playAll 5
+playAll_gain 0.7
+
+::epi(4, 0.01, 2, 2*$pi, 0, 0, 0.0, 0.0, 0.0, 32)
+
+event 1 epi_02
+
+::epi(2, 0.01, 2, $pi, 0, 0, 0.0, 0.0, 0.0, 32)
+
+event 1 epi_03
+
+::epi(3, 0.01, 2, 4*$pi, 0, 0, 0.0, 0.0, 0.0, 32)
+
+event 1 epi_04
+
+::epi(4, 0.01, 2, @pow(0.5, 2), 0, 0, 0.0, 0.0, 0.0, 16)
+
+event 1 epi_06
+
+::epi(2, 0.01, 8, @pow(2, 0.5), 0, 0, 0.0, 0.0, 0.0, 32)

@@ -1,0 +1,123 @@
+BPM 60
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+@init_TSL(65)
+
+event 1 CUE_rectilinear_01
+/* line's parametric function
+X($t) = $a+($t*$alpha)
+Y($t) = $b+($t*$beta) */
+/*
+- iniT, targeT : the interval or distance covered by $t
+- $a, $b : the coordinates of the line
+- $alpha, $beta : the coordinates of the vector of that line  */
+
+//alpha=0, beta=0 => point
+//alpha=1, beta=0 => horizontal trajectory
+//alpha=0, beta=1 => verticale trajectory
+//alpha=1, beta=1 => diagonal trajectory
+//a & b => translations
+// the covered interval iniT-targeT is kept.
+
+::rectilinear() //default
+
+/* ::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=1, alpha=1, beta=0, count=1, speed=4) IDEM */
+
+
+
+event 1 CUE_random_points
+@init_TSL(65)
+
+;what if we wanted a random jump/walk
+
+loop random_points 1
+  {
+      ::rectilinear(4, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=1)
+      @player(4,0,0.1,4)
+
+  } during[10#]
+
+;abort random_points
+
+event 1 CUE_random_points_process_absolute_time
+@init_TSL(65)
+
+@proc_def ::random_points_absolute($src, $sync, $dur) {
+  loop random_points_abs $sync
+  {
+      ::rectilinear($src, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=$sync)
+
+  } during[$dur ms]
+}
+
+;abort ::random_points
+;@player($sf1, $loop, $gain1, $ch)
+
+::random_points_absolute(4, 1/4, 11737.324263)
+@player(1, 0, 1., 4)
+
+::random_points_absolute(2, 1, 14731.814059)
+@player(2, 0, 1., 2)
+
+::random_points_absolute(3, 1, 7491.333333)
+@player(3, 0, 1., 2)
+
+
+event 1 CUE_random_points_relative_time
+@init_TSL(65)
+
+;what if we wanted a process to handle many sources at  once
+@proc_def ::random_points_relative($src2, $s2, $dur2) {
+  loop random_points_rel $s2
+  {
+      ::rectilinear($src2, a=@rand_range(-1, 1), b=@rand_range(-1, 1), alpha=0, beta=0, speed=$s2)
+
+  } during[$dur2#]
+}
+
+
+group cloud_of_points @tempo=60
+{
+  ::random_points_relative(1, 1, 8)
+  ::random_points_relative(2, 1, 8)
+  ::random_points_relative(3, 1, 8)
+  ::random_points_relative(4, 1, 8)
+}
+
+event 1 CUE_squares
+@init_TSL(65)
+
+@macro_def  @square_controlled_speed($dur1,$dur2,$dur3,$dur4){
+
+::rectilinear(src=1, iniT=0, targeT=2, a=-1, b=1, alpha=1, beta=0, count=1, speed=$dur1)
+$dur1; delay between actions
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+$dur2
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, $dur3)
+$dur3
+::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+}
+
+@square_controlled_speed(1/8,1/4,1/16,1/4)
+
+event 1 CUE_squares_random_speed
+@init_TSL(65)
+
+@macro_def @square_random_speed() {
+@local $dur1,$dur2,$dur3
+
+$dur1:=@rand_range(1/16, 4)
+$dur2:=@rand_range(1/16, 4)
+$dur3:=@rand_range(1/16, 4)
+$dur4:=@rand_range(1/16, 4)
+
+::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur1)
+$dur1
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+$dur2
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1,$dur3)
+$dur3
+::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
+}
+
+@square_random_speed

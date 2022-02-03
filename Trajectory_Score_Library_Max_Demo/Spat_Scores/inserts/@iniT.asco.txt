@@ -9,11 +9,13 @@ temporal $RT_TEMPO
 speakers_config 4
 @viewer_layout("single")
 @display_view_point("xy")
-@sources_position(0, 1)
+@sources_position(0, 0)
 @history_clear
 OSC_BUNDLE clear
 @player(0,0,0,0)
-@multiplayer(0,0) }
+@multiplayer(0,0)
+format 1
+}
 
 @macro_def @init_TSL3D($zoom=50) {
 antescofo::suivi 0
@@ -30,6 +32,7 @@ play 0
 OSC_BUNDLE clear
 @player(0,0,0,0)
 @multiplayer(0,0)
+format 0
 ;decoder hoa2binaural
 }
 
@@ -139,78 +142,6 @@ $AllBack := map { (1, [180, 1]), (2, [180, 1]), (3, [180, 1]), (4, [180, 1]) }
 @fun_def @rand_range_dur($min, $max) {@rand($max-$min)+$min}
 ;print_antescofo @rand_range(-1, 1)
 
-@fun_def @drunk($val, $min, $max, $steep)
-{
-	if(($val >= $min)&&($val <= $max))
-	{
-		if (@rand(1.)> 0.5)
-		{
-			$val := $val + @rand($steep)
-			return $val
-		}else{
-			$val := $val - @rand($steep)
-			return $val
-		}
-	}else{
-		if($val <= $min)
-		{
-			$val := $val + @rand($steep)
-			return $val
-		}else{
-			$val := $val - @rand($steep)
-			return $val
-		}
-	}
-}
-
-;print_antescofo @drunk(2, -1, 1, 1)
-
-
-@proc_def ::brown_lfo($module, $param, $min, $max, $drunk_step, $init_val, $type, $tpo)
-{
-	@local $v1, $v2, $duree, $current, $curve_proc, $lin, $curve_int_proc, $drunk_val
-
-	$v1 := $init_val
-	$v2 := @drunk($init_val, $min, $max, $drunk_step)
-	$curve_int_proc := 0
-
-	$delay := @rand(1.) + 0.5
-	// $drunk_val := @drunk($drunk_val, -0.062, 1.813, $drunk_step)
-
-	group @tempo := $tpo
-	{
-	Loop $delay @exclusive //@tempo := $tpo
-	{
-		abort $curve_int_proc
-
-		$v1 := $v2
-		$v2 := @drunk($v1, $min, $max, $drunk_step) //@rand_range($min, $max) // @rand($max-$min)+$min
-		$delay := @rand(1.) + 0.5
-		$duree := $delay
-
-		$curve_int_proc := {
-			curve
-		        // @tempo := $tpo
-		        @Grain := 0.005 //0.01s
-		        @action :=  {
-		        	// print localsynthset $module $param $lin
-		                // print n_set $module $param $lin
-		                @command($module) $lin
-		              }
-
-		        { $lin {
-		                 {$v1} @type := $type
-		            $duree {$v2}
-		            }
-		        }
-		    }
-		}
-	}
-}
-
-;::brown_lfo($module, $param, $min, $max, $drunk_step, $init_val, $type, $tpo)
-;::brown_lfo("toto", "titi", -100, 100, 1, 1, "sine_out", 60)
-;::brown_lfo("titi", "titi", -100, 100, 1, 1, "sine_out", 60)
 
 ;Conversions
 
@@ -218,7 +149,7 @@ $AllBack := map { (1, [180, 1]), (2, [180, 1]), (3, [180, 1]), (4, [180, 1]) }
 $pi := 3.141592653589793
 
 @fun_def @rad2deg($rad) {
-return ($rad*180)/$pi
+return $rad*(180/$pi)
 }
 
 @fun_def @deg2rad($deg) {
@@ -286,4 +217,16 @@ print_message @rad2deg(0.25*$pi) */
 
          }
      }
+}
+
+
+@macro_def @square($dur1,$dur2,$dur3,$dur4) {
+
+::rectilinear(1, 0, 2, -1,  1,  1,  0, 	1, $dur1)
+$dur1
+::rectilinear(1, 0, 2,  1,  1, 	0, -1, 	1, $dur2)
+$dur2
+::rectilinear(1, 0, 2,  1, -1,  -1, 	0, 	1, $dur3)
+$dur3
+::rectilinear(1, 0, 2, -1, -1,   0, 1, 	1, $dur4)
 }

@@ -1,0 +1,856 @@
+/* ©nadirB. 2018-2021 */
+
+@global $pi
+$pi := 3.141592653589793
+
+/*#######################Function Definitions#################*/
+
+@fun_def @rad2deg($alpha, $pi){(($alpha*180)/$pi)}
+@fun_def @deg2rad($deg){($deg/180)} ;Should be $deg*$pi/180 but $iniT & $targeT are already multiplied by $pi in the inserted trajectory processes !!
+@fun_def @rectilinearX($t, $a, $alpha){$a+($t*$alpha)}
+@fun_def @rectilinearY($t, $b, $beta){$b+($t*$beta)}
+
+@fun_def circleX($t, $radius, $offsetX){$radius*@cos($t) + $offsetX}
+@fun_def circleY($t, $radius, $offsetY){$radius*@sin($t) + $offsetY}
+
+@fun_def @ellipseX($a, $alpha, $t, $offsetX){$a*@cos($t) - $alpha*@sin($t) + $offsetX}
+@fun_def @ellipseY($b, $beta, $t,  $offsetY){$b*@sin($t) - $beta*@cos($t) + $offsetY}
+
+@fun_def @sinFunc($x, $w, $amp, $offset, $pi) {(@sin(($x*$w))*$amp) + ($offset*$pi)}
+
+@fun_def @lissajouX($a, $m, $t){$a * @sin($m * $t)}
+@fun_def @lissajouY($b, $n, $t){$b * @cos($n * $t )}
+
+@fun_def @lissajouBisX($t, $k){@cos($k*$t)*@sin($t)}
+@fun_def @lissajouBisY($t, $k){@sin($k*$t)*@cos($t)}
+
+@fun_def @deltoideX($t,  $r, $offsetX) {2*$r * @cos($t) + $r * @cos(2 * $t) + $offsetX}
+@fun_def @deltoideY( $t,  $r, $offsetY) {2*$r*@sin($t) - $r*@sin(2*$t) + $offsetY}
+
+@fun_def @rosaceX($t, $k){@cos($k*$t)*@sin($t)}
+@fun_def @rosaceY($t, $k){@cos(-$k*$t)*@cos($t)}
+
+@fun_def @rosaceVariationX($t,$p,$q){($p*@cos($t)+@cos($q*$t))}
+@fun_def @rosaceVariationY($t,$p,$q){($p*@sin($t)-@sin($q*$t))}
+
+@fun_def @insects_plotX($t){@cos($t) + @cos(7 * $t)/2 + @sin(17 * $t)/3}
+@fun_def @insects_plotY($t){@sin($t) + @sin(7 * $t)/2 + @cos(17 * $t)/3}
+
+@fun_def @gaussOgnion($k, $x, $offset){($k * @exp(-0.2*@pow($x, 2)) + $offset)}
+
+@fun_def @hypocycloide1X( $t, $b, $offsetX){$b * ((2 * @sin($t)) - @sin(2 * $t)) + $offsetX}
+@fun_def @hypocycloide1Y($t, $a, $offsetY){($a * (1 + @cos($t))) * ((2 * @cos($t)) + @cos($t)) + $offsetY}
+
+@fun_def @hypocycloide2X( $t, $a, $offsetX){$a*(2*@cos($t)) + @cos($t) + $offsetX}
+@fun_def @hypocycloide2Y($t, $b, $offsetY){$b*(2*@sin($t)) - @sin(2*$t) + $offsetY}
+
+@fun_def @curvoideX($t, $b){($b*(1+@cos($t)))*((2*@sin($t)) - @sin(2*$t))}
+@fun_def @curvoideY($t, $a){($a*(1+@cos($t)))*((2 * @cos($t)) + @cos($t))}
+
+@fun_def @hypocycloideVariationsX( $t, $R, $r, $offsetY){($R-$r)*@sin($t) - $r*@sin((($R-$r)/$r)*$t) + $offsetY}
+@fun_def @hypocycloideVariationsY($t, $R, $r, $offsetX){($R-$r)*@cos($t) + $r*@cos((($R-$r)/$r)*$t) + $offsetX}
+
+@fun_def @epiX( $t, $m, $offsetX){1/@sin($m*$t) * @cos($t) + $offsetX}
+@fun_def @epiY($t, $m, $offsetY){1/@sin($m*$t) * @sin($t) + $offsetY}
+
+/* #############3D###################### */
+
+@fun_def @generic3DX($t,$a,$b, $offsetX){@sin($a*$t)*@cos($b*$t)+$offsetX}
+@fun_def @generic3DY($t,$a,$b, $offsetY){@sin($a*$t)*@sin($b*$t)+$offsetY}
+@fun_def @generic3DZ($t, $c, $offsetZ){@cos($c*$t)+$offsetZ}
+
+/* $a = rayon & 2$pi$b = distance between 2 conscutive turn & if $e = 1 -> dextre (droite), if e = -1 senestre (gauche) */
+@fun_def @helicoideX($a, $t, $offsetX){($a*@cos($t))+$offsetX}
+@fun_def @helicoideY($a, $t, $offsetY){(($a*@sin($t)))+$offsetY}
+@fun_def @helicoideZ($b, $t, $offsetZ){($b*$t)+$offsetZ}
+
+/* clélie Curve */
+
+@fun_def @clelieX($R, $n, $t, $offsetX){$R*@cos($n*$t)*@cos($t)+$offsetX}
+@fun_def @clelieY($R, $n, $t, $offsetY){$R*@cos($n*$t)*@sin($t)+$offsetY}
+@fun_def @clelieZ($R, $n, $t, $offsetZ){$R*@sin($n*$t)+$offsetZ}
+
+/* couronne sinusoidale */
+/* n > 0 */
+
+@fun_def @couronneX($a, $b, $n, $t, $offsetX) {$a*@cos($t)+$offsetX}
+@fun_def @couronneY($a, $b, $n, $t, $offsetY) {$a*@sin($t)+$offsetY}
+@fun_def @couronneZ($a, $b, $n, $t, $offsetZ) {$b*@cos($n*$t)+$offsetZ}
+
+/* lissajou 3D */
+
+@fun_def @lissajou3DX($a, $t, $offsetX){$a*@sin($t)+$offsetX}
+@fun_def @lissajou3DY($b, $n, $t, $offsetY){$b*@sin($n*$t)+$offsetY}
+@fun_def @lissajou3DZ($c, $m, $t, $offsetZ){$c*@sin($m*$t)+$offsetZ}
+
+
+/*#######################Function Compilation#################*/
+
+@compilation(MAP{
+
+	@rad2deg -> [["double", "double"], "double"],
+	@deg2rad -> [["double"], "double"],
+
+	@rectilinearX -> [["double", "double", "double"], "double"],
+	@rectilinearY -> [["double", "double", "double"], "double"],
+
+	@circleX -> [["double", "double", "double"], "double"],
+	@circleY -> [["double", "double", "double"], "double"],
+
+	@ellipseX -> [["double", "double", "double", "double" ], "double"],
+	@ellipseY -> [["double", "double", "double", "double"], "double"],
+
+	@sinFunc -> [["double", "double", "double", "double", "double"], "double"],
+
+	@lissajouX -> [["double", "double", "double"], "double"],
+	@lissajouY -> [["double", "double", "double"], "double"],
+
+	@lissajouBisX -> [["double", "double"], "double"],
+	@lissajouBisY -> [["double", "double"], "double"],
+
+	@deltoideX -> [["double", "double", "double"], "double"],
+	@deltoideY ->	[["double", "double", "double"], "double"],
+
+	@rosaceX -> [["double", "double"], "double"],
+	@rosaceY -> [["double", "double"], "double"],
+
+	@rosaceVariationX -> [["double", "double", "double"], "double"],
+	@rosaceVariationY -> [["double", "double", "double"], "double"],
+
+	@gaussOgnion -> [["double", "double", "double"], "double"],
+
+	@hypocycloide1X -> [["double", "double", "double"], "double"],
+	@hypocycloide1Y -> [["double", "double", "double"], "double"],
+
+
+	@hypocycloide2X -> [["double", "double", "double"], "double"],
+	@hypocycloide2Y -> [["double", "double", "double"], "double"],
+
+	@curvoideX -> [["double", "double"], "double"],
+	@curvoideY -> [["double", "double"], "double"],
+
+  @insects_plotX -> [["double"], "double"],
+	@insects_plotY -> [["double"], "double"],
+
+	@generic3DX -> [["double", "double", "double", "double"], "double"],
+	@generic3DY -> [["double", "double", "double", "double"], "double"],
+	@generic3DX -> [["double", "double", "double"], "double"],
+
+	@helicoideX -> [["double", "double", "double"], "double"],
+	@helicoideY -> [["double", "double", "double"], "double"],
+	@helicoideX -> [["double", "double", "double"], "double"],
+
+	@clelieX -> [["double", "double", "double", "double"], "double"],
+	@clelieY -> [["double", "double", "double", "double"], "double"],
+	@clelieZ -> [["double", "double", "double", "double"], "double"],
+
+	@couronneX -> [["double", "double", "double", "double", "double"], "double"],
+	@couronneY -> [["double", "double", "double", "double", "double"], "double"],
+	@couronneZ -> [["double", "double", "double", "double", "double"], "double"],
+
+	@lissajou3DX -> [["double", "double", "double"], "double"],
+	@lissajou3DY -> [["double", "double", "double", "double"], "double"],
+	@lissajou3DZ -> [["double", "double", "double", "double"], "double"],
+
+})
+
+/*#######################Trajectory Processes#################*/
+
+/*#######################Process::rectilinear3D#################*/
+
+@proc_def ::rectilinear($src=1, $iniT=-1.0, $targeT=1.0, $a=0.0, $b=0.5, $alpha=1.0, $beta=0.0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=4)
+{
+	@local $body, $t ; to use with antescofo's setvar to Control with a whenever{(setvar...==setvar...)}
+	$body := 0.
+
+	@local $cpt, $prefix
+	$cpt := 0
+
+	$prefix := "/spat/serv"
+	oscsend rectilinear "127.0.0.1" : 4072 $prefix
+
+	loop rectilinearLoop $speed
+	{
+		curve lineCurve @grain := 0.01s @Action := {
+
+			rectilinear "car" $src @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $elev $azispan $elespan
+			print_osc $prefix "car" $src @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $elev $azispan $elespan
+		}
+
+				@abort :=
+				{		kill lineLoop
+						print_antescofo "lineCurve aborted at " $t
+						Curve rectilinearAbort
+						@grain 0.1
+						@action := {print_message "handler lineCurve: " $t
+						TRAJECTORY @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $z
+						}
+
+						{
+
+							$t {
+										{ ($t)  } /*@type "exp"*/
+									$speed { ($targeT) }
+							}
+						}
+					}
+
+
+
+			{
+				$t
+				{
+								 { ($iniT)  } /*@type "exp"*/
+					$speed { ($targeT) }
+
+
+				}
+		}
+
+	} during[$count#]
+
+}
+
+/*#######################Process::circle#################*/
+
+@proc_def circle($src=1, $iniT=0, $targeT=2, $radius=1, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=4){
+
+		@local $cpt, $prefix
+		$cpt := 0
+
+
+		$prefix := "/spat/serv"
+		oscsend circle "127.0.0.1" : 4072 $prefix
+
+		loop circle_curve $speed
+		@abort := {
+			print_message "Curve C aborted at " $t
+			Curve AH @grain 0.1 @action := {
+				;print_message "handler curve: " $t
+				SpatGris "car" $src @circleX($t, $radius, $offsetX) @circleY($t, $radius, $offsetY) $elev $azispan $elespan
+			}
+
+			{
+				$t {
+					{ ($t)  } /*@type "exp"*/
+					$speed { ($iniT*$pi) }
+				}
+			} }
+
+		{
+			$cpt := $cpt + 1 //loop counter
+			curve circleCurve @grain := 0.01s @Action := {
+
+				circle "car" $src @circleX($t, $radius, $offsetX) @circleY($t, $radius, $offsetY) $elev $azispan $elespan
+
+				print_osc $prefix "car" $src @circleX($t, $radius, $offsetX) @circleY($t, $radius, $offsetY) $elev $azispan $elespan
+			}
+
+				{
+					$t {
+						{ ($iniT*$pi)  } /*@type "exp"*/
+						$speed { ($targeT*$pi) }
+						}
+				}
+
+			print_antescofo tour $cpt ":" ;prints the number of loops
+
+		} during[$count#] ; set the loop during $count/number of beats related to the BPM
+}
+
+/*#######################Process::deltoide#################*/
+
+
+@proc_def ::deltoide($src, $initT, $endT,  $r, $offsetX, $offsetY, $elev, $azispan, $elespan, $speed)
+{
+	@local $cpt, $prefix
+	$cpt := 0
+
+	$prefix := "/spat/serv"
+	oscsend deltoide "127.0.0.1" : 4072 $prefix
+
+	;loop deltoideLoop $SPEED
+	;{
+	;abort deltoideCurve
+
+	curve deltoideCurve @grain := 0.02s @Action := {
+
+		deltoide "car" $src @deltoideX($t,  $r, $offsetX) @deltoideY($t,  $r, $offsetY) $elev $azispan $elespan
+
+		print_osc $prefix "car" $src @deltoideX($t,  $r, $offsetX) @deltoideY($t,  $r, $offsetY) $elev $azispan $elespan
+	}
+
+			{
+				$t
+				{
+								 { ($initT*$pi)}
+					$speed { ($endT*$pi) }
+				}
+			}
+}
+
+/*#######################Process::ellipse#################*/
+
+@proc_def ::ellipse($src=0, $iniT=0, $endT=0, $a=0, $b=0, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count1=0, $speed=0){
+
+	@global $speed ; to use with antescofo's setvar to outControl with a whenever{(setvar...==setvar...)}
+	@local $offset, $cpt1,  $prefix
+	$offset := 0.
+	$cpt1 := 0
+
+	$prefix := "/spat/serv"
+	oscsend ellipse "127.0.0.1" : 4072 $prefix
+
+	loop ellipse_loop $speed
+	{
+		$cpt1 := $cpt1+1
+
+		curve ellipseCurve @grain := 0.02s @Action := {
+
+			ellipse "car" $src @ellipseX($a, $alpha, $t, $offsetX) @ellipseY($b, $beta, $t,  $offsetY) $elev $azispan $elespan
+
+			print_osc $prefix "car" $src @ellipseX($a, $alpha, $t, $offsetX) @ellipseY($b, $beta, $t,  $offsetY) $elev $azispan $elespan
+
+		}
+				{
+					$t
+					{
+									 { ($iniT*$pi) } @type "sine"
+						$speed { ($endT*$pi) }
+					}
+				}
+
+		print_antescofo "tour:" $cpt1
+
+	} during[$count1#]
+
+}
+
+/*#######################Process::hypocycloide1#################*/
+
+@proc_def ::hypocycloide1($src=1, $initT=0, $endT=2, $a=0.3, $b=0.3, $offsetX=0, $offsetY=-1, $elev=0.0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend hypocycloide1 "127.0.0.1" : 4072 $prefix
+
+    ;loop hypocycloideLoop $speed
+	;{
+		;abort hypocycloideCurve
+
+		  curve hypocycloideCurve @grain := 0.02s @Action := {
+			hypocycloide1 "car" $src @hypocycloide1X($t, $a, $offsetX) @hypocycloide1Y($t, $b, $offsetY) $elev $azispan $elespan
+
+			print_osc "hypocycloide1" $prefix "car" $src @hypocycloide1X($t, $a, $offsetX) @hypocycloide1Y($t, $b, $offsetY) $elev $azispan $elespan
+
+
+		}
+
+				{
+					$t
+							{
+									   { ($initT*$pi)  } /*@type "exp"*/
+								$speed { ($endT*$pi) }
+
+							}
+				}
+
+	;}
+
+}
+
+/*#######################Process::hypocycloide2#################*/
+
+@proc_def ::hypocycloide2($src=1, $initT=0, $endT=2, $a=0.1, $b=0.1, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend hypocycloide2 "127.0.0.1" : 4072 $prefix
+
+    ;loop hypocycloide2Loop $speed
+	;{
+		;abort hypocycloide2Curve
+
+		curve hypocycloide2Curve @grain := 0.1s @Action := {
+
+			hypocycloide2 "car" $src @hypocycloide2X($t, $a, $offsetX) @hypocycloide2Y($t, $b, $offsetY) $elev $azispan $elespan
+
+			print_osc "hypocycloide2" $prefix "car" $src @hypocycloide2X($t, $a, $offsetX) @hypocycloide2Y($t, $b, $offsetY) $elev $azispan $elespan
+		}
+
+				{
+					$t
+							{
+									   	 { ($initT*$pi)  } /*@type "exp"*/
+								$speed { ($endT*$pi) }
+
+							}
+				}
+
+	;}
+
+}
+
+/*#######################Process::curvoide#################*/
+
+@proc_def ::curvoide($src=1, $initT=-1, $endT=1, $a=0.2, $b=-0.2, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend curvoide "127.0.0.1" : 4072 $prefix
+    ;loop curvoideLoop $speed
+	;{
+		;abort curvoideCurve
+
+		curve curvoideCurve @grain := 0.02s @Action := {
+
+			curvoide "car" $src @curvoideX($t, $a) @curvoideY($t, $b) $elev $azispan $elespan
+
+			print_osc "car" $src @curvoideX($t, $a) @curvoideY($t, $b) $elev $azispan $elespan
+
+		}
+
+				{
+					$t
+							{
+									   	 { ($initT*$pi)  } /*@type "exp"*/
+								$speed { ($endT*$pi) }
+
+							}
+				}
+
+	;}
+
+}
+
+/*#######################Process::hypocycloideVariations#################*/
+
+@proc_def ::hypocycloideVariations($src=1, $initT=0, $endT=2, $R=1, $r=1/3, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $speed=8){
+
+	$prefix := "/spat/serv"
+	oscsend hypocycloideVariations "127.0.0.1" : 4072 $prefix
+
+	;loop hypocycloideVariationsLoop $speed @exclusive{
+	;abort hypocycloideVariationsCurve
+
+	curve hypocycloideVariationsCurve @grain := 0.02s @Action := {
+
+		hypocycloideVariations "car" $src @hypocycloideVariationsX($t, $R, $r, $offsetX) @hypocycloideVariationsY($t, $R, $r, $offsetY) $elev $azispan $elespan
+
+		print_osc "car" $src @hypocycloideVariationsX($t, $R, $r, $offsetX) @hypocycloideVariationsY($t, $R, $r, $offsetY) $elev $azispan $elespan
+
+	}
+
+			{
+				$t
+				{
+								 { ($initT*$pi) }
+					$speed { ($endT*$pi) }
+
+				}
+			}
+
+	;}
+
+}
+
+/*#######################Process::insects_plot#################*/
+
+@proc_def ::insects_plot($src, $iniT, $targeT, $elev, $azispan, $elespan, $count, $speed){
+
+	@local $t
+
+	$prefix := "/spat/serv"
+	oscsend spatGris @global "127.0.0.1" : 4072 $prefix @persistent
+
+	loop pi $speed
+	{
+
+					abort parametric_curve
+					curve parametric_curve @grain := 0.01s @Action := {
+
+					spatGris "car" $src @insects_plotX($t) @insects_plotY($t) $elev $azispan $elespan
+					print_osc spatGris "car" $src @insects_plotX($t) @insects_plotY($t) $elev $azispan $elespan
+
+				}
+
+			  {
+					$t
+						{
+										 { ($iniT)  } @type "sine"
+							$speed { ($targeT)}	@type "sine"
+
+						}
+			  }
+
+	} during[$count#]
+
+}
+
+/*#######################Process::lissajou#################*/
+
+@proc_def ::lissajou($src, $initT, $endT, $a, $b, $m, $n, $elev, $azispan, $elespan, $count, $speed)
+
+{
+	@global $speed ; to use with antescofo's setvar to outControl with a whenever{(setvar...==setvar...)}
+
+	@local $cpt, $prefix
+	$cpt := 0
+
+	$prefix := "/spat/serv"
+	oscsend lissajou "127.0.0.1" : 4072 $prefix
+
+	loop lissajouLoop $speed
+	{
+		;abort lissajou_curve
+
+		$cpt := $cpt + 1
+
+		curve lissajouCurve @grain := 0.01s
+		@Action := {
+
+			lissajou "car" $src @lissajouX($a, $m, $t) @lissajouY($b, $n, $t) $elev $azispan $elespan
+
+			print_osc lissajou "car" $src @lissajouX($a, $m, $t) @lissajouY($b, $n, $t) $elev $azispan $elespan
+
+		}
+
+			{
+					$t
+					{
+									 { ($initT*$pi)  } ;@type "sine_in"
+						$speed { ($endT*$pi) }  ;@type "sine_out"
+
+
+					}
+			}
+
+			print_antescofo $cpt
+
+	} during[$count#]
+
+}
+
+/*#######################Process::lissajouBis#################*/
+
+@proc_def ::lissajou_bis($src, $initT, $targeT, $k, $elev, $azispan, $elespan, $count, $speed)
+{
+	$prefix := "/spat/serv"
+	oscsend lissajou_bis "127.0.0.1" : 4072 $prefix
+
+	loop lissajouBisLoop $speed {
+
+		curve lissajouBisCurve @grain := 0.01s @Action := {
+
+			lissajou_bis "car" $src  @lissajouBisX($t, $k) @lissajouBisY($t, $k) $elev $azispan $elespan
+
+			print_osc lissajou_bis "car" $src  @lissajouBisX($t, $k) @lissajouBisY($t, $k) $elev $azispan $elespan
+
+		}
+
+				{
+					$t
+					{
+						{ ($initT*$pi) } ;@type "sine_in"
+						$speed { ($targeT*$pi) } ;@type "sine_out"
+					}
+				}
+
+		} during[$count#]
+
+	}
+
+/*#######################Process::sin#################*/
+
+
+@proc_def ::sin_trajectory($src=1, $iniT=-1, $targeT=1, $amp=0.5, $w=9, $offset=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=16){
+
+	loop pi $speed
+	{
+	;abort picurve
+	$prefix := "/spat/serv"
+	oscsend sin_trajectory "127.0.0.1" : 4072 $prefix
+
+	curve sinCurve @grain := 0.02s @Action := {
+		$val := @sinFunc($x, $w, $amp, $offset, $pi)
+		;@fun_def @sinFunc($x, $w, $amp, $offset, $pi) {(@sin(($x*$w))*$amp) + ($offset*$pi)}
+		sin_trajectory "car" $src $x $val $elev $azispan $elespan
+	}
+			{
+				$x
+				{
+								 { ($iniT)  } /*@type "exp"*/
+					$speed { ($targeT) }
+				}
+			}
+	} during[$count#]
+}
+
+
+/*#######################Process::rosace#################*/
+
+@proc_def ::rosace_trajectory($src=1, $initT=0, $targeT=2, $k=2, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend rosace "127.0.0.1" : 4072 $prefix
+
+	loop rosaceLoop $speed
+	{
+		/* abort rosaceCurve */
+
+		curve rosaceCurve @grain := 0.01s @Action := {
+
+			rosace "car" $src @rosaceX($t, $k) @rosaceY($t, $k) $elev $azispan $elespan
+			print_osc rosace "car" $src @rosaceX($t, $k) @rosaceY($t, $k) $elev $azispan $elespan
+		}
+
+			{
+				$t
+						{
+								   	 { ($initT*$pi) } /*@type "exp"*/
+							$speed { ($targeT*$pi) }
+						}
+			}
+
+	} during[$count#]
+
+}
+
+/*#######################Process::rosaceVariation#################*/
+
+@proc_def ::rosace_trajectory_variation($src=1, $initC=0, $cycle=2, $p=1, $q=2, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=4){
+
+	@global $speed ; to use with antescofo's setvar to outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+
+	@local $cpt
+	$cpt := 0
+
+	$prefix := "/spat/serv"
+	oscsend rosace_trajectory_variation "127.0.0.1" : 4072 $prefix
+
+    loop rosaceVariationLoop $speed
+	{
+
+		$cpt := $cpt + 1
+
+		/* abort rosaceVariationCurve */
+
+		curve rosaceVariationCurve @grain := 0.01s @Action := {
+
+			rosace_trajectory_variation "car" $src @rosaceVariationX($t, $p, $q) @rosaceVariationY($t, $p, $q) $elev $azispan $elespan
+
+			print_osc rosace_trajectory_variation "car" $src @rosaceVariationX($t, $p, $q) @rosaceVariationY($t, $p, $q) $elev $azispan $elespan
+		}
+
+			{
+				$t
+						{
+								   	 { ($initC*$pi)  } /*@type "exp"*/
+							$speed { ($cycle*$pi) }
+						}
+			}
+
+			print_antescofo "trajectory nº" $cpt
+
+	} during[$count#]
+
+}
+
+/*#######################Process::epi#################*/
+
+@proc_def ::epi($src, $initT, $endT, $m, $offsetX, $offsetY, $elev, $azispan, $elespan, $speed){
+	@global $speed ; to use with antescofo's setvar to outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+
+	$prefix := "/spat/serv"
+	oscsend epi "127.0.0.1" : 4072 $prefix
+
+    ;loop epiLoop $SPEED
+	;{
+		;abort epiCurve
+
+		curve epiCurve @grain := 0.02s @Action := {
+
+			epi "car" $src @epiX($t, $m, $offsetX) @epiY($t, $m, $offsetY) $elev $azispan $elespan
+
+			print_osc epi "car" $src @epiX($t, $m, $offsetX) @epiY($t, $m, $offsetY) $elev $azispan $elespan
+		}
+
+				{
+					$t
+							{
+									   	 { ($initT*$pi)  } /*@type "exp"*/
+								$speed { ($endT*$pi) }
+
+
+							}
+				}
+
+	;}
+
+}
+
+/*########################3DProcess::generic3D#################*/
+
+
+@proc_def generic3D($src=3, $initT=1, $targeT=3, $a=1,$b=1,$c=1, $offsetX=0, $offsetY=0, $offsetZ=1, $azispan=0, $elespan=0, $count=1, $speed=1)
+
+{
+	@global $SPEED ; to use with antescofo's setvar to outControl with a whenever{(setvar...==setvar...)}
+	@local $offset
+	$offset := 0.
+
+	$prefix := "/spat/serv"
+	oscsend spatGris @global "127.0.0.1" : 4072 $prefix @persistent
+
+
+    loop generic3DLoop $speed
+	{
+		;abort generic3DCurve
+
+		curve generic3DCurve @grain := 0.001s @Action := {
+		spatGris "car" $src @generic3DX($t,$a,$b, $offsetX) @generic3DY($t,$a,$b,$offsetY) @generic3DZ($t,$c,$offsetZ) $azispan $elespan
+
+		print_osc $prefix "car" $src @generic3DX($t,$a,$b, $offsetX) @generic3DY($t,$a,$b,$offsetY) @generic3DZ($t,$c,$offsetZ) $azispan $elespan
+							}
+
+		{
+			$t
+					{
+							   	 { ($initT*$pi)  } /*@type "exp"*/
+						$speed { ($targeT*$pi) }
+
+					}
+			}
+
+
+	  } during[$count#]
+
+
+}
+
+
+/*########################3DProcess::helicoide#################*/
+
+@proc_def ::helicoide($src=1, $initT=1/2, $endT=4+1/2, $a=0.7, $b=0.2, $offsetX=0, $offsetY=0, $offsetZ=0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend helicoide "127.0.0.1" : 4072 $prefix @persistent
+
+	;loop helicoideLoop $speed @exclusive{
+	/* abort helicoideCurve */
+
+	curve helicoideCurve @grain := 0.02s @Action := {
+
+		helicoide "car" $src @helicoideX($a, $t, $offsetX) @helicoideY($a, $t, $offsetY) @helicoideZ($b, $t, $offsetZ) $azispan $elespan
+
+		print_osc helicoide "car" $src @helicoideX($a, $t, $offsetX) @helicoideY($a, $t, $offsetY) @helicoideZ($b, $t, $offsetZ) $azispan $elespan
+	}
+
+			{
+				$t
+				{
+								 { ($initT*$pi) }
+					$speed { ($endT*$pi) }
+
+				}
+			}
+
+	;}
+
+}
+
+/*#######################Process::clelie#################*/
+
+
+@proc_def ::clelie($src=1, $initT=-1, $endT=1, $R=1, $n=1, $offsetX=0, $offsetY=0, $offsetZ=0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend clelie "127.0.0.1" : 4072 $prefix
+
+	;loop clelieLoop $speed @exclusive{
+	/* abort clelieCurve */
+
+	curve clelieCurve @grain := 0.02s @Action := {
+
+		clelie "car" $src @clelieX($R, $n, $t, $offsetX) @clelieY($R, $n, $t, $offsetY) @clelieZ($R, $n, $t, $offsetZ) $azispan $elespan
+
+		print_osc clelie "car" $src @clelieX($R, $n, $t, $offsetX) @clelieY($R, $n, $t, $offsetY) @clelieZ($R, $n, $t, $offsetZ) $azispan $elespan
+	}
+
+			{
+				$t
+				{
+								 { ($initT*$pi) }
+					$speed { ($endT*$pi) }
+
+				}
+			}
+
+	;}
+
+}
+
+
+/*#######################Process::couronneSin#################*/
+
+
+@proc_def ::couronne($src=1, $initT=-1, $endT=1, $a=1, $b=1, $n=1, $offsetX=0, $offsetY=0, $offsetZ=0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend couronne "127.0.0.1" : 4072 $prefix
+
+	;loop couronneLoop $speed @exclusive{
+	/* abort couronneCurve */
+
+	curve couronneCurve @grain := 0.02s @Action := {
+
+		couronne "car" $src  @couronneX($a, $b, $n, $t, $offsetX) @couronneY($a, $b, $n, $t, $offsetY) @couronneZ($a, $b, $n, $t, $offsetZ) $azispan $elespan
+
+		print_osc couronne "car" $src  @couronneX($a, $b, $n, $t, $offsetX) @couronneY($a, $b, $n, $t, $offsetY) @couronneZ($a, $b, $n, $t, $offsetZ) $azispan $elespan
+	}
+
+			{
+				$t
+				{
+								 { ($initT*$pi) }
+					$speed { ($endT*$pi) }
+
+				}
+			}
+
+	;}
+
+}
+
+
+/*#######################Process::lssajou3D#################*/
+
+
+@proc_def ::lissajou3D($src=1, $initT=0, $endT=4, $a=1, $b=1, $c=1, $n=1/2, $m=1/2, $offsetX=0, $offsetY=0, $offsetZ=0, $azispan=0.0, $elespan=0.0, $speed=4){
+
+	$prefix := "/spat/serv"
+	oscsend lissajou3D "127.0.0.1" : 4072 $prefix
+
+	;loop lissajou3DLoop $speed @exclusive{
+	;abort lissajou3DCurve
+
+	curve lissajou3DCurve @grain := 0.02s @Action := {
+
+		lissajou3D "car" $src  @lissajou3DX($a, $t, $offsetX) @lissajou3DY($b, $n, $t, $offsetY) @lissajou3DZ($c, $m, $t, $offsetZ) $azispan $elespan
+
+		print_osc lissajou3D "car" $src  @lissajou3DX($a, $t, $offsetX) @lissajou3DY($b, $n, $t, $offsetY) @lissajou3DZ($c, $m, $t, $offsetZ) $azispan $elespan
+	}
+
+			{
+				$t
+				{
+								 { ($initT*$pi) }
+					$speed { ($endT*$pi) }
+
+				}
+			}
+
+	;}
+
+}

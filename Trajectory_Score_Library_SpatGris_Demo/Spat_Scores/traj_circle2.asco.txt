@@ -1,0 +1,81 @@
+BPM 60
+
+@insert "inserts/@iniT.asco.txt"
+@insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
+
+@init_TSL($RT_TEMPO) ; $RT_TEMPO is an antescofo internal command to retrieve the real time tempo or the declared BPM.
+::src_clearAll(4)
+
+event 1 CUE_01
+
+/* X($t)=$radius*@cos($t) + $offsetX
+Y($t)=$radius*@sin($t) + $offsetY
+
+where:
+$src : The sound source.
+$iniT: Source initial position.
+$targeT: Source target position.
+$r : The circle's radius.
+$offsetX : Circle position according to xx' axe.
+$offsetY: Circle position according to yy' axe.
+$count : N circle loop.
+$speed : The duration of the trajectory.
+*/
+
+::circle()
+@player(1, 0, 0.5, 1)
+4
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+
+
+
+event 1 CUE_Idem
+
+@player(2, 0, 0.5, 2)
+::circle(src=2, iniT=3/4, targeT=2+3/4, radius=0.5, offsetX=0, offsetY=0, elev=1.0, azispan=0.0, elespan=0.0,count=1, speed=8)
+8
+::circle(src=2, iniT=2+3/4, radius=1., speed=8)
+
+8
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+
+event 1 CUE_02
+
+@player(1, 0, 0.5, 1)
+$c1 := ::circle(count=2)
+4
+$c1.$radius:=0.5
+$c1.$azispan:=0.5
+
+4
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+
+event 1 CUE_03
+
+@player(1, 0, 0.5, 1)
+::circle(radius=0.3,offsetX=-0.5)
+/* ::circle(offsetX=-1)
+::circle(offsetY=1)
+::circle(offsetY=-1)
+::circle(offsetX=1,offsetY=-1)
+::circle(offsetX=-1,offsetY=1) */
+
+4
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+
+
+event 1 CUE_04
+
+@player(1, 0, 0.5, 1)
+$c1 := ::circle(count=3) ;count > 1
+4
+$c1.$speed:=2
+2
+$c1.$speed:=16
+8
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
