@@ -4,101 +4,187 @@ BPM 60
 @insert "inserts/@iniT.asco.txt"
 @insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
-@init_TSL(60)
-@src_clear(2)
-;::src_clearAll(4)
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+;::src_clear(1)
 ;@alg(2, dome)
 
 
-playAll 5
-playAll_gain 0.7
-
-;::hypocycloideVariations($src, $initT, $endT, $R, $r, $offsetX, $offsetY, $elev, $azispan, $elespan, $speed)
+;::hypocycloideVariations($src=1, $initT=0, $endT=2, $R=1, $r=1/3, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $speed=8)
 
 event 1 deltoide_01
 
-;@player(2,1,0.7,1)
+@player(1, 1, 0.7, 1)
 
 ::hypocycloideVariations()
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 astroide_01
 
-;@player(2,0,0.7,2)
+@player(2, 1, 0.7, 2)
 
-::hypocycloideVariations(src=1, initT=0, endT=2,  R=1, r=1/4, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
+::hypocycloideVariations(src=2, initT=0, endT=2,  R=1, r=1/4, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 hypocycloide_01
 
-;@player(3,1,0.7,3)
+@player(3, 1, 0.7, 3)
 
-::hypocycloideVariations(src=2, initT=9/8, endT=2+9/8, R=1, r=1/5, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
+::hypocycloideVariations(src=3, initT=9/8, endT=2+9/8, R=1, r=1/5, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 Event 1 hypocycloide_02
 
-;@player(3,1,0.7,4)
-::hypocycloideVariations(src=3, initT=0, endT=4,  R=1, r=2/5, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
+@player(4, 1, 0.7, 4)
+
+::hypocycloideVariations(src=4, initT=0, endT=4,  R=1, r=2/5, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 hypocycloide_03
 
-;@player(0,0,0,0)
+@player(4, 1, 0.7, 4)
 
 ::hypocycloideVariations(src=4, initT=0, endT=6, R=1, r=3/5, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 spirale_01
 
-;@player(3,1,0.7,2)
+@player(1, 1, 0.7, 1)
 
 ::hypocycloideVariations(src=1, initT=0, endT=2, R=1/9, r=1, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed=8)
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 hypocycloide_04
 
-;@player(3,1,0.7,3)
+@player(2, 1, 0.7, 2)
 
 ::hypocycloideVariations(src=2, initT=-2, endT=2,  R=1/2, r=1/3, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 hypocycloide_05
 
-;@player(3,1,0.7,4)
+@player(3, 1, 0.7, 4)
 
 ::hypocycloideVariations(src=3, initT=-2, endT=2,  R=1/5, r=1/3, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 4)
+
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 
 event 1 hypocycloide_06
 
-;@player(3,1,0.7,2)
+@player(4, 1, 0.7, 4)
 
 ::hypocycloideVariations(src=4, initT=-2, endT=2, R=0.1, r=1/2, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 
 event 1 hypocycloide_08
 
-;@player(3,1,0.7,4)
+@player(1, 1, 0.7, 1)
 
 ::hypocycloideVariations(src=1, initT=-3, endT=18,  R=0.3, r=1/3, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 8)
 
-Event 1 hypocycloide_09
+8
 
-;@player(3,1,0.7,1)
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
+event 1 hypocycloide_09
+
+@player(2, 1, 0.7, 2)
 
 ::hypocycloideVariations(src=2, initT=0, endT=10,  R=0.4, r=1/3, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 hypocycloide_10
 
-;@player(3,1,0.7,2)
+@player(3, 1, 0.7, 3)
 
 ::hypocycloideVariations(src=3, initT=-3, endT=4,  R=0.5, r=1/3, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 8)
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 hypocycloide_13
 
-;@player(3,1,0.7,3)\
+@player(4, 1, 0.7, 4)
 
 ::hypocycloideVariations(src=4, initT=-6, endT=6,  R=1, r=4/6, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 8)
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 hypocycloide_15
+
+@player(1, 1, 0.7, 1)
 
 ::hypocycloideVariations(src=1, initT=-6, endT=6,  R=1, r=3/2, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 8)
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 event 1 hypocycloide_16 ;cardoide
+
+@multiplayer(4, 0.3)
 
 ::hypocycloideVariations(src=1, initT=-1, endT=1,  R=0.2, r=-0.2, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 4)
 
@@ -107,3 +193,9 @@ event 1 hypocycloide_16 ;cardoide
 ::hypocycloideVariations(src=3, initT=-1, endT=1,  R=0.4, r=-0.4, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 4)
 
 ::hypocycloideVariations(src=4, initT=-1, endT=1,  R=0.5, r=-0.5, offsetX=0, offsetY=0, elev=0.0, azispan=0.0, elespan=0.0, speed= 4)
+
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"

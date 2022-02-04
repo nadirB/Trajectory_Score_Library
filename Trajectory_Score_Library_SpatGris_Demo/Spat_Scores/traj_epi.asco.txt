@@ -12,23 +12,60 @@ event 1 epi_01
 
 ;@proc_def ::epi($src, $initT, $endT, $m, $offsetX, $offsetY, $elev, $azispan, $elespan, $speed)
 
-playAll 5
-playAll_gain 0.7
+@player(4,0,0.7,4)
 
-::epi(4, 0.01, 2, 2*$pi, 0, 0, 0.0, 0.0, 0.0, 32)
+::epi(4, 0.01, 2, 2*$pi, 0, 0, 0.0, 0.0, 0.0, 8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 epi_02
 
-::epi(2, 0.01, 2, $pi, 0, 0, 0.0, 0.0, 0.0, 32)
+@player(2,0,0.7,2)
+
+::epi(2, 0.01, 2, $pi, 0, 0, 0.0, 0.0, 0.0, 8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 epi_03
 
-::epi(3, 0.01, 2, 4*$pi, 0, 0, 0.0, 0.0, 0.0, 32)
+@player(3,0,0.7,3)
+
+::epi(3, 0.01, 2, 4*$pi, 0, 0, 0.0, 0.0, 0.0, 8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 epi_04
 
-::epi(4, 0.01, 2, @pow(0.5, 2), 0, 0, 0.0, 0.0, 0.0, 16)
+@player(4,0,0.7,4)
+
+::epi(4, 0.01, 2, @pow(0.5, 2), 0, 0, 0.0, 0.0, 0.0, 8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 epi_06
 
-::epi(2, 0.01, 8, @pow(2, 0.5), 0, 0, 0.0, 0.0, 0.0, 32)
+@player(2,0,0.7,2)
+
+::epi(2, 0.01, 8, @pow(2, 0.5), 0, 0, 0.0, 0.0, 0.0, 8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"

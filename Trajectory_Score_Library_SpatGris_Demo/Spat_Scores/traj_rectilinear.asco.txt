@@ -12,7 +12,6 @@ BPM 60
 event 1 rectilinear_00
 
 @player(1,0,0.3,1)
-
 ::rectilinear()
 
 4
@@ -25,11 +24,11 @@ event 1 rectilinear_Idem
 @player(1, 0, 0.5, 1)
 ::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0.5, alpha=1, beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=4)
 
-
 4
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_01
 ; instant points ... ($∂, $ß = 0)
@@ -38,20 +37,12 @@ event 1 rectilinear_01
 ;::rectilinear($src, $iniT, $targeT,  $a, $b,  $alpha, $beta,  $count, $speed)
 
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
-::rectilinear(src=1, iniT=0, targeT=1, a=-1, b=1, alpha=0, beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
-1
-::rectilinear(src=2, iniT=0, targeT=1, a=1,  b=1, alpha=0, beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
-1
-::rectilinear(src=3, iniT=0, targeT=1, a=1, b=-1, alpha=0, beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
-1
-::rectilinear(src=4, iniT=0, targeT=1, a=-1, b=-1, alpha=0, beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
+$line1 := ::rectilinear(src=1, iniT=0, targeT=1, a=-1, b=1, alpha=0, beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=2, speed=4)
 
-1
+4
 
-$line1 := ::rectilinear(src=1, iniT=-1, targeT=1, a=0, b=0, alpha=1, beta=-1, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=4)
 $line1.$azispan:=0.3
 $line1.$alpha:=1.
 $line1.$beta:=-1.
@@ -60,17 +51,18 @@ $line1.$beta:=-1.
 
 $span := $line1.$azispan ;  local assignment to a vanished block
 print_antescofo $span
+
 4
+
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
-print_antescofo "Trajectory1 Done !"
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_02 ; vectors... (direct to desired point) ($a, $b = 0) & ($∂, $ß ≠ 0) (cf. spat_score_figures/spat_rectilinear_figure_II)
 
 /* OPER /source/1xy -1 1, /source/2/xy 1 1, /source/3/xy 1 -1 , /source/4/xy -1 -1 */
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=1, targeT=0, a=0, b=0, alpha= -1,  beta=1, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=2)
 ::rectilinear(src=2, iniT=1, targeT=0, a=0, b=0,   alpha=1,  beta=1, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=2)
@@ -88,11 +80,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_03 ; idem vectors... (direct to a desired point) ($a, $b ≠ 0) & ($∂, $ß ≠ 0)
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=0, targeT=1, a=-1,  b=1,   alpha=1, beta=-1, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1) ; when actual position is declared ($∂, $ß) = (-$a, -$b) CHECK !
 
@@ -104,13 +96,13 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_04 ; instant points ... ($∂, $ß = 0) config I translated
 
 ;::rectilinear($cmd, $iniT, $targeT, $a, $alpha, $b, $beta, $count, $SPEED)
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=0, targeT=1, a= 0.2, b=1,    alpha=0,  beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1) ; A
 ::rectilinear(src=2, iniT=0, targeT=1, a= 1,   b=-0.2,  alpha=0,  beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1) ; B
@@ -121,11 +113,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_05 ; instant points ... ($∂, $ß = 0) config II translated (cf. spat_score_figures/spat_rectilinear_figure_III)
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=0, targeT=1, a= 0.2, b=1,    alpha=0, beta=-2, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=4)
 ::rectilinear(src=2, iniT=0, targeT=1, a= 1,   b=-0.2, alpha=-2,  beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=4)
@@ -136,12 +128,12 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_06 ; instant points ... ($∂, $ß = 0) config III
 
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=0, targeT=1, a=1,  b=1,  alpha=0, beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1)
 1
@@ -155,11 +147,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_06  ; vectors... (direct to a desired point : diagonal) config IV
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=1, targeT=0, a=0, b=0,  alpha=1,  beta=1, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1) ; diagonal, ($∂, $ß = vecteurs)
 1
@@ -173,11 +165,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_07  ; vectors... (direct to a desired point : diagonal) config IV return ticket
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=1, targeT=0, a=0, b=0,  alpha=1, beta=1, elev=0.0, azispan=0.0, elespan=0.0, count= 1,speed= 1)
 
@@ -207,14 +199,14 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_08
 
 ; diagonal + offset  config V
 ;($∂, $ß = vecteurs)
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT= 0.1, targeT=1, a=0,  b=0, alpha=1,  beta=1,  elev =0.0, azispan=0.0, elespan=0.0,   count=1, speed=1) ;
 
@@ -228,11 +220,12 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 
 event 1 rectilinear_xy_09 ; diagonal + ≠ offset + ≠ target config VI
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT= 0.1, targeT=0.6, a=0,  b=0, alpha=1,   beta=1,  elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1) ;  ($∂, $ß = vecteurs)
 ::rectilinear(src=2, iniT=-0.2, targeT=1.2, a=0,  b=0, alpha=1,   beta=-1,  elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1)
@@ -245,11 +238,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_10 ; diagonal + ≠ offset + ≠ target config VII
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT= 0., targeT=0.6,  a=-0.5,  b=0, alpha=1,   beta=1,  elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1)
 
@@ -263,11 +256,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
-
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_11 ; square 1*4
 
-@player(1,0,0.3,1)
+@player(1,0,0.7,1)
 
 ::rectilinear(src=1, iniT=0, targeT=1, a=1,  b=1,  	alpha=-2,  beta=0, elev=0.5, azispan=0.0, elespan=0.0,count=1, speed=1)
 1
@@ -281,28 +274,29 @@ event 1 rectilinear_xy_11 ; square 1*4
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_12 ; horizontal butterfly
 
-@player(1,0,0.3,1)
+@player(3,0,0.7,3)
 
-::rectilinear(src=1, iniT=0, targeT=1, a= 1,  b=1,   alpha=0, beta=-2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
+::rectilinear(src=3, iniT=0, targeT=1, a= 1,  b=1,   alpha=0, beta=-2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
 1
-::rectilinear(src=1, iniT=0, targeT=1, a= 1, b=-1,  alpha=-2,  beta=2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
+::rectilinear(src=3, iniT=0, targeT=1, a= 1, b=-1,  alpha=-2,  beta=2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
 1
-::rectilinear(src=1, iniT=0, targeT=1, a=-1,  b=1,   alpha=0, beta=-2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
+::rectilinear(src=3, iniT=0, targeT=1, a=-1,  b=1,   alpha=0, beta=-2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
 1
-::rectilinear(src=1, iniT=0, targeT=1, a=-1, b=-1,   alpha=2,  beta=2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
+::rectilinear(src=3, iniT=0, targeT=1, a=-1, b=-1,   alpha=2,  beta=2, elev=0.5, azispan=0.0, elespan=0.0, count=1,speed= 1)
 
 1
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
-
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_13 ; vertical butterfly
 
-@player(2,0,0.3,2)
+@player(2,0,0.7,2)
 
 ::rectilinear(src=2, iniT=0, targeT=1, a=-1,  b=1,    alpha=2,  beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
 1
@@ -316,28 +310,29 @@ event 1 rectilinear_xy_13 ; vertical butterfly
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_14 ; clockwise butterfly
 
-@player(2,0,0.3,2)
+@player(4,0,0.7,4)
 
-::rectilinear(src=2, iniT=0, targeT=1, a= 0,  b=1.,   alpha=1, beta=-1, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
+::rectilinear(src=4, iniT=0, targeT=1, a= 0,  b=1.,   alpha=1, beta=-1, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
 1
-::rectilinear(src=2, iniT=0, targeT=1, a= 1,  b=0,   alpha=-2,  beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
+::rectilinear(src=4, iniT=0, targeT=1, a= 1,  b=0,   alpha=-2,  beta=0, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
 1
-::rectilinear(src=2, iniT=0, targeT=1, a=-1,  b=0,    alpha=1, beta=-1, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
+::rectilinear(src=4, iniT=0, targeT=1, a=-1,  b=0,    alpha=1, beta=-1, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
 1
-::rectilinear(src=2, iniT=0, targeT=1, a= 0, b=-1,    alpha=0,  beta=2, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
+::rectilinear(src=4, iniT=0, targeT=1, a= 0, b=-1,    alpha=0,  beta=2, elev=0.5, azispan=0.0, elespan=0.0, count=1, speed=1)
 
 1
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_butterflys
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 group one  {
 
@@ -392,11 +387,11 @@ group  four {
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xy_butterflys_exchange
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 group   {
 
@@ -414,11 +409,11 @@ group   {
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xx_02
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=0, targeT=1+1/2, a=0, b=1, alpha=-1, beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1)
 
@@ -432,11 +427,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_yy_02
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::rectilinear(src=1, iniT=0, targeT=1+1/2,  a=1, b=0, 		alpha=0, beta=-1, elev=0.0, azispan=0.0, elespan=0.0,	count=1, speed=1)
 
@@ -450,10 +445,11 @@ playAll_gain 0.7
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_xx_01 ; horizontal rectilinears and sections
 
-@player(3,0,0.3,3)
+@player(3,0,0.7,3)
 
 ::rectilinear(src=3, iniT=0, targeT=1, a=1, b=0,  alpha=0, beta=0, elev=0.0, azispan=0.0, elespan=0.0,count=1, speed=1) ; instant point 1
 1
@@ -467,10 +463,11 @@ event 1 rectilinear_xx_01 ; horizontal rectilinears and sections
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 event 1 rectilinear_yy_01  ; vertical rectilinears and sections
 
-@player(4,0,0.3,4)
+@player(4,0,0.7,4)
 
 ::rectilinear(src=4, iniT=0, targeT=1, a=0,  b=1, alpha=0, beta=0, elev=0.0, azispan=0.0, elespan=0.0, count=1, speed=1)
 1
@@ -484,3 +481,4 @@ event 1 rectilinear_yy_01  ; vertical rectilinears and sections
 
 @init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+print_antescofo "Trajectory Done !"

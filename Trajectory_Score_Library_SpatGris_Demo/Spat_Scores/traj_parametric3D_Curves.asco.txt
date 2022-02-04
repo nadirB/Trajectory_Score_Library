@@ -3,54 +3,96 @@ BPM 60
 @insert "inserts/@iniT.asco.txt"
 @insert "inserts/Trajectory_Score_Library_Processes_&_Compiled_Functions.asco.txt"
 
-@init_TSL(60)
-@src_clear(1)
-;@alg(2, dome)
+@init_TSL($RT_TEMPO)
 ::src_clearAll(4)
+;src_clear(1)
+;@alg(1, dome)
 
 EVENT 1 generic3D_SpatGris
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
-$src3 := ::generic3D(src=3, initT=0, targeT=2, a=3,b=20,c=1, offsetX=0, offsetY=0, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
+$src1 := ::generic3D(src=1, initT=0, targeT=2, a=3, b=20, c=1, offsetX=0, offsetY=0, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
 
-/* ::generic3D(src=2, initT=0, targeT=-2, a=3,b=30,c=1, offsetX=0, offsetY=1, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
+::generic3D(src=2, initT=0, targeT=-2, a=3, b=30, c=1, offsetX=0, offsetY=0.5, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
 
-::generic3D(src=3, initT=0, targeT=2, a=3,b=40,c=1, offsetX=0, offsetY=-1, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
+::generic3D(src=3, initT=0, targeT=2, a=3, b=40, c=1, offsetX=0, offsetY=-0.5, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
 
-::generic3D(src=4, initT=0, targeT=-2, a=3,b=50,c=1, offsetX=0, offsetY=2, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24) */
+::generic3D(src=4, initT=0, targeT=-2, a=3, b=50, c=1, offsetX=0, offsetY=1, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=24)
 
 
-24
+16
 
-$src3.$azispan:=1.0
+$src1.$azispan:=0.3
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 
 EVENT 1 generic3D_01
 
-::generic3D(src=2, initT=1/2, targeT=1+1/2, a=1,b=1,c=2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, count=1, speed=16)
+@player(1, 1, 0.3, 1)
+
+::generic3D(src=1, initT=1/2, targeT=1+1/2, a=1,b=1,c=2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, count=1, speed=16)
+
+16
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 generic3D_02
 
-
+@player(2, 1, 0.3, 2)
 
 ::generic3D(src=2, initT=1, targeT=3, a=1,b=1,c=1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, count=1, speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 generic3D_03
 
+@multiplayer(4, 0.3)
 
 ::generic3D(src=1, initT=-1, targeT=1, a=1,b=0,c=0, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, count=1, speed=88)
 ::generic3D(src=2, initT=-1, targeT=1, a=3,b=0,c=0, offsetX=0, offsetY=0, offsetZ=0, azispan=0.0, elespan=0.0, count=1, speed=8)
 ::generic3D(src=3, initT=-1, targeT=1, a=-5,b=0,c=0, offsetX=0, offsetY=0, offsetZ=-1, azispan=0.0, elespan=0.0, count=1, speed=8)
 
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 generic3D_04
 
-::generic3D(src=1, initT=0, targeT=1, a=1,b=2,c=3, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, count=1, speed=8)
+@player(3, 1, 0.3, 3)
+
+::generic3D(src=3, initT=0, targeT=1, a=1,b=2,c=3, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, count=1, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 generic3D_05
 
-::generic3D(src=3, initT=0, targeT=2, a=3,b=20,c=1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.5, elespan=0., count=2, speed=48)
+@player(4, 1, 0.3, 4)
+
+::generic3D(src=4, initT=0, targeT=2, a=3,b=20,c=1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.5, elespan=0., count=2, speed=48)
+
+48
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 
 EVENT 1 generic3D_06
@@ -58,28 +100,45 @@ EVENT 1 generic3D_06
 
 group generic3DTranslation
 {
-  @player(2,0,0.7,2)
-  $generic3D := ::generic3D(src=2, initT=0, targeT=4, a=1, b=2,c=10, offsetX=0, offsetY=0, offsetZ=1, azispan=0., elespan=0., count=1, speed=64)
+  @player(1,0,0.7,1)
+  $generic3D := ::generic3D(src=1, initT=0, targeT=4, a=1, b=2,c=10, offsetX=0, offsetY=0, offsetZ=1, azispan=0., elespan=0., count=1, speed=64)
   @trajTranslation($generic3D.$offsetX, 64)
 }
+
+64
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 ;check the macro definition trajTranslation in @iniT.asco.txt
 
 EVENT 1 helicoide_00
 
-@player(1,0,0.7,1)
+@player(1, 0, 0.3, 1)
 ::helicoide()
+
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 helicoide_01
 
 @player(3,0,0.7,3)
 ::helicoide(src=3, initT=0, endT=8+1/2, a=0.7, b=0.2, offsetX=0, offsetY=0, offsetZ=0, azispan=0., elespan=0., speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 
 EVENT 1 helicoide_02
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 
 ::helicoide(1, initT=-1/2)
 4
@@ -89,82 +148,175 @@ playAll_gain 0.7
 4
 ::helicoide(4, initT= 4+1/2, endT=0, a=0.1, speed=1)
 
+1
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 clelie_01
 
 ;::clelie($src=1, $initT=-1, $endT=1, $R=1, $n=1, $offsetX=0, $offsetY=0, $offsetZ=0, $azispan=0.0, $elespan=0.0, $speed=4)
 
+@player(1, 1, 0.3, 1)
+
 ::clelie(src=1, initT=0, endT=4, R=1, n=1/2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
+
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 clelie_02
 
+@player(2, 1, 0.3, 2)
 
-::clelie(src=1, initT=0, endT=10, R=2.5, n=6/5, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+::clelie(src=2, initT=0, endT=10, R=2.5, n=6/5, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+
+32
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 clelie_03
 
+@player(3, 1, 0.3, 3)
 
-::clelie(src=2, initT=0, endT=16, R=1, n=2/7, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+::clelie(src=3, initT=0, endT=16, R=1, n=2/7, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+
+32
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 clelie_04
 
+@player(4, 1, 0.3, 4)
 
-::clelie(src=3, initT=1/2, endT=24, R=2, n=0.1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+::clelie(src=4, initT=1/2, endT=24, R=2, n=0.1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+
+32
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 clelie_05
 
+@player(1, 1, 0.3, 1)
 
-::clelie(src=4, initT=0, endT=24, R=2, n=@rand(0.1), offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+::clelie(src=1, initT=0, endT=24, R=2, n=@rand(0.1), offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=32)
+
+32
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 couronne_01
 
-playAll 5
-playAll_gain 0.7
+@player(2, 1, 0.3, 2)
 
-::couronne(src=4, initT=0, endT=2, a=1, b=1.6, n=8, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=8)
+::couronne(src=2, initT=0, endT=2, a=1, b=1.6, n=8, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 couronne_02
 
-
+@player(3, 1, 0.3, 3)
 ::couronne(src=3, initT=0, endT=2, a=2, b=1/6, n=8, offsetX=0, offsetY=0, offsetZ=0, azispan=0.0, elespan=0.0, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 couronne_03
 
+@player(4, 1, 0.3, 4)
 
-::couronne(src=2, initT=3, endT=8, a=3, b=2, n=1/8, offsetX=0, offsetY=0, offsetZ=2, azispan=0.0, elespan=0.0, speed=4)
+::couronne(src=4, initT=3, endT=8, a=3, b=2, n=1/8, offsetX=0, offsetY=0, offsetZ=2, azispan=0.0, elespan=0.0, speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 
 EVENT 1 lissajou_first_overtone
 
+@player(1, 1, 0.3, 1)
 
 ::lissajou3D(src=1, initT=1, endT=3, a=1, b=1, c=1, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 lissajou_first_overtone_bis
 
+@player(2, 1, 0.3, 2)
 
 ::lissajou3D(src=2, initT=0, endT=2, a=2, b=1, c=1, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 lissajou_first_overtone_ter
 
+@player(3, 1, 0.3, 3)
 
 ::lissajou3D(src=3, initT=0, endT=2, a=2, b=1, c=2, n=1, m=2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 lissajou_first_overtone_ter
 
+@player(4, 1, 0.3, 4)
 
-::lissajou3D(src=3, initT=0, endT=2, a=2, b=1, c=2, n=4, m=1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
+::lissajou3D(src=4, initT=0, endT=2, a=2, b=1, c=2, n=4, m=1, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 
+4
 
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
 
 EVENT 1 lissajou_01
 
+@multiplayer(4, 0.3)
 
 ::lissajou3D(src=1, initT=0, endT=4, a=1, b=1, c=1, n=1/2, m=1/2, offsetX=1, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 ::lissajou3D(src=2, initT=0, endT=4, a=1, b=1, c=1, n=1/2, m=1/2, offsetX=0, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 ::lissajou3D(src=3, initT=0, endT=4, a=1, b=1, c=1, n=1/2, m=1/2, offsetX=-1, offsetY=0, offsetZ=1, azispan=0.0, elespan=0.0, speed=4)
 
+4
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"
+
 EVENT 1 lissajou_02
 
+@multiplayer(4, 0.3)
 
 ::lissajou3D(src=1, initT=0, endT=2, a=1, b=1, c=1, n=1, m=2, offsetZ=1, azispan=0.0, elespan=0.0, speed=8)
 8
@@ -173,3 +325,9 @@ EVENT 1 lissajou_02
 ::lissajou3D(src=3, initT=0, endT=2, a=3, b=1, c=1, n=1, m=10, offsetZ=1, azispan=0.0, elespan=0.0, speed=8)
 8
 ::lissajou3D(src=4, initT=0, endT=2, a=3, b=1, c=2, n=1, m=10, offsetZ=1, azispan=0.0, elespan=0.0, speed=8)
+
+8
+
+@init_TSL($RT_TEMPO)
+::src_clearAll(4)
+print_antescofo "Trajectory Done !"

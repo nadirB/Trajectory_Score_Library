@@ -156,7 +156,7 @@ $pi := 3.141592653589793
 
 /*#######################Trajectory Processes#################*/
 
-/*#######################Process::rectilinear3D#################*/
+/*#######################Process::rectilinear#################*/
 
 @proc_def ::rectilinear($src=1, $iniT=-1.0, $targeT=1.0, $a=0.0, $b=0.5, $alpha=1.0, $beta=0.0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=4)
 {
@@ -174,40 +174,36 @@ $pi := 3.141592653589793
 		curve lineCurve @grain := 0.01s @Action := {
 
 			rectilinear "car" $src @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $elev $azispan $elespan
+
 			print_osc $prefix "car" $src @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $elev $azispan $elespan
+
 		}
 
-				@abort :=
-				{		kill lineLoop
-						print_antescofo "lineCurve aborted at " $t
-						Curve rectilinearAbort
-						@grain 0.1
-						@action := {print_message "handler lineCurve: " $t
-						TRAJECTORY @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $z
-						}
-
-						{
-
-							$t {
-										{ ($t)  } /*@type "exp"*/
-									$speed { ($targeT) }
+							@abort := {
+							kill rectilinearLoop
+							print_antescofo "lineCurve aborted at " $t
+							Curve rectilinearAbort @grain 0.1	@action := {print_message "handler lineCurve: " $t rectilinear "car" $src @rectilinearX($t, $a, $alpha) @rectilinearY($t, $b, $beta) $ele$azispan $elespan
 							}
-						}
-					}
+								{
+									$t {
 
+													{ ($t)  } /*@type "exp"*/
+									 $speed { ($targeT) }
+											}
+								}
+							}
 
-
-			{
-				$t
 				{
-								 { ($iniT)  } /*@type "exp"*/
-					$speed { ($targeT) }
+						$t
+						{
+										 { ($iniT)  } /*@type "exp"*/
+							$speed { ($targeT) }
 
 
+						}
 				}
-		}
 
-	} during[$count#]
+				} during[$count#]
 
 }
 
@@ -218,24 +214,24 @@ $pi := 3.141592653589793
 		@local $cpt, $prefix
 		$cpt := 0
 
-
 		$prefix := "/spat/serv"
 		oscsend circle "127.0.0.1" : 4072 $prefix
 
 		loop circle_curve $speed
-		@abort := {
-			print_message "Curve C aborted at " $t
-			Curve AH @grain 0.1 @action := {
-				;print_message "handler curve: " $t
-				SpatGris "car" $src @circleX($t, $radius, $offsetX) @circleY($t, $radius, $offsetY) $elev $azispan $elespan
-			}
 
-			{
-				$t {
-					{ ($t)  } /*@type "exp"*/
-					$speed { ($iniT*$pi) }
+			@abort := {
+				print_message "Curve C aborted at " $t
+				Curve AH @grain 0.1 @action := {
+					;print_message "handler curve: " $t
+					SpatGris "car" $src @circleX($t, $radius, $offsetX) @circleY($t, $radius, $offsetY) $elev $azispan $elespan
 				}
-			} }
+
+					{
+							$t{
+											 { ($t)  } /*@type "exp"*/
+								$speed { ($iniT*$pi) }
+							}
+					} }
 
 		{
 			$cpt := $cpt + 1 //loop counter
@@ -248,9 +244,9 @@ $pi := 3.141592653589793
 
 				{
 					$t {
-						{ ($iniT*$pi)  } /*@type "exp"*/
-						$speed { ($targeT*$pi) }
-						}
+												 { ($iniT*$pi)  } /*@type "exp"*/
+									$speed { ($targeT*$pi) }
+						 }
 				}
 
 			print_antescofo tour $cpt ":" ;prints the number of loops
@@ -291,7 +287,7 @@ $pi := 3.141592653589793
 
 /*#######################Process::ellipse#################*/
 
-@proc_def ::ellipse($src=0, $iniT=0, $endT=0, $a=0, $b=0, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count1=0, $speed=0){
+@proc_def ::ellipse($src=1, $iniT=0, $endT=2, $a=1, $b=0.5, $alpha=0, $beta=0, $offsetX=0, $offsetY=0, $elev=0.0, $azispan=0.0, $elespan=0.0, $count=1, $speed=8){
 
 	@global $speed ; to use with antescofo's setvar to outControl with a whenever{(setvar...==setvar...)}
 	@local $offset, $cpt1,  $prefix
@@ -315,14 +311,14 @@ $pi := 3.141592653589793
 				{
 					$t
 					{
-									 { ($iniT*$pi) } @type "sine"
+									 { ($iniT*$pi) } ;@type "circ"
 						$speed { ($endT*$pi) }
 					}
 				}
 
 		print_antescofo "tour:" $cpt1
 
-	} during[$count1#]
+	} during[$count#]
 
 }
 

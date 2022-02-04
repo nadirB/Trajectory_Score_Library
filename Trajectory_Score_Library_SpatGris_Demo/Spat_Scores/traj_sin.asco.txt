@@ -11,8 +11,7 @@ BPM 60
 
 EVENT 1 sin_00
 
-playAll 5
-playAll_gain 0.7
+@multiplayer(4, 0.3)
 ::sin_trajectory()
 
 event 1 sin_01
