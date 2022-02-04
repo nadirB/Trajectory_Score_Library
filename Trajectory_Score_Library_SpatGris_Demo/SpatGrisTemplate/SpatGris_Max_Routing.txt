@@ -1,0 +1,8 @@
+Max output -> Blackhole
+SpatGris input -> Blackhole 16
+SpatGris output -> SoundCard
+
+OSC 4072 Max -> SpatGris
+
+SR 48000
+Buffer Size 512
