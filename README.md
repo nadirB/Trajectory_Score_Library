@@ -17,4 +17,4 @@ http://gris.musique.umontreal.ca/
 
 Thanks to Jean-Louis Giavitto, Thibaut Carpentier & José Miguel Fernandez for their kind support. And cheers to the SpatGris Team !
 
-©nadir B. 2018-2022
+
