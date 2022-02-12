@@ -150,7 +150,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-31",
@@ -10011,7 +10010,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 234.5, 411.0, 164.0, 22.0 ],
-					"text" : "multi_circle_01"
+					"text" : "sin_00"
 				}
 
 			}
@@ -12382,7 +12381,7 @@
 					"patching_rect" : [ 73.5, 470.0, 270.0, 40.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 17.0, 260.0, 343.5, 39.0 ],
-					"text" : "multi_circle_01",
+					"text" : "sin_00",
 					"varname" : "event"
 				}
 
