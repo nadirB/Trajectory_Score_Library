@@ -15,6 +15,6 @@ http://gris.musique.umontreal.ca/
 <img width="1440" alt="screen_caps_01" src="https://github.com/nadirB/Trajectory_Score_Library/blob/master/Trajectory_Score_Library_Max_Demo.png">
 
 
-Thanks to Jean-Louis Giavitto, Thibaut Carpentier & José Miguel Fernandez for their kind support. And cheers to the SpatGris Team !
+Thanks to Thibaut Carpentier and Jean-Louis Giavitto for their kind support. And cheers to the SpatGris Team !
 
 
