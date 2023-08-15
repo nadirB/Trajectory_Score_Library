@@ -18,3 +18,4 @@ http://gris.musique.umontreal.ca/
 Thanks to Thibaut Carpentier and Jean-Louis Giavitto for their kind support. And cheers to the SpatGris Team !
 
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FnadirB%2FTrajectory_Score_Library&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
